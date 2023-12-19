@@ -96,5 +96,84 @@ namespace Tradeify.Controllers
 			}
 			return Json(new { isError = true, msg = "Unable to register" });
 		}
-	}
+
+        [HttpGet]
+        public IActionResult Login(string returnUrl)
+        {
+            ViewData["ReturnUrl"] = returnUrl;
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<JsonResult> Login(string userName, string password, string returnUrl)
+        {
+            ViewData["ReturnUrl"] = returnUrl;
+
+            if (userName != null || password != null)
+            {
+                var filterSpace = userName.Replace(" ", "");
+                var existingUser = _userHelper.FindByUserName(filterSpace);
+                if (existingUser != null)
+                {
+                    var PasswordSignIn = await _signInManager.PasswordSignInAsync(existingUser, password, true, true).ConfigureAwait(false);
+
+                    if (PasswordSignIn.Succeeded)
+                    {
+
+                        var isUserAdmin = await _userManager.IsInRoleAsync(existingUser, "Admin");
+                        if (isUserAdmin)
+                        {
+                            var session = HttpContext.Session;
+                            var DetectRealUser = await _userHelper.GetLatestImpersonateeRecord(existingUser.Id);
+                            if (DetectRealUser != null && DetectRealUser.EndSession == false)
+                            {
+                                var SessionKeyName = DetectRealUser.AdminUserId;
+                                if (string.IsNullOrEmpty(session.GetString(SessionKeyName)))
+                                {
+                                    session.SetString(SessionKeyName, "false");
+
+                                }
+                                DetectRealUser.AmTheRealUser = true;
+                                _context.Update(DetectRealUser);
+                                _context.SaveChanges();
+
+                            }
+                        }
+                        var url = "";
+                        var userRole = await _userManager.GetRolesAsync(existingUser).ConfigureAwait(false);
+
+                        if (userRole.FirstOrDefault().ToLower().Contains("user"))
+                        {
+                            await _userHelper.UpdateLastLogin(existingUser);
+                            url = "/User/Index";
+                        }
+                        if (userRole.FirstOrDefault().ToLower().Contains("admin"))
+                        {
+                            await _userHelper.UpdateLastLogin(existingUser);
+                            url = "/Admin/Index";
+                        }
+                        return Json(new { isError = false, dashboard = url });
+                    }
+                }
+                return Json(new { isError = true, msg = "Account does not exist,Contact your Admin" });
+            }
+            return Json(new { isError = true, msg = "Username and Password Required" });
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> LogOut()
+        {
+            try
+            {
+                await _signInManager.SignOutAsync();
+                return RedirectToAction("Index", "Home");
+            }
+            catch (Exception exp)
+            {
+                throw exp;
+            }
+        }
+
+
+    }
 }
