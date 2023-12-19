@@ -1,3 +1,4 @@
+using Core.Config;
 using Core.DB;
 using Core.Models;
 using Hangfire;
@@ -8,6 +9,8 @@ using Hangfire.States;
 using Hangfire.Storage;
 using Logic.Helpers;
 using Logic.IHelpers;
+using Logic.Services;
+using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.EntityFrameworkCore;
@@ -17,6 +20,10 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddScoped<IUserHelper, UserHelper>();
 builder.Services.AddScoped<IDropdownHelper, DropdownHelper>();
+builder.Services.AddScoped<IEmailHelper, EmailHelper>();
+builder.Services.AddScoped<IEmailService, EmailService>();
+
+
 
 builder.Services.AddDbContext<AppDbContext>(opt => opt.UseSqlServer(builder.Configuration.GetConnectionString("tradeifyProject")));
 builder.Services.AddDbContext<AppDbContext>(opt => opt.UseSqlServer(builder.Configuration.GetConnectionString("TRADEIFYProject")), ServiceLifetime.Scoped);
@@ -39,11 +46,37 @@ builder.Services.AddIdentity<ApplicationUser, IdentityRole>(options =>
     options.Password.RequireNonAlphanumeric = false;
     options.Password.RequireUppercase = false;
 }).AddEntityFrameworkStores<AppDbContext>();
+builder.Services.AddSession(options =>
+{
+    options.Cookie.HttpOnly = true;
+    options.Cookie.IsEssential = true;
+    options.IdleTimeout = TimeSpan.FromMinutes(43800);
+});
 
+builder.Services.AddSingleton<IEmailConfiguration>(builder.Configuration.GetSection("EmailConfiguration").Get<EmailConfiguration>());
+builder.Services.AddSingleton<IGeneralConfiguration>(builder.Configuration.GetSection("GeneralConfiguration").Get<GeneralConfiguration>());
+builder.Services.AddTransient<IEmailService, EmailService>();
+
+builder.Services.Configure<CookiePolicyOptions>(options =>
+{
+    // This lambda determines whether user consent for non-essential cookies is needed for a given request.
+    options.CheckConsentNeeded = context => true;
+    options.MinimumSameSitePolicy = SameSiteMode.None;
+    options.MinimumSameSitePolicy = SameSiteMode.None;
+});
+builder.Services.Configure<ForwardedHeadersOptions>(options =>
+{
+    options.ForwardedHeaders =
+        ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto;
+});
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddScoped<IUserHelper, UserHelper>();
 builder.Services.AddScoped<IDropdownHelper, DropdownHelper>();
+builder.Services.AddScoped<IEmailHelper, EmailHelper>();
+builder.Services.AddScoped<IEmailService, EmailService>();
+
+
 
 
 
