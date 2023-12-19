@@ -5,26 +5,29 @@ using Logic.IHelpers;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
+using Tradeify.Models;
 
 namespace Tradeify.Controllers
 {
-    public class AccountController : Controller
+    public class AccountController : BaseController
     {
         private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly AppDbContext _context;
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly IUserHelper _userHelper;
 		private readonly IDropdownHelper _dropdownHelper;
+        private readonly IEmailHelper _emailHelper;
 
-		public AccountController(AppDbContext context, SignInManager<ApplicationUser> signInManager, UserManager<ApplicationUser> userManager, IUserHelper userHelper, IDropdownHelper dropdownHelper)
+        public AccountController(AppDbContext context, SignInManager<ApplicationUser> signInManager, UserManager<ApplicationUser> userManager, IUserHelper userHelper, IDropdownHelper dropdownHelper, IEmailHelper emailHelper)
         {
             _signInManager = signInManager;
             _context = context;
             _userManager = userManager;
             _userHelper = userHelper;
 			_dropdownHelper = dropdownHelper;
+            _emailHelper = emailHelper;
 
-		}
+        }
         public IActionResult Index()
         {
             return View();
@@ -174,6 +177,100 @@ namespace Tradeify.Controllers
             }
         }
 
+        [HttpGet]
+        public IActionResult ForgotPassword()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> ForgotPassword(ApplicationUser applicationUser)
+        {
+            try
+            {
+                var userToken = await _userHelper.CreateUserToken(applicationUser.Email);
+                if (userToken != null)
+                {
+                    string linkToClick = HttpContext.Request.Scheme.ToString() + "://" + HttpContext.Request.Host.ToString() + "/Account/ResetPassword?token=" + userToken.Token;
+                    _emailHelper.ForgotPasswordTemplateEmailer(userToken.User, linkToClick);
+                    ModelState.Clear();
+                    SetMessage("A password reset link has been set to your email address please check your email for the next action.", Message.Category.Information);
+                    return View();
+                }
+                else
+                {
+                    SetMessage("Email Address you entered does not belong to any account", Message.Category.Error);
+                    return View();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+
+            }
+        }
+
+        [HttpGet]
+        public IActionResult ResetPassword(Guid token)
+        {
+            try
+            {
+                if (token != null)
+                {
+
+                    PasswordResetViewmodel viewmodel = new PasswordResetViewmodel()
+                    {
+                        Token = token
+                    };
+
+                    return View(viewmodel);
+
+                }
+                else
+                {
+                    SetMessage("Error! invalid link", Message.Category.Error);
+                }
+
+                return View();
+            }
+            catch (Exception ex)
+            {
+                SetMessage("Error! " + ex.Message, Message.Category.Error);
+                return View();
+            }
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> ResetPassword(PasswordResetViewmodel viewmodel)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    if (viewmodel.Password != viewmodel.ConfirmPassword)
+                    {
+                        SetMessage("Password and Confirm Password not matched", Message.Category.Error);
+                        return View(viewmodel);
+                    }
+                    bool passwordResetSuccessful = await _userHelper.ResetPasswordAsync(viewmodel);
+                    if (passwordResetSuccessful)
+                    {
+                        SetMessage("Password Changed Successfully please login to continue", Message.Category.Information);
+                        return View("Login");
+                    }
+                    SetMessage("Sorry! The Link You Entered is Invalid or Expired ", Message.Category.Error);
+                    return View();
+
+                }
+                return View();
+
+            }
+            catch (Exception ex)
+            {
+                SetMessage("Error! " + ex.Message, Message.Category.Error);
+                return View();
+            }
+        }
 
     }
 }
