@@ -272,5 +272,46 @@ namespace Tradeify.Controllers
             }
         }
 
+        [HttpGet]
+        public IActionResult ChangePassword()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> ChangePassword(UserChangePasswordViewModel viewModel)
+        {
+            try
+            {
+                if (viewModel != null && viewModel.OldPassword != null && viewModel.NewPassword != null)
+                {
+                    if (viewModel.NewPassword != viewModel.ConfirmNewPassword)
+                    {
+                        SetMessage("New Password and Confirm Password did not match,", Message.Category.Error);
+                        return View(viewModel);
+                    }
+                    var currentUser = _userManager.Users.Where(s => s.UserName == User.Identity.Name).FirstOrDefault();
+
+                    var result = await _userManager.ChangePasswordAsync(currentUser, viewModel.OldPassword, viewModel.NewPassword);
+                    if (result.Succeeded)
+                    {
+                        SetMessage("Your Password has been changed successfully,you can now use the new password on your next login.", Message.Category.Information);
+                    }
+                    else
+                    {
+                        SetMessage("Your Old Password do not match with what you entered, please correct and try again", Message.Category.Error);
+                    }
+                }
+                else
+                {
+                    SetMessage("Please fill the form before submiting", Message.Category.Error);
+                }
+                return View(viewModel);
+            }
+            catch (Exception exp)
+            {
+                throw exp;
+            }
+        }
     }
 }
