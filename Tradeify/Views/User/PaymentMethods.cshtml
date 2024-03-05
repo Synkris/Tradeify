@@ -1,0 +1,120 @@
+﻿@{
+	ViewData["Title"] = "Payment Methods";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="account_wrapper float_left">
+	<div class="index2_our_service_wrapper float_left">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12 col-lg-12 col-sm-12 col-12">
+					<div class="sv_heading_wraper heading_wrapper_dark dark_heading index2_heading index2_heading_center">
+
+						<h3>How do you want to pay? </h3>
+						<div class="line_shape"></div>
+					</div>
+				</div>
+
+				<div class="col-md-6 col-lg-5 col-sm-6 col-12 m-auto">
+					<div class="">
+						<div class="investment_box_wrapper color_5  float_left">
+							<a href="#">
+								<div class="investment_icon_wrapper float_left">
+									<span> <i class="fas fa-landmark text_color"></i> </span>
+									<h1>Bank Transfer</h1>
+								</div>
+
+								<div class="invest_details float_left">
+									<table class="invest_table">
+										<tbody class="text_color">
+											<tr>
+												<td class="invest_td1 font-weight-bold">  Account Number  </td>
+												<td class="invest_td1 font-weight-bold">
+													&nbsp; 1217675816
+												</td>
+											</tr>
+
+											<tr>
+												<td class="invest_td1 font-weight-bold">  Account Name  </td>
+												<td class="invest_td1 font-weight-bold">
+													&nbsp; <br />  GGC PROJECTS LTD
+												</td>
+											</tr>
+
+											<tr>
+												<td class="invest_td1 font-weight-bold">  Bank Name  </td>
+												<td class="invest_td1 font-weight-bold">
+													&nbsp; <br /> ZENITH BANK
+												</td>
+											</tr>
+
+										</tbody>
+
+									</table>
+
+									<div class="tb_es_btn_div">
+										<div class="tb_es_btn_wrapper conatct_btn2 cont_bnt mt-5">
+											<a asp-action="RegPayment" asp-controller="User">
+												<button type="submit" class="font-weight-bold submitForm button_color">Continue </button>
+											</a>
+										</div>
+									</div>
+								</div>
+							</a>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-md-6 col-lg-5 col-sm-6 col-12 m-auto">
+					<div class="">
+						<div class="investment_box_wrapper color_6  float_left ">
+							<a href="#">
+								<div class="investment_icon_wrapper float_left">
+									<i class="far fa-money-bill-alt text-black"></i>
+									<h1>Pay by Crypto </h1>
+								</div>
+
+								<div class="invest_details float_left">
+									<table class="invest_table">
+										<tbody>
+											<tr>
+												<td class="invest_td1 text-black font-weight-bold"> SMART CHAIN(BNB) Trust wallet address <span><i class="fab fa-adn text-black"></i></span> </td>
+												<td class="invest_td1 text-black font-weight-bold">
+													:&nbsp; 0xd927A8c7AE610
+													<br />
+													CE0F67827123b
+													<br /> e6Bd6c244Ac1DB
+												</td>
+											</tr>
+											<tr>
+												<td class="invest_td1 text-black font-weight-bold">
+													BITCOIN (BTC) Trust wallet address
+													<span><i class="fab fa-bitcoin text-black"></i></span>
+												</td>
+												<td class="invest_td1 text-black font-weight-bold">
+													:&nbsp; bc1qd0wedvl5flwtdprz
+													<br />
+													dv9cvtaxyc80rg9ku46jq4
+												</td>
+											</tr>
+
+										</tbody>
+									</table>
+
+									<div class="tb_es_btn_wrapper conatct_btn2 cont_bnt mt-4">
+										<a asp-action="RegCryptoPayment" asp-controller="User">
+											<button type="submit" class="font-weight-bold submitForm" style="background-color:black; color:white;">Continue </button>
+										</a>
+									</div>
+
+								</div>
+							</a>
+						</div>
+
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+</div>

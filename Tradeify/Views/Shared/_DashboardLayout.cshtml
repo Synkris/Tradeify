@@ -1,0 +1,1443 @@
+﻿@inject Logic.IHelpers.IPaymentHelper _paymentHelper;
+@inject Logic.IHelpers.IUserHelper _userHelper;
+@inject Core.Config.IGeneralConfiguration _generalConfiguration;
+@{
+    var loggedInUser = _userHelper.FindByUserName(User.Identity.Name);
+    var impersonation = _userHelper.CheckForImpersonation(loggedInUser.UserName).Result;
+    //var amount = _paymentHelper.GetReactivationAmount();
+    //var convertedAmount = amount / _generalConfiguration.DollarRate;
+
+    //var impersonateeRecords = await _userHelper.GetLatestImpersonateeRecord(loggedInUser?.Id);
+    //var Impersonator = _userHelper.FindById(impersonateeRecords?.AdminUserId);
+    //var userBeingImpersonated = _userHelper.FindById(impersonateeRecords?.AdifMemberId);
+    //var IsImpersonatorAdmin = await _userHelper.RedirectToRolesDashboard(Impersonator?.UserName);
+
+}
+
+<!DOCTYPE html>
+<html lang="zxx">
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta name="description" content="ggc" />
+    <meta name="keywords" content="ggc" />
+    <meta name="author" content="" />
+    <meta name="MobileOptimized" content="320" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - G A P</title>
+
+    <!--Template style -->
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/jquery-3.3.1.min.js"></script>
+    <script src="~/js/bootstrap.min.js"></script>
+    <script src="~/js/modernizr.js"></script>
+    <script src="~/js/jquery.menu-aim.js"></script>
+    <script src="~/js/plugin.js"></script>
+    <script src="~/js/jquery.countTo.js"></script>
+    <script src="~/js/dropify.min.js"></script>
+    <script src="~/js/datatables.js"></script>
+    <script src="~/js/jquery.nice-select.min.js"></script>
+    <script src="~/js/jquery.inview.min.js"></script>
+    <script src="~/js/jquery.magnific-popup.js"></script>
+    <script src="~/js/owl.carousel.js"></script>
+    <script src="~/js/calculator.js"></script>
+    <script src="~/js/custom.js"></script>
+    <script src="~/js/popper.min.js"></script>
+    <script src="~/js/clipboard.min.js"></script>
+    <script src="~/js/sweetalert2.all.min.js"></script>
+    <script src="~/fontawesome-free/js/all.js"></script>
+    <script src="~/js/registration.js"></script>
+    <script src="~/js/grant.js"></script>
+    <script src="~/js/multi_select/filter-multi-select-bundle.min.js"></script>
+    @*<script src="~/js/multi_select/filter-multi-select-bundle.min.js"></script>*@
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-7VBV7KW5FP"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-7VBV7KW5FP');
+    </script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @RenderSection("Scripts", required: false)
+
+    <link rel="stylesheet" type="text/css" href="~/css/animate.css" />
+    <link rel="stylesheet" type="text/css" href="~/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="~/css/fonts.css" />
+    <link rel="stylesheet" type="text/css" href="~/css/flaticon2.css" />
+    <link rel="stylesheet" type="text/css" href="~/css/dropify.min.css" />
+    <link rel="stylesheet" type="text/css" href="~/css/font-awesome.css" />
+    <link rel="stylesheet" type="text/css" href="~/css/nice-select.css" />
+    <link rel="stylesheet" type="text/css" href="~/css/owl.carousel.css">
+    <link rel="stylesheet" type="text/css" href="~/css/owl.theme.default.css">
+    <link rel="stylesheet" type="text/css" href="~/css/magnific-popup.css">
+    <link rel="stylesheet" type="text/css" href="~/css/datatables.css" />
+    <link rel="stylesheet" type="text/css" href="~/css/reset.css" />
+    <link rel="stylesheet" type="text/css" href="~/css/style.css" />
+    <link rel="stylesheet" type="text/css" href="~/css/GGC.css" />
+    <link rel="stylesheet" type="text/css" href="~/css/responsive.css" />
+    <link href="~/js/multi_select/filter_multi_select.css" rel="stylesheet" />
+    <!--favicon-->
+    <link rel="shortcut icon" type="image/png" href="~/images/favicon.png" />
+
+    <script>
+        function showLoader() {
+            $("#myModal").modal({ backdrop: 'static', keyboard: false });
+        }
+        function hideLoader() {
+            $("#myModal").modal('hide');
+        }
+        function showSpin() {
+            $("#showspin").fadeOut(1500);
+            $("#showcontent").fadeIn(3000);
+        }
+
+        function errorAlert(message) {
+            Swal.fire({
+                icon: 'error',
+                text: message,
+            })
+        }
+
+        function infoAlert(message) {
+            Swal.fire({
+                icon: 'info',
+                text: message,
+            })
+        }
+
+        function infoAlertWithStyles(message) {
+            Swal.fire({
+                title: 'Notification',
+                icon: 'info',
+                text: message,
+            })
+        }
+
+        function successAlert(message) {
+            Swal.fire({
+                icon: 'success',
+                text: message,
+            })
+        }
+
+        function newSuccessAlert(message, url) {
+            Swal.fire({
+                icon: 'success',
+                text: message,
+            }).then(function () {
+
+                location.href = url;
+            })
+        }
+
+        function newErrorAlert(message, url) {
+            Swal.fire({
+                icon: 'error',
+                text: message,
+            }).then(function () {
+
+                location.href = url;
+            })
+        }
+
+        function successAlertWithRedirect(message, url) {
+            swal.fire({
+                title: "Success",
+                text: message,
+                icon: "success",
+                timer: "30000",
+                overlay: "background - color: rgba(43, 165, 137, 0.45)",
+            }).then(function () {
+                location.href = url;
+            })
+        }
+
+        function successAlertWithDoubleButtons(message, url) {
+            swal.fire({
+                title: "Success",
+                text: message,
+                icon: "success",
+                showCancelButton: true,
+                cancelButtonColor: "#22c8db",
+                confirmButtonText: "Pay Reg Bonus",
+                confirmButtonColor: "#006400",
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    location.href = url;
+                }
+            })
+        }
+
+    </script>
+
+</head>
+<!-- color picker start -->
+<body>
+    <!-- Loader -->
+    <div id="loader-wrapper">
+        <div id="loader">
+            <div class="loader-ellips">
+                <span class="loader-ellips__dot"></span>
+                <span class="loader-ellips__dot"></span>
+                <span class="loader-ellips__dot"></span>
+                <span class="loader-ellips__dot"></span>
+            </div>
+        </div>
+    </div>
+    <!-- /Loader -->
+    <!-- <div class="cursor"></div> -->
+    <!-- Top Scroll Start -->
+    <a href="javascript:void(0);" id="return-to-top"> <i class="fas fa-angle-double-up"></i></a>
+    <!-- Top Scroll End -->
+    <!-- cp navi wrapper Start -->
+    @*@if (User.Identity.IsAuthenticated)
+    {*@
+    <nav class="cd-dropdown d-block d-sm-block d-md-block d-lg-none d-xl-none">
+        <h2><a asp-controller="Home" asp-action="Index"> G A P </a></h2>
+        <a href="#0" class="cd-close">Close</a>
+
+        <ul class="cd-dropdown-content">
+            <li>
+                <form class="cd-search">
+                    <input type="search" placeholder="Search...">
+                </form>
+            </li>
+            <li>
+                <a asp-controller="Home" asp-action="Index">Home</a>
+            </li>
+            @if (User.IsInRole("Admin"))
+            {
+                <li>
+                    <a asp-controller="Admin" asp-action="Index">Go To Admin</a>
+                </li>
+            }
+            @*else
+            {
+            <li class=" d-none">
+            <a asp-controller="Admin" asp-action="Index">Go To Admin</a>
+            </li>
+            }*@
+
+            <li class="has-children">
+                <a href="#">dashboard</a>
+                <ul class="cd-secondary-dropdown icon_menu is-hidden">
+                    <li class="go-back"><a href="#0">Menu</a></li>
+
+                    <li>
+                        <a asp-controller="Account" asp-action="ChangePassword">Change Password</a>
+                    </li>
+                    @*
+                    <li><a asp-controller="User" asp-action="Packages"> Buy Package </a></li>
+
+                    <li><a asp-controller="User" asp-action="MyPackages"> My Packages </a></li>*@
+
+                    <li>
+                        <a asp-controller="User" asp-action="Index">my account</a>
+                    </li>
+
+                    @* <li>
+                    <a asp-controller="User" asp-action="MyDistributorRecords">My Distributor Records</a>
+                    </li>
+
+                    <li>
+                    <a asp-controller="User" asp-action="MyLeaderBoardHistory">My LeaderBoard History</a>
+                    </li>
+
+                    <li>
+                    <a asp-controller="User" asp-action="PlaceBets">Play Bets</a>
+                    </li>*@
+
+                    <li><a asp-controller="User" asp-action="Profile">View Profile</a></li>
+
+                    <li>
+                        <a asp-action="MyContacts" asp-controller="User"> My Referred Users</a>
+                    </li>
+
+                    <li>
+                        <a asp-action="PaymentMethods" asp-controller="User"> Pay Registration Fee </a>
+                    </li>
+                    <li>
+                        <a href="~/binary"> my binary</a>
+                    </li>
+
+                    @*						    @if (IsImpersonatorAdmin)
+                    {
+                    @if (!impersonateeRecords.EndSession && impersonateeRecords.AmTheRealUser == false)
+                    {
+                    <li class="has-mega gc_main_navigation d-none">
+                    <a href="#">Logout <i class="fas fa-caret-down"></i></a>
+                    <ul class="navi_2_dropdown">
+
+                    <form asp-action="Logout" asp-controller="Account" method="post">
+                    <li>
+                    <button class="btn text-warning" style="background-color:transparent"><i class="fas fa-caret-right"></i>Logout</button>
+                    </li>
+                    </form>
+
+
+
+                    </ul>
+                    </li>
+
+                    }
+                    }*@
+
+
+
+
+                    @*						    @if (impersonateeRecords != null)
+                    {
+
+                    @if (!impersonateeRecords.EndSession && impersonateeRecords.AmTheRealUser == false)
+                    {
+                    <li class="d-none">
+                    <form method="post" asp-action="LogOut" asp-controller="Account">
+                    <button class="btn bg-warning">
+                    <i class=" fas fa-power-off" style="font-size:20px"></i>
+                    <span class="ml-2 font-weight-bold" style="font-size:18px">Logout</span>
+                    </button>
+                    </form>
+                    </li>
+                    }
+                    else
+                    {
+                    <li>
+                    <form method="post" asp-action="LogOut" asp-controller="Account">
+                    <button class="btn bg-warning col-sm-12">
+                    <i class=" fas fa-power-off" style="font-size:20px"></i>
+                    <span class="ml-2 font-weight-bold" style="font-size:18px">Logout</span>
+                    </button>
+                    </form>
+                    </li>
+                    }
+
+
+                    }
+                    else
+                    {
+                    <li>
+                    <form method="post" asp-action="LogOut" asp-controller="Account">
+                    <button class="btn bg-warning col-sm-12">
+                    <i class=" fas fa-power-off" style="font-size:20px"></i>
+                    <span class="ml-2 font-weight-bold" style="font-size:18px">Logout</span>
+                    </button>
+                    </form>
+                    </li>
+                    }
+
+
+                    *@
+
+
+                    <br />
+
+                </ul>
+            </li>
+            @*  <li class="has-children">
+            <a href="#">VTU services</a>
+            <ul class="cd-secondary-dropdown icon_menu is-hidden">
+            <li class="go-back"><a href="#0">Menu</a></li>
+
+            <li>
+            <a asp-action="BuyAirtime" asp-controller="Vtu"> Buy Airtime </a>
+            </li>
+
+            <li>
+            <a asp-action="BuyData" asp-controller="Vtu"> Buy Data </a>
+            </li>
+            </ul>
+            </li>*@
+            <li class="has-children">
+                <a href="#"> Histories</a>
+                <ul class="cd-secondary-dropdown icon_menu is-hidden">
+                    <li class="go-back"><a href="#0">Menu</a></li>
+                    <li>
+                        <a asp-action="WalletTransactionHistory" asp-controller="User"> Wallet Transactions </a>
+                    </li>
+
+                    @*						    <li>
+                    <a asp-action="GrantTransactionHistory" asp-controller="User"> Grant Transactions</a>
+                    </li>*@
+
+                    <li>
+                        <a asp-action="AGCTransactionHistory" asp-controller="User"> AGC Transactions</a>
+                    </li>
+                </ul>
+            </li>
+
+
+            <li class="has-children">
+                <a href="#">News</a>
+                <ul class="cd-secondary-dropdown icon_menu is-hidden">
+                    <li class="go-back"><a href="#0">Menu</a></li>
+                    @* <li><a asp-controller="News" asp-action="News">News category</a></li>*@
+                    <li><a asp-controller="News" asp-action="News">Trending News</a></li>
+                </ul>
+            </li>
+            @*@if (loggedInUser.DateRegistered.Date <= DateTime.Parse("2021-11-01"))
+            {
+            <li class="has-children">
+            <a href="#">Old Transaction Histories </a>
+            <ul class="cd-secondary-dropdown icon_menu is-hidden">
+            <li class="go-back"><a href="#0">Menu</a></li>
+
+
+            <li>
+            <a asp-action="SortWalletTransactions" asp-controller="User"> Wallet Transaction Histories </a>
+            </li>
+
+            <li>
+            <a asp-action="MatchingBonusHistory" asp-controller="User"> Matching Bonus Histories </a>
+            </li>
+
+            <li>
+            <a asp-action="SortUserGrantsTransactions" asp-controller="User"> Grant Transaction Histories </a>
+            </li>
+
+            <li>
+            <a asp-action="SortAGCTransactions" asp-controller="User"> Gift Card Transaction Histories </a>
+            </li>
+
+
+
+
+            </ul>
+            </li>
+            }*@
+            @*<li class="has-children">
+            <a href="#">E-Markets</a>
+            <ul class="cd-secondary-dropdown icon_menu is-hidden">
+            <li class="go-back"><a href="#0">Menu</a></li>
+
+            <li>
+            <a asp-controller="User" asp-action="PlaceBets">Play Bets</a>
+            </li>
+
+            <li>
+            <a asp-controller="User" asp-action="RealEstate">Buy Real Estate</a>
+            </li>
+
+            <li>
+            <a asp-controller="User" asp-action="AfriBookSocialMedia">AfriBook Social Media</a>
+            </li>
+
+            <li>
+            <a asp-controller="User" asp-action="CryptoAcademyClass">Crypto Class</a>
+            </li>
+
+            <li>
+            <a asp-controller="User" asp-action="ForexAcademyClass">Forex Class</a>
+            </li>
+
+            <li>
+            <a asp-controller="User" asp-action="EducationEmpowerment">Education Empowerment</a>
+            </li>
+
+            <li>
+            <a asp-controller="User" asp-action="AdifgeedEMarket">GGC E-Market</a>
+            </li>
+
+            </ul>
+            </li>*@
+            @if (!loggedInUser.Deactivated)
+            {
+                <li class="has-children">
+                    <a href="#">Withdraw Money</a>
+                    <ul class="cd-secondary-dropdown icon_menu is-hidden">
+                        <li class="go-back"><a href="#0">Menu</a></li>
+                        <li><a asp-controller="User" asp-action="WithdrawByCrypto">Withdraw To My Crypto Wallet</a></li>
+                        <li><a asp-controller="User" asp-action="WithdrawFunds">Withdraw To Bank Account</a></li>
+                    </ul>
+                </li>
+            }
+            <li>
+                <a asp-controller="User" asp-action="ViewUserPackages">My Packages </a>
+            </li>
+
+            @if (loggedInUser.DateRegistered.Year < 2024 && loggedInUser.Deactivated != false)
+            {
+                <li>
+                    <a asp-action="Payment" asp-controller="User">Pay Activation Fee </a>
+                </li>
+            }
+
+            @if (!loggedInUser.Deactivated)
+            {
+                <li>
+                    <a asp-action="Coin" asp-controller="User"> Purchase Token </a>
+                </li>
+            }
+            <li>
+                <form method="post" asp-action="LogOut" asp-controller="Account">
+                    <button class="btn col-sm-12 button_color">
+                        <i class=" fas fa-power-off" style="font-size:20px"></i>
+                        <span class="ml-2 font-weight-bold" style="font-size:18px">Logout</span>
+                    </button>
+                </form>
+            </li>
+
+        </ul>
+        <!-- .cd-dropdown-content -->
+    </nav>
+    @*}
+    else
+    {
+    <nav class="cd-dropdown d-block d-sm-block d-md-block d-lg-none d-xl-none">
+    <h2><a asp-controller="Home" asp-action="Index"> G G C </a></h2>
+    <a href="#0" class="cd-close">Close</a>
+    <ul class="cd-dropdown-content">
+    <li>
+    <form class="cd-search">
+    <input type="search" placeholder="Search...">
+    </form>
+    </li>
+
+    <li>
+    <a asp-controller="Home" asp-action="Index">Home</a>
+    </li>
+
+    <li><a asp-controller="User" asp-action="AllPackages"> investment plan </a></li>
+
+
+    <li class="has-children">
+    <a href="#">News</a>
+    <ul class="cd-secondary-dropdown icon_menu is-hidden">
+    <li class="go-back"><a href="#0">Menu</a></li>
+    <li><a asp-controller="User" asp-action="News">News category</a></li>
+    <li><a asp-controller="User" asp-action="News">Trending News</a></li>
+    </ul>
+    </li>
+
+    <li><a asp-controller="Home" asp-action="ContactUs"> contact us </a></li>
+
+    <li><a asp-controller="Home" asp-action="AboutUs"> About us </a></li>
+
+    <li><a asp-controller="Account" asp-action="Login"> login </a></li>
+
+    </ul>
+    <!-- .cd-dropdown-content -->
+    </nav>
+    }*@
+    <div class="cp_navi_main_wrapper inner_header_wrapper dashboard_header_middle float_left">
+        <div class="container-fluid">
+            <div class="cp_logo_wrapper logoSmallScreen d-flex align-items-center">
+                <a asp-controller="Home" asp-action="Index">
+                    <img src="~/images/logoNew.png" alt="logo" class="img_logo">
+                    <h3 class="font-weight-bold logo-h3"> GAP </h3>
+                </a>
+            </div>
+            <!-- mobile menu area start -->
+            <header class="mobail_menu d-block d-sm-block d-md-block d-lg-none d-xl-none">
+                <li id="countdown" style="font-family:sans-serif; font-size:20px; font-weight:bold;color:white; float: left;position: relative;top: 17px;list-style:none;">
+                    @*<span id="days"></span> days*@
+                    <span id="hours" class="hours"></span> :
+                    <span id="minutes" class="minutes"></span> :
+                    <span id="seconds" class="seconds"></span>
+                </li>
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+                            <div class="cd-dropdown-wrapper">
+                                <a class="house_toggle inner_toggle" href="~/#0">
+                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 31.177 31.177" style="enable-background:new 0 0 31.177 31.177;" xml:space="preserve" width="25px" height="25px">
+                                    <g>
+                                    <g>
+                                    <path class="menubar" d="M30.23,1.775H0.946c-0.489,0-0.887-0.398-0.887-0.888S0.457,0,0.946,0H30.23    c0.49,0,0.888,0.398,0.888,0.888S30.72,1.775,30.23,1.775z" fill="#004165" />
+                                                </g>
+                                    <g>
+                                    <path class="menubar" d="M30.23,9.126H12.069c-0.49,0-0.888-0.398-0.888-0.888c0-0.49,0.398-0.888,0.888-0.888H30.23    c0.49,0,0.888,0.397,0.888,0.888C31.118,8.729,30.72,9.126,30.23,9.126z" fill="#004165" />
+                                                </g>
+                                    <g>
+                                    <path class="menubar" d="M30.23,16.477H0.946c-0.489,0-0.887-0.398-0.887-0.888c0-0.49,0.398-0.888,0.887-0.888H30.23    c0.49,0,0.888,0.397,0.888,0.888C31.118,16.079,30.72,16.477,30.23,16.477z" fill="#004165" />
+                                                </g>
+                                    <g>
+                                    <path class="menubar" d="M30.23,23.826H12.069c-0.49,0-0.888-0.396-0.888-0.887c0-0.49,0.398-0.888,0.888-0.888H30.23    c0.49,0,0.888,0.397,0.888,0.888C31.118,23.43,30.72,23.826,30.23,23.826z" fill="#004165" />
+                                                </g>
+                                    <g>
+                                    <path class="menubar" d="M30.23,31.177H0.946c-0.489,0-0.887-0.396-0.887-0.887c0-0.49,0.398-0.888,0.887-0.888H30.23    c0.49,0,0.888,0.398,0.888,0.888C31.118,30.78,30.72,31.177,30.23,31.177z" fill="#004165" />
+                                                </g>
+                                            </g>
+                                        </svg>
+                                </a>
+                                <!-- .cd-dropdown -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- .cd-dropdown-wrapper -->
+            </header>
+
+            <div class="top_header_right_wrapper dashboard_right_Wrapper">
+
+                @if (User.IsInRole("Admin"))
+                {
+                    <div class="header_btn ml-2">
+                        <ul>
+                            <li>
+                                <a href="~/Admin/Index">Go To Admin </a>
+                            </li>
+                            <li class="d-none">
+                                <a href="~/User/Index">Go To User </a>
+                            </li>
+                        </ul>
+
+                    </div>
+                }
+                else
+                {
+                    <div class="header_btn d-none">
+                        <ul>
+                            <li>
+                                <a href="~/Admin/Index">Go To Admin </a>
+                            </li>
+                            <li class="d-none">
+                                <a href="~/User/Index">Go To User </a>
+                            </li>
+                        </ul>
+
+                    </div>
+                }
+
+                <div class="crm_profile_dropbox_wrapper">
+                    @*<div class="col-xl-3 col-lg-3 col-md-5 col-12 col-sm-5 mt-1">
+                    <div class="sub_title_section">
+                    <div id="countdown" style="font-family:serif; font-size:30px; font-weight:bold;color:black">
+                    @*<span id="days"></span> days
+                    <span id="hours"></span> :
+                    <span id="minutes"></span> :
+                    <span id="seconds"></span>
+                    </div>
+                    </div>
+                    </div>*@
+                    <div class="nice-select" tabindex="0">
+                        <span class="current"><img src="~/images/avatar.png" alt="img"> Hi, @User?.Identity?.Name ! <span class="hidden_xs_content"></span></span>
+                        <ul class="list">
+
+                            <li>
+                                <a href="~/User/Profile"><i class="flaticon-profile"></i> Profile</a>
+                            </li>
+
+                            <li>
+                                <a href="~/user/index"><i class="flaticon-purse"></i> My Balance</a>
+                            </li>
+
+                            @*  <li>
+                            <a href="~/user/packages"><i class="flaticon-file"></i> My Package</a>
+                            </li>*@
+
+                            <li>
+                                <a href="~/news/news"><i class="flaticon-envelope"></i> Notifications </a>
+                            </li>
+
+
+                            <li>
+                                <a href="~/Home/ContactUs"><i class="flaticon-help"></i> Help</a>
+                            </li>
+
+
+                        </ul>
+
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="cp_navigation_wrapper main_top_wrapper dashboard_header">
+                <div class="mainmenu d-xl-block d-lg-block d-md-none d-sm-none d-none">
+
+                    <ul class="main_nav_ul">
+                        <li class="has-mega gc_main_navigation">
+                            <a asp-controller="Home" asp-action="Index" class="active_class">Home </a>
+                        </li>
+
+
+                        @*<li class="has-mega gc_main_navigation">
+                        <a href="#">Pages <i class="fas fa-caret-down"></i></a>
+                        <ul class="navi_2_dropdown">
+
+                        <li><a asp-controller="User" asp-action="Packages"><i class="fas fa-caret-right"></i>Investment plan</a></li>
+
+                        <li>
+                        <a asp-controller="Account" asp-action="Login"><i class="fas fa-caret-right"></i>login</a>
+                        </li>
+
+                        <li>
+                        <a asp-controller="Vtu" asp-action="BuyAirtime"><i class="fas fa-caret-right"></i>Buy Airtime</a>
+                        </li>
+
+                        <li>
+                        <a asp-controller="Vtu" asp-action="BuyData"><i class="fas fa-caret-right"></i>Buy Data</a>
+                        </li>
+
+                        <li>
+                        <a asp-controller="User" asp-action="PlaceBets"><i class="fas fa-caret-right"></i>Play Afri Bets</a>
+                        </li>
+
+                        </ul>
+                        </li>*@
+
+                        <li class="has-mega gc_main_navigation">
+                            <a asp-controller="User" asp-action="Index">dashboard <i class="fas fa-caret-down"></i></a>
+                            <ul class="navi_2_dropdown">
+                                <li class="parent">
+                                    <a href="#">
+                                        <i class="fas fa-caret-right"></i>my account
+                                        <span>
+                                            <i class="fas fa-caret-right"></i>
+                                        </span>
+                                    </a>
+                                    <ul class="dropdown-menu-right">
+                                        <li>
+                                            <a href="~/User/Index"> <i class="fas fa-caret-right"></i>my account </a>
+                                        </li>
+                                        <li>
+                                            <a href="~/Profile"> <i class="fas fa-caret-right"></i> my profile</a>
+                                        </li>
+                                        @* <li>
+                                        <a asp-controller="User" asp-action="MyPackages"><i class="fas fa-caret-right"></i>my Packages</a>
+                                        </li>*@
+
+                                        <li>
+                                            <a asp-controller="Account" asp-action="ChangePassword"><i class="fas fa-caret-right"></i>Change password</a>
+                                        </li>
+                                        <li>
+                                            <a asp-action="MyContacts" asp-controller="User"><i class="fa fa-circle"></i>My Referred Users</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="parent">
+                                    <a href="~/binary">
+                                        <i class="fas fa-caret-right"></i> Referrers
+                                        <span>
+                                            <i class="fas fa-caret-right"></i>
+                                        </span>
+                                    </a>
+                                    <ul class="dropdown-menu-right">
+                                        <li>
+                                            <a href="~/binary"> <i class="fas fa-caret-right"></i> my binary</a>
+                                        </li>
+
+                                        <li>
+                                            <a asp-action="MyContacts" asp-controller="User"> <i class="fas fa-caret-right"></i>My Referred Users</a>
+                                        </li>
+
+                                    </ul>
+                                </li>
+                                <li class="parent">
+                                    <a asp-controller="News" asp-action="News"><i class="fas fa-caret-right"></i> News</a>
+                                </li>
+
+
+                            </ul>
+                        </li>
+
+                        @* <li class="has-mega gc_main_navigation">
+                        <a href="#">News <i class="fas fa-caret-down"></i></a>
+                        <ul class="navi_2_dropdown">
+                        @* <li class="parent">
+                        <a asp-controller="News" asp-action="News"><i class="fas fa-caret-right"></i>News category</a>
+                        </li>
+                        <li class="parent">
+                        <a asp-controller="News" asp-action="News"><i class="fas fa-caret-right"></i> Trending News</a>
+                        </li>
+                        </ul>
+                        </li>*@
+
+                        @*  <li class="has-mega gc_main_navigation">
+                        <a href="#">Withdraw Money <i class="fas fa-caret-down"></i></a>
+                        <ul class="navi_2_dropdown">
+                        <li><a asp-controller="User" asp-action="WithdrawByCrypto"> <i class="fas fa-caret-right"></i> Withdraw To My Crypto Wallet</a></li>
+                        <li><a asp-controller="User" asp-action="WithdrawFunds"> <i class="fas fa-caret-right"></i> Withdraw To Bank Account</a></li>
+                        </ul>
+                        </li>*@
+
+
+                        @*@if (loggedInUser.DateRegistered.Date <= DateTime.Parse("2021-11-01"))
+                        {
+                        <li class="has-mega gc_main_navigation">
+                        <a href="#">Transactions <i class="fas fa-caret-down"></i></a>
+                        <ul class="navi_2_dropdown">
+
+                        <li class="parent">
+                        <a asp-action="SortWalletTransactions" asp-controller="User"> Wallet Transaction Histories </a>
+                        </li>
+
+                        <li class="parent">
+                        <a asp-action="SortUserGrantsTransactions" asp-controller="User"> Grant Transaction Histories </a>
+                        </li>
+
+                        <li>
+                        <a asp-action="SortAGCTransactions" asp-controller="User"> AGC Transaction Histories</a>
+                        </li>
+
+                        <li>
+                        <a asp-action="MatchingBonusHistory" asp-controller="User"> Matching Bonus Histories</a>
+                        </li>
+
+
+                        </ul>
+                        </li>
+                        }
+                        else
+                        {
+                        <li class="has-mega gc_main_navigation">
+                        <a href="#">Transactions <i class="fas fa-caret-down"></i></a>
+                        <ul class="navi_2_dropdown">
+
+                        <li class="parent">
+                        <a asp-action="NewSortWalletTransactions" asp-controller="User"> New Wallet Transaction Histories </a>
+                        </li>
+
+                        <li class="parent">
+                        <a asp-action="NewSortUserGrantsTransactions" asp-controller="User"> New Grant Transaction Histories </a>
+                        </li>
+
+                        <li>
+                        <a asp-action="NewSortAGCTransactions" asp-controller="User"> New AGC Transaction Histories</a>
+                        </li>
+
+                        <li>
+                        <a asp-action="NewMatchingBonusHistory" asp-controller="User"> New Matching Bonus Histories</a>
+                        </li>
+
+
+                        </ul>
+                        </li>
+
+                        }
+                        *@
+                        @* @if (IsImpersonatorAdmin)
+                        {
+                        @if (!impersonateeRecords.EndSession && impersonateeRecords.AmTheRealUser == false)
+                        {
+                        <li class="has-mega gc_main_navigation d-none">
+                        <a href="#">Logout <i class="fas fa-caret-down"></i></a>
+                        <ul class="navi_2_dropdown">
+
+                        <form asp-action="Logout" asp-controller="Account" method="post">
+                        <li>
+                        <button class="btn text-warning" style="background-color:transparent"><i class="fas fa-caret-right"></i>Logout</button>
+                        </li>
+                        </form>
+
+                        </ul>
+                        </li>
+
+                        }
+                        }*@
+
+
+
+
+
+                        @*                            @if (impersonateeRecords != null)
+                        {
+
+                        @if (!impersonateeRecords.EndSession && impersonateeRecords.AmTheRealUser == false)
+                        {
+                        <li class="d-none">
+                        <form method="post" asp-action="LogOut" asp-controller="Account">
+                        <button class="btn bg-warning">
+                        <i class=" fas fa-power-off" style="font-size:20px"></i>
+                        <span class="ml-2 font-weight-bold" style="font-size:18px">Logout</span>
+                        </button>
+                        </form>
+                        </li>
+                        }
+                        else
+                        {
+                        <li class="has-mega gc_main_navigation">
+                        <a href="#">Logout <i class="fas fa-caret-down"></i></a>
+                        <ul class="navi_2_dropdown">
+                        <form asp-action="Logout" asp-controller="Account" method="post">
+                        <li>
+                        <button class="btn text-warning" style="background-color:transparent">
+                        <i class="fas fa-caret-right"></i>Logout
+                        </button>
+                        </li>
+                        </form>
+
+                        </ul>
+                        </li>
+                        }
+
+                        }
+                        else
+                        {
+                        <li class="has-mega gc_main_navigation">
+                        <a href="#">Logout <i class="fas fa-caret-down"></i></a>
+                        <ul class="navi_2_dropdown">
+                        <form asp-action="Logout" asp-controller="Account" method="post">
+                        <li>
+                        <button class="btn text-warning" style="background-color:transparent">
+                        <i class="fas fa-caret-right"></i>Logout
+                        </button>
+                        </li>
+                        </form>
+                        </ul>
+                        </li>
+                        }*@
+
+                        <li><a class="btn" onclick="ReferralLink()">Get Referral Link</a></li>
+
+                        <li class="has-mega gc_main_navigation">
+                            <a href="#">Logout <i class="fas fa-caret-down"></i></a>
+                            <ul class="navi_2_dropdown">
+                                <form asp-action="Logout" asp-controller="Account" method="post">
+                                <li>
+                                    <button class="btn" style="background-color:transparent; color: #22c8db;"><i class="fas fa-caret-right"></i>Logout</button>
+                                </li>
+                                </form>
+                            </ul>
+                        </li>
+
+                        <li id="countdown" style="font-family:sans-serif; font-size:30px; font-weight:bold;color:white; float: right;position: relative;top: 17px;">
+                            @*<span id="days"></span> days*@
+                            <span id="hours" class="hours"></span> :
+                            <span id="minutes" class="minutes"></span> :
+                            <span id="seconds" class="seconds"></span>
+                        </li>
+
+                    </ul>
+                </div>
+                <!-- mainmenu end -->
+            </div>
+        </div>
+    </div>
+
+    <!-- navi wrapper End -->
+    <!-- inner header wrapper start -->
+    <div class="page_title_section dashboard_title">
+        <div class="page_header">
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-xl-9 col-lg-10 col-md-7 col-12 col-sm-7 row">
+
+                        <h3 class="col-5 col-lg-4 text-white" style="display: contents;">@ViewBag.Title</h3>
+
+                        <div class="row pl-4 header-row-style col-lg-8 col-sm-12 m-auto">
+
+                            @if (loggedInUser.DateRegistered.Year < 2024 && loggedInUser.Deactivated != false)
+                            {
+                                <marquee width="100%" direction="left" class="text-white" style="font-size: large;">
+                                    Purchase a product to Re-Activate your Account. Contact the Admin for more details..
+                                </marquee>
+                            }
+
+                            @if (impersonation != null && impersonation.IsImpersonatorAdmin)
+                            {
+                                @if (impersonation.IsImpersonatorAdmin)
+                                {
+                                    @if (impersonation.ShowEndSession == "true")
+                                    {
+                                        <p class="text-black col-lg-6 ml-lg-3 col-7 bg-white py-1 all-radius">Impersonating:  <mark class="bg-transparent text-black font-weight-bold">@impersonation?.Impersonatee?.UserName</mark></p>
+                                        <form asp-controller="Admin" asp-action="LogAdminOut" class="col-lg-5 ml-lg-3 col-5 smallScreen" method="post">
+                                            <button class=" all-radius py-1 font-weight-bold" type="submit" style="background:#22c8db;"> Go back as Admin</button>
+                                        </form>
+                                    }
+                                }
+                            }
+
+                            @*								@if (impersonateeRecords != null)
+                            {
+                            @if (!impersonateeRecords.EndSession )
+                            {
+                            <p class="text-black col-lg-6 ml-lg-3 col-7 bg-white badge-pill">Impersonating:  <mark class="bg-transparent text-black font-weight-bold"> @userBeingImpersonated.UserName </mark> </p>
+                            }
+                            }
+
+                            @if (IsImpersonatorAdmin)
+                            {
+                            @if (!impersonateeRecords.EndSession )
+                            {
+                            <form method="post" asp-action="LogAdminOut" asp-controller="Admin"  class="col-lg-5 ml-lg-3 col-5">
+                            <button class="badge-pill submitForm" style="background:#DBA622;"> Go back as Admin</button>
+                            </form>
+                            }
+                            }*@
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-5 col-md-5 col-12 col-sm-5 smallScreen">
+                        <div class="sub_title_section">
+                            <ul class="sub_title">
+                                <li> <a href="~/#"> Home </a>&nbsp; / &nbsp; </li>
+                                <li>@ViewBag.Title</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- inner header wrapper end -->
+    <div class="l-sidebar">
+        <div class="l-sidebar__content">
+            <nav class="c-menu js-menu" id="mynavi">
+
+
+
+                <ul class="u-list crm_drop_second_ul">
+                    <li class="crm_navi_icon">
+                        <div class="c-menu__item__inner">
+                            <a asp-controller="User" asp-action="Index"><i class="flaticon-four-grid-layout-design-interface-symbol side_icons"></i></a>
+                            <ul class="crm_hover_menu">
+                                <li>
+                                    <a asp-controller="User" asp-action="Index"><i class="fa fa-circle"></i> my account</a>
+                                </li>
+                                <li>
+                                    <a asp-controller="User" asp-action="Profile"><i class="fa fa-circle"></i> my profile</a>
+                                </li>
+
+                                <li>
+                                    <a asp-controller="Account" asp-action="ChangePassword"><i class="fa fa-circle"></i>Change password</a>
+                                </li>
+                                <li>
+                                    <a asp-action="MyContacts" asp-controller="User"><i class="fa fa-circle"></i>My Referred Users</a>
+                                </li>
+
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="c-menu__item is-active has-sub crm_navi_icon_cont">
+                        <a asp-controller="User" asp-action="Index">
+                            <div class="c-menu-item__title">
+                                <span>my account</span><i class="no_badge">4</i>
+                            </div>
+                        </a>
+                        <ul>
+                            <li>
+                                <a asp-controller="User" asp-action="Index"><i class="fa fa-circle"></i> my account</a>
+                            </li>
+
+                            <li>
+                                <a asp-controller="User" asp-action="Profile"><i class="fa fa-circle"></i> my profile</a>
+                            </li>
+
+                            <li>
+                                <a asp-controller="Account" asp-action="ChangePassword"><i class="fa fa-circle"></i>Change password</a>
+                            </li>
+                            <li>
+                                <a asp-action="MyContacts" asp-controller="User"><i class="fa fa-circle"></i>My Referred Users</a>
+                            </li>
+
+                        </ul>
+                    </li>
+                </ul>
+
+
+                @*<ul class="u-list crm_drop_second_ul">
+                <li class="crm_navi_icon">
+                <div class="c-menu__item__inner">
+                <a asp-controller="User" asp-action="Index"><i class="flaticon-four-grid-layout-design-interface-symbol"></i></a>
+                <ul class="crm_hover_menu">
+
+                <li>
+                <a asp-controller="Vtu" asp-action="BuyAirtime"><i class="fa fa-circle"></i>Buy Airtime</a>
+                </li>
+
+                <li>
+                <a asp-controller="Vtu" asp-action="BuyData"><i class="fa fa-circle"></i>Buy Data</a>
+                </li>
+
+                </ul>
+                </div>
+                </li>
+                <li class="c-menu__item is-active has-sub crm_navi_icon_cont">
+                <a asp-controller="User" asp-action="Index">
+                <div class="c-menu-item__title">
+                <span>VTU Services</span><i class="no_badge">2</i>
+                </div>
+                </a>
+                <ul>
+
+                <li>
+                <a asp-controller="Vtu" asp-action="BuyAirtime"><i class="fa fa-circle"></i>Buy Airtime</a>
+                </li>
+
+                <li>
+                <a asp-controller="Vtu" asp-action="BuyData"><i class="fa fa-circle"></i>Buy Data</a>
+                </li>
+
+                </ul>
+                </li>
+                </ul>*@
+
+                <ul class="u-list crm_drop_second_ul">
+
+                    @if (!loggedInUser.Deactivated)
+                    {
+                        <li class="crm_navi_icon">
+                            <div class="c-menu__item__inner">
+                                <a asp-controller="User" asp-action="Index"><i class="flaticon-four-grid-layout-design-interface-symbol side_icons"></i></a>
+                                <ul class="crm_hover_menu">
+
+                                    <li>
+                                        <a asp-controller="User" asp-action="WithdrawFunds"><i class="fa fa-circle"></i>Withdraw To Bank Account</a>
+                                    </li>
+
+                                    <li>
+                                        <a asp-controller="User" asp-action="WithdrawByCrypto"><i class="fa fa-circle"></i>Withdraw To Crypto Wallet</a>
+                                    </li>
+
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="c-menu__item is-active has-sub crm_navi_icon_cont">
+                            <a asp-controller="User" asp-action="Index">
+                                <div class="c-menu-item__title">
+                                    <span>Withdraw GAP</span><i class="no_badge">2</i>
+                                </div>
+                            </a>
+                            <ul>
+                                <li>
+                                    <a asp-controller="User" asp-action="WithdrawFunds"><i class="fa fa-circle"></i>Withdraw To Bank Account</a>
+                                </li>
+
+                                <li>
+                                    <a asp-controller="User" asp-action="WithdrawByCrypto"><i class="fa fa-circle"></i>Withdraw To Crypto Wallet</a>
+                                </li>
+
+                            </ul>
+                        </li>
+                    }
+                </ul>
+
+                <ul class="u-list crm_drop_second_ul">
+                    <li class="crm_navi_icon">
+                        <div class="c-menu__item__inner">
+                            <a href="#"><i class="flaticon-purse side_icons"></i></a>
+                            <ul class="crm_hover_menu">
+                                <li>
+                                    <a asp-action="WalletTransactionHistory" asp-controller="User"> <i class="fa fa-circle"></i> Wallet histories</a>
+                                </li>
+
+                                @*								    <li>
+                                <a asp-action="GrantTransactionHistory" asp-controller="User"> <i class="fa fa-circle"></i> Grant histories</a>
+                                </li>*@
+
+                                <li>
+                                    <a asp-action="AGCTransactionHistory" asp-controller="User"> <i class="fa fa-circle"></i> AGC histories</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="c-menu__item is-active has-sub crm_navi_icon_cont">
+                        <a asp-controller="User" asp-action="Index">
+                            <div class="c-menu-item__title">
+                                <span> Histories</span>
+                            </div>
+                        </a>
+                        <ul>
+
+                            <li>
+                                <a asp-action="WalletTransactionHistory" asp-controller="User"> <i class="fa fa-circle"></i> Wallet histories</a>
+                            </li>
+
+                            @*                                <li>
+                            <a asp-action="GrantTransactionHistory" asp-controller="User"> <i class="fa fa-circle"></i> Grant histories</a>
+                            </li>*@
+
+                            <li>
+                                <a asp-action="AGCTransactionHistory" asp-controller="User"> <i class="fa fa-circle"></i> AGC histories</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <ul class="u-list crm_drop_second_ul">
+                    <li class="crm_navi_icon">
+                        <div class="c-menu__item__inner">
+                            <a href="~/binary"><i class="flaticon-progress-report side_icons"></i></a>
+                        </div>
+                    </li>
+                    <li class="c-menu__item crm_navi_icon_cont">
+                        <a href="~/binary">
+                            <div class="c-menu-item__title">my binary</div>
+                        </a>
+                    </li>
+                </ul>
+
+                @* <ul class="u-list crm_drop_second_ul">
+                <li class="crm_navi_icon">
+                <div class="c-menu__item__inner">
+                <a href="~/User/MyDistributorRecords"><i class="flaticon-progress-report"></i></a>
+                </div>
+                </li>
+                <li class="c-menu__item crm_navi_icon_cont">
+                <a href="~/User/MyDistributorRecords">
+                <div class="c-menu-item__title">My Distributor Record</div>
+                </a>
+                </li>
+                </ul>*@
+
+                @* <ul class="u-list crm_drop_second_ul">
+                <li class="crm_navi_icon">
+                <div class="c-menu__item__inner">
+                <a href="~/User/MyLeaderBoardHistory"><i class="flaticon-progress-report"></i></a>
+                </div>
+                </li>
+                <li class="c-menu__item crm_navi_icon_cont">
+                <a href="~/User/MyLeaderBoardHistory">
+                <div class="c-menu-item__title">My LeaderBoard History</div>
+                </a>
+                </li>
+                </ul>*@
+
+                <ul class="u-list crm_drop_second_ul">
+                    <li class="crm_navi_icon">
+                        <div class="c-menu__item__inner">
+                            <a asp-action="PaymentMethods" asp-controller="User"><i class="flaticon-movie-tickets side_icons"></i></a>
+                        </div>
+                    </li>
+                    <li class="c-menu__item crm_navi_icon_cont">
+                        <a asp-action="PaymentMethods" asp-controller="User">
+                            <div class="c-menu-item__title"> Pay Registration Fee </div>
+                        </a>
+                    </li>
+                </ul>
+                @if (loggedInUser.DateRegistered.Year < 2024 && loggedInUser.Deactivated != false)
+                {
+                    <ul class="u-list crm_drop_second_ul">
+                        <li class="crm_navi_icon">
+                            <div class="c-menu__item__inner">
+                                <a asp-action="Payment" asp-controller="User"><i class="flaticon-movie-tickets side_icons"></i></a>
+                            </div>
+                        </li>
+                        <li class="c-menu__item crm_navi_icon_cont">
+                            <a asp-action="Payment" asp-controller="User">
+                                <div class="c-menu-item__title"> Re-Activation </div>
+                            </a>
+                        </li>
+                    </ul>
+                }
+                @if (!loggedInUser.Deactivated)
+                {
+                    <ul class="u-list crm_drop_second_ul">
+                        <li class="crm_navi_icon">
+                            <div class="c-menu__item__inner">
+                                <a asp-action="Coin" asp-controller="User"><i class="flaticon-movie-tickets side_icons"></i></a>
+                            </div>
+                        </li>
+                        <li class="c-menu__item crm_navi_icon_cont">
+                            <a asp-action="Coin" asp-controller="User">
+                                <div class="c-menu-item__title"> Purchase Token </div>
+                            </a>
+                        </li>
+                    </ul>
+                }
+
+                @* <ul class="u-list crm_drop_second_ul">
+                <li class="crm_navi_icon">
+                <div class="c-menu__item__inner">
+                <a asp-action="MyPackages" asp-controller="User"><i class="flaticon-envelope"></i></a>
+                </div>
+                </li>
+                <li class="c-menu__item crm_navi_icon_cont">
+                <a asp-action="MyPackages" asp-controller="User">
+                <div class="c-menu-item__title"> My current package</div>
+                </a>
+                </li>
+                </ul>*@
+
+                @* <ul class="u-list crm_drop_second_ul">
+                <li class="crm_navi_icon">
+                <div class="c-menu__item__inner">
+                <a asp-action="GetRefferedUser" asp-controller="User"><i class="flaticon-search"></i></a>
+                </div>
+                </li>
+                <li class="c-menu__item crm_navi_icon_cont">
+                <a asp-action="GetRefferedUser" asp-controller="User">
+                <div class="c-menu-item__title"> My reffered users</div>
+                </a>
+                </li>
+                </ul>*@
+
+                @* <ul class="u-list crm_drop_second_ul">
+                <li class="crm_navi_icon">
+                <div class="c-menu__item__inner">
+                <a asp-action="Packages" asp-controller="User"><i class="flaticon-calendar"></i></a>
+                </div>
+                </li>
+                <li class="c-menu__item crm_navi_icon_cont">
+                <a asp-action="Packages" asp-controller="User">
+                <div class="c-menu-item__title"> Buy New  package</div>
+                </a>
+                </li>
+                </ul>*@
+
+                @* <ul class="u-list crm_drop_second_ul">
+                <li class="crm_navi_icon">
+                <div class="c-menu__item__inner">
+                <a asp-action="PlaceBets" asp-controller="User"><i class="flaticon-movie-tickets"></i></a>
+                </div>
+                </li>
+                <li class="c-menu__item crm_navi_icon_cont">
+                <a asp-action="PlaceBets" asp-controller="User">
+                <div class="c-menu-item__title"> Play Bets</div>
+                </a>
+                </li>
+                </ul>*@
+
+                <ul class="u-list crm_drop_second_ul">
+                    <li class="crm_navi_icon">
+                        <div class="c-menu__item__inner">
+                            <a asp-action="News" asp-controller="News"><i class="flaticon-notification side_icons"></i></a>
+                        </div>
+                    </li>
+                    <li class="c-menu__item crm_navi_icon_cont">
+                        <a asp-action="News" asp-controller="News">
+                            <div class="c-menu-item__title"> Read Latest News  </div>
+                        </a>
+                    </li>
+
+                </ul>
+
+                <ul class="u-list crm_drop_second_ul">
+                    <li class="crm_navi_icon">
+                        <div class="c-menu__item__inner">
+                            <a asp-action="ViewUserPackages" asp-controller="User"><i class="flaticon-movie-tickets side_icons"></i></a>
+                        </div>
+                    </li>
+                    <li class="c-menu__item crm_navi_icon_cont">
+                        <a asp-action="ViewUserPackages" asp-controller="User">
+                            <div class="c-menu-item__title"> My Packages </div>
+                        </a>
+                    </li>
+                </ul>
+
+                @*   <ul class="u-list crm_drop_second_ul">
+                <li class="crm_navi_icon">
+                <div class="c-menu__item__inner">
+                <a href="#"><i class="flaticon-four-grid-layout-design-interface-symbol"></i></a>
+                <ul class="crm_hover_menu">
+
+                <li>
+                <a asp-action="RealEstate" asp-controller="User"> <i class="fa fa-circle"></i> Buy Real Estate</a>
+                </li>
+
+                <li>
+                <a asp-action="AfriBookSocialMedia" asp-controller="User"> <i class="fa fa-circle"></i> Afribook social Media</a>
+                </li>
+
+                <li>
+                <a asp-action="CryptoAcademyClass" asp-controller="User"> <i class="fa fa-circle"></i> Crypto Class </a>
+                </li>
+
+                <li>
+                <a asp-action="ForexAcademyClass" asp-controller="User"> <i class="fa fa-circle"></i> Forex Class</a>
+                </li>
+
+                </ul>
+                </div>
+                </li>
+                <li class="c-menu__item is-active has-sub crm_navi_icon_cont">
+                <a asp-controller="User" asp-action="RealEstate">
+                <div class="c-menu-item__title">
+                <span>  GGC E-Market </span>
+                </div>
+                </a>
+                <ul>
+
+                <li>
+                <a asp-action="RealEstate" asp-controller="User"> <i class="fa fa-circle"></i> Buy Real Estate</a>
+                </li>
+
+                <li>
+                <a asp-action="AfriBookSocialMedia" asp-controller="User"> <i class="fa fa-circle"></i> Afribook social Media</a>
+                </li>
+
+                <li>
+                <a asp-action="CryptoAcademyClass" asp-controller="User"> <i class="fa fa-circle"></i> Crypto Class </a>
+                </li>
+
+                <li>
+                <a asp-action="ForexAcademyClass" asp-controller="User"> <i class="fa fa-circle"></i> Forex Class</a>
+                </li>
+                </ul>
+                </li>
+                </ul>*@
+
+            </nav>
+        </div>
+    </div>
+    <!-- Main section Start -->
+    <div class="l-main">
+        <!--  my account wrapper start -->
+        <!-- <div class="account_top_information">
+        @*@{
+                 var user = _userHelper.FindByUserName(User.Identity.Name);
+                 var userWallet = await _paymentHelper.GetUserWallet(user.Id);
+                 var userDetails = _userHelper.FindById(user.Id);
+                 var rate = _generalConfiguration.DollarRate;
+                 var convertedBalance = userWallet.Balance / rate;
+                 var userPvWallet = _paymentHelper.GetUserPvWalletNonAsync(user.Id);
+                 //var userWalletBalance = userWallet.Balance;
+                 var convertedBalanceToGGC = convertedBalance * 4;
+             }*@
+
+        @*<div class="account_overlay"></div>*@
+        @* <div class="useriimg"><img src="~/images/user.png" alt="users"></div>*@
+
+        @* <div class="userdet uderid mr-lg-5">
+                 <h3 class="font-weight-bold theme-yellow"> @User.Identity.Name </h3>
+                 <dl class="userdescc">
+                     <dt>Registration Date</dt>
+                     <dd>
+                         : &nbsp; @userDetails.DateRegistered
+                     </dd>
+                     <dt>Last Login</dt>
+                     <dd>
+                         : &nbsp; @userDetails.CurrentLastLoginTime
+                     </dd>
+                 </dl>
+            </div>*@
+
+        @*<div class="userdet user_transcation mb-3">
+             <h3 class="font-weight-bold" style="color: #22c8db;">Withdrawable Balance</h3>
+                 <dl class="userdescc">
+
+                     <dt>Available</dt>
+                     <dd>
+                         :&nbsp;&nbsp; $@convertedBalance.ToString("F2")
+                     </dd>*@
+
+        @*<dt> GGC Wallet </dt>
+                     <dd>
+                         :&nbsp;&nbsp; @convertedBalanceToGGC.ToString("F2") Coins
+                     </dd>*@
+        @* </dl>
+            </div>*@
+
+             <nav class="navbar navbar-expand float-right mt-5">
+                 <button type="button" id="mineButton" class="btn mr-2 p-2" style="background-color: #22c8db;" onclick="startMining()" data-target="#" data-toggle="#">
+                     <i class="fa fa-award m-r-5"></i> start Mining
+                 </button>
+             </nav>
+
+        </div> -->
+        @RenderBody()
+        <div class="copy_footer_wrapper">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                        <div class="crm_left_footer_cont">
+                            <p>@DateTime.Now.Year Copyright © <a href="~/Home/Index"> G A P </a>. All Rights Reserved.</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--  footer  wrapper end -->
+    <!-- main box wrapper End-->
+    <!--main js file end-->
+</body>
+</html>
