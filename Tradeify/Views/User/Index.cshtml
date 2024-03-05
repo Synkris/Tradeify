@@ -1,0 +1,321 @@
+﻿@model Core.ViewModels.ApplicationUserViewModel
+
+@{
+    ViewData["Title"] = "DashBoard";
+    Layout = "~/Views/Shared/_DashboardLayout.cshtml";
+}
+
+<div class="account_wrapper float_left">
+    <div class="row mb-5">
+        <div class="col-md-12 col-lg-12 col-sm-12 col-12">
+
+            @if (TempData["Message"] != null)
+            {
+                var tempDatamessage = (Tradeify.Models.Message)TempData["Message"];
+                <partial name="_Message" model="tempDatamessage" />
+            }
+            
+           <div class="sv_heading_wraper d-lg-block d-none">
+                <h3>my account</h3>
+            </div>
+        </div>
+
+        <div class="account_top_information">
+            <div class="account_overlay"></div>
+            <div class="sv_heading_wraper">
+                <div id="alert_check"> </div>
+                <h3>my account</h3>
+            </div>
+             <div class="userdet uderid mr-lg-5">
+                <h3 class="font-weight-bold theme-yellow"> @User.Identity.Name </h3>
+                <dl class="userdescc">
+                <dt>Registration Date</dt>
+                    <dd>
+                    : &nbsp; @Model.DateRegistered
+                    </dd>
+                <dt>Last Login</dt>
+                    <dd>
+                    : &nbsp; @Model.CurrentLastLoginTime
+                    </dd>
+                </dl>
+            </div>
+            <div class="userdet user_transcation mb-3">
+                <h3 class="font-weight-bold" style="color: #22c8db;">Withdrawable Balance</h3>
+                <dl class="userdescc">
+                    <dt> Wallet </dt>
+                    <dd>
+                    :&nbsp;&nbsp; $@Model.ConvertedBalance.ToString("F2") USD
+                    </dd>
+                    <dt> Token </dt>
+                    <dd class="token_Amount">
+                    :&nbsp;&nbsp; @Model.ConvertedToken.ToString()
+                    </dd>
+                 </dl>
+            </div>
+
+            <nav class="navbar navbar-expand float-right mt-1 d-none d-lg-block">
+                <a id="mineButton" class="btn mr-2 rounded-circle py-2"
+                   style="background-color: transparent;color: white; border: 12px double #22c8db; box-shadow: 0px 4px 4px 8px #00d0ff99;"
+                    onclick="startMining('@Model.Id')">
+                    <b id="label"> Mine token </b>
+                   
+                </a>
+            </nav>
+            <nav class="navbar navbar-expand float-left mt-1 mb-2 d-lg-none">
+                <a id="mobileButton" class="btn mr-2 rounded-circle py-2"
+                   style="background-color: transparent;color: white; border: 12px double #22c8db; box-shadow: 0px 4px 4px 8px #00d0ff99;"
+                   onclick="startMining('@Model.Id')">
+                    <b id="mobileLabel"> Mine token </b>
+                </a>
+            </nav>
+        </div>
+        <div class="col-md-6 col-lg-6 col-xl-6 col-sm-6 col-12 mb-5 d-lg-block d-none">
+            <div class="investment_box_wrapper color_2  float_left">
+                <a href="#">
+                    <div class="investment_icon_wrapper float_left">
+                        <i class="far fa-money-bill-alt side_text"></i>
+                        <h1>Wallet Balance</h1>
+                    </div>
+
+                    <div class="invest_details float_left">
+                        <table class="invest_table">
+                            <tbody>
+                                <tr>
+                                    <td class="invest_td1">My  Wallet Balance ($)</td>
+                                    <td class="invest_td1">: $@Model.ConvertedBalance.ToString("F2") USD </td>
+                                </tr>
+
+                               @* <tr>
+                                    <td class="invest_td1"> Wallet Balance In GGC <span><i class="fab fa-adn text-black"></i></span> </td>
+                                    <td class="invest_td1">: @Model.ConvertedBalanceToGGC.ToString("F2") Coins  </td>
+                                </tr>*@
+
+                                <tr>
+                                    <td class="invest_td1">Withdrawable Balance($)</td>
+                                    <td class="invest_td1">: $@Model.ConvertedBalance.ToString("F2") USD </td>
+                                </tr>
+
+                                @*<tr>
+                                    <td class="invest_td1">Total Earning($)</td>
+                                    <td class="invest_td1">: $@convertedBonus.ToString("F2") USD </td>
+                                </tr>*@
+                                <tr>
+                                    <td class="invest_td1"> Available PV</td>
+                                    <td class="invest_td1">: @Model.Pv.ToString("G29") PVs </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </a> 
+            </div> 
+        </div>
+
+        <div class="col-md-6 col-lg-6 col-xl-6 col-sm-6 col-12 mb-5 d-lg-block d-none">
+           <div class="investment_box_wrapper color_5  float_left ">
+                <a href="#">
+                    <div class="investment_icon_wrapper float_left">
+                        <i class="far fa-money-bill-alt side_text"></i>
+                        <h1>Crypto Coins</h1>
+                    </div>
+
+                    <div class="invest_details float_left">
+                        <table class="invest_table">
+                            <tbody>
+
+                                <tr>
+                                    <td class="invest_td1"> Bitcoin <span><i class="fab fa-bitcoin text-white"></i></span> </td>
+                                    <td class="invest_td1">
+                                        :&nbsp; 0.0 BTC
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td class="invest_td1"> Etherum <span><i class="fab fa-ethereum text-white"></i></span> </td>
+                                    <td class="invest_td1">
+                                        :&nbsp; 0.00 ETH
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td class="invest_td1"> Green Gold Token (G.G.T) <span><i class="fab fa-adn text-white"></i></span> </td>
+                                    <td class="invest_td1">
+                                        :&nbsp; @Model.ConvertedToken.ToString("F0") Coins.
+                                    </td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+		<div class="faq_wrapper float_left d-lg-none" id="faqs">
+			<div class="investment_overlay faq_overlay"></div>
+			<div class="container " id="FAQ">
+				<div id="accordion" role="tablist">
+					<div class="row">
+						<div class="col-lg-6 col-md-12 col-sm-12 col-12">
+							<div class="card">
+								<!-- Card Title -->
+								<div class="card_pagee" role="tab" id="headingOne">
+									<h5 class="h5-md">
+                                      
+                                        <a class="collapsed2" data-toggle="collapse" href="#collapseOne" role="button" aria-expanded="false" aria-controls="collapseOne">
+											Display Wallet Balance
+										</a>
+									</h5>
+								</div>
+
+								<!-- Card Content -->
+								<div id="collapseOne" class="collapse show" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion" style="">
+									<div class="card-body2">
+										
+										<div class="card_cntnt">
+                                            <div class="investment_box_wrapper color_2  float_left">
+                                                <a href="#">
+                                                    <div class="investment_icon_wrapper float_left">
+                                                        <i class="far fa-money-bill-alt side_text"></i>
+                                                        <h1>Wallet Balance</h1>
+                                                    </div>
+
+                                                    <div class="invest_details float_left">
+                                                        <table class="invest_table">
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td class="invest_td1">My  Wallet Balance ($)</td>
+                                                                    <td class="invest_td1">: $@Model.ConvertedBalance.ToString("F2") USD </td>
+                                                                </tr>
+
+                                                                <tr>
+                                                                    <td class="invest_td1">Withdrawable Balance($)</td>
+                                                                    <td class="invest_td1">: $@Model.ConvertedBalance.ToString("F2") USD </td>
+                                                                </tr>
+                                                               <tr>
+                                                                    <td class="invest_td1"> Avalaible PV </td>
+                                                                    <td class="invest_td1">: @Model.Pv.ToString("G29") PVs </td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        </div>
+									</div>
+								</div>
+
+							</div>
+
+							<div class="card">
+
+								<div class="card_pagee" role="tab" id="headingTwo">
+									<h5 class="h5-md">
+										<a class="collapsed" data-toggle="collapse" href="#collapseTwo" role="button" aria-expanded="false" aria-controls="collapseTwo">
+											Display Crypto Coins
+										</a>
+									</h5>
+								</div>
+
+								<div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingTwo" data-parent="#accordion" style="">
+									<div class="card-body2">
+
+										<div class="card_cntnt">
+                                            <div class="investment_box_wrapper color_5  float_left ">
+                                                <a href="#">
+                                                    <div class="investment_icon_wrapper float_left">
+                                                        <i class="far fa-money-bill-alt side_text"></i>
+                                                        <h1>Crypto Coins</h1>
+                                                    </div>
+
+                                                    <div class="invest_details float_left">
+                                                        <table class="invest_table">
+                                                            <tbody>
+
+                                                                <tr>
+                                                                    <td class="invest_td1"> Bitcoin <span><i class="fab fa-bitcoin text-white"></i></span> </td>
+                                                                    <td class="invest_td1">
+                                                                        :&nbsp; 0.0 BTC
+                                                                    </td>
+                                                                </tr>
+
+                                                                <tr>
+                                                                    <td class="invest_td1"> Etherum <span><i class="fab fa-ethereum text-white"></i></span> </td>
+                                                                    <td class="invest_td1">
+                                                                        :&nbsp; 0.00 ETH
+                                                                    </td>
+                                                                </tr>
+
+                                                                <tr>
+                                                                    <td class="invest_td1"> Green Gold Token (G.G.T) <span><i class="fab fa-adn text-white"></i></span> </td>
+                                                                    <td class="invest_td1">
+                                                                        :&nbsp; @Model.ConvertedToken.ToString("F0") Coins.
+                                                                    </td>
+                                                                </tr>
+
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        </div>
+									</div>
+								</div>
+
+							</div>
+
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+    </div>
+</div>
+
+ <div class="modal fade question_modal" id="payActivation" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content bg-dark">
+                @*<button type="button" class="close" data-dismiss="modal">&times;</button>*@
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+                        <div class="sv_question_pop float_left">
+                            <h1 class="text-center text-white">
+                                Welcome,  @User.Identity.Name !
+                            </h1>
+                            <div class="search_alert_box float_left mt-3">
+                                <div class="change_field row">
+                                    <p class="text-white text-center mt-3">
+                                        Purchase a product to Re-Activate your Account.
+                                        Contact the Admin for more details..
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row p-3 mb-3">
+                                <div class="col-sm-12 col-lg-6 m-auto mb-3">
+                                    <div class="submit-section mb-3 mt-4">
+                                        <a class="btn button_color d-block" asp-action="Payment" asp-controller="User"> Pay Activation Fee </a>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<script>
+    $(document).ready(function () {
+        var isDeactivated = @((Model.Deactivated ? "true" : "false"));
+        if (isDeactivated === true) {
+            $("#payActivation").modal({ backdrop: "static" });
+            $('#payActivation').modal('show');
+        }
+    });
+</script>
+
+
+
+
+ 

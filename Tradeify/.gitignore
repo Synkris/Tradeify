@@ -1,0 +1,8 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/bin/Debug/net6.0
+/obj
+/.vs/Tradeify/FileContentIndex/176226ce-5a45-4f5d-a74b-220b2aa77c1b.vsidx
+/bin/Debug/net7.0

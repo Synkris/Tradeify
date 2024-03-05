@@ -1,2 +1,0 @@
-﻿//$('.search_test').SumoSelect({ search: true, searchText: 'Enter here.', selectAll: true, placeholder: 'Nothing Selected' });
-$('.search_test').SumoSelect({ search: true, searchText: 'Enter here.', selectAll: true, placeholder: 'Nothing Selected' });
