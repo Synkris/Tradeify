@@ -380,5 +380,18 @@ namespace Logic.Helpers
             }
         }
 
-    }
+		public bool CheckIfUserHasPaidRegPayment(string userId)
+		{
+			if (userId != null)
+			{
+				var regPay = _context.ApplicationUser.Where(s => s.Id == userId && s.RegFeePaid == true).FirstOrDefault();
+				if (regPay != null)
+				{
+					return true;
+				}
+			}
+			return false;
+		}
+
+	}
 }

@@ -1,0 +1,73 @@
+﻿@model Core.ViewModels.BinaryTreeViewModel
+@{
+    ViewData["Title"] = "Binary Tree";
+    if (User.IsInRole("Admin"))
+    {Layout = "~/Views/Shared/_AdminDashboardLayout.cshtml";}
+    else { Layout = "~/Views/Shared/_DashboardLayout.cshtml"; }
+    
+}
+
+<div class="payment_transfer_Wrapper float_left pt-2 header_text">
+    <div class="row">
+        <div class="col-md-12 col-lg-12 col-sm-12 col-12"></div>
+
+        <div class="col-md-12 col-lg-12 col-sm-12 col-12 header_text">
+            <div class="sv_heading_wraper heading_center">
+                <div class="change_field col-7 row mx-auto">
+                    <label class="col-form-label w-100 text-center">Choose Generation</label>
+                    <select id="selectGen" class="select" required asp-items="@(new SelectList(@ViewBag.Gen,  "Id", "Name" ))" onchange="populateUserGen()"></select>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr class="bg-light" />
+    <input type="hidden" id="userId" value="@Model.UserId" />
+
+    <div class="row col-12 m-auto">
+        <div class="col-md-4 m-auto">
+            <div class="card h-100 w-50 m-auto">
+                <div class="col-12 d-flex flex-column">
+                    <div class="row bg-faded pb-3 pt-2">
+                        <div class="col-6 mx-auto col-sm-12">
+                            <img class="rounded-circle img-fluid bg-info" src="~/images/user.png">
+                        </div>
+                        <div class="col-12 text-center mt-2">
+                            <a class="p-1 text-dark" style="border-radius: 5px; cursor: pointer; background-color: #22c8db; font-size:small;" onclick="ReferralLink()">@Model.UserName</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <span class="m-auto " style="border-left:2px solid white; height:50px;display:table;"></span>
+            </div>
+        </div>
+        
+        @if(Model != null && Model.UserGen.Any() ){
+
+            <div class="row col-12 m-auto" style="display: inline-flex; "id="userListContainer">
+                @foreach (var user in Model.UserGen)
+                {
+                    <div class="col-md-1 col-4 pb-1 pl-0">
+                        <div class="card">
+                            <div class="col-12 d-flex flex-column px-0">
+                                <div class="row bg-faded py-2">
+                                    <div class="col-8 mx-auto">
+                                         <img class="rounded-circle img-fluid bg-info" src="~/images/user.png">
+                                    </div>
+
+                                    <div class="col-12 text-center m-auto">
+                                        <a href="#" class="p-1 text-dark" style="border-radius: 5px; cursor: pointer; background-color: #22c8db; font-size:smaller;" onclick="ChildReferralLink('@user.Child?.Id')">@user.Child?.UserName</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                } 
+            </div>
+        }
+        
+    </div>
+
+</div>
+
+

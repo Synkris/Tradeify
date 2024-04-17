@@ -488,6 +488,8 @@
 					<a asp-controller="User" asp-action="ViewUserPackages"> My Packages </a>
 				</li>
 
+				<li><a onclick="ReferralLink()" class="text-white"> Get Referral Link</a></li>
+
 				<li class="mb-3">
 					<form method="post" asp-action="LogOut" asp-controller="Account">
 						<button class="btn col-sm-12 button_color">
@@ -654,7 +656,7 @@
 						<ul class="list">
 
 							<li>
-								<a href="~/User/Profile"><i class="flaticon-profile"></i> Profile</a>
+								<a href="~/Profile"><i class="flaticon-profile"></i> Profile</a>
 							</li>
 
 							<li>
@@ -718,7 +720,7 @@
 											<a href="~/Admin/Index"> <i class="fas fa-caret-right"></i>my account </a>
 										</li>
 										<li>
-											<a href="~/User/Profile"> <i class="fas fa-caret-right"></i> my profile</a>
+											<a href="~/Profile"> <i class="fas fa-caret-right"></i> my profile</a>
 										</li>
 										<li>
 											<a asp-controller="Account" asp-action="ChangePassword"><i class="fas fa-caret-right"></i>Change password</a>

@@ -258,9 +258,13 @@
                         <a asp-action="MyContacts" asp-controller="User"> My Referred Users</a>
                     </li>
 
-                    <li>
-                        <a asp-action="PaymentMethods" asp-controller="User"> Pay Registration Fee </a>
-                    </li>
+                    @if (loggedInUser.RegFeePaid != true)
+                    {
+                        <li>
+                            <a asp-action="PaymentMethods" asp-controller="User"> Pay Registration Fee </a>
+                        </li>
+                    }
+
                     <li>
                         <a href="~/binary"> my binary</a>
                     </li>
@@ -472,6 +476,8 @@
                     <a asp-action="Coin" asp-controller="User"> Purchase Token </a>
                 </li>
             }
+            <li><a onclick="ReferralLink()" class="text-white"> Get Referral Link</a></li>
+
             <li>
                 <form method="post" asp-action="LogOut" asp-controller="Account">
                     <button class="btn col-sm-12 button_color">
@@ -619,7 +625,7 @@
                         <ul class="list">
 
                             <li>
-                                <a href="~/User/Profile"><i class="flaticon-profile"></i> Profile</a>
+                                <a href="~/Profile"><i class="flaticon-profile"></i> Profile</a>
                             </li>
 
                             <li>
@@ -1190,18 +1196,22 @@
                 </li>
                 </ul>*@
 
-                <ul class="u-list crm_drop_second_ul">
-                    <li class="crm_navi_icon">
-                        <div class="c-menu__item__inner">
-                            <a asp-action="PaymentMethods" asp-controller="User"><i class="flaticon-movie-tickets side_icons"></i></a>
-                        </div>
-                    </li>
-                    <li class="c-menu__item crm_navi_icon_cont">
-                        <a asp-action="PaymentMethods" asp-controller="User">
-                            <div class="c-menu-item__title"> Pay Registration Fee </div>
-                        </a>
-                    </li>
-                </ul>
+                @if (loggedInUser.RegFeePaid != true)
+                {
+                    <ul class="u-list crm_drop_second_ul">
+                        <li class="crm_navi_icon">
+                            <div class="c-menu__item__inner">
+                                <a asp-action="PaymentMethods" asp-controller="User"><i class="flaticon-movie-tickets side_icons"></i></a>
+                            </div>
+                        </li>
+                        <li class="c-menu__item crm_navi_icon_cont">
+                            <a asp-action="PaymentMethods" asp-controller="User">
+                                <div class="c-menu-item__title"> Pay Registration Fee </div>
+                            </a>
+                        </li>
+                    </ul>
+                }
+
                 @if (loggedInUser.DateRegistered.Year < 2024 && loggedInUser.Deactivated != false)
                 {
                     <ul class="u-list crm_drop_second_ul">
