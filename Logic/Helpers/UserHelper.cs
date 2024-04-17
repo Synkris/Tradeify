@@ -362,5 +362,65 @@ namespace Logic.Helpers
 
         }
 
+        public IPagedList<ApplicationUserViewModel> GetReferredUsers(ApplicationUserSearchResultViewModel applicationUserViewModel, string userId, int pageNumber, int pageSize)
+        {
+
+            var userContactsQuery = _userManager.Users
+                .Where(u => u.RefferrerId == userId && u.Deactivated != true)
+                .Include(u => u.Gender)
+                .OrderByDescending(s => s.DateRegistered).AsQueryable();
+
+            if (!string.IsNullOrEmpty(applicationUserViewModel.UserName))
+            {
+                userContactsQuery = userContactsQuery.Where(v =>
+                    v.UserName.ToLower().Contains(applicationUserViewModel.UserName.ToLower())
+                );
+            }
+            if (!string.IsNullOrEmpty(applicationUserViewModel.Name))
+            {
+                userContactsQuery = userContactsQuery.Where(v =>
+                    (v.FirstName + " " + v.LastName).ToLower().Contains(applicationUserViewModel.Name.ToLower())
+                );
+            }
+            if (!string.IsNullOrEmpty(applicationUserViewModel.PhoneNumber))
+            {
+                userContactsQuery = userContactsQuery.Where(v =>
+                    v.PhoneNumber.ToLower().Contains(applicationUserViewModel.PhoneNumber.ToLower())
+                );
+            }
+            if (!string.IsNullOrEmpty(applicationUserViewModel.Email))
+            {
+                userContactsQuery = userContactsQuery.Where(v =>
+                    v.Email.ToLower().Contains(applicationUserViewModel.Email.ToLower())
+                );
+            }
+
+            var totalItemCount = userContactsQuery.Count();
+            var totalPages = (int)Math.Ceiling((double)totalItemCount / pageSize);
+
+            var userContacts = userContactsQuery.Select(user => new ApplicationUserViewModel
+            {
+                FirstName = user.FirstName,
+                LastName = user.LastName,
+                Email = user.Email,
+                UserName = user.UserName,
+                Gender = user.Gender,
+                Phonenumber = user.PhoneNumber,
+                DateRegistered = user.DateRegistered,
+            }).ToPagedList(pageNumber, pageSize, totalItemCount);
+            applicationUserViewModel.PageCount = totalPages;
+            applicationUserViewModel.UserRecords = userContacts;
+            if (userContacts.Count() > 0)
+            {
+                return userContacts;
+            }
+            else
+            {
+                return null;
+            }
+
+
+        }
+
     }
 }

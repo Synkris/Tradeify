@@ -436,5 +436,37 @@ namespace Tradeify.Controllers
 			return View();
 		}
 
+		public IActionResult MyContacts(string name, string phoneNumber, string email, string userName, int pageNumber, int pageSize)
+		{
+			try
+			{
+				var loggedInUserId = _userHelper.GetCurrentUserId(User.Identity.Name);
+				var userContactsViewModel = new ApplicationUserSearchResultViewModel(_generalConfiguration)
+				{
+					PageNumber = pageNumber == 0 ? _generalConfiguration.PageNumber : pageNumber,
+					PageSize = pageSize == 0 ? _generalConfiguration.PageSize : pageSize,
+					Name = name,
+					PhoneNumber = phoneNumber,
+					Email = email,
+					UserName = userName,
+
+				};
+				pageNumber = (pageNumber == 0 ? userContactsViewModel.PageNumber : pageNumber);
+				pageSize = pageSize == 0 ? userContactsViewModel.PageSize : pageSize;
+				var referredUsers = _userHelper.GetReferredUsers(userContactsViewModel, loggedInUserId, pageNumber, pageSize);
+				userContactsViewModel.UserRecords = referredUsers;
+				if (referredUsers != null)
+				{
+					return View(userContactsViewModel);
+				}
+				return View();
+			}
+			catch (Exception ex)
+			{
+				ViewBag.ErrorMessage = "An error occurred while fetching referred users.";
+				return View(new List<ApplicationUserViewModel>());
+			}
+		}
+
 	}
 }
