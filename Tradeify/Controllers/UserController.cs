@@ -231,6 +231,77 @@ namespace Tradeify.Controllers
 			}
 		}
 
+		[HttpGet]
+		[Authorize]
+		[Route("/Profile")]
+		public IActionResult Profile()
+		{
+			ViewBag.Title = "View Profile";
+			var user = _userHelper.FindByUserName(User.Identity.Name);
+			var userBonus = _paymentHelper.GetUserWallet(user.Id).Result;
+			var grantWallet = _paymentHelper.GetUserGrantWallet(user.Id).Result;
+			var rate = _generalConfiguration.DollarRate;
+			var Bonus = userBonus.Balance / rate;
+			//var grantAmount = grantWallet.Balance / rate;
+			var pv = _paymentHelper.GetUserPvWalletNonAsync(user.Id);
+			var referrerId = _userHelper.FindById(user.ParentId);
+
+			var newModel = new ApplicationUserViewModel()
+			{
+				BonusAmount = Bonus,
+				GrantAmount = Bonus / _generalConfiguration.GGCConversionToDollar,
+				Pv = pv.Balance,
+				FirstName = user?.FirstName,
+				LastName = user?.LastName,
+				Email = user?.Email,
+				Phonenumber = user?.PhoneNumber,
+				DateRegistered = user.DateRegistered,
+				CurrentLastLoginTime = user.CurrentLastLoginTime,
+				RefferrerUserName = user?.Refferrer?.Name,
+				GenderName = user?.Gender?.Name,
+				Id = user?.Id,
+				CordinatorId = user?.CordinatorId,
+			};
+			return View(newModel);
+
+		}
+
+		[HttpGet]
+		public IActionResult EditProfileDetails(string userId)
+		{
+			try
+			{
+				if (userId != null)
+				{
+					var userProfile = _userHelper.ProfileDetailsToEdit(userId);
+					return PartialView(userProfile);
+				}
+				return View();
+			}
+			catch (Exception ex)
+			{
+				throw ex;
+			}
+		}
+
+		[HttpPost]
+		public JsonResult EditedProfileDetails(string details)
+		{
+			if (details != null)
+			{
+				var profileDetailsToedit = JsonConvert.DeserializeObject<ApplicationUserViewModel>(details);
+				if (profileDetailsToedit != null)
+				{
+					var editProfile = _userHelper.EditedProfileDetails(profileDetailsToedit);
+					if (editProfile)
+					{
+						return Json(new { isError = false, msg = "Profile Edited Successfully" });
+					}
+				}
+				return Json(new { isError = true, msg = "Could Not Edit" });
+			}
+			return Json(new { isError = true, msg = "Could Not find Member Profile" });
+		}
 
 	}
 }
