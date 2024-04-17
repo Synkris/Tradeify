@@ -468,5 +468,44 @@ namespace Tradeify.Controllers
 			}
 		}
 
+		[HttpGet]
+		public IActionResult EditUserDetails(string userId)
+		{
+			try
+			{
+				if (userId != null)
+				{
+					ViewBag.Cordinator = _dropdownHelper.DropdownOfCordinator();
+					ViewBag.Package = _dropdownHelper.DropdownOfPackages();
+					var user = _adminHelper.UserDetailsToEdit(userId);
+					return PartialView(user);
+				}
+				return View();
+			}
+			catch (Exception ex)
+			{
+				throw ex;
+			}
+		}
+
+		[HttpPost]
+		public JsonResult EditedUserDetails(string details)
+		{
+			if (details != null)
+			{
+				var detailsToedit = JsonConvert.DeserializeObject<ApplicationUserViewModel>(details);
+				if (detailsToedit != null)
+				{
+					var edit = _adminHelper.EditedDetails(detailsToedit);
+					if (edit)
+					{
+						return Json(new { isError = false, msg = "Member Edited Successfully" });
+					}
+				}
+				return Json(new { isError = true, msg = "Could Not Edit Member" });
+			}
+			return Json(new { isError = true, msg = "Could Not find Member" });
+		}
+
 	}
 }
