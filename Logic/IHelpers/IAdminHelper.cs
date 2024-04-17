@@ -8,5 +8,7 @@ namespace Logic.IHelpers
 {
     public interface IAdminHelper
     {
+        ApplicationUserViewModel UserDetailsToEdit(string userId);
+        bool EditedDetails(ApplicationUserViewModel userDetails);
     }
 }
