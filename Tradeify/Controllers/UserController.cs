@@ -303,5 +303,138 @@ namespace Tradeify.Controllers
 			return Json(new { isError = true, msg = "Could Not find Member Profile" });
 		}
 
+		[Authorize]
+		[HttpGet]
+		public async Task<IActionResult> WalletTransactionHistory(string userName, DateTime sortTypeFrom, DateTime sortTypeTo, string transactionType, int pageNumber, int pageSize)
+		{
+			try
+			{
+				var currentUserId = _userHelper.GetCurrentUserId(User.Identity.Name);
+				var userwalletHistoryModel = new WalletHistorySearchResultViewModel(_generalConfiguration)
+				{
+					PageNumber = pageNumber == 0 ? _generalConfiguration.PageNumber : pageNumber,
+					PageSize = pageSize == 0 ? _generalConfiguration.PageSize : pageSize,
+					SortTypeFrom = sortTypeFrom,
+					SortTypeTo = sortTypeTo,
+					TransactionType = transactionType,
+					UserName = userName,
+					DollarRate = _generalConfiguration.DollarRate,
+
+				};
+				pageNumber = (pageNumber == 0 ? userwalletHistoryModel.PageNumber : pageNumber);
+				pageSize = pageSize == 0 ? userwalletHistoryModel.PageSize : pageSize;
+				TimeSpan datesSum = userwalletHistoryModel.SortTypeTo.Date - userwalletHistoryModel.SortTypeFrom.Date;
+				if (datesSum.Days >= 31)
+				{
+					SetMessage("wallet Date Range Shouldn't be more than 30 days or 1 month", Message.Category.Error);
+					return View("SortWalletTransactions");
+				}
+				var userHistory = _paymentHelper.UserWalletHistoryRange(userwalletHistoryModel, currentUserId, pageNumber, pageSize);
+				userwalletHistoryModel.WalletHistoryRecords = userHistory;
+				if (userHistory != null)
+				{
+					return View(userwalletHistoryModel);
+				}
+				return View();
+			}
+			catch (Exception ex)
+			{
+				throw ex;
+			}
+		}
+		[HttpGet]
+		public IActionResult SortWalletTransactions()
+		{
+			return View();
+		}
+		[Authorize]
+		[HttpGet]
+		public async Task<IActionResult> GrantTransactionHistory(string userName, DateTime sortTypeFrom, DateTime sortTypeTo, string transactionType, int pageNumber, int pageSize)
+		{
+			try
+			{
+				var currentUserId = _userHelper.GetCurrentUserId(User.Identity.Name);
+				var userGrantwalletHistoryViewModel = new GrantHistorySearchResultViewModel(_generalConfiguration)
+				{
+					PageNumber = pageNumber == 0 ? _generalConfiguration.PageNumber : pageNumber,
+					PageSize = pageSize == 0 ? _generalConfiguration.PageSize : pageSize,
+					SortTypeFrom = sortTypeFrom,
+					SortTypeTo = sortTypeTo,
+					TransactionType = transactionType,
+					UserName = userName,
+					DollarRate = _generalConfiguration.DollarRate,
+
+				};
+				pageNumber = (pageNumber == 0 ? userGrantwalletHistoryViewModel.PageNumber : pageNumber);
+				pageSize = pageSize == 0 ? userGrantwalletHistoryViewModel.PageSize : pageSize;
+				TimeSpan datesSum = userGrantwalletHistoryViewModel.SortTypeTo.Date - userGrantwalletHistoryViewModel.SortTypeFrom.Date;
+				if (datesSum.Days >= 31)
+				{
+					SetMessage("Grant Range Shouldn't be more than 30 days or 1 month", Message.Category.Error);
+					return View("SortUserGrantsTransactions");
+				}
+				var grantHistory = _paymentHelper.ForUserGrantWalletHistory(userGrantwalletHistoryViewModel, currentUserId, pageNumber, pageSize);
+				userGrantwalletHistoryViewModel.GrantHistoryRecords = grantHistory;
+				if (grantHistory != null)
+				{
+					return View(userGrantwalletHistoryViewModel);
+				}
+				return View();
+			}
+			catch (Exception exp)
+			{
+
+				throw exp;
+			}
+		}
+		[HttpGet]
+		public IActionResult SortUserGrantsTransactions()
+		{
+			return View();
+		}
+		[Authorize]
+		[HttpGet]
+		public async Task<IActionResult> AGCTransactionHistory(string userName, DateTime sortTypeFrom, DateTime sortTypeTo, string transactionType, int pageNumber, int pageSize)
+		{
+			try
+			{
+				var currentUserId = _userHelper.GetCurrentUserId(User.Identity.Name);
+				var userAGCwalletHistoryViewModel = new AGCSearchResultViewModel(_generalConfiguration)
+				{
+					PageNumber = pageNumber == 0 ? 1 : pageNumber,
+					PageSize = pageSize == 0 ? _generalConfiguration.PageSize : pageSize,
+					SortTypeFrom = sortTypeFrom,
+					SortTypeTo = sortTypeTo,
+					TransactionType = transactionType,
+					UserName = userName,
+
+				};
+				pageNumber = (pageNumber == 0 ? userAGCwalletHistoryViewModel.PageNumber : pageNumber);
+				pageSize = pageSize == 0 ? _generalConfiguration.PageSize : pageSize;
+				TimeSpan datesSum = userAGCwalletHistoryViewModel.SortTypeTo.Date - userAGCwalletHistoryViewModel.SortTypeFrom.Date;
+				if (datesSum.Days >= 31)
+				{
+					SetMessage("AGC Range Shouldn't be more than 30 days or 1 month", Message.Category.Error);
+					return View("SortAGCTransactions");
+				}
+				var giftCardHistory = _paymentHelper.UserAGCWalletHistory(userAGCwalletHistoryViewModel, currentUserId, pageNumber, pageSize);
+				userAGCwalletHistoryViewModel.AGCWalletHistoryRecords = giftCardHistory;
+				if (giftCardHistory != null)
+				{
+					return View(userAGCwalletHistoryViewModel);
+				}
+				return View();
+			}
+			catch (Exception exp)
+			{
+				throw exp;
+			}
+		}
+		[HttpGet]
+		public IActionResult SortAGCTransactions()
+		{
+			return View();
+		}
+
 	}
 }

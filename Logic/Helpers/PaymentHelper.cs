@@ -393,5 +393,453 @@ namespace Logic.Helpers
 			return false;
 		}
 
-	}
+        public IPagedList<WalletHistoryViewModel> UserWalletHistoryRange(WalletHistorySearchResultViewModel transactionViewModel, string userId, int pageNumber, int pageSize)
+        {
+            try
+            {
+                var walletId = GetUserWallet(userId).Result.Id;
+                var userWalletHistoryQuery = _context.WalletHistories.Where(s => s.Wallet.UserId == userId && s.WalletId == walletId).Include(s => s.Payment).Include(s => s.Wallet).Include(s => s.Payment.User)
+                .OrderByDescending(s => s.DateOfTransaction).AsQueryable();
+
+                if (!string.IsNullOrEmpty(transactionViewModel.UserName))
+                {
+                    userWalletHistoryQuery = userWalletHistoryQuery.Where(v =>
+                        v.Wallet.User.UserName.ToLower().Contains(transactionViewModel.UserName.ToLower())
+                    );
+                }
+                if (!string.IsNullOrEmpty(transactionViewModel.TransactionType))
+                {
+                    var transactionTypeString = transactionViewModel.TransactionType.ToLower();
+                    userWalletHistoryQuery = userWalletHistoryQuery
+                        .ToList()
+                        .Where(v => v.TransactionType.ToString().ToLower().Contains(transactionTypeString))
+                        .AsQueryable();
+                }
+
+                if (transactionViewModel.SortTypeFrom != DateTime.MinValue)
+                {
+                    userWalletHistoryQuery = userWalletHistoryQuery.Where(v => v.DateOfTransaction >= transactionViewModel.SortTypeFrom);
+                }
+                if (transactionViewModel.SortTypeTo != DateTime.MinValue)
+                {
+                    userWalletHistoryQuery = userWalletHistoryQuery.Where(v => v.DateOfTransaction <= transactionViewModel.SortTypeTo);
+                }
+
+                var totalItemCount = userWalletHistoryQuery.Count();
+                var totalPages = (int)Math.Ceiling((double)totalItemCount / pageSize);
+
+                var walletHistories = userWalletHistoryQuery.Select(c => new WalletHistoryViewModel
+                {
+                    Id = c.Id,
+                    Wallet = c.Wallet,
+                    Amount = c.Amount,
+                    DateOfTransaction = c.DateOfTransaction,
+                    Payment = c.Payment,
+                    Details = c.Details,
+                    NewBalance = c.NewBalance,
+                    TransactionType = c.TransactionType,
+                    PaymentId = c.PaymentId,
+                    WalletId = c.WalletId,
+                }).ToPagedList(pageNumber, pageSize, totalItemCount);
+                transactionViewModel.PageCount = totalPages;
+                transactionViewModel.WalletHistoryRecords = walletHistories;
+                if (walletHistories.Count() != 0)
+                {
+                    return walletHistories;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                LogCritical($" {ex.Message} This exception occured while trying to get userWalletHistory");
+                throw ex;
+            }
+        }
+        public IPagedList<WalletHistoryViewModel> SortUsersWalletHistory(WalletHistorySearchResultViewModel viewModel, int pageNumber, int pageSize)
+        {
+            try
+            {
+                var userWalletHistoryQuery = _context.WalletHistories.Include(s => s.Payment).Include(s => s.Wallet).Include(s => s.Wallet.User).Include(s => s.Payment.User).OrderByDescending(s => s.DateOfTransaction).AsQueryable();
+
+                if (!string.IsNullOrEmpty(viewModel.UserName))
+                {
+                    userWalletHistoryQuery = userWalletHistoryQuery.Where(v =>
+                        v.Wallet.User.UserName.ToLower().Contains(viewModel.UserName.ToLower())
+                    );
+                }
+                if (!string.IsNullOrEmpty(viewModel.TransactionType))
+                {
+                    var transactionTypeString = viewModel.TransactionType.ToLower();
+                    userWalletHistoryQuery = userWalletHistoryQuery
+                        .ToList()
+                        .Where(v => v.TransactionType.ToString().ToLower().Contains(transactionTypeString))
+                        .AsQueryable();
+                }
+
+                if (viewModel.SortTypeFrom != DateTime.MinValue)
+                {
+                    userWalletHistoryQuery = userWalletHistoryQuery.Where(v => v.DateOfTransaction >= viewModel.SortTypeFrom);
+                }
+                if (viewModel.SortTypeTo != DateTime.MinValue)
+                {
+                    userWalletHistoryQuery = userWalletHistoryQuery.Where(v => v.DateOfTransaction <= viewModel.SortTypeTo);
+                }
+
+                var totalItemCount = userWalletHistoryQuery.Count();
+                var totalPages = (int)Math.Ceiling((double)totalItemCount / pageSize);
+
+
+                var walletHistories = userWalletHistoryQuery.Select(c => new WalletHistoryViewModel
+                {
+                    Id = c.Id,
+                    Wallet = c.Wallet,
+                    Amount = c.Amount,
+                    DateOfTransaction = c.DateOfTransaction,
+                    Payment = c.Payment,
+                    Details = c.Details,
+                    NewBalance = c.NewBalance,
+                    TransactionType = c.TransactionType,
+                    PaymentId = c.PaymentId,
+                    WalletId = c.WalletId,
+                }).ToPagedList(pageNumber, pageSize, totalItemCount);
+                viewModel.PageCount = totalPages;
+                viewModel.WalletHistoryRecords = walletHistories;
+                if (walletHistories.Count() > 0)
+                {
+                    return walletHistories;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                LogCritical($" {ex.Message} This exception occured while trying to get WalletHistory for Admin in payment helper");
+                throw ex;
+            }
+        }
+        public IPagedList<PvWalletHistoryViewModel> SortPvWalletHistories(PvSearchResultViewModel pvSearchViewModel, int pageNumber, int pageSize)
+        {
+            try
+            {
+                var userPvHistoryQuery = _context.PvWalletHistories.Include(s => s.Payment).Include(s => s.Wallet).Include(s => s.Wallet.User).Include(s => s.Payment.User).OrderByDescending(s => s.DateOfTransaction).AsQueryable();
+
+                if (!string.IsNullOrEmpty(pvSearchViewModel.UserName))
+                {
+                    userPvHistoryQuery = userPvHistoryQuery.Where(v =>
+                        v.Wallet.User.UserName.ToLower().Contains(pvSearchViewModel.UserName.ToLower())
+                    );
+                }
+                if (!string.IsNullOrEmpty(pvSearchViewModel.TransactionType))
+                {
+                    var transactionTypeString = pvSearchViewModel.TransactionType.ToLower();
+                    userPvHistoryQuery = userPvHistoryQuery
+                        .ToList()
+                        .Where(v => v.TransactionType.ToString().ToLower().Contains(transactionTypeString))
+                        .AsQueryable();
+                }
+                if (pvSearchViewModel.SortTypeFrom != DateTime.MinValue)
+                {
+                    userPvHistoryQuery = userPvHistoryQuery.Where(v => v.DateOfTransaction >= pvSearchViewModel.SortTypeFrom);
+                }
+                if (pvSearchViewModel.SortTypeTo != DateTime.MinValue)
+                {
+                    userPvHistoryQuery = userPvHistoryQuery.Where(v => v.DateOfTransaction <= pvSearchViewModel.SortTypeTo);
+                }
+
+                var totalItemCount = userPvHistoryQuery.Count();
+                var totalPages = (int)Math.Ceiling((double)totalItemCount / pageSize);
+
+                var pvWalletHistorySorts = userPvHistoryQuery.Select(c => new PvWalletHistoryViewModel
+                {
+                    Id = c.Id,
+                    Wallet = c.Wallet,
+                    Amount = c.Amount,
+                    DateOfTransaction = c.DateOfTransaction,
+                    Details = c.Details,
+                    Payment = c.Payment,
+                    NewBalance = c.NewBalance,
+                    TransactionType = c.TransactionType,
+                    PaymentId = c.PaymentId,
+                    WalletId = c.WalletId,
+                }).ToPagedList(pageNumber, pageSize, totalItemCount);
+                pvSearchViewModel.PageCount = totalPages;
+                pvSearchViewModel.PvWalletHistoryRecords = pvWalletHistorySorts;
+
+                if (pvWalletHistorySorts.Count() > 0)
+                {
+                    return pvWalletHistorySorts;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                LogCritical($" {ex.Message} This exception occured while trying to get PvWalletHistory for admin in payment helper");
+                throw ex;
+            }
+        }
+        public IPagedList<GrantHistoryViewModel> SortUserGrantWalletHistory(GrantHistorySearchResultViewModel grantHistoryViewModel, int pageNumber, int pageSize)
+        {
+            try
+            {
+                var userGrantHistoryQuery = _context.GrantWalletHistories.Include(s => s.Payment).Include(s => s.Wallet).Include(s => s.Wallet.User).Include(s => s.Payment.User).OrderByDescending(s => s.DateOfTransaction).AsQueryable();
+
+                if (!string.IsNullOrEmpty(grantHistoryViewModel.UserName))
+                {
+                    userGrantHistoryQuery = userGrantHistoryQuery.Where(v =>
+                        v.Wallet.User.UserName.ToLower().Contains(grantHistoryViewModel.UserName.ToLower())
+                    );
+                }
+                if (!string.IsNullOrEmpty(grantHistoryViewModel.TransactionType))
+                {
+                    var transactionTypeString = grantHistoryViewModel.TransactionType.ToLower();
+                    userGrantHistoryQuery = userGrantHistoryQuery
+                        .ToList()
+                        .Where(v => v.TransactionType.ToString().ToLower().Contains(transactionTypeString))
+                        .AsQueryable();
+                }
+                if (grantHistoryViewModel.SortTypeFrom != DateTime.MinValue)
+                {
+                    userGrantHistoryQuery = userGrantHistoryQuery.Where(v => v.DateOfTransaction >= grantHistoryViewModel.SortTypeFrom);
+                }
+                if (grantHistoryViewModel.SortTypeTo != DateTime.MinValue)
+                {
+                    userGrantHistoryQuery = userGrantHistoryQuery.Where(v => v.DateOfTransaction <= grantHistoryViewModel.SortTypeTo);
+                }
+
+                var totalItemCount = userGrantHistoryQuery.Count();
+                var totalPages = (int)Math.Ceiling((double)totalItemCount / pageSize);
+
+                var grantWalletHistorySorts = userGrantHistoryQuery.Select(c => new GrantHistoryViewModel
+                {
+                    Id = c.Id,
+                    Wallet = c.Wallet,
+                    Amount = c.Amount,
+                    DateOfTransaction = c.DateOfTransaction,
+                    Details = c.Details,
+                    Payment = c.Payment,
+                    NewBalance = c.NewBalance,
+                    TransactionType = c.TransactionType,
+                    PaymentId = c.PaymentId,
+                    WalletId = c.WalletId,
+                }).ToPagedList(pageNumber, pageSize, totalItemCount);
+                grantHistoryViewModel.PageCount = totalPages;
+                grantHistoryViewModel.GrantHistoryRecords = grantWalletHistorySorts;
+                if (grantWalletHistorySorts.Count() > 0)
+                {
+                    return grantWalletHistorySorts;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                LogCritical($" {ex.Message} This exception occured while trying to get GrantHistory for admin in paymnethelper");
+                throw ex;
+            }
+        }
+        public IPagedList<AGCWalletHistoryViewModel> SortAGCWalletHistories(AGCSearchResultViewModel agcHistoryViewModel, int pageNumber, int pageSize)
+        {
+            try
+            {
+
+                var userAGCHistoryQuery = _context.AGCWalletHistories.Include(s => s.Payment).Include(s => s.Wallet).Include(s => s.Wallet.User).Include(s => s.Payment.User).OrderByDescending(s => s.DateOfTransaction).AsQueryable();
+
+                if (!string.IsNullOrEmpty(agcHistoryViewModel.UserName))
+                {
+                    userAGCHistoryQuery = userAGCHistoryQuery.Where(v =>
+                        v.Wallet.User.UserName.ToLower().Contains(agcHistoryViewModel.UserName.ToLower())
+                    );
+                }
+                if (!string.IsNullOrEmpty(agcHistoryViewModel.TransactionType))
+                {
+                    var transactionTypeString = agcHistoryViewModel.TransactionType.ToLower();
+                    userAGCHistoryQuery = userAGCHistoryQuery
+                        .ToList()
+                        .Where(v => v.TransactionType.ToString().ToLower().Contains(transactionTypeString))
+                        .AsQueryable();
+                }
+                if (agcHistoryViewModel.SortTypeFrom != DateTime.MinValue)
+                {
+                    userAGCHistoryQuery = userAGCHistoryQuery.Where(v => v.DateOfTransaction >= agcHistoryViewModel.SortTypeFrom);
+                }
+                if (agcHistoryViewModel.SortTypeTo != DateTime.MinValue)
+                {
+                    userAGCHistoryQuery = userAGCHistoryQuery.Where(v => v.DateOfTransaction <= agcHistoryViewModel.SortTypeTo);
+                }
+
+                var totalItemCount = userAGCHistoryQuery.Count();
+                var totalPages = (int)Math.Ceiling((double)totalItemCount / pageSize);
+
+                var agcWalletHistorySorts = userAGCHistoryQuery.Select(c => new AGCWalletHistoryViewModel
+                {
+                    Id = c.Id,
+                    Wallet = c.Wallet,
+                    Amount = c.Amount,
+                    DateOfTransaction = c.DateOfTransaction,
+                    Details = c.Details,
+                    Payment = c.Payment,
+                    NewBalance = c.NewBalance,
+                    TransactionType = c.TransactionType,
+                    PaymentId = c.PaymentId,
+                    WalletId = c.WalletId,
+                }).ToPagedList(pageNumber, pageSize, totalItemCount);
+                agcHistoryViewModel.PageCount = totalPages;
+                agcHistoryViewModel.AGCWalletHistoryRecords = agcWalletHistorySorts;
+                if (agcWalletHistorySorts.Count() > 0)
+                {
+                    return agcWalletHistorySorts;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                LogCritical($" {ex.Message} This exception occured while trying to get AGCWalletHistory for admin in paymenthelper");
+                throw ex;
+            }
+        }
+        public IPagedList<AGCWalletHistoryViewModel> UserAGCWalletHistory(AGCSearchResultViewModel agcTransactionViewModel, string userId, int pageNumber, int pageSize)
+        {
+            try
+            {
+                var walletId = GetUserAGCWallet(userId).Result.Id;
+                var userAGCWalletHistoryQuery = _context.AGCWalletHistories.Where(s => s.Wallet.UserId == userId && s.WalletId == walletId).Include(s => s.Payment).Include(s => s.Wallet).Include(s => s.Payment.User)
+                .OrderByDescending(s => s.DateOfTransaction).AsQueryable();
+
+                if (!string.IsNullOrEmpty(agcTransactionViewModel.UserName))
+                {
+                    userAGCWalletHistoryQuery = userAGCWalletHistoryQuery.Where(v =>
+                        v.Wallet.User.UserName.ToLower().Contains(agcTransactionViewModel.UserName.ToLower())
+                    );
+                }
+                if (!string.IsNullOrEmpty(agcTransactionViewModel.TransactionType))
+                {
+                    var transactionTypeString = agcTransactionViewModel.TransactionType.ToLower();
+                    userAGCWalletHistoryQuery = userAGCWalletHistoryQuery
+                        .ToList()
+                        .Where(v => v.TransactionType.ToString().ToLower().Contains(transactionTypeString))
+                        .AsQueryable();
+                }
+
+                if (agcTransactionViewModel.SortTypeFrom != DateTime.MinValue)
+                {
+                    userAGCWalletHistoryQuery = userAGCWalletHistoryQuery.Where(v => v.DateOfTransaction >= agcTransactionViewModel.SortTypeFrom);
+                }
+                if (agcTransactionViewModel.SortTypeTo != DateTime.MinValue)
+                {
+                    userAGCWalletHistoryQuery = userAGCWalletHistoryQuery.Where(v => v.DateOfTransaction <= agcTransactionViewModel.SortTypeTo);
+                }
+
+                var totalItemCount = userAGCWalletHistoryQuery.Count();
+                var totalPages = (int)Math.Ceiling((double)totalItemCount / pageSize);
+
+                var agcWalletHistories = userAGCWalletHistoryQuery.Select(c => new AGCWalletHistoryViewModel
+                {
+                    Id = c.Id,
+                    Wallet = c.Wallet,
+                    Amount = c.Amount,
+                    DateOfTransaction = c.DateOfTransaction,
+                    Payment = c.Payment,
+                    Details = c.Details,
+                    NewBalance = c.NewBalance,
+                    TransactionType = c.TransactionType,
+                    PaymentId = c.PaymentId,
+                    WalletId = c.WalletId,
+                }).ToPagedList(pageNumber, pageSize, totalItemCount);
+                agcTransactionViewModel.PageCount = totalPages;
+                agcTransactionViewModel.AGCWalletHistoryRecords = agcWalletHistories;
+                if (agcWalletHistories.Count() > 0)
+                {
+                    return agcWalletHistories;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                LogCritical($" {ex.Message} This exception occured while trying to get AGCWalletHistory for user in paymenthelper");
+                throw ex;
+            }
+        }
+        public IPagedList<GrantHistoryViewModel> ForUserGrantWalletHistory(GrantHistorySearchResultViewModel granTransactionViewModel, string userId, int pageNumber, int pageSize)
+        {
+            try
+            {
+                var walletId = GetUserGrantWallet(userId).Result.Id;
+                var userGrantWalletHistoryQuery = _context.GrantWalletHistories.Where(s => s.Wallet.UserId == userId && s.WalletId == walletId).Include(s => s.Payment).Include(s => s.Wallet).Include(s => s.Payment.User)
+                    .OrderByDescending(s => s.DateOfTransaction).AsQueryable();
+
+                if (!string.IsNullOrEmpty(granTransactionViewModel.UserName))
+                {
+                    userGrantWalletHistoryQuery = userGrantWalletHistoryQuery.Where(v =>
+                        v.Wallet.User.UserName.ToLower().Contains(granTransactionViewModel.UserName.ToLower())
+                    );
+                }
+                if (!string.IsNullOrEmpty(granTransactionViewModel.TransactionType))
+                {
+                    var transactionTypeString = granTransactionViewModel.TransactionType.ToLower();
+                    userGrantWalletHistoryQuery = userGrantWalletHistoryQuery
+                        .ToList()
+                        .Where(v => v.TransactionType.ToString().ToLower().Contains(transactionTypeString))
+                        .AsQueryable();
+                }
+
+                if (granTransactionViewModel.SortTypeFrom != DateTime.MinValue)
+                {
+                    userGrantWalletHistoryQuery = userGrantWalletHistoryQuery.Where(v => v.DateOfTransaction >= granTransactionViewModel.SortTypeFrom);
+                }
+                if (granTransactionViewModel.SortTypeTo != DateTime.MinValue)
+                {
+                    userGrantWalletHistoryQuery = userGrantWalletHistoryQuery.Where(v => v.DateOfTransaction <= granTransactionViewModel.SortTypeTo);
+                }
+
+                var totalItemCount = userGrantWalletHistoryQuery.Count();
+                var totalPages = (int)Math.Ceiling((double)totalItemCount / pageSize);
+
+                var grantWalletHistories = userGrantWalletHistoryQuery.Select(c => new GrantHistoryViewModel
+                {
+                    Id = c.Id,
+                    Wallet = c.Wallet,
+                    Amount = c.Amount,
+                    DateOfTransaction = c.DateOfTransaction,
+                    Payment = c.Payment,
+                    Details = c.Details,
+                    NewBalance = c.NewBalance,
+                    TransactionType = c.TransactionType,
+                    PaymentId = c.PaymentId,
+                    WalletId = c.WalletId,
+                }).ToPagedList(pageNumber, pageSize, totalItemCount);
+                granTransactionViewModel.PageCount = totalPages;
+                granTransactionViewModel.GrantHistoryRecords = grantWalletHistories;
+                if (grantWalletHistories.Count() > 0)
+                {
+                    return grantWalletHistories;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                LogCritical($" {ex.Message} This exception occured while trying to get grant wallet history for user in paymenthelper");
+                throw ex;
+            }
+        }
+
+    }
 }
