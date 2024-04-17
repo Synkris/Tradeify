@@ -19,8 +19,10 @@ namespace Logic.IHelpers
         bool CreateRegFee(PaymentFormViewModel paymentDetails);
         bool CreateCryptoRegFeeAsync(PaymentFormViewModel paymentDetails);
         AGCWallet GetUserAGCWalletNonAsync(string userId);
+        bool CheckIfUserHasPaidRegPayment(string userId);
 
 
 
-    }
+
+	}
 }

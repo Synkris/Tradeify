@@ -171,6 +171,66 @@ namespace Tradeify.Controllers
 			return Json(new { isError = true, msg = "Network Failure" });
 		}
 
+		[HttpGet]
+		public JsonResult ReferralLink()
+		{
+			try
+			{
+				var url = "/User/PaymentMethods";
+				var currentUser = _userHelper.FindByUserName(User.Identity.Name);
+				if (currentUser != null)
+				{
+					var checkRegPayment = _paymentHelper.CheckIfUserHasPaidRegPayment(currentUser.Id);
+					if (checkRegPayment)
+					{
+						var link = currentUser.Id;
+						string referralLink = HttpContext.Request.Scheme.ToString()
+						  + "://" + HttpContext.Request.Host.ToString() + "/Account/Register?pr=" + link + "&rf=" + link;
+						return Json(referralLink);
+					}
+					return Json(new { isError = true, dashboard = url });
+				}
+				return Json(new { isError = true, msg = "Member Not Found" });
+			}
+			catch (Exception ex)
+			{
+				throw ex;
+			}
+		}
+
+		[HttpGet]
+		public JsonResult ChildReferralLink(string userId)
+		{
+			try
+			{
+				if (userId != null)
+				{
+					var url = "/User/PaymentMethods";
+					var user = _userHelper.FindById(userId);
+					if (user != null)
+					{
+						var checkRegPayment = _paymentHelper.CheckIfUserHasPaidRegPayment(user.Id);
+						if (checkRegPayment)
+						{
+							var link = user.Id;
+							string referralLink = HttpContext.Request.Scheme.ToString()
+							+ "://" + HttpContext.Request.Host.ToString() + "/Account/Register?pr=" + link + "&rf=" + link;
+							return Json(referralLink);
+						}
+						return Json(new { isError = true, dashboard = url });
+					}
+					return Json(new { isError = true, msg = "Member Not Found" });
+
+				}
+				return Json(new { isError = true, msg = "User Not Found" });
+
+			}
+			catch (Exception ex)
+			{
+				throw ex;
+			}
+		}
+
 
 	}
 }
