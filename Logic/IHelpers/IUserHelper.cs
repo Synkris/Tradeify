@@ -29,6 +29,6 @@ namespace Logic.IHelpers
         Task<ApplicationUser> FindByIdAsync(string Id);
         string GetCurrentUserId(string username);
         Task<ImpersonationViewModel> CheckForImpersonation(string userName);
-
+        IPagedList<ApplicationUserViewModel> GetReferredUsers(ApplicationUserSearchResultViewModel applicationUserViewModel, string userId, int pageNumber, int pageSize);
     }
 }
