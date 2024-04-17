@@ -1,0 +1,63 @@
+﻿@model Core.ViewModels.SortTransactionViewModel
+@{
+	ViewData["Title"] = "Filter Wallet";
+	Layout = "~/Views/Shared/_DashboardLayout.cshtml";
+}
+
+<div class="contact_section float_left">
+	<div class="container">
+		<div class="row">
+
+			@if (TempData["Message"] != null)
+			{
+				var tempDatamessage = (GGC.Models.Message)TempData["Message"];
+				<partial name="_Message" model="tempDatamessage" />
+			}
+
+			<div class="col-lg-12 col-md-12 col-sm-12 col-12">
+				<div class="sv_heading_wraper heading_wrapper_dark dark_heading">
+					<h3> Wallet Transaction History </h3>
+					<br />
+					<h4> Use The Date Filter To View Wallet History.</h4>
+					<h4 class="text-success"><b>Note:</b> Wallet Transactions dates that are older than 31st of october, 2023 will not appear here!!!</h4>
+				</div>
+			</div>
+
+
+			<div class="col-lg-10 offset-lg-1 col-md-12 col-sm-12 col-12">
+				<form asp-controller="User" asp-action="WalletTransactionHistory" method="get">
+					<div class="row">
+
+
+						<div class="col-lg-6 col-md-6">
+							<div class="form-pos">
+								<label>Search From :</label>
+								<div class="form-group i-name">
+									<input asp-for="SortTypeFrom" type="date" class="form-control" required placeholder="Sort From">
+								</div>
+							</div>
+						</div>
+
+						<div class="col-lg-6 col-md-6">
+							<div class="form-pos">
+								<label>Search To :</label>
+								<div class="form-group i-name">
+									<input asp-for="SortTypeTo" type="date" class="form-control" required placeholder="Sort To">
+								</div>
+							</div>
+						</div>
+						
+						<div class="col-md-12">
+							<div class="tb_es_btn_div">
+								<div class="tb_es_btn_wrapper conatct_btn2 cont_bnt mb-5">
+									<button type="submit" class="submitForm">Search Wallet History</button>
+								</div>
+							</div>
+						</div>
+
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>

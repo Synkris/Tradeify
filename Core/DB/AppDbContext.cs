@@ -27,7 +27,13 @@ namespace Core.DB
         public DbSet<PvWallet> PvWallets { get; set; }
         public DbSet<GrantWallet> GrantWallets { get; set; }
         public DbSet<AGCWallet> AGCWallets { get; set; }
-
-
+        public DbSet<UserGrantHistory> UserGrantHistories { get; set; }
+        public DbSet<AGCWalletHistory> AGCWalletHistories { get; set; }
+        public DbSet<GrantWalletHistory> GrantWalletHistories { get; set; }
+        public DbSet<PvWalletHistory> PvWalletHistories { get; set; }
+        public DbSet<WalletHistory> WalletHistories { get; set; }
+        //public DbSet<MatchingRequest> MatchingRequests { get; set; }
+        public DbSet<GrantWallet> GrantWallets { get; set; }
+        public DbSet<AGCWallet> AGCWallets { get; set; }
     }
 }

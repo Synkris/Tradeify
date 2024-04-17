@@ -1,0 +1,213 @@
+﻿@model Core.ViewModels.GrantHistorySearchResultViewModel
+
+
+@{
+	ViewData["Title"] = "Grant Histories";
+	Layout = "~/Views/Shared/_DashboardLayout.cshtml";
+}
+<style>
+
+	body {
+		counter-reset: Serial;
+	}
+
+	tr td:first-child:before {
+		counter-increment: Serial;
+		content: counter(Serial);
+	}
+
+	.arrow-container {
+		position: relative;
+	}
+
+	.arrow-up {
+		position: absolute;
+		top: 0.5em;
+	}
+
+	.arrow-down {
+		position: absolute;
+		top: 1em;
+	}
+</style>
+
+<div class="deposit_list_wrapper float_left header_text">
+	<div class="row">
+		<div class="col-md-12 col-lg-12 col-sm-12 col-12">
+			<div class="sv_heading_wraper">
+				<h3 class="ml-4 header_text"> Grant Transaction Histories</h3>
+
+			</div>
+		</div>
+	</div>
+
+	<div class="col-lg-12 col-md-12 col-sm-12 col-12 mb-1">
+		<form asp-controller="User" asp-action="GrantTransactionHistory" method="get">
+
+			<div class="row col-12">
+				<div class="p-lg-2 col-12 col-lg-2 p-2">
+					<div class="form-pos">
+						<label> Date From :</label>
+						<div class="form-group i-name">
+							<input asp-for="SortTypeFrom" name="SortTypeFrom" value="" type="date" class="form-control">
+						</div>
+					</div>
+				</div>
+
+				<div class="p-lg-2 col-12 col-lg-2 p-2">
+					<div class="form-pos">
+						<label>Date To :</label>
+						<div class="form-group i-name">
+							<input asp-for="SortTypeTo" name="SortTypeTo" value="" type="date" class="form-control">
+						</div>
+					</div>
+				</div>
+
+				<div class="p-lg-2 col-12 col-lg-2 p-2">
+					<div class="form-pos">
+						<label>Type:</label>
+						<div class="form-group i-name">
+							<input asp-for="TransactionType" name="TransactionType" type="text" class="form-control" placeholder="Credit">
+						</div>
+					</div>
+				</div>
+
+				<div class="p-lg-2 col-12 col-lg-2 p-2">
+					<div class="form-pos">
+						<label>UserName:</label>
+						<div class="form-group i-name">
+							<input asp-for="UserName" name="UserName" type="text" class="form-control" placeholder="User Name">
+						</div>
+					</div>
+				</div>
+
+				<div class="col-lg-2 col-md-12">
+					<div class="tb_es_btn_div mt-4 pt-2">
+						<div class="form-group mt-2" style="display:grid">
+							<button type="submit" class="btn button_color ">Filter</button>
+						</div>
+					</div>
+				</div>
+
+			</div>
+			<div class="row">
+				<div class="">
+					<div class="form-pos mt-2 ml-4">
+						<label>Page Size:</label>
+						<div class="form-group i-name">
+							<select asp-for="PageSize" name="PageSize">
+								<option value="10">10</option>
+								<option value="20">20</option>
+								<option value="50">50</option>
+							</select>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</form>
+	</div>
+
+
+	@if (TempData["Message"] != null)
+	{
+		var tempDatamessage = (GGC.Models.Message)TempData["Message"];
+		<partial name="_Message" model="tempDatamessage" />
+	}
+	<div class="last_transaction_wrapper float_left">
+		<div class="row">
+			<div class="col-md-12 col-lg-12 col-sm-12 col-12">
+				<div class="crm_customer_table_main_wrapper float_left">
+					<div class="crm_ct_search_wrapper">
+						<div class="crm_ct_search_bottom_cont_Wrapper"> </div>
+					</div>
+
+					@if (Model != null && Model.GrantHistoryRecords.Count() > 0)
+					{
+						<div class="table-responsive">
+							<table class="table cs-table crm_customer_table_inner_Wrapper">
+								<thead>
+									<tr>
+										<th class="width_table1">S/N</th>
+										<th class="width_table1">Amount Dropped</th>
+										<th class="width_table1">Previous Balance</th>
+										<th class="width_table1">New Balance</th>
+										<th class="width_table1">Transaction Date</th>
+										<th class="width_table1">Transaction Type</th>
+										<th class="width_table1">Details</th>
+
+									</tr>
+								</thead>
+								<tbody>
+									@foreach (var obj in Model.GrantHistoryRecords)
+									{
+										var paymentDescription = string.Empty;
+										if (obj.Payment?.PaymentTypeId > 0)
+										{
+											paymentDescription = " Grant Bonus from " + obj.Payment?.User?.UserName.ToUpper() + " " + obj.Payment?.PaymentTypeId;
+										}
+										var colorString = "red";
+										if (obj.TransactionType == Core.Models.TransactionType.Credit || obj.TransactionType == Core.Models.TransactionType.Refund)
+										{
+											colorString = "#22c8db";
+										}
+										var ConvertedAmount = obj.Amount / Model.DollarRate;
+										var ConvertedNewBalance = obj.NewBalance / Model.DollarRate;
+										var ConvertedPreviousBalance = obj.PreviousBalance / Model.DollarRate;
+
+										<tr style="color:@colorString; font-weight:bold" class="background_white">
+
+											<td></td>
+
+											<td>
+												<div class="pretty p-svg p-curve">$@ConvertedAmount.ToString("F3")  </div>
+											</td>
+
+											<td class="flag">
+												<div class="pretty p-svg p-curve"> $@ConvertedPreviousBalance.ToString("F3") </div>
+											</td>
+
+											<td>
+												<div class="pretty p-svg p-curve"> $@ConvertedNewBalance.ToString("F3") </div>
+											</td>
+
+											<td class="flag">
+												<div class="pretty p-svg p-curve">@obj.DateOfTransaction.ToString("ddd,MMM d,yyy h:mm tt")</div>
+											</td>
+
+											<td class="flag">
+												<div class="pretty p-svg p-curve">@obj.TransactionType</div>
+											</td>
+
+											<td>
+												<div class="pretty p-svg p-curve">@obj.Details @paymentDescription</div>
+											</td>
+
+										</tr>
+									}
+								</tbody>
+							</table>
+
+
+
+						</div>
+						<br />
+						<div class="col-lg-2 col-md-12">
+							Page @(Model.GrantHistoryRecords.PageNumber) of @Math.Ceiling((double)Model.GrantHistoryRecords.TotalItemCount / Model.GrantHistoryRecords.PageSize)
+
+						</div>
+						<br />
+						<div class="col-md-6 col-lg-6 col-sm-6 col-5 float-right">
+							@Html.Partial("_UserGrantPager",Model)
+
+						</div>
+					}
+					else
+					{
+						<h2 class="text-info text-center py-5">Dear @User.Identity.Name,Grant Transaction In This Range Not Found </h2>
+					}
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

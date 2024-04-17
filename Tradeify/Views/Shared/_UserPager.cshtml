@@ -1,0 +1,215 @@
+﻿@using X.PagedList.Mvc.Core;
+@using X.PagedList.Web.Common;
+@using Core.ViewModels;
+@model Core.ViewModels.WalletHistorySearchResultViewModel
+
+@{
+    string actionName = ViewData["WalletTransactionHistory"] as string;
+}
+<style>
+    .pagination {
+        display: inline-block;
+        border-radius: 50px;
+    }
+
+
+        .pagination > li {
+            cursor: pointer;
+            width: 32px;
+            height: 32px;
+            line-height: 30px;
+            text-align: center;
+            float: left;
+            color: #fff !important;
+            font-size: 14px;
+            border: 1px solid #e2e2e2;
+            -webkit-border-radius: 100%;
+            -moz-border-radius: 100%;
+            border-radius: 100%;
+            padding: 0;
+            -webkit-transition: all 0.5s;
+            -o-transition: all 0.5s;
+            -ms-transition: all 0.5s;
+            -moz-transition: all 0.5s;
+            transition: all 0.5s;
+            margin-right: 10px;
+        }
+
+            .pagination > li a {
+                text-decoration: none;
+                color: #fff;
+            }
+
+            .pagination > li:first-child {
+                width: 90px;
+                -webkit-border-radius: 50px;
+                -moz-border-radius: 50px;
+                border-radius: 50px;
+                cursor: pointer;
+                height: 32px;
+                line-height: 30px;
+                text-align: center;
+                float: left;
+                font-size: 14px;
+                padding: 0;
+                -webkit-transition: all 0.5s;
+                -o-transition: all 0.5s;
+                -ms-transition: all 0.5s;
+                -moz-transition: all 0.5s;
+                transition: all 0.5s;
+                margin-right: 10px;
+                border: 1px solid #e2e2e2;
+            }
+
+            .pagination > li:last-child {
+                width: 90px;
+                -webkit-border-radius: 50px;
+                -moz-border-radius: 50px;
+                border-radius: 50px;
+                cursor: pointer;
+                height: 32px;
+                line-height: 30px;
+                text-align: center;
+                float: left;
+                font-size: 14px;
+                padding: 0;
+                -webkit-transition: all 0.5s;
+                -o-transition: all 0.5s;
+                -ms-transition: all 0.5s;
+                -moz-transition: all 0.5s;
+                transition: all 0.5s;
+                border: 1px solid #e2e2e2;
+            }
+
+            .pagination li:hover,
+            .pagination > li span:hover,
+            .pagination li > a:hover,
+            .pagination > li > span :focus {
+                background: #22c8db;
+                color: #fff !important;
+                -webkit-transition: all 0.5s;
+                -o-transition: all 0.5s;
+                -ms-transition: all 0.5s;
+                -moz-transition: all 0.5s;
+                transition: all 0.5s;
+            }
+
+        .pagination > .active > a,
+        .pagination > .active > span,
+        .pagination > .active > a:hover,
+        .pagination > .active > span:hover,
+        .pagination > .active > a:focus,
+        .pagination > .active > span:focus {
+            z-index: 2;
+            background-color: #ff851a;
+            border-color: #ff851a;
+            cursor: default;
+            width: 30px;
+            height: 30px;
+            line-height: 30px;
+            text-align: center;
+            float: left;
+            color: #fff !important;
+            padding: 0;
+            font-size: 14px;
+            border: 1px solid #22c8db;
+            background: #22c8db;
+            -webkit-border-radius: 100%;
+            -moz-border-radius: 100%;
+            border-radius: 100%;
+            -webkit-transition: all 0.5s;
+            -o-transition: all 0.5s;
+            -ms-transition: all 0.5s;
+            -moz-transition: all 0.5s;
+            transition: all 0.5s;
+        }
+
+        .pagination > .disabled > span,
+        .pagination > .disabled > span:hover,
+        .pagination > .disabled > span:focus,
+        .pagination > .disabled,
+        .pagination > .disabled :hover,
+        .pagination > .disabled :focus {
+            color: #777777;
+            border-color: #ddd;
+            cursor: not-allowed;
+        }
+
+    .pagination-lg > li {
+        padding: 10px 16px;
+        font-size: 18px;
+    }
+
+        .pagination-lg > li:first-child {
+            border-bottom-left-radius: 6px;
+            border-top-left-radius: 6px;
+        }
+
+        .pagination-lg > li:last-child {
+            border-bottom-right-radius: 6px;
+            border-top-right-radius: 6px;
+        }
+
+    .pagination-sm > li > a,
+    .pagination-sm > li {
+        padding: 5px 10px;
+        font-size: 12px;
+    }
+
+        .pagination-sm > li:first-child {
+            border-bottom-left-radius: 3px;
+            border-top-left-radius: 3px;
+        }
+
+        .pagination-sm > li:last-child {
+            border-bottom-right-radius: 3px;
+            border-top-right-radius: 3px;
+        }
+
+    .page_nav_wrapper_ul {
+        float: right;
+        background: #111;
+        padding: 12px;
+        -webkit-border-radius: 50px;
+        -moz-border-radius: 50px;
+        border-radius: 50px;
+        margin-top: 20px;
+        width: 100%;
+        padding-right: 0;
+    }
+</style>
+
+@if (Model.WalletHistoryRecords.PageCount > 1)
+{
+    @Html.HiddenFor(s => s.PageNumber)
+    @Html.HiddenFor(s => s.SortTypeFrom)
+    @Html.HiddenFor(s => s.UserName)
+    @Html.HiddenFor(s => s.SortTypeTo)
+    @Html.HiddenFor(s => s.TransactionType)
+    @Html.HiddenFor(s => s.PageSize)
+    var pageNumDisplay = 5;
+    if (Model.PageCount < pageNumDisplay) { pageNumDisplay = Model.PageCount; }
+    @Html.PagedListPager(Model.WalletHistoryRecords, pageNumber => Url.Action("WalletTransactionHistory", new
+            {
+            pageNumber = pageNumber,
+            pageSize = Model.PageSize,
+            transactionType = Model.TransactionType,
+            sortTypeFrom = Model.SortTypeFrom,
+            sortTypeTo = Model.SortTypeTo,
+            UserName = Model.UserName,
+            }),
+    new PagedListRenderOptions
+    {
+        DisplayLinkToFirstPage = PagedListDisplayMode.Never,
+        DisplayLinkToLastPage = PagedListDisplayMode.Never,
+        DisplayLinkToPreviousPage = PagedListDisplayMode.Always,
+        DisplayLinkToNextPage = PagedListDisplayMode.Always,
+        DisplayLinkToIndividualPages = true,
+        MaximumPageNumbersToDisplay = pageNumDisplay,
+        DisplayPageCountAndCurrentLocation = false,
+		LinkToPreviousPageFormat = "Previous",
+		LinkToNextPageFormat = "Next",
+        ContainerDivClasses = new List<string>() { "page_nav_wrapper_ul text-center" },
+        UlElementClasses = new List<string>() { "pagination" }
+    })
+}
