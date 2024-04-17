@@ -1,0 +1,38 @@
+﻿@model Core.ViewModels.ApplicationUserViewModel
+
+<link rel="stylesheet" type="text/css" href="~/css/nice-select.css" />
+<link href="~/css/mutiniceselect.css" rel="stylesheet" />
+<link href="~/css/nice-select.css" rel="stylesheet" />
+<script src="~/js/jquery.nice-select.min.js"></script>
+
+<div class="col-lg-12 col-md-12 col-sm-12 col-12 bg-dark">
+    <h5 class="mt-3 mb-4 font-weight-bold text-center text-white"> Edit Member Details </h5>
+    <div class="row p-3 mt-2">
+
+        <div class="col-sm-6 change_field">
+            <label> First Name </label>
+            <input class="form-control p-3" value="@Model?.FirstName" id="edited_firstName" type="text">
+            <input class="form-control" id="profile_Id" value="@Model?.Id" hidden type="text">
+        </div>
+
+        <div class="col-sm-6 change_field">
+            <label> Last Name </label>
+            <input class="form-control p-3" id="edited_lastName" value="@Model?.LastName" type="text">
+        </div>
+
+        <div class="col-sm-6 change_field">
+            <label> Email </label>
+            <input class="form-control p-3" id="edited_profileEmail" value="@Model?.Email" type="text">
+        </div>
+        <div class="col-sm-6 change_field">
+            <label> PhoneNumber </label>
+            <input class="form-control p-3" id="edited_phone" value="@Model?.Phonenumber" type="number">
+        </div>
+        
+        <div class="col-sm-6 m-auto mt-5 mb-5">
+            <div class="submit-section">
+                <button class="btn button_color btn-block" style="cursor:pointer ;" id="submit_Btn" onclick="SaveEditedProfileDetails()"> Submit </button>
+            </div>
+        </div>
+    </div>
+</div>                         

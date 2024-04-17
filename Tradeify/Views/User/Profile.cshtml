@@ -1,0 +1,135 @@
+﻿@model Core.ViewModels.ApplicationUserViewModel
+
+@{
+	ViewData["Title"] = "Index";
+	if (User.IsInRole("Admin"))
+	{ Layout = "~/Views/Shared/_AdminDashboardLayout.cshtml"; }
+	else { Layout = "~/Views/Shared/_DashboardLayout.cshtml"; }
+}
+
+<div class="view_profile_wrapper_top float_left header_text">
+	<div class="row">
+		<div class="col-md-12 col-lg-12 col-sm-12 col-12 header_text">
+			<div class="sv_heading_wraper">
+				<h3> My Profile</h3>
+			</div>
+		</div>
+		<div class="col-md-12 col-lg-12 col-sm-12 col-12">
+			<div class="view_profile_wrapper float_left">
+				<div class="row">
+					<div class="col-md-12 col-lg-12 col-sm-12 col-12">
+						<div class="profile_view_img">
+							<img src="~/images/user.png" alt="post_img">
+						</div>
+						<div class="profile_width_cntnt">
+							<h4>Edit your profile here !</h4>
+
+							@*this is for adding profile picture*@
+
+							@*<div class="width_50">
+							<input type="file" id="input-file-now-custom-233" class="dropify" data-height="90" /><span class="post_photo">browse image</span>
+							div>*@
+
+							<div class="width_50">
+								<div class="tb_es_btn_div">
+									<div class=" cont_bnt mb-5">
+										<button onclick="GetProfileDetails('@Model.Id')"
+											class="btn button_color p-0" style="background-color: #22c8db; cursor: pointer;">Edit  Profile 
+										</button>
+									</div>
+								</div>
+							</div>
+
+						</div>
+					</div>
+
+					<div class="col-xl-6 col-md-12 col-lg-12 col-sm-12 col-12">
+						<ul class="profile_list">
+							<li>
+								<span class="detail_left_part">
+									Referrer Name
+								</span>
+								<span class="detail_right_part">
+									@Model?.RefferrerUserName
+								</span>
+							</li>
+							<li>
+								<span class="detail_left_part">
+									first name
+								</span>
+								<span class="detail_right_part">
+									@Model.FirstName
+								</span>
+							</li>
+							<li>
+								<span class="detail_left_part">Last Name</span>
+								<span class="detail_right_part">
+									@Model.LastName
+								</span>
+							</li>
+							<li>
+								<span class="detail_left_part">My Email Address</span> <span class="detail_right_part">@Model?.Email</span>
+							</li>
+
+							<li>
+								<span class="detail_left_part">Mobile No</span> <span class="detail_right_part"> @Model.Phonenumber</span>
+							</li>
+							<li>
+								<span class="detail_left_part">Gender</span> <span class="detail_right_part"> @Model.GenderName</span>
+							</li>
+
+						</ul>
+					</div>
+					<div class="col-xl-6 col-md-12 col-lg-12 col-sm-12 col-12">
+						<ul class="profile_list">
+							<li>
+								<span class="detail_left_part">Registration Date</span> <span class="detail_right_part"> @Model.DateRegistered</span>
+							</li>
+
+							<li>
+								<span class="detail_left_part">Current Login</span> <span class="detail_right_part"> @Model.CurrentLastLoginTime</span>
+							</li>
+
+							<li>
+								<span class="detail_left_part">Bonus</span> <span class="detail_right_part"> $@Model.BonusAmount.ToString("F2") USD</span>
+							</li>
+
+							<li>
+								<span class="detail_left_part">Amount in GGT</span> <span class="detail_right_part"> @Model.GrantAmount.ToString("F2") GGT</span>
+							</li>
+
+							<li>
+								<span class="detail_left_part">Pv</span> <span class="detail_right_part"> @Model.Pv.ToString("F2") PVs</span>
+							</li>
+						</ul>
+					</div>
+
+				</div>
+
+
+			</div>
+		</div>
+	</div>
+</div>
+<!--  profile wrapper end -->
+<!--  footer  wrapper start -->
+
+
+
+<div class="crm_customer_table_main_wrapper float_left">
+	<div class="crm_ct_search_wrapper">
+		<div class="modal fade question_modal" id="profileModal" role="dialog">
+			<div class="modal-dialog modal-lg">
+				<div class="modal-content bg-dark">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<div class="row">
+						<div class="col-lg-12 col-md-12 col-sm-12 col-12">
+							<div class="sv_question_pop float_left" id="profileContent">
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

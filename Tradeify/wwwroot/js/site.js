@@ -915,4 +915,63 @@ function viewUserPackageDetailModal(id) {
     }
 }
 
+function GetProfileDetails(id) {
+    $.ajax({
+        type: 'GET',
+        url: '/User/EditProfileDetails',
+        data: {
+            userId: id,
+        },
+        success: function (data) {
+            $('#profileContent').html(data);
+            $('#profileModal').modal("show");
+            $('.select').niceSelect();
+        },
+    })
+}
+
+function SaveEditedProfileDetails() {
+    var defaultBtnValue = $('#submit_Btn').html();
+    $('#submit_Btn').html("Please wait...");
+    $('#submit_Btn').attr("disabled", true);
+    var data = {};
+    data.Id = $("#profile_Id").val();
+    data.FirstName = $("#edited_firstName").val();
+    data.LastName = $("#edited_lastName").val();
+    data.Email = $("#edited_profileEmail").val();
+    data.Phonenumber = $("#edited_phone").val();
+
+    if (data.FirstName != "" && data.LastName != "" && data.Email != "" && data.Phonenumber != "") {
+        let details = JSON.stringify(data);
+        $.ajax({
+            type: 'POST',
+            url: '/User/EditedProfileDetails',
+            dataType: 'json',
+            data:
+            {
+                details: details,
+            },
+            success: function (result) {
+                if (!result.isError) {
+                    var url = '/Profile';
+                    successAlertWithRedirect(result.msg, url);
+                }
+                else {
+                    $('#submit_Btn').html(defaultBtnValue);
+                    $('#submit_Btn').attr("disabled", false);
+                    errorAlert(result.msg);
+                }
+            },
+            error: function (ex) {
+                $('#submit_Btn').html(defaultBtnValue);
+                $('#submit_Btn').attr("disabled", false);
+                errorAlert(result.msg);
+            }
+        });
+    } else {
+        $('#submit_Btn').html(defaultBtnValue);
+        $('#submit_Btn').attr("disabled", false);
+        errorAlert("Invalid, Please fill the form correctly.");
+    }
+}
 
