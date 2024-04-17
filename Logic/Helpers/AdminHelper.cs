@@ -90,5 +90,92 @@ namespace Logic.Helpers
             }
             return false;
         }
+
+        public IPagedList<CommonDropdownViewModel> GetCommonDropdowns(CommonDropdownSearchResultViewModel commonDropdownSearch, int pageNumber, int pageSize)
+        {
+
+            var dropdownQuery = _context.CommonDropdowns.Where(s => s.Deleted != true).OrderByDescending(s => s.DateCreated).AsQueryable();
+
+            if (!string.IsNullOrEmpty(commonDropdownSearch.Name))
+            {
+                dropdownQuery = dropdownQuery.Where(v =>
+                    v.Name.ToLower().Contains(commonDropdownSearch.Name.ToLower())
+                );
+            }
+
+
+            if (commonDropdownSearch.SortTypeFrom != DateTime.MinValue)
+            {
+                dropdownQuery = dropdownQuery.Where(v => v.DateCreated >= commonDropdownSearch.SortTypeFrom);
+            }
+            if (commonDropdownSearch.SortTypeTo != DateTime.MinValue)
+            {
+                dropdownQuery = dropdownQuery.Where(v => v.DateCreated <= commonDropdownSearch.SortTypeTo);
+            }
+
+            var totalItemCount = dropdownQuery.Count();
+            var totalPages = (int)Math.Ceiling((double)totalItemCount / pageSize);
+
+            var dropDownViewModelList = dropdownQuery.Select(dropdown => new CommonDropdownViewModel
+            {
+                Id = dropdown.Id,
+                DropdownKey = dropdown.DropdownKey,
+                Code = dropdown.Code,
+                Name = dropdown.Name,
+                DateCreated = dropdown.DateCreated,
+            })
+            .ToPagedList(pageNumber, pageSize, totalItemCount);
+            commonDropdownSearch.PageCount = totalPages;
+            commonDropdownSearch.CommonDropdownRecords = dropDownViewModelList;
+            if (dropDownViewModelList.Count() > 0)
+            {
+                return dropDownViewModelList;
+            }
+            else
+            {
+                return null;
+            }
+
+        }
+
+        public bool UpdateDropDownService(string dropdown, int? id)
+        {
+            try
+            {
+                if (dropdown != null)
+                {
+                    var oldDropdown = _context.CommonDropdowns.Where(x => x.Id == id).FirstOrDefault();
+                    if (oldDropdown != null)
+                    {
+                        oldDropdown.Name = dropdown;
+                        _context.Update(oldDropdown);
+                        _context.SaveChanges();
+                        return true;
+                    }
+                }
+                return false;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public string RemoveDropDown(int id)
+        {
+            if (id != 0)
+            {
+                var dropDownToBeRemoved = _context.CommonDropdowns.Where(x => x.Id == id && !x.Deleted).FirstOrDefault();
+                if (dropDownToBeRemoved != null)
+                {
+                    dropDownToBeRemoved.Deleted = true;
+                    _context.CommonDropdowns.Update(dropDownToBeRemoved);
+                    _context.SaveChanges();
+                    return "Dropdown Successfully Removed";
+                }
+            }
+            return "Dropdown failed To Removed";
+        }
+
     }
 }
