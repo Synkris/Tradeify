@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
+using Tradeify.Models;
 
 namespace Tradeify.Controllers
 {
@@ -18,15 +19,17 @@ namespace Tradeify.Controllers
         private readonly IDropdownHelper _dropdownHelper;
         private readonly IPaymentHelper _paymentHelper;
         private IGeneralConfiguration _generalConfiguration;
+        private readonly IAdminHelper _adminHelper;
 
 
-        public UserController(AppDbContext context, IUserHelper userHelper, IDropdownHelper dropdownHelper, IConfiguration configuration, IGeneralConfiguration generalConfiguration, IPaymentHelper paymentHelper)
+        public UserController(AppDbContext context, IUserHelper userHelper, IDropdownHelper dropdownHelper, IConfiguration configuration, IGeneralConfiguration generalConfiguration, IPaymentHelper paymentHelper, IAdminHelper adminHelper)
         {
             _context = context;
             _userHelper = userHelper;
             _dropdownHelper = dropdownHelper;
             _generalConfiguration = generalConfiguration;
             _paymentHelper = paymentHelper;
+            _adminHelper = adminHelper;
         }
 
 

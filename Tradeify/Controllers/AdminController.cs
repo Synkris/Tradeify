@@ -6,6 +6,8 @@ using Logic.IHelpers;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
+using Tradeify.Models;
 
 namespace Tradeify.Controllers
 {
@@ -209,6 +211,179 @@ namespace Tradeify.Controllers
                 throw ex;
             }
 
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> AllWalletHistories(string userName, DateTime sortTypeFrom, DateTime sortTypeTo, string transactionType, int pageNumber, int pageSize)
+        {
+            try
+            {
+                var walletHistoryModel = new WalletHistorySearchResultViewModel(_generalConfiguration)
+                {
+                    PageNumber = pageNumber == 0 ? _generalConfiguration.PageNumber : pageNumber,
+                    PageSize = pageSize == 0 ? _generalConfiguration.PageSize : pageSize,
+                    SortTypeFrom = sortTypeFrom,
+                    SortTypeTo = sortTypeTo,
+                    TransactionType = transactionType,
+                    UserName = userName,
+                    DollarRate = _generalConfiguration.DollarRate,
+                };
+                pageNumber = (pageNumber == 0 ? walletHistoryModel.PageNumber : pageNumber);
+                pageSize = pageSize == 0 ? walletHistoryModel.PageSize : pageSize;
+                TimeSpan datesSum = walletHistoryModel.SortTypeTo.Date - walletHistoryModel.SortTypeFrom.Date;
+                if (datesSum.Days >= 31)
+                {
+                    SetMessage("Date Range Should Not be more than 30 days or 1 month", Message.Category.Error);
+                    return View("AllWalletHistories");
+                }
+
+                var userWalletHistory = _paymentHelper.SortUsersWalletHistory(walletHistoryModel, pageNumber, pageSize);
+                walletHistoryModel.WalletHistoryRecords = userWalletHistory;
+
+                if (userWalletHistory != null)
+                {
+                    return View(walletHistoryModel); ;
+                }
+                return View();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        [HttpGet]
+        public IActionResult SortAllWalletTransactions()
+        {
+            return View();
+
+        }
+        [HttpGet]
+        public async Task<IActionResult> AllAGCHistories(string userName, DateTime sortTypeFrom, DateTime sortTypeTo, string transactionType, int pageNumber, int pageSize)
+        {
+            try
+            {
+                var agcViewModel = new AGCSearchResultViewModel(_generalConfiguration)
+                {
+                    PageNumber = pageNumber == 0 ? _generalConfiguration.PageNumber : pageNumber,
+                    PageSize = pageSize == 0 ? _generalConfiguration.PageSize : pageSize,
+                    SortTypeFrom = sortTypeFrom,
+                    SortTypeTo = sortTypeTo,
+                    TransactionType = transactionType,
+                    UserName = userName,
+                };
+                pageNumber = (pageNumber == 0 ? agcViewModel.PageNumber : pageNumber);
+                pageSize = pageSize == 0 ? agcViewModel.PageSize : pageSize;
+                TimeSpan datesSum = agcViewModel.SortTypeTo.Date - agcViewModel.SortTypeFrom.Date;
+                if (datesSum.Days >= 31)
+                {
+                    SetMessage("Date Range Should Not be more than 30 days or 1 month", Message.Category.Error);
+                    return View("SortAllAGCTransactions");
+                }
+                var agcHistories = _paymentHelper.SortAGCWalletHistories(agcViewModel, pageNumber, pageSize);
+                agcViewModel.AGCWalletHistoryRecords = agcHistories;
+                if (agcHistories != null)
+                {
+                    return View(agcViewModel);
+                }
+                return View();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        [HttpGet]
+        public IActionResult SortAllAGCTransactions()
+        {
+            return View();
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> AllGrantHistories(string userName, DateTime sortTypeFrom, DateTime sortTypeTo, string transactionType, int pageNumber, int pageSize)
+        {
+            try
+            {
+                var viewModel = new GrantHistorySearchResultViewModel(_generalConfiguration)
+                {
+                    PageNumber = pageNumber == 0 ? _generalConfiguration.PageNumber : pageNumber,
+                    PageSize = pageSize == 0 ? _generalConfiguration.PageSize : pageSize,
+                    SortTypeFrom = sortTypeFrom,
+                    SortTypeTo = sortTypeTo,
+                    TransactionType = transactionType,
+                    UserName = userName,
+                    DollarRate = _generalConfiguration.DollarRate,
+
+                };
+                pageNumber = (pageNumber == 0 ? viewModel.PageNumber : pageNumber);
+                pageSize = pageSize == 0 ? viewModel.PageSize : pageSize;
+                TimeSpan datesSum = viewModel.SortTypeTo.Date - viewModel.SortTypeFrom.Date;
+                if (datesSum.Days >= 31)
+                {
+                    SetMessage(" Grant Date Range Shouldn't be more than 30 days or 1 month", Message.Category.Error);
+                    return View("SortAllGrantsTransactions");
+                }
+                var grantHistory = _paymentHelper.SortUserGrantWalletHistory(viewModel, pageNumber, pageSize);
+                viewModel.GrantHistoryRecords = grantHistory;
+                if (grantHistory != null)
+                {
+                    return View(viewModel);
+                }
+                return View();
+            }
+            catch (Exception exp)
+            {
+                throw exp;
+            }
+        }
+
+        [HttpGet]
+        public IActionResult SortAllGrantsTransactions()
+        {
+            return View();
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> AllPvHistories(string userName, DateTime sortTypeFrom, DateTime sortTypeTo, string transactionType, int pageNumber, int pageSize)
+        {
+            try
+            {
+                var pvViewModel = new PvSearchResultViewModel(_generalConfiguration)
+                {
+                    PageNumber = pageNumber == 0 ? _generalConfiguration.PageNumber : pageNumber,
+                    PageSize = pageSize == 0 ? _generalConfiguration.PageSize : pageSize,
+                    SortTypeFrom = sortTypeFrom,
+                    SortTypeTo = sortTypeTo,
+                    TransactionType = transactionType,
+                    UserName = userName,
+                };
+                pageNumber = (pageNumber == 0 ? pvViewModel.PageNumber : pageNumber);
+                pageSize = pageSize == 0 ? pvViewModel.PageSize : pageSize;
+                TimeSpan datesSum = pvViewModel.SortTypeTo.Date - pvViewModel.SortTypeFrom.Date;
+                if (datesSum.Days >= 31)
+                {
+                    SetMessage("Pv Range Shouldn't be more than 30 days or 1 month", Message.Category.Error);
+                    return View("SortAllPvTransactions");
+                }
+                var PvHistory = _paymentHelper.SortPvWalletHistories(pvViewModel, pageNumber, pageSize);
+                pvViewModel.PvWalletHistoryRecords = PvHistory;
+                if (PvHistory != null)
+                {
+                    return View(pvViewModel);
+                }
+                return View();
+            }
+            catch (Exception exp)
+            {
+                throw exp;
+            }
+
+        }
+
+        [HttpGet]
+        public IActionResult SortAllPvTransactions()
+        {
+            return View();
         }
     }
 }

@@ -10,10 +10,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using X.PagedList;
 
 namespace Logic.Helpers
 {
-    public class PaymentHelper : IPaymentHelper
+    public class PaymentHelper : BaseHelper, IPaymentHelper
     {
         private readonly IEmailService _emailService;
         private readonly AppDbContext _context;
@@ -392,6 +393,81 @@ namespace Logic.Helpers
 			}
 			return false;
 		}
+
+        public async Task<GrantWallet> GetUserGrantWallet(string userId)
+        {
+            try
+            {
+
+                if (userId != null)
+                {
+                    var wallet = await _context.GrantWallets.Where(x => x.UserId == userId)?.Include(s => s.User)?.FirstOrDefaultAsync();
+                    if (wallet != null && wallet.UserId != null)
+                    {
+
+                        return wallet;
+                    }
+                    else
+                    {
+                        return await CreateGrantWalletByUserId(userId);
+                    }
+
+                }
+
+                return null;
+
+            }
+            catch (Exception ex)
+            {
+                LogCritical($" {ex.Message} This exception occured while trying to create grant wallet");
+                throw ex;
+            }
+
+        }
+
+        public async Task<GrantWallet> CreateGrantWalletByUserId(string userId, decimal amount = 0)
+        {
+
+            try
+            {
+                if (userId != null)
+                {
+                    var user = await _userHelper.FindByIdAsync(userId);
+                    if (user != null)
+                    {
+
+                        var newWallet = new GrantWallet()
+                        {
+                            UserId = user.Id,
+                            Balance = amount,
+                            LastUpdated = DateTime.Now,
+
+                        };
+
+                        var result = await _context.AddAsync(newWallet);
+                        await _context.SaveChangesAsync();
+
+                        if (result.Entity.Id != null)
+                        {
+                            return result.Entity;
+                        }
+
+                    }
+                    else
+                    {
+                        LogError($"An attempt to get user for creating grant wallet with userId{userId} failed");
+                    }
+
+
+                }
+                return null;
+            }
+            catch (Exception ex)
+            {
+                LogCritical($" {ex.Message} This exception occured while trying to create grant wallet");
+                throw ex;
+            }
+        }
 
         public IPagedList<WalletHistoryViewModel> UserWalletHistoryRange(WalletHistorySearchResultViewModel transactionViewModel, string userId, int pageNumber, int pageSize)
         {
@@ -840,6 +916,69 @@ namespace Logic.Helpers
                 throw ex;
             }
         }
+
+        public async Task<AGCWallet> GetUserAGCWallet(string userId)
+        {
+            try
+            {
+                if (userId != null)
+                {
+                    var wallet = await _context.AGCWallets.Where(x => x.UserId == userId)?.Include(s => s.User)?.FirstOrDefaultAsync();
+                    if (wallet != null && wallet.UserId != null)
+                    {
+                        return wallet;
+                    }
+                    else
+                    {
+                        return await CreateAGCWalletByUserId(userId);
+                    }
+                }
+                return null;
+            }
+            catch (Exception ex)
+            {
+                LogCritical($" {ex.Message} This exception occured while trying to Get User AGCWallet");
+                throw ex;
+            }
+        }
+
+        public async Task<AGCWallet> CreateAGCWalletByUserId(string userId, decimal amount = 0)
+        {
+            try
+            {
+                if (userId != null)
+                {
+                    var user = await _userHelper.FindByIdAsync(userId);
+                    if (user != null)
+                    {
+                        var newWallet = new AGCWallet()
+                        {
+                            UserId = user.Id,
+                            Balance = amount,
+                            LastUpdated = DateTime.Now,
+                        };
+                        var result = await _context.AddAsync(newWallet);
+                        await _context.SaveChangesAsync();
+                        if (result.Entity.Id != Guid.Empty)
+                        {
+                            return result.Entity;
+                        }
+                    }
+                    else
+                    {
+                        LogError($" User not found");
+                    }
+                }
+                return null;
+            }
+            catch (Exception ex)
+            {
+                LogCritical($" {ex.Message} This exception occured while trying to create User AGCWallet from Payment Helper");
+                throw ex;
+            }
+        }
+
+
 
     }
 }

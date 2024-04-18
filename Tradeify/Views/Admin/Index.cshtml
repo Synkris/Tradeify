@@ -1,6 +1,6 @@
 ﻿@model Core.ViewModels.ApplicationUserViewModel
-@inject Logic.IHelpers.IUserHelper _userHelper;
-@inject Logic.IHelpers.IPaymentHelper _paymentHelper;
+@*@inject Logic.IHelpers.IUserHelper _userHelper;
+@inject Logic.IHelpers.IPaymentHelper _paymentHelper;*@
 
 @{
     ViewData["Title"] = "Index";
@@ -93,6 +93,11 @@
                                 <tr>
                                     <td class="invest_td1">Withdrawable Balance($)</td>
                                     <td class="invest_td1">: $@Model.ConvertedBalance.ToString("F2") USD </td>
+                                </tr>
+
+                                <tr>
+                                    <td class="invest_td1">Withdrawable Balance (GGT)</td>
+                                    <td class="invest_td1">: @Model.ConvertedBalanceToGGC.ToString("F2") GGT </td>
                                 </tr>
                                 <tr>
                                     <td class="invest_td1"> Available PV</td>
@@ -187,7 +192,11 @@
                                                                     <td class="invest_td1">: $@Model.ConvertedBalance.ToString("F2") USD </td>
                                                                 </tr>
                                                                 <tr>
-                                                                    <td class="invest_td1"> Avalaible PV </td>
+                                                                    <td class="invest_td1">Withdrawable Balance (GGT)</td>
+                                                                    <td class="invest_td1">: @Model.ConvertedBalanceToGGC.ToString("F2") GGT </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="invest_td1"> Available PV </td>
                                                                     <td class="invest_td1">: @Model.Pv.ToString("G29") PVs </td>
                                                                 </tr>
                                                             </tbody>

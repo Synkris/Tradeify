@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using X.PagedList;
 
 namespace Logic.IHelpers
 {
@@ -20,9 +21,19 @@ namespace Logic.IHelpers
         bool CreateCryptoRegFeeAsync(PaymentFormViewModel paymentDetails);
         AGCWallet GetUserAGCWalletNonAsync(string userId);
         bool CheckIfUserHasPaidRegPayment(string userId);
+        Task<GrantWallet> GetUserGrantWallet(string userId);
+        IPagedList<WalletHistoryViewModel> UserWalletHistoryRange(WalletHistorySearchResultViewModel transactionViewModel, string userId, int pageNumber, int pageSize);
+        IPagedList<GrantHistoryViewModel> ForUserGrantWalletHistory(GrantHistorySearchResultViewModel granTransactionViewModel, string userId, int pageNumber, int pageSize);
+        IPagedList<AGCWalletHistoryViewModel> UserAGCWalletHistory(AGCSearchResultViewModel agcTransactionViewModel, string userId, int pageNumber, int pageSize);
+        IPagedList<GrantHistoryViewModel> SortUserGrantWalletHistory(GrantHistorySearchResultViewModel grantHistoryViewModel, int pageNumber, int pageSize);
+        IPagedList<PvWalletHistoryViewModel> SortPvWalletHistories(PvSearchResultViewModel pvSearchViewModel, int pageNumber, int pageSize);
+        IPagedList<AGCWalletHistoryViewModel> SortAGCWalletHistories(AGCSearchResultViewModel agcHistoryViewModel, int pageNumber, int pageSize);
+        Task<AGCWallet> GetUserAGCWallet(string userId);
+        IPagedList<WalletHistoryViewModel> SortUsersWalletHistory(WalletHistorySearchResultViewModel viewModel, int pageNumber, int pageSize);
 
 
 
 
-	}
+
+    }
 }
