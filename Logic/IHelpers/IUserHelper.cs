@@ -33,5 +33,7 @@ namespace Logic.IHelpers
         ApplicationUserViewModel ProfileDetailsToEdit(string userId);
         bool EditedProfileDetails(ApplicationUserViewModel profileDetails);
         IPagedList<ApplicationUserViewModel> GetReferredUsers(ApplicationUserSearchResultViewModel applicationUserViewModel, string userId, int pageNumber, int pageSize);
+        List<RolesViewModel> GetUsersInAdminRole();
+        Task<string> GetRolesName(RolesViewModel rolesname);
     }
 }
