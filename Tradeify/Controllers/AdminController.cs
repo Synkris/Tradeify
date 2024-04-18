@@ -696,5 +696,85 @@ namespace Tradeify.Controllers
                 .FirstOrDefault(x => x.Id == newsId && x.Active);
             return Json(new { isError = false, data = news });
         }
+
+        [HttpPost]
+        public async Task<JsonResult> ImpersonateAUser(string username)
+        {
+            try
+            {
+                var session = HttpContext.Session;
+                var responseMsg = string.Empty;
+                var adminId = _userHelper.GetCurrentUserId(User.Identity.Name);
+                var getUser = _userManager.Users.Where(x => x.UserName == username).FirstOrDefault();
+                if (getUser == null)
+                {
+                    return Json(new { isError = true, msg = "This username does not exist, try again." });
+                }
+                if (getUser.UserName == User.Identity.Name)
+                {
+                    return Json(new { isError = true, msg = "You can't impersonate yourself, you're logged In already." });
+                }
+                var impersonationRecord = new Impersonation
+                {
+                    AdifMemberId = getUser.Id,
+                    AdminUserId = adminId,
+                    AmTheRealUser = false,
+                    DateImpersonated = DateTime.Now
+                };
+                if (impersonationRecord != null)
+                {
+                    await _context.Impersonations.AddAsync(impersonationRecord);
+                    _context.SaveChanges();
+                    await _signInManager.SignInAsync(getUser, isPersistent: false);
+                    var sessionKeyName = impersonationRecord.AdminUserId;
+                    if (string.IsNullOrEmpty(session.GetString(sessionKeyName)))
+                    {
+                        session.SetString(sessionKeyName, "true");
+                    }
+                    else { session.Clear(); }
+                    return Json(new { isError = false, msg = "User Impersonated  successfully." });
+                }
+                return Json(new { isError = true, msg = "Error Occured while impersonating." });
+            }
+            catch (Exception ex)
+            {
+                return Json(new { isError = true, msg = ex.Message });
+            }
+        }
+
+        [AllowAnonymous]
+        [HttpPost]
+        public async Task<IActionResult> LogAdminOut()
+        {
+            try
+            {
+                var session = HttpContext.Session;
+
+                var currentUserId = _userHelper.FindByUserName(User.Identity.Name);
+                var lastTimeImpersonated = _context.Impersonations.Where(x => x.AdifMemberId == currentUserId.Id).Max(x => x.DateImpersonated);
+                if (lastTimeImpersonated != null)
+                {
+                    var impersonationRecords = _context.Impersonations.Where(x => x.DateImpersonated == lastTimeImpersonated && x.EndSession == false).FirstOrDefault();
+                    impersonationRecords.EndSession = true;
+                    impersonationRecords.DateSessionEnded = DateTime.Now;
+                    _context.Update(impersonationRecords);
+                    _context.SaveChanges();
+                    var admin = _userHelper.FindById(impersonationRecords.AdminUserId);
+                    session.Clear();
+                    await _signInManager.SignOutAsync();
+                    await _signInManager.SignInAsync(admin, isPersistent: true);
+                    return RedirectToAction("Index", "Admin");
+                }
+                else
+                {
+                    await _signInManager.SignOutAsync();
+                    return RedirectToAction("Index", "Home");
+                }
+            }
+            catch (Exception exp)
+            {
+                throw exp;
+            }
+        }
     }
 }
