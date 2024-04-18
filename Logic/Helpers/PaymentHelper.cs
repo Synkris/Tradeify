@@ -978,6 +978,243 @@ namespace Logic.Helpers
             }
         }
 
+        public bool CheckifDeactivated(string userId)
+        {
+            if (userId != null)
+            {
+                var check = _context.ApplicationUser.Where(a => a.Id == userId && a.Deactivated).FirstOrDefault();
+                if (check != null)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        public bool CheckIfUserhasPendingActPayment(string userId)
+        {
+            var check = _context.PaymentForms.Where(x => x.UserId == userId && x.PaymentTypeId == PaymentType.ReActivationFee && x.Status == Status.Pending).FirstOrDefault();
+            if (check != null)
+            {
+                return true;
+            }
+            return false;
+        }
+
+        public bool CheckForNoOfTokens(string token)
+        {
+            if (token != null)
+            {
+                decimal minToken = 0;
+                decimal maxToken = 0;
+                decimal noOfTokens = 0;
+
+                var checkTokenNumber = _context.CompanySettings.Where(x => x.Id != 0 && x.Active && !x.Deleted).FirstOrDefault();
+                if (checkTokenNumber != null)
+                {
+                    var leastToken = checkTokenNumber.MinimumToken;
+                    var highestToken = checkTokenNumber.MaximumToken;
+                    var tokenNumber = token;
+
+                    minToken = Convert.ToDecimal(leastToken);
+                    maxToken = Convert.ToDecimal(highestToken);
+                    noOfTokens = Convert.ToDecimal(tokenNumber);
+
+                    if (noOfTokens >= minToken && noOfTokens <= maxToken)
+                    {
+                        return true;
+                    }
+                }
+            }
+            return false;
+        }
+
+        public bool CreateCoinPayment(PaymentFormViewModel paymentDetails)
+        {
+            try
+            {
+                if (paymentDetails != null)
+                {
+                    var paymentForm = new PaymentForm()
+                    {
+                        AccountNumberPaidFrom = paymentDetails.AccountNumberPaidFrom,
+                        GCCAccountId = paymentDetails.BankAccountId,
+                        BankNamePaidFrom = paymentDetails.BankNamePaidFrom,
+                        Amount = paymentDetails.Amount,
+                        Details = GetPaymentDetails(paymentDetails.PaymentTypeId),
+                        PaidFrom = paymentDetails?.PaidFrom,
+                        PaymentMethod = paymentDetails.PaymentMethod,
+                        PaymentTypeId = paymentDetails.PaymentTypeId,
+                        UserId = paymentDetails.UserId,
+                        Status = Status.Pending,
+                        Date = DateTime.Now,
+                        NoOfTokensBought = paymentDetails?.NoOfTokensBought,
+                        PackageId = paymentDetails?.PackageId != 0 ? paymentDetails.PackageId : null,
+                    };
+                    _context.Add(paymentForm);
+                    _context.SaveChanges();
+
+                    var convertedAmount = paymentForm.Amount / _generalConfiguration.DollarRate;
+                    if (paymentForm.Id != Guid.Empty)
+                    {
+                        if (paymentForm.PaymentTypeId == PaymentType.TokenFee)
+                        {
+                            string toEmail = _generalConfiguration.AdminEmail;
+                            string subject = "GAP Token Payment ";
+                            string message = "Hello Admin, <br> A payment of $ <b>" + convertedAmount.ToString("F2") + "</b>" + " <br/> has		been made to GAP " + "<b>" + paymentForm?.GGCAccount?.Name
+                                    + "</b>" + " bank account  by: "
+                                    + "<b>" + paymentForm?.PaidFrom + "</b>" + " <br/>  with account number: " + "<b>" + paymentForm?.AccountNumberPaidFrom + "</b>" + " and bank name of: " + "<b>" + paymentForm?.BankNamePaidFrom + "</b>" + "<br/>  through: " + "<b>" + paymentForm?.PaymentMethod +
+                                " </b>" + " for Token Purchase. <br/> <br/> Endeavor to confirm the pending Token Payment. <br/> Thank you!!! ";
+
+                            _emailService.SendEmail(toEmail, subject, message);
+                            return true;
+                        }
+                        else if (paymentForm.PaymentTypeId == PaymentType.ReActivationFee)
+                        {
+                            string toEmail = _generalConfiguration.AdminEmail;
+                            string subject = "GAP Re-Activation Payment ";
+                            string message = "Hello Admin, <br> A payment of $ <b>" + convertedAmount.ToString("F2") + "</b>" + " <br/> has	been made to GAP " + "<b>" + paymentForm?.GGCAccount?.Name
+                                    + "</b>" + " bank account  by: "
+                                    + "<b>" + paymentForm?.PaidFrom + "</b>" + " <br/>  with account number: " + "<b>" + paymentForm?.AccountNumberPaidFrom + "</b>" + " and bank name of: " + "<b>" + paymentForm?.BankNamePaidFrom + "</b>" + "<br/>  through: " + "<b>" + paymentForm?.PaymentMethod +
+                                " </b>" + " for Re-Activation Payment. <br/> <br/> Endeavor to confirm the pending Re-Activation Payment. <br/> Thank you!!! ";
+
+                            _emailService.SendEmail(toEmail, subject, message);
+                            return true;
+                        }
+                        else if (paymentForm.PaymentTypeId == PaymentType.PackageFee)
+                        {
+                            string toEmail = _generalConfiguration.AdminEmail;
+                            string subject = "GAP Package Payment ";
+                            string message = "Hello Admin, <br> A payment of $ <b>" + paymentForm?.Amount.ToString("F2") + "</b>" + " <br/> has been made to GAP " + "<b>" + paymentForm?.GGCAccount?.Name
+                                    + "</b>" + " bank account  by: "
+                                    + "<b>" + paymentForm?.PaidFrom + "</b>" + " <br/>  with account number: " + "<b>" + paymentForm?.AccountNumberPaidFrom + "</b>" + " and bank name of: " + "<b>" + paymentForm?.BankNamePaidFrom + "</b>" + "<br/>  through: " + "<b>" + paymentForm?.PaymentMethod +
+                                " </b>" + " for Package Payment. <br/> <br/> Endeavor to confirm the pending Package Payment. <br/> Thank you!!! ";
+
+                            _emailService.SendEmail(toEmail, subject, message);
+                            return true;
+                        }
+
+                    }
+                }
+                return false;
+            }
+            catch (Exception ex)
+            {
+                LogCritical($" {ex.Message} This exception occured while trying to create coin payment in payment helper");
+                throw ex;
+            }
+        }
+
+        private string GetPaymentDetails(PaymentType paymentTypeId)
+        {
+            switch (paymentTypeId)
+            {
+                case PaymentType.PackageFee:
+                    return "Payment for Package Fee";
+
+                case PaymentType.VtuActivationFee:
+                    return "Payment for VTU Activation Fee";
+
+                case PaymentType.TokenFee:
+                    return "Payment for Token Fee";
+
+                case PaymentType.ReActivationFee:
+                    return "Payment for Account Re-Activation Fee";
+
+                default:
+                    return string.Empty;
+            }
+        }
+
+        public bool CheckActivationAmount(decimal amount)
+        {
+            if (amount > 0)
+            {
+                var checkAmount = _context.CompanySettings.Where(x => x.ActivationAmount == amount && x.Active).FirstOrDefault();
+                if (checkAmount != null)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        public bool CreateCryptoTokenPayment(PaymentFormViewModel paymentDetails)
+        {
+            try
+            {
+                if (paymentDetails != null)
+                {
+                    var paymentForm = new PaymentForm()
+                    {
+                        AccountNumberPaidFrom = paymentDetails.AccountNumberPaidFrom,
+                        GCCAccountId = paymentDetails.BankAccountId,
+                        BankNamePaidFrom = paymentDetails.BankNamePaidFrom,
+                        Amount = paymentDetails.Amount,
+                        Details = GetPaymentDetails(paymentDetails.PaymentTypeId),
+                        PaidFrom = paymentDetails.PaidFrom,
+                        PaymentMethod = paymentDetails.PaymentMethod,
+                        PaymentTypeId = paymentDetails.PaymentTypeId,
+                        UserId = paymentDetails.UserId,
+                        Status = Status.Pending,
+                        Date = DateTime.Now,
+                        NoOfTokensBought = paymentDetails?.NoOfTokensBought,
+                        PackageId = paymentDetails?.PackageId != 0 ? paymentDetails.PackageId : null,
+
+                    };
+                    _context.Add(paymentForm);
+                    _context.SaveChanges();
+
+                    var convertedAmount = paymentForm.Amount / _generalConfiguration.DollarRate;
+                    if (paymentForm.Id != Guid.Empty)
+                    {
+                        if (paymentForm.PaymentTypeId == PaymentType.TokenFee)
+                        {
+                            string toEmail = _generalConfiguration.AdminEmail;
+                            string subject = "Crypto Token Payment";
+                            string message = "Hello Admin, <br> A payment of $ <b>" + convertedAmount.ToString("F2") + "</b>" + " <br/> has been made to GAP " + "<b>" + paymentForm?.GGCAccount?.Name
+                                    + "</b>" + " GAP Crypto Account  by: "
+                                    + "<b>" + paymentForm?.User?.Name + "</b>" + " <br/>  with walletId of: " + "<b>" + paymentForm?.AccountNumberPaidFrom + "</b>" + " and Wallet name of: " + "<b>" + paymentForm?.BankNamePaidFrom + "</b>" + "<br/>  through: " + "<b>" + paymentForm?.PaymentMethod +
+                                " </b>" + " for Token Payment. <br/> <br/> Endeavor to confirm the pending Token Payment. <br/> <br/> Best Regards, <br/> GAP Support Group. <br/> Thank you !!! ";
+
+                            _emailService.SendEmail(toEmail, subject, message);
+                            return true;
+                        }
+                        else if (paymentForm.PaymentTypeId == PaymentType.ReActivationFee)
+                        {
+                            string toEmail = _generalConfiguration.AdminEmail;
+                            string subject = "Crypto Re-Activation Payment ";
+                            string message = "Hello Admin, <br> A payment of $ <b>" + convertedAmount.ToString("F2") + "</b>" + " <br/> has	been made to GAP " + "<b>" + paymentForm?.GGCAccount?.Name
+                                    + "</b>" + " GAP Crypto Account  by: "
+                                    + "<b>" + paymentForm?.PaidFrom + "</b>" + " <br/>  with walletId of: " + "<b>" + paymentForm?.AccountNumberPaidFrom + "</b>" + " and Wallet name of: " + "<b>" + paymentForm?.BankNamePaidFrom + "</b>" + "<br/>  through: " + "<b>" + paymentForm?.PaymentMethod +
+                                " </b>" + " for Re-Activation Payment. <br/> <br/> Endeavor to confirm the pending Re-Activation Payment. <br/> Thank you!!! ";
+
+                            _emailService.SendEmail(toEmail, subject, message);
+                            return true;
+                        }
+                        else if (paymentForm.PaymentTypeId == PaymentType.PackageFee)
+                        {
+                            string toEmail = _generalConfiguration.AdminEmail;
+                            string subject = "GAP Crypto Package Payment ";
+                            string message = "Hello Admin, <br> A payment of $ <b>" + paymentForm.Amount.ToString("F2") + "</b>" + " <br/> has	been made to GAP GGC " + "<b>" + paymentForm?.GGCAccount?.Name
+                                    + "</b>" + " bank account  by: "
+                                    + "<b>" + paymentForm?.PaidFrom + "</b>" + " <br/>  with account number: " + "<b>" + paymentForm?.AccountNumberPaidFrom + "</b>" + " and bank name of: " + "<b>" + paymentForm?.BankNamePaidFrom + "</b>" + "<br/>  through: " + "<b>" + paymentForm?.PaymentMethod +
+                                " </b>" + " for Package Payment. <br/> <br/> Endeavor to confirm the pending Package Payment. <br/> Thank you!!! ";
+
+                            _emailService.SendEmail(toEmail, subject, message);
+                            return true;
+                        }
+
+                    }
+                }
+                return false;
+            }
+            catch (Exception ex)
+            {
+                LogCritical($" {ex.Message} This exception occured while trying to create crypto token payment in payment helper");
+                throw ex;
+            }
+        }
 
 
     }

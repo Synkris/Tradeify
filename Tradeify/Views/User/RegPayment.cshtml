@@ -1,0 +1,162 @@
+﻿@model Core.ViewModels.PaymentFormViewModel
+@{
+	ViewData["Title"] = "Registration Payment";
+	Layout = "~/Views/Shared/_DashboardLayout.cshtml";
+}
+
+	<div class="payment_transfer_Wrapper float_left mt-5 header_text" id="ListAccount">
+		<div class="row">
+			<div class="col-md-12 col-lg-12 col-sm-12 col-12"></div>
+
+			<div class="col-md-12 col-lg-12 col-sm-12 col-12 header_text">
+				<div class="sv_heading_wraper heading_center">
+					<h3>Choose Bank Account To Pay </h3>
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-md-12 col-xl-6 offset-xl-3 col-lg-8 offset-lg-2 col-sm-12 col-12">
+				<div class="change_password_wrapper float_left">
+					<div class="change_pass_field float_left">
+
+						<div class="card-body">
+							<div class="row">
+								<div class="bg-dark">
+
+									<div class="list-group bg-dark">
+										<p class="list-group-item ">KINDLY MAKE TRANSFER TO ANY OF THE ACCOUNT DETAILS BELOW AND CLICK ON CONFIRM PAYMENT AFTER</p>
+
+									</div>
+
+									<div class="card shadow-lg p-4 " style="background-color: #22c8db;">
+										<div class="list-group bg-dark">
+											<a href="#" class="list-group-item bg-dark">
+												BANK NAME : ZENITH BANK
+											</a>
+											<a href="#" class="list-group-item bg-dark"> ACCOUNT NAME : <b>GGC PROJECTS LTD</b></a>
+
+										<p class="list-group-item bg-dark" style="color: #22c8db;">
+												ACCOUNT NUMBER : <b> 1217675816 </b>
+
+												<span class="hover" id="lolow" data-clipboard-text="1217675816" style="margin-left: 9px;">
+													<i class="fas fa-clone" style="font-size:22px; color:white;"></i>
+												</span>
+											</p>
+
+											@*<a href="#" class="list-group-item bg-dark">
+												AMOUNT  : <mark class="bg-transparent text-success font-weight-bold"> $70 USD </mark> (Access to GGC Website Features) <br /> <br />
+												AMOUNT  : <mark class="bg-transparent text-success font-weight-bold"> $110 USD </mark>(Access to GGC Website Features) + 1month Free Training on Cryptocurrency.
+											</a>*@
+
+										</div>
+									</div>
+
+									<p class="list-group-item bg-dark">
+									NOTE: PLEASE MAKE SURE YOU PAY THE CORRECT AMOUNT <mark class="bg-dark" style="color: #22c8db;"> FOR THE PACKAGE YOU HAVE SELECTED </mark>, ANY AMOUNT LESSER WILL NOT BE ACCEPTED.
+									</p>
+									<p class="list-group-item bg-dark">
+										ALL PAYMENTS MADE TO ANY OF THESE ACCOUNTS MAY TAKE UP TO 24HRS TO CONFIRM
+									</p>
+
+									<br />
+
+									<br />
+									<div class="about_btn float_left">
+										<button class="btn button_color" id="listNxt">
+											<a> Confirm </a>
+										</button>
+									</div>
+								</div>
+
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div class="payment_transfer_Wrapper float_left header_text" id="confirmPay">
+		<div class="row">
+			<div class="col-md-12 col-lg-12 col-sm-12 col-12"></div>
+			<div class="col-md-12 col-lg-12 col-sm-12 col-12 header_text">
+				<div class="sv_heading_wraper heading_center">
+					<h3>Confirm your Payment</h3>
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-md-12 col-xl-6 offset-xl-3 col-lg-8 offset-lg-2 col-sm-12 col-12">
+				<div class="change_password_wrapper float_left">
+					<h5 class="text-danger"> Warning!! </h5>
+					<br />
+					<h5 class="text-secondary"> Please do not fill this form if you are yet to make payment. </h5>
+					<p>Else you will be <b> locked out</b> of your account</p>
+					<br />
+					<div class="change_pass_field float_left">
+
+						<div class="payment_gateway_wrapper payment_select_wrapper">
+							<label>Choose the Bank you made Payment to :</label>
+						<select id="bankAccountId" asp-items="@(new SelectList(ViewBag.Bank,"Id", "Name" ))" required class="select"> </select>
+						</div>
+
+						<div class="payment_gateway_wrapper payment_select_wrapper">
+							<label> Packages: <small> (You can change your selected package)</small> </label>
+						<select asp-for="PackageId" id="packageId" asp-items="@(new SelectList(ViewBag.Package,"Id","Name", Model?.PackageId))" required class="select"></select>
+						</div>
+						
+						<div class="change_field">
+							<label>Account Name Paid From :</label>
+							<input id="accountPaidFrom" type="text" placeholder="Enter the Account Name You Paid From" required>
+						</div>
+
+						<div class="change_field">
+							<label>Bank Name Paid From :</label>
+							<input id="bankNamePaidFrom" type="text" placeholder="Enter the Bank Name You Paid From" required>
+						</div>
+
+						<div class="change_field col-sm-">
+							<label>Account Number Paid From :</label>
+							<input id="accountNumberPaidFrom" type="number" placeholder="Enter the Account Number You Paid From" required>
+						</div>
+
+						<div class="change_field">
+							<label>Method of payment(Pos , Bank Transfer,e.t.c...) :</label>
+							<input id="paymentMethod" type="text" placeholder="Enter the Method of Payment you Paid Through" required>
+						</div>
+
+						<div class="about_btn float_left">
+							<button class="btn button_color" style=" padding: 10px;"
+									id="submit_btn" onclick="regFeePayment()" type="submit">
+									Submit Payment
+							</button>
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+<script>
+	$(document).ready(function () {
+		$("#ListAccount").show();
+		$("#confirmPay").hide();
+
+		$("#listNxt").on('click', function () {
+			$("#confirmPay").fadeIn(3000);
+			$("#ListAccount").hide();
+		})
+	});
+</script>
+
+<script>
+	$(document).ready(function () {
+		$("#lolow").on('click', function () {
+			new Clipboard("#lolow");
+		});
+	});
+</script>
+

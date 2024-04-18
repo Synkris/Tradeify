@@ -1,15 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿
+using System;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Core.Models
 {
-    public class PaymentForm
+	public class PaymentForm
     {
         [Key]
         public Guid Id { get; set; }
@@ -35,7 +32,7 @@ namespace Core.Models
 
         [Display(Name = "Updated By")]
         public string? StatusBy { get; set; }
-
+      
         [Display(Name = "Date of Update")]
         public DateTime? StatuseChangeDate { get; set; }
 
@@ -45,7 +42,7 @@ namespace Core.Models
         [Display(Name = "Bank Account Paid To")]
         public int? GCCAccountId { get; set; }
         [Display(Name = "GGC Account")]
-        [ForeignKey("GGCAccountId")]
+        [ForeignKey("GGCAccountId")] 
         public virtual CommonDropdowns GGCAccount { get; set; }
 
         [Display(Name = "Account Name  paid from")]
@@ -55,12 +52,14 @@ namespace Core.Models
         public string BankNamePaidFrom { get; set; }
         [Display(Name = "Account Number  paid from")]
         public string AccountNumberPaidFrom { get; set; }
-        public int PackageId { get; set; }
+        public int? PackageId { get; set; }
         [Display(Name = "Packages")]
         [ForeignKey("PackageId")]
         public virtual Packages Packages { get; set; }
         [Display(Name = "Mode Of Payment")]
         public string PaymentMethod { get; set; }
+        public decimal? NoOfTokensBought { get; set; }
+
     }
     public enum Status
     {
@@ -79,5 +78,9 @@ namespace Core.Models
         PackageFee = 2,
         [Description("VTU Activation Fee")]
         VtuActivationFee = 3,
+        [Description("Token Fee")]
+        TokenFee = 4,
+        [Description("Account Re-Activation Fee")]
+        ReActivationFee = 5,
     }
 }
