@@ -1,0 +1,118 @@
+﻿@model IEnumerable< Core.Models.News>
+@{
+    ViewData["Title"] = @ViewBag.Title;
+    Layout = "~/Views/Shared/_AdminDashboardLayout.cshtml";
+}
+<!--  deposit wrapper start -->
+<div class="deposit_list_wrapper float_left header_text">
+    <div class="row">
+        <div class="col-md-12 col-lg-12 col-sm-12 col-12 header_text">
+            <div class="sv_heading_wraper">
+                <h3>News Lists</h3>
+            </div>
+        </div>
+    </div>
+    <!--  profile wrapper start -->
+    <div class="last_transaction_wrapper float_left">
+        <div class="row">
+            <div class="col-md-12 col-lg-12 col-sm-12 col-12">
+                <div class="crm_customer_table_main_wrapper float_left">
+                    <div class="crm_ct_search_wrapper">
+                        <div class="crm_ct_search_bottom_cont_Wrapper"> </div>
+                    </div>
+                    @if (Model != null && Model.Count() > 0)
+                    {
+                        <div class="table-responsive">
+                            <table class="myTable table datatables cs-table crm_customer_table_inner_Wrapper">
+                                <thead>
+                                    <tr>
+                                        <th class="width_table1">@Html.DisplayNameFor(model => model.MasterImageUrl)</th>
+                                        <th class="width_table1">@Html.DisplayNameFor(Model => Model.Name)</th>
+                                        <th class="width_table1">@Html.DisplayNameFor(model => model.Details)</th>
+                                        <th class="width_table1">@Html.DisplayNameFor(model => model.CreatedBy)</th>
+                                        <th class="width_table1">@Html.DisplayNameFor(model => model.DateCreated)</th>
+                                        <th class="width_table1 text-center">@Html.DisplayNameFor(model => model.Action)</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var obj in Model)
+                                    {
+                                        <tr class="background_white">
+                                            <td class="flag">
+                                                <div class="pretty p-svg p-curve"><img src="@obj.MasterImageUrl" height="100" width="100" class="rounded-circle" asp-append-version="true" alt="blog_img"></div>
+                                            </td>
+                                            <td>
+                                                <div class="media cs-media">
+
+                                                    <div class="media-body">
+                                                        <h5>@Html.DisplayFor(modelItem => obj.Name)</h5>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            @*<td>
+                                                <div class="pretty p-svg p-curve">@Html.DisplayFor(modelItem => obj.Details)</div>
+                                            </td>*@
+                                            <td>
+                                                <div class="text-center no-sort mt-3" data-toggle="modal" data-target="#viewDetails" @Html.DisplayFor(modelItem => obj.Details) data-backdrop="static" onclick="viewDetailModal('@obj.Id')" title="View Details">
+                                                    <i class="fa fa-eye" aria-hidden="true"></i>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="pretty p-svg p-curve">@Html.DisplayFor(modelItem => obj.CreatedBy)</div>
+                                            </td>
+                                            <td class="flag">
+                                                <div class="pretty p-svg p-curve">@Html.DisplayFor(modelItem => obj.DateCreated)</div>
+                                            </td>
+                                            <td class="flag">
+                                                <nav class="navbar navbar-expand justify-content-center">
+                                                    <button type="submit" id="Editpack" class="btn mr-2 py-2">
+                                                        <a asp-controller="Admin" asp-route-Id="@obj.Id" asp-action="EditNews" class="mr-2">
+                                                            <i class="fa fa-pencil-alt m-r-5"></i>Edit
+                                                        </a>
+                                                    </button>
+                                                    <button type="submit" id="Editpack" class="btn mr-2 py-2">
+                                                        <a asp-controller="Admin" asp-route-Id="@obj.Id" asp-action="DeleteNews" class="mr-2">
+                                                            <i class="fa fa-trash m-r-5"></i> Delete
+                                                        </a>
+                                                    </button>
+                                                </nav>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    }
+                    else
+                    {
+                        <h2 class="text-info text-center py-5"> No News Available </h2>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade question_modal" id="viewDetails" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+                    <div class="sv_question_pop float_left">
+                        <div class="modal-body">
+                            <h1 class="text-center">
+                                NEWS DETAILS
+                            </h1>
+                            <textarea id="newsDetails" class="form-control" rows="10" readonly></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+     

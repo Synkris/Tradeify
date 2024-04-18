@@ -1,0 +1,186 @@
+﻿@model IEnumerable<Core.Models.News>
+@inject Logic.IHelpers.IPackageHelper _news;
+@inject Logic.IHelpers.IUserHelper _userHelper;
+@{
+    ViewData["Title"] = @ViewBag.Title;
+    if (User.IsInRole("Admin"))
+    { Layout = "~/Views/Shared/_AdminDashboardLayout.cshtml"; }
+    else { Layout = "~/Views/Shared/_DashboardLayout.cshtml"; }
+    var loggedInUser = _userHelper.FindByUserName(User.Identity.Name);
+}
+
+<!-- inner header wrapper end -->
+<!-- blog category wrapper start-->
+<div class="blog_category_wrapper fixed_portion float_left mt-5 header_text">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12 col-12 header_text">
+                @if (Model != null && Model.Count() > 0)
+                {
+                    @foreach (var newsContain in Model)
+                    {
+                        <div class="blog_category_box_wrapper blog_box_wrapper float_left">
+                            <div class="blog_news_img_wrapper float_left">
+                                <img src="@newsContain.MasterImageUrl" height="650" asp-append-version="true" alt="blog_img">
+                                <div class="blog_date_wrapper">
+                                    <p>
+                                        @newsContain.DateCreated.Date.Day<br />
+                                        @newsContain.DateCreated.ToString("MMM")
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="lest_news_cont_wrapper float_left">
+                                <div class="blog_heaidng_top">
+                                    <h3 class="side_text"> <a href="#">@newsContain.Name </a></h3>
+                                </div>
+                                <div class="blog-single_cntnt">
+                                    <p style="padding-top:0;clear:left"> @newsContain.ShortDetails </p>
+                                    <p style="padding-top:1px;clear:left"><a asp-controller="News" asp-route-Id="@newsContain.Id" asp-action="SingleNews" class="btn btn-outline-info">Read More...</a></p>
+                                </div>
+                                <div class="lest_news_cont_bottom float_left">
+                                    <ul>
+                                        <li>
+                                            <a href="#"><i class="fa fa-user"></i>@newsContain.CreatedBy</a>
+                                        </li>
+                                        <li>
+                                            <a href="#"><i class="fa fa-comments"></i>48 comments</a>
+                                        </li>
+                                        <li><a href="#"><i class="fas fa-heart"></i>100 likes</a> </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                }
+                else
+                {
+                    <h2 class="text-info text-center py-5"> No News Found </h2>
+                }
+            </div>
+            <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-12 mt-5">
+                <div class="sidebar_widget">
+                    <h4>search</h4>
+                    <form class="search_form" role="search">
+                        <div class="form-group">
+
+                            <input type="text" class="form-control" placeholder="search">
+                            <i class="fa fa-search"></i>
+                        </div>
+                    </form>
+                </div>
+                <div class="sidebar_widget">
+                    <h4>blog category</h4>
+                    <div class="archives_wrapper">
+                        <ul>
+                            <li>
+                                <a href="#">
+                                    <i class="fa fa-angle-right" aria-hidden="true"></i> all
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="fa fa-angle-right" aria-hidden="true"></i>development
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="fa fa-angle-right" aria-hidden="true"></i>exterior & interior
+
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="fa fa-angle-right" aria-hidden="true"></i>photography
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="fa fa-angle-right" aria-hidden="true"></i>vedio
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="sidebar_widget">
+                    <h4>blog archive</h4>
+                    <div class="archives_wrapper">
+                        <ul>
+                            <li>
+                                <a href="#">
+                                    <i class="fa fa-angle-right" aria-hidden="true"></i> january-2018
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="fa fa-angle-right" aria-hidden="true"></i>february-2018
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="fa fa-angle-right" aria-hidden="true"></i>march-2018
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="fa fa-angle-right" aria-hidden="true"></i>april-2018
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="fa fa-angle-right" aria-hidden="true"></i>may-2018
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="fa fa-angle-right" aria-hidden="true"></i>june-2018
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="fa fa-angle-right" aria-hidden="true"></i>july-2018
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="fa fa-angle-right" aria-hidden="true"></i>august-2018
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="sidebar_widget">
+                    <h4>tag cloud</h4>
+                    <div class="gc_blog_cloud_side_menu">
+                        <ul>
+                            <li>
+                                <a href="#">all</a>
+                            </li>
+                            <li>
+                                <a href="#">service</a>
+                            </li>
+                            <li>
+                                <a href="#">USA</a>
+                            </li>
+                            <li>
+                                <a href="#">CSS3</a>
+                            </li>
+                            <li>
+                                <a href="#">coin</a>
+                            </li>
+                            <li><a href="#">ajax</a></li>
+                            <li>
+                                <a href="#">JSON</a>
+                            </li>
+                            <li><a href="#">marketing</a></li>
+                            <li>
+                                <a href="#">netbeans</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+          

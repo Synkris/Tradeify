@@ -1,0 +1,45 @@
+﻿@model Core.ViewModels.NewsViewModel
+@{
+    ViewData["Title"] = ViewBag.Title;
+    Layout = "~/Views/Shared/_AdminDashboardLayout.cshtml";
+}
+<!-- profile wrapper start -->
+<div class="payment_transfer_Wrapper float_left header_text">
+    <div class="row">
+        <div class="col-md-12 col-lg-12 col-sm-12 col-12 header_text">
+            <div class="sv_heading_wraper heading_center">
+                <h3>Create News</h3>
+            </div>
+        </div>
+    </div>
+    <form enctype="multipart/form-data" method="post" asp-action="News" asp-controller="Admin">
+        <div class="row">
+            <div class="col-md-12 col-xl-6 offset-xl-3 col-lg-8 offset-lg-2 col-sm-12 col-12">
+                <div class="change_password_wrapper float_left">
+                    <div class="change_pass_field float_left">
+                        <div class="change_field">
+                            <label>Title :</label>
+                            <input type="text" asp-for="Name" placeholder="Enter News Title">
+                        </div>
+
+                        <div class="change_field mt-1 mb-2">
+                            <label for="description">Details</label>
+                            <textarea class="form-control floating rounded" asp-for="Details" required rows="4" placeholder="Enter more details" type="text"></textarea>
+                        </div>
+
+                        <div class="change_field">
+                            <label>News Image (optional):</label>
+                            <input type="file" asp-for="MasterImage" placeholder="Choose master Image">
+                        </div>
+                        <span class="about_btn float_left ">
+                            <button type="submit" class="btn button_color rounded">
+                                <a class="p-1 w-100">Create News</a>
+                            </button>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+

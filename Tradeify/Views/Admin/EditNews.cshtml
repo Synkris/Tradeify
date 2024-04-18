@@ -1,0 +1,48 @@
+﻿@model Core.Models.News
+@{
+    ViewData["Title"] = ViewBag.Title;
+    Layout = "~/Views/Shared/_AdminDashboardLayout.cshtml";
+}
+
+<!-- profile wrapper start -->
+<div class="payment_transfer_Wrapper float_left header_text">
+    <div class="row">
+        <div class="col-md-12 col-lg-12 col-sm-12 col-12 header_text">
+            <div class="sv_heading_wraper heading_center">
+                <h3>Edit News</h3>
+            </div>
+        </div>
+    </div>
+    <form enctype="multipart/form-data" method="post" asp-action="EditNews" asp-controller="Admin">
+        <div class="row">
+            <div class="col-md-12 col-xl-6 offset-xl-3 col-lg-8 offset-lg-2 col-sm-12 col-12">
+                <div class="change_password_wrapper float_left">
+                    <div class="change_pass_field float_left">
+                        <div class="change_field">
+                            <label>Title :</label>
+                            <input type="text" asp-for="Name" placeholder="Enter News Title">
+                        </div>
+
+                        <div class="change_field mt-1 mb-2">
+                            <label for="description">Details</label>
+                            <textarea class="form-control floating rounded" asp-for="Details" required rows="4" placeholder="Enter more details"></textarea>
+                        </div>
+
+                        <div class="change_field">
+                            <img src="@Model.MasterImageUrl" asp-append-version="true" style="width: 200px; height:200px" alt="Alternate Text" />
+                            <label style="color:white;">News Image : Please select an image  (optional):  </label>
+                            <input type="file" name="file" asp-for="MasterImageUrl" placeholder="Choose master Image">
+                        </div>
+                        <span class="about_btn float_left ">
+                            <button type="submit" class="btn button_color">
+                                <a>Update</a>
+                            </button>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+

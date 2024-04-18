@@ -1,0 +1,213 @@
+﻿@model Core.Models.News;
+@inject Logic.IHelpers.IPackageHelper _news;
+@{
+    ViewData["Title"] = "SingleNews";
+}
+@{
+    var news = _news.GetNews();
+}
+<!-- inner header wrapper end -->
+<!-- blog category wrapper start-->
+<div class="blog_category_wrapper fixed_portion float_left mt-0">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12 col-12">
+                <div class="blog_category_box_wrapper blog_box_wrapper float_left">
+                   @if (Model.MasterImageUrl != null)
+                   {
+                        <div class="blog_news_img_wrapper float_left">
+                            <img src="@Model.MasterImageUrl" height="650" asp-append-version="true" alt="blog_img">
+                            <div class="blog_date_wrapper">
+                                <p>
+                                    @Model.DateCreated.Date.Day<br />
+                                    @Model.DateCreated.ToString("MMM")
+                                </p>
+                            </div>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="blog_news_img_wrapper float_left">
+                            <div class="blog_date_wrapper mt-5">
+                                <p>
+                                    @Model.DateCreated.Date.Day<br />
+                                    @Model.DateCreated.ToString("MMM")
+                                </p>
+                            </div>
+                        </div>
+                    }
+
+                    <div class="lest_news_cont_wrapper float_left">
+
+                        <div class="blog_heaidng_top">
+
+                            <h3 class="side_text"> <a href="#">@Model.Name </a></h3>
+                        </div>
+                        <div class="blog-single_cntnt">
+                            <p> @Model.Details </p>
+                        </div>
+                        <div class="lest_news_cont_bottom float_left">
+                            <ul>
+                                <li>
+                                    <a href="#"><i class="fa fa-user"></i>@Model.CreatedBy</a>
+                                </li>
+                                <li>
+                                    <a href="#"><i class="fa fa-comments"></i>40 comments</a>
+                                </li>
+                                <li><a href="#"><i class="fas fa-heart"></i>37 likes</a> </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-12">
+                <div class="sidebar_widget">
+                    <h4>search</h4>
+                    <form class="search_form" role="search">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="search">
+                            <i class="fa fa-search"></i>
+                        </div>
+                    </form>
+                </div>
+                <div class="sidebar_widget">
+                    <h4>blog category</h4>
+                    <div class="archives_wrapper">
+                        <ul>
+                            <li>
+                                <a href="#">
+                                    <i class="fa fa-angle-right" aria-hidden="true"></i> all
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="fa fa-angle-right" aria-hidden="true"></i>development
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="fa fa-angle-right" aria-hidden="true"></i>exterior & interior
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="fa fa-angle-right" aria-hidden="true"></i>photography
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="fa fa-angle-right" aria-hidden="true"></i>vedio
+                                </a>
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+                <div class="sidebar_widget">
+                    <div class="wrapper_second_blog wrapper_second_blog_2">
+                        <h4>recent post</h4>
+                        @foreach (var obj in news)
+                        {
+                            @if (obj.Id != Model.Id)
+                            {
+                                <div class="blog_wrapper1">
+                                    <div class="blog_image">
+                                        <img src="@obj.MasterImageUrl" class="img-responsive" alt="img" />
+                                    </div>
+                                    <div class="sv_blog_text">
+                                        <h5><a asp-controller="News" asp-action="SingleNews" asp-route-Id="@obj.Id">@obj.Name</a></h5>
+                                        <div class="blog_date blog_date_blog"><i class="fa fa-calendar" aria-hidden="true"></i>@obj.DateCreated.ToString("MMM") &nbsp; <span>  @obj.DateCreated.Date</span></div>
+                                    </div>
+                                </div>
+                            }
+                        }
+                    </div>
+                </div>
+                <div class="sidebar_widget">
+                    <h4>blog archive</h4>
+                    <div class="archives_wrapper">
+                        <ul>
+                            <li>
+                                <a href="#">
+                                    <i class="fa fa-angle-right" aria-hidden="true"></i> january-2018
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="fa fa-angle-right" aria-hidden="true"></i>february-2018
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="fa fa-angle-right" aria-hidden="true"></i>march-2018
+
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="fa fa-angle-right" aria-hidden="true"></i>april-2018
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="fa fa-angle-right" aria-hidden="true"></i>may-2018
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="fa fa-angle-right" aria-hidden="true"></i>june-2018
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="fa fa-angle-right" aria-hidden="true"></i>july-2018
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="fa fa-angle-right" aria-hidden="true"></i>august-2018
+                                </a>
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+                <div class="sidebar_widget">
+                    <h4>tag cloud</h4>
+
+                    <div class="gc_blog_cloud_side_menu">
+
+                        <ul>
+                            <li>
+                                <a href="#">all</a>
+                            </li>
+                            <li>
+                                <a href="#">service</a>
+                            </li>
+                            <li>
+                                <a href="#">USA</a>
+                            </li>
+                            <li>
+                                <a href="#">CSS3</a>
+                            </li>
+                            <li>
+                                <a href="#">coin</a>
+                            </li>
+                            <li><a href="#">ajax</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="~/js/registration.js"></script>
+
+ <script>
+    $(document).ready(function () {
+        var userName = '@User.Identity.Name';
+        var newsId = '@Model.Id';
+        logNewsRedByUserId(userName, newsId);
+    });
+ </script>
