@@ -478,5 +478,29 @@ namespace Logic.Helpers
             return null;
         }
 
+        public News GetNewsById(int newsId)
+        {
+            try
+            {
+                if (newsId == null || newsId == 0)
+                {
+                    return null;
+                }
+                var mainNewsView = _context.News.Where(x => x.Id == newsId && x.Deleted == false && x.Active == true).FirstOrDefault();
+                if (mainNewsView != null)
+                {
+                    return mainNewsView;
+
+                }
+                return null;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
+        }
+
     }
 }

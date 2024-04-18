@@ -6,6 +6,7 @@ using Logic.IHelpers;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 using Tradeify.Models;
 
@@ -531,6 +532,169 @@ namespace Tradeify.Controllers
         public IActionResult SortAllPvTransactions()
         {
             return View();
+        }
+
+        public IActionResult News()
+        {
+            ViewBag.Title = "Create News";
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> News(NewsViewModel newsViewModel)
+        {
+            try
+            {
+                if (newsViewModel.Details != null)
+                {
+                    string uniqueFileName = string.Empty;
+                    if (newsViewModel.MasterImage != null)
+                    {
+                        uniqueFileName = UploadedFile(newsViewModel);
+                    }
+
+                    News news = new News
+                    {
+                        Name = newsViewModel.Name,
+                        Details = newsViewModel.Details,
+                        CreatedBy = User.Identity.Name,
+                        DateCreated = DateTime.Now,
+                        MasterImageUrl = string.IsNullOrEmpty(uniqueFileName) ? null : uniqueFileName,
+                        Active = true,
+                        Deleted = false
+                    };
+                    _context.News.Add(news);
+                    await _context.SaveChangesAsync();
+                    ModelState.Clear();
+                    return View();
+                }
+                return View();
+
+
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+
+        public string UploadedFile(NewsViewModel newsViewModel)
+        {
+            string uniqueFileName = string.Empty;
+
+            if (newsViewModel.MasterImage != null)
+            {
+                string uploadsFolder = Path.Combine(_webHostEnvironment.WebRootPath, "uploads");
+                string pathString = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "uploads");
+                if (!Directory.Exists(pathString))
+                {
+                    Directory.CreateDirectory(pathString);
+                }
+                uniqueFileName = Guid.NewGuid().ToString() + "_" + newsViewModel.MasterImage.FileName;
+                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+                using (var fileStream = new FileStream(filePath, FileMode.Create))
+                {
+                    newsViewModel.MasterImage.CopyTo(fileStream);
+                }
+            }
+            return "/uploads/" + uniqueFileName;
+        }
+
+        public IActionResult GetNews()
+        {
+            var allNews = _context.News.Where(x => x.Deleted == false);
+            ViewBag.Title = "News List";
+            return View(allNews);
+        }
+
+        [HttpGet]
+        public IActionResult EditNews(int? id)
+        {
+            ViewBag.Title = "Edit News";
+            if (id == null || id == 0)
+            {
+                return NotFound();
+            }
+            var getNews = _context.News.Find(id);
+
+            if (getNews == null)
+            {
+                return NotFound();
+            }
+
+            return View(getNews);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> EditNews(int? id, News news, IFormFile file)
+        {
+            try
+            {
+                if (id == null)
+                {
+                    return NotFound();
+                }
+                var user = await _context.News.Where(x => x.Id == id && x.Deleted == false).FirstOrDefaultAsync();
+
+                if (user == null)
+                {
+                    return NotFound();
+                }
+                if (file != null)
+                {
+                    string filename = System.Guid.NewGuid().ToString() + ".jpg";
+                    var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "uploads", filename);
+                    using (var steam = new FileStream(path, FileMode.Create))
+                    {
+                        await file.CopyToAsync(steam);
+                    }
+                    user.MasterImageUrl = "/uploads/" + filename;
+                }
+
+                user.Name = news.Name;
+                user.Details = news.Details;
+                user.CreatedBy = User.Identity.Name;
+                user.DateCreated = DateTime.Now;
+                user.Active = true;
+                user.Deleted = false;
+
+
+                await _context.SaveChangesAsync();
+                return RedirectToAction("GetNews");
+
+
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+        public IActionResult DeleteNews(int? id)
+        {
+            var deleteNews = _context.News.Find(id);
+            if (deleteNews != null)
+            {
+                deleteNews.Deleted = true;
+                deleteNews.Active = false;
+                _context.Update(deleteNews);
+                _context.SaveChanges();
+                return RedirectToAction("GetNews");
+            }
+            return View();
+        }
+
+        [HttpGet]
+        public JsonResult GetNewsById(int newsId)
+        {
+            if (newsId == 0)
+            {
+                return Json(new { isError = true, msg = "Error Occurred" });
+            }
+            var news = _context.News
+                .FirstOrDefault(x => x.Id == newsId && x.Active);
+            return Json(new { isError = false, data = news });
         }
     }
 }

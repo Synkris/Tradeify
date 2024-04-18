@@ -35,5 +35,6 @@ namespace Logic.IHelpers
         IPagedList<ApplicationUserViewModel> GetReferredUsers(ApplicationUserSearchResultViewModel applicationUserViewModel, string userId, int pageNumber, int pageSize);
         List<RolesViewModel> GetUsersInAdminRole();
         Task<string> GetRolesName(RolesViewModel rolesname);
+        News GetNewsById(int newsId);
     }
 }
