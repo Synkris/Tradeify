@@ -1,0 +1,260 @@
+﻿@model IEnumerable<Core.ViewModels.RegistrationPackageViewModel>
+
+@{
+    ViewData["Title"] = "Packages";
+    Layout = "~/Views/Shared/_AdminDashboardLayout.cshtml";
+}
+
+<style>
+    body {
+        counter-reset: Serial; 
+    }
+
+    tr td:first-child:before {
+        counter-increment: Serial; 
+        content: counter(Serial); 
+    }
+</style>
+
+<!-- Main section Start -->
+<div class="deposit_list_wrapper float_left header_text">
+   <div class="last_transaction_wrapper float_left">
+        
+        <div class="row">
+            <div class="col-md-12 col-lg-12 col-sm-12 col-12 header_text">
+                <div class="sv_heading_wraper">
+                    <h3>List of Packages </h3>
+                </div>
+                <div class="crm_customer_table_main_wrapper float_left">
+                    <div class="crm_ct_search_wrapper">
+                        
+                        <div class="col-auto float-right ml-auto mb-3">
+                            <a href="#" style="border: 2px solid #22c8db;" class="btn btn-lg" data-toggle="modal" data-target="#creatPackage">
+                                <i class="fa fa-plus"></i> <b> Add Package </b>
+                            </a>
+                        </div>
+                    </div>
+
+                    @if (Model != null && Model.Count() > 0)
+                    {
+                        <div class="table-responsive">
+                            <table class="myTable table datatables cs-table crm_customer_table_inner_Wrapper">
+                                <thead>
+                                    <tr>
+                                        <th>S/N</th>
+                                        <th class="width_table1">@Html.DisplayNameFor(model => model.Name)</th>
+                                        <th class="width_table1">@Html.DisplayNameFor(model => model.Price)</th>
+                                        <th class="width_table1">@Html.DisplayNameFor(model => model.BonusAmount)</th>
+                                        <th class="width_table1">@Html.DisplayNameFor(model => model.MaxGeneration)</th>
+                                        <th class="width_table1 text-center">@Html.DisplayNameFor(model => model.Description)</th>
+                                        <th class="width_table1 text-center">Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var obj in Model.OrderBy(item => item.SerialNumber))
+                                    {
+                                        <tr class="background_white">
+                                            <td></td>
+                                            <td class="flag">
+                                                <div class="pretty p-svg p-curve">@Html.DisplayFor(model => obj.Name)</div>
+                                            </td>
+                                            <td class="flag">
+                                                <div class="pretty p-svg p-curve"> $@Html.DisplayFor(model => obj.Price)</div>
+                                            </td>
+                                            <td class="flag">
+                                                <div class="pretty p-svg p-curve"> $@Html.DisplayFor(model => obj.BonusAmount)</div>
+                                            </td>
+                                            <td class="flag">
+                                                <div class="pretty p-svg p-curve">@Html.DisplayFor(modelItem => obj.MaxGeneration)</div>
+                                            </td>
+                                            <td>
+                                                <div class="text-center no-sort" data-toggle="modal" data-target="#details" @Html.DisplayFor(modelItem => obj.Description) data-backdrop="static" onclick="viewPackageDetailModal('@obj.Id')" title="View Details">
+                                                    <i class="fa fa-eye" aria-hidden="true"></i>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <nav class="navbar navbar-expand text-center justify-content-center">
+                                                    <button type="button" class="btn button_color mr-2 p-2" data-toggle="modal" data-target="#edit_Package" onclick="editPackage('@obj.Id')">
+                                                        <i class="fas fa-pencil-alt"></i> Edit
+                                                    </button>
+                                                    <button type="button" class="btn button_color p-2" data-toggle="modal" data-target="#deletePackageModal" onclick="PackageToBeDeleted('@obj.Id')">
+                                                        <i class="fas fa-trash"></i> Delete
+                                                    </button>
+                                                </nav>
+                                            </td>
+                                        </tr>
+                                   }
+                                </tbody>
+                            </table>
+                        </div>
+                    }
+                    else
+                    {
+                      <h2 class="text-info text-center py-5"> No Package available </h2>
+                    }
+                    </div>
+                </div>
+            </div>
+       </div>
+   </div>
+
+
+    @if (TempData["Message"] != null)
+    {
+        <div class="sv_heading_wraper">
+            <h3>Package Lists</h3>
+        </div>
+    }
+<div class="modal fade" id="creatPackage" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header bg-dark text-white">
+                <h5 class="modal-title text-white" id="exampleModalLabel"><b class="text-white; text-center"> Create Package</b></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body text-white bg-dark">
+                <div class="change_field">
+                    <label for="name">Package Name:</label>
+                    <input id="name" type="text" class="form-control" required placeholder="Enter Package Name">
+                </div>
+
+                <div class="change_field ">
+                    <label for="price">Package Price:</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">$</span>
+                        </div>
+                        <input id="price" type="number" class="form-control" required placeholder="Enter Package Price">
+                    </div>
+                </div>
+                
+                <div class="change_field " style="color:black">
+                    <label for="bonusAmount">Enter Bonus Price (optional):</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">$</span>
+                        </div>
+                        <input id="bonusAmount" type="number" class="form-control" required placeholder="Enter Bonus Price">
+                    </div>
+                </div>
+
+                <div class="change_field row mx-1">
+                    <label for="generationId">Generation:</label>
+                    <select id="generationId" style="width:100%" asp-items="@(new SelectList(ViewBag.MaxEnum, "Id", "Name"))" class="select"></select>
+                </div>
+
+                <div class="change_field mt-1 mb-2">
+                    <label for="description">Description:</label>
+                    <textarea class="form-control floating rounded" rows="4" id="description" placeholder="Enter Description"></textarea>
+                </div>
+            </div>
+            <div class="modal-footer bg-dark">
+                <button type="button" class="btn button_color" data-dismiss="modal">Close</button>
+                <button class="btn button_color" id="submit-btn" onclick="createpackages()">Submit</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="edit_Package" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header bg-dark text-white">
+                <h5 class="modal-title text-white" id="exampleModalLabel">Edit Package</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+
+            <div class="modal-body bg-dark text-white">
+                    <div class="change_field">
+                        <label >Package Name:</label>
+                        <input id="edit_Name" type="text" class="form-control">
+                        <input id="editId" hidden>
+                    </div>
+
+                <div class="change_field">
+                    <label >Package Price:</label>
+                        <input id="edit_Price" type="number" class="form-control">
+                </div>
+
+                <div class="change_field">
+                    <label>Bonus Amount (optional):</label>
+                        <input id="edit_BonusAmount" type="number" class="form-control">
+                </div>
+
+                <div class="change_field row mx-1">
+                    <label>Generation:</label>
+                    <select id="generationId" style="width:100%" asp-items="@(new SelectList(ViewBag.MaxEnum, "Id", "Name"))" class="select"></select>
+                </div>
+
+                <div class="change_field mt-1 mb-2">
+                    <label>Description:</label>
+                    <textarea class="form-control floating rounded" rows="4" id="edit_description"></textarea>
+                </div>
+            </div>
+            <div class="modal-footer bg-dark">
+                <button class="btn button_color" id="submit-btn" onclick="PackageToSave()">Submit</button>
+                <button type="button" class="btn button_color" data-dismiss="modal">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="modal custom-modal fade" id="deletePackageModal" role="dialog" >
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-body bg-dark">
+                <div class="form-header text-center">
+                    <h4 class="font-weight-bold mb-3 mt-1 text-white"> Remove Package </h4>
+                    <p class="text-white">Are you sure you want to remove this Package?</p>
+                </div>
+                <div class="modal-btn delete-action">
+                    <div class="row p-3 mt-2">
+                        <div class="form-group d-none">
+                            <input id="deletId" hidden>
+                        </div>
+                        <div class="col-sm-6 m-auto mt-5 mb-5">
+                            <div class="submit-section mb-3">
+                                <button type="button" class="btn button_color btn-block" onclick="DeletePackage()"> Delete </button>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 m-auto mt-5 mb-5">
+                            <div class="submit-section mb-3">
+                                <button type="button" class="btn button_color btn-block" data-dismiss="modal"> Cancel </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal custom-modal fade" id="details" role="dialog">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-body bg-dark">
+                <div class="form-header text-center px-4">
+                    <h3 class="text-center text-white mb-3">
+                        Package Details
+                    </h3>
+                    <textarea id="packagesDetails" class="form-control" rows="5" readonly></textarea>
+                </div>
+                <div class="modal-btn delete-action">
+                    <div class="row p-3 mt-2">
+                        <div class="col-sm-6 m-auto mt-5 mb-5">
+                            <div class="submit-section">
+                                <button type="button" class="btn button_color btn-block" data-dismiss="modal"> Cancel </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
