@@ -1,8 +1,10 @@
-﻿using System;
+﻿using Core.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using X.PagedList;
 
 namespace Logic.IHelpers
 {
@@ -13,5 +15,6 @@ namespace Logic.IHelpers
         IPagedList<CommonDropdownViewModel> GetCommonDropdowns(CommonDropdownSearchResultViewModel commonDropdownSearch, int pageNumber, int pageSize);
         bool UpdateDropDownService(string dropdown, int? id);
         string RemoveDropDown(int id);
+        bool CheckExistingDropdownName(string name, int drpKey);
     }
 }

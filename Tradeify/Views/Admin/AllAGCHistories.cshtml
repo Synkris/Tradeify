@@ -1,12 +1,11 @@
-﻿@model Core.ViewModels.WalletHistorySearchResultViewModel
+﻿@model Core.ViewModels.AGCSearchResultViewModel
 
 @{
-    ViewData["Title"] = "Wallet Histories";
-    Layout = "~/Views/Shared/_DashboardLayout.cshtml";
+    ViewData["Title"] = "Gift Card Histories";
+    Layout = "~/Views/Shared/_AdminDashboardLayout.cshtml";
 }
 
 <style>
-
     body {
         counter-reset: Serial;
     }
@@ -31,18 +30,19 @@
     }
 </style>
 
+
 <div class="deposit_list_wrapper float_left header_text">
     <div class="row">
-        <div class="col-md-12 col-lg-12 col-sm-12 col-12">
+        <div class="col-md-12 col-lg-12 col-sm-12 col-12 header_text">
             <div class="sv_heading_wraper">
+                <h3> GGC Gift Card Transaction Histories</h3>
 
-                <h3 class="ml-4 header_text"> Wallet Transaction Histories</h3>
             </div>
         </div>
     </div>
 
     <div class="col-lg-12 col-md-12 col-sm-12 col-12 mb-1">
-        <form asp-controller="User" asp-action="WalletTransactionHistory" method="get">
+        <form asp-controller="Admin" asp-action="AllAGCHistories" method="get">
 
             <div class="float_left d-lg-none" id="faqs">
                 <div class="investment_overlay faq_overlay"></div>
@@ -68,7 +68,7 @@
                                                 <div class="row col-12">
                                                     <div class="p-lg-2 col-12 col-lg-2 p-2">
                                                         <div class="form-pos">
-                                                            <label>Date From :</label>
+                                                            <label>Date From:</label>
                                                             <div class="form-group i-name">
                                                                 <input asp-for="SortTypeFrom" name="SortTypeFrom" value="" type="date" class="form-control">
                                                             </div>
@@ -77,7 +77,7 @@
 
                                                     <div class="p-lg-2 col-12 col-lg-2 p-2">
                                                         <div class="form-pos">
-                                                            <label>Date To :</label>
+                                                            <label>Date To:</label>
                                                             <div class="form-group i-name">
                                                                 <input asp-for="SortTypeTo" name="SortTypeTo" value="" type="date" class="form-control">
                                                             </div>
@@ -95,7 +95,7 @@
 
                                                     <div class="p-lg-2 col-12 col-lg-2 p-2">
                                                         <div class="form-pos">
-                                                            <label>UserName:</label>
+                                                            <label>Username:</label>
                                                             <div class="form-group i-name">
                                                                 <input asp-for="UserName" name="UserName" type="text" class="form-control" placeholder="User Name">
                                                             </div>
@@ -109,7 +109,21 @@
                                                             </div>
                                                         </div>
                                                     </div>
+                                                    <div class="row">
+                                                        <div class="">
+                                                            <div class="form-pos mt-2 ml-4">
+                                                                <label>Page Size:</label>
+                                                                <div class="form-group i-name">
+                                                                    <select asp-for="PageSize" name="PageSize">
+                                                                        <option value="10">10</option>
+                                                                        <option value="20">20</option>
+                                                                        <option value="50">50</option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                        </div>
 
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -127,7 +141,7 @@
             <div class="row col-12 d-lg-flex d-none">
                 <div class="p-lg-2 col-12 col-lg-2 p-2">
                     <div class="form-pos">
-                        <label>Date From :</label>
+                        <label>Date From:</label>
                         <div class="form-group i-name">
                             <input asp-for="SortTypeFrom" name="SortTypeFrom" value="" type="date" class="form-control">
                         </div>
@@ -136,7 +150,7 @@
 
                 <div class="p-lg-2 col-12 col-lg-2 p-2">
                     <div class="form-pos">
-                        <label>Date To :</label>
+                        <label>Date To:</label>
                         <div class="form-group i-name">
                             <input asp-for="SortTypeTo" name="SortTypeTo" value="" type="date" class="form-control">
                         </div>
@@ -154,7 +168,7 @@
 
                 <div class="p-lg-2 col-12 col-lg-2 p-2">
                     <div class="form-pos">
-                        <label>UserName:</label>
+                        <label>Username:</label>
                         <div class="form-group i-name">
                             <input asp-for="UserName" name="UserName" type="text" class="form-control" placeholder="User Name">
                         </div>
@@ -190,11 +204,13 @@
         </form>
     </div>
 
+
     @if (TempData["Message"] != null)
     {
         var tempDatamessage = (Tradeify.Models.Message)TempData["Message"];
         <partial name="_Message" model="tempDatamessage" />
     }
+
     <div class="last_transaction_wrapper float_left">
         <div class="row">
             <div class="col-md-12 col-lg-12 col-sm-12 col-12">
@@ -203,51 +219,49 @@
                         <div class="crm_ct_search_bottom_cont_Wrapper"> </div>
                     </div>
 
-                    @if (Model != null && Model.WalletHistoryRecords.Count() > 0)
+                    @if (Model != null && Model.AGCWalletHistoryRecords.Count() > 0)
                     {
                         <div class="table-responsive">
                             <table class="table cs-table crm_customer_table_inner_Wrapper">
                                 <thead>
                                     <tr>
                                         <th class="width_table1">S/N</th>
-                                        <th class="width_table1">Amount</th>
-                                        <th class="width_table1">Previous Balance</th>
+                                        <th class="width_table1">Coins</th>
                                         <th class="width_table1">New Balance</th>
+                                        <th class="width_table1">Previous Balance</th>
                                         <th class="width_table1">Transaction Date</th>
                                         <th class="width_table1">Transaction Type</th>
-                                        <th class="width_table1">Description</th>
+                                        <th class="width_table1">Received By</th>
+                                        <th class="width_table1">Details</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach (var obj in Model.WalletHistoryRecords)
+                                    @foreach (var obj in Model.AGCWalletHistoryRecords)
                                     {
                                         var paymentDescription = string.Empty;
                                         if (obj.Payment?.PaymentTypeId > 0)
                                         {
-                                            paymentDescription = "  from " + obj.Payment?.User?.UserName.ToUpper() + " " + obj.Payment?.PaymentTypeId;
+                                            paymentDescription = "  Coins Made from " + obj.Payment?.User?.UserName.ToUpper() + " " + obj.Payment?.PaymentTypeId;
                                         }
                                         var colorString = "red";
                                         if (obj.TransactionType == Core.Models.TransactionType.Credit || obj.TransactionType == Core.Models.TransactionType.Refund)
                                         {
                                             colorString = "#22c8db";
                                         }
-                                        var ConvertedAmount = obj.Amount / Model.DollarRate;
-                                        var ConvertedNewBalance = obj.NewBalance / Model.DollarRate;
-                                        var ConvertedPreviousBalance = obj.PreviousBalance / Model.DollarRate;
                                         <tr style="color:@colorString; font-weight:bold" class="background_white">
 
                                             <td></td>
 
                                             <td>
-                                                <div class="pretty p-svg p-curve"> $@ConvertedAmount.ToString("F2")  </div>
-                                            </td>
-
-                                            <td class="flag">
-                                                <div class="pretty p-svg p-curve"> $@ConvertedPreviousBalance.ToString("F2") </div>
+                                                <div class="pretty p-svg p-curve"><i class="fab fa-adn text-white"></i>@obj.Amount.ToString("F0") Coins</div>
                                             </td>
 
                                             <td>
-                                                <div class="pretty p-svg p-curve"> $@ConvertedNewBalance.ToString("F2") </div>
+                                                <div class="pretty p-svg p-curve"><i class="fab fa-adn text-white"></i>@obj.NewBalance.ToString("F0") Coins</div>
+                                            </td>
+
+                                            <td class="flag">
+                                                <div class="pretty p-svg p-curve"><i class="fab fa-adn text-white"></i>@obj.PreviousBalance.ToString("F0") Coins</div>
                                             </td>
 
                                             <td class="flag">
@@ -259,8 +273,13 @@
                                             </td>
 
                                             <td>
+                                                <div class="pretty p-svg p-curve">@obj.Wallet.User.UserName</div>
+                                            </td>
+
+                                            <td>
                                                 <div class="pretty p-svg p-curve">@obj.Details  @paymentDescription</div>
                                             </td>
+
                                         </tr>
                                     }
                                 </tbody>
@@ -269,16 +288,16 @@
                         </div>
                         <br />
                         <div class="col-lg-2 col-md-12">
-                            Page @(Model.WalletHistoryRecords.PageNumber) of @Math.Ceiling((double)Model.WalletHistoryRecords.TotalItemCount / Model.WalletHistoryRecords.PageSize)
+                            Page @(Model.AGCWalletHistoryRecords.PageNumber) of @Math.Ceiling((double)Model.AGCWalletHistoryRecords.TotalItemCount / Model.AGCWalletHistoryRecords.PageSize)
                         </div>
                         <br />
                         <div class="col-md-6 col-lg-6 col-sm-6 col-5 float-right">
-                            @Html.Partial("_UserPager",Model)
+                            @Html.Partial("_AGCHistoryPager",Model)
                         </div>
                     }
                     else
                     {
-                        <h2 class="text-info text-center py-5">Dear @User.Identity.Name,Transaction History In This Range Not Found.</h2>
+                        <h2 class="text-info text-center py-5"> No AGC Transaction In This Time Range Available </h2>
                     }
                 </div>
             </div>

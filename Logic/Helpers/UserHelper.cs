@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using X.PagedList;
 
 namespace Logic.Helpers
 {
@@ -360,6 +361,43 @@ namespace Logic.Helpers
                 throw exp;
             }
 
+        }
+
+        public ApplicationUserViewModel ProfileDetailsToEdit(string userId)
+        {
+            var applicationViewModel = new ApplicationUserViewModel();
+            applicationViewModel = _context.ApplicationUser.Where(x => x.Id == userId)
+            .Select(b => new ApplicationUserViewModel
+            {
+                FirstName = b.FirstName,
+                LastName = b.LastName,
+                Email = b.Email,
+                Phonenumber = b.PhoneNumber,
+                UserName = b.UserName,
+                Id = b.Id,
+            }).FirstOrDefault();
+
+            return applicationViewModel;
+        }
+
+        public bool EditedProfileDetails(ApplicationUserViewModel profileDetails)
+        {
+            if (profileDetails != null)
+            {
+                var editUser = _context.ApplicationUser.Where(a => a.Id == profileDetails.Id && a.RefferrerId != null && a.UserName != null).FirstOrDefault();
+                if (editUser != null)
+                {
+                    editUser.FirstName = profileDetails.FirstName;
+                    editUser.LastName = profileDetails.LastName;
+                    editUser.Email = profileDetails.Email;
+                    editUser.PhoneNumber = profileDetails.Phonenumber;
+
+                    _context.Update(editUser);
+                    _context.SaveChanges();
+                    return true;
+                }
+            }
+            return false;
         }
 
         public IPagedList<ApplicationUserViewModel> GetReferredUsers(ApplicationUserSearchResultViewModel applicationUserViewModel, string userId, int pageNumber, int pageSize)

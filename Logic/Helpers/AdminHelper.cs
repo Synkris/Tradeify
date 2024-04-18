@@ -1,9 +1,16 @@
-﻿using Logic.IHelpers;
+﻿using Core.Config;
+using Core.DB;
+using Core.Models;
+using Core.ViewModels;
+using Logic.IHelpers;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using X.PagedList;
 
 namespace Logic.Helpers
 {
@@ -175,6 +182,58 @@ namespace Logic.Helpers
                 }
             }
             return "Dropdown failed To Removed";
+        }
+
+        public UserPackages GetUserPackage(string userId)
+        {
+            if (userId != null)
+            {
+                var userPackage = _context.UserPackages.Where(x => x.UserId == userId && x.Active && !x.Deleted).OrderByDescending(o => o.DateCreated).FirstOrDefault();
+                return userPackage;
+            }
+            return null;
+        }
+
+        public Cordinator GetCordinatorUserName(string cordinatorId)
+        {
+            if (cordinatorId != null)
+            {
+                var cordinator = _context.Cordinators.Where(a => a.CordinatorId == cordinatorId && !a.RemovedAsCordinator).FirstOrDefault();
+                if (cordinator != null)
+                {
+                    return cordinator;
+                }
+            }
+            return null;
+        }
+
+        public bool UpdatePaymentForm(int packageId, string userId)
+        {
+            if (packageId != 0 && userId != null)
+            {
+                var updatePaymentForm = _context.PaymentForms.Where(x => x.UserId == userId).FirstOrDefault();
+                if (updatePaymentForm != null)
+                {
+                    updatePaymentForm.PackageId = packageId;
+                    _context.Update(updatePaymentForm);
+                    _context.SaveChanges();
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        public bool CheckExistingDropdownName(string name, int drpKey)
+        {
+            if (name != null && drpKey != 0)
+            {
+                var checkName = _context.CommonDropdowns.Where(x => x.Name == name && x.DropdownKey == drpKey && x.Active && !x.Deleted).FirstOrDefault();
+                if (checkName != null)
+                {
+                    return true;
+                }
+            }
+            return false;
         }
 
     }

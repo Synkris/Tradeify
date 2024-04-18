@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using X.PagedList;
 
 namespace Logic.IHelpers
 {
@@ -29,6 +30,8 @@ namespace Logic.IHelpers
         Task<ApplicationUser> FindByIdAsync(string Id);
         string GetCurrentUserId(string username);
         Task<ImpersonationViewModel> CheckForImpersonation(string userName);
+        ApplicationUserViewModel ProfileDetailsToEdit(string userId);
+        bool EditedProfileDetails(ApplicationUserViewModel profileDetails);
         IPagedList<ApplicationUserViewModel> GetReferredUsers(ApplicationUserSearchResultViewModel applicationUserViewModel, string userId, int pageNumber, int pageSize);
     }
 }
