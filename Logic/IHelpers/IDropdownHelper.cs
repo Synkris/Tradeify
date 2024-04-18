@@ -17,7 +17,9 @@ namespace Logic.IHelpers
 		Task<List<CommonDropdowns>> GetCryptoDropdown(DropdownEnums dropdownKey, bool deleteOption = false);
 		List<DropdownEnumModel> GetDropDownEnumsList();
 		Task<bool> CreateDropdownsAsync(CommonDropdowns commonDropdown);
+		List<DropDown> DropdownOfRoles();
 
 
-	}
+
+    }
 }

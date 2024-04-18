@@ -460,5 +460,23 @@ namespace Logic.Helpers
 
         }
 
+        public List<RolesViewModel> GetUsersInAdminRole()
+        {
+            var usersInAdminRole = _userManager.GetUsersInRoleAsync("Admin").Result
+                .Select(x => new RolesViewModel { Name = x.Name, UserId = x.Id, RoleUserName = x.UserName }).ToList();
+            return usersInAdminRole;
+        }
+
+        public async Task<string> GetRolesName(RolesViewModel rolesname)
+        {
+
+            var role = _context.Roles.Where(c => c.Id == rolesname.RoleSelected).FirstOrDefault();
+            if (role != null)
+            {
+                return role.Name;
+            }
+            return null;
+        }
+
     }
 }

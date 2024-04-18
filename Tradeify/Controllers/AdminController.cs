@@ -253,6 +253,114 @@ namespace Tradeify.Controllers
         }
 
         [HttpGet]
+        public IActionResult Permission()
+        {
+            ViewBag.roles = _dropdownHelper.DropdownOfRoles();
+            try
+            {
+                var userWithAdminRole = _userHelper.GetUsersInAdminRole();
+                if (userWithAdminRole != null)
+                {
+                    return View(userWithAdminRole);
+                }
+                return View();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> AddToRoles(String roleData)
+        {
+            ViewBag.roles = _dropdownHelper.DropdownOfRoles();
+            try
+            {
+                var userRoleDatas = JsonConvert.DeserializeObject<RolesViewModel>(roleData);
+                if (userRoleDatas != null)
+                {
+                    var checkExistingUsername = _userHelper.FindByUserName(userRoleDatas.RoleUserName);
+                    if (checkExistingUsername != null)
+                    {
+
+                        if (checkExistingUsername.RegFeePaid != true)
+                        {
+                            return Json(new { isError = true, msg = "This user has not paid registeration fee, please inform the user", roleData });
+
+                        }
+                        var getRoleName = _userHelper.GetRolesName(userRoleDatas);
+
+                        if (getRoleName != null)
+                        {
+                            var checkIfIsInRole = _userManager.IsInRoleAsync(checkExistingUsername, getRoleName.Result).Result;
+                            if (checkIfIsInRole == true)
+                            {
+                                return Json(new { isError = true, msg = "This user already belong to this role", roleData });
+
+                            }
+                            else
+                            {
+                                await _userManager.AddToRoleAsync(checkExistingUsername, getRoleName.Result);
+                                return Json(new { isError = false, msg = "User added to role successfully" });
+
+                            }
+
+                        }
+                        return Json(new { isError = true, msg = "This role name not found, add a valid role name", roleData });
+
+
+                    }
+                    return Json(new { isError = true, msg = "This user does not exist, add a valid Username", roleData });
+
+                }
+                return View(roleData);
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> RemoveFromRoles(string userRole)
+        {
+            ViewBag.roles = _dropdownHelper.DropdownOfRoles();
+
+            try
+            {
+                var checkExistingUsername = _userHelper.FindByUserName(userRole);
+                if (checkExistingUsername != null)
+                {
+                    var currentRoles = await _userManager.GetRolesAsync(checkExistingUsername);
+
+                    if (currentRoles.Any())
+                    {
+                        var roleNameToRemove = currentRoles.Last();
+                        await _userManager.RemoveFromRoleAsync(checkExistingUsername, roleNameToRemove);
+                        var checkIfinAnyRole = await _userManager.GetRolesAsync(checkExistingUsername);
+                        if (checkIfinAnyRole != null)
+                        {
+                            await _userManager.AddToRoleAsync(checkExistingUsername, "User");
+                        }
+                        return Json(new { isError = false, msg = $"User removed from role '{roleNameToRemove}' successfully!" });
+                    }
+                    else
+                    {
+                        return Json(new { isError = true, msg = "User is not in any roles" });
+                    }
+                }
+                return Json(new { isError = true, msg = "This user does not exist, add a valid Username" });
+            }
+            catch (Exception ex)
+            {
+
+                return StatusCode(500, "Internal Server Error");
+            }
+        }
+
+        [HttpGet]
         public async Task<IActionResult> AllWalletHistories(string userName, DateTime sortTypeFrom, DateTime sortTypeTo, string transactionType, int pageNumber, int pageSize)
         {
             try

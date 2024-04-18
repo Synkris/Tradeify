@@ -1,0 +1,167 @@
+﻿@model IEnumerable<Core.ViewModels.RolesViewModel>
+
+
+@{
+    ViewData["Title"] = "AddToRoles";
+    Layout = "~/Views/Shared/_AdminDashboardLayout.cshtml";
+
+}
+
+<div class="deposit_list_wrapper float_left header_text">
+
+    <div class="row">
+
+        <div class="col-md-12 col-lg-12 col-sm-12 col-12 header_text">
+            <div class="sv_heading_wraper">
+
+                <h3>List of All Admin Roles</h3>
+
+            </div>
+
+            <div class="col-auto float-right ml-auto">
+                <a href="#" class="btn button_color font-weight-bold p-2" onclick="OpenAddAdminRoleForm()">
+                    <i class="fa fa-plus"></i> Add Admin Roles
+                </a>
+            </div>
+
+        </div>
+    </div>
+
+    <!--  profile wrapper start -->
+    <div class="last_transaction_wrapper float_left">
+        <div class="row">
+            <div class="col-md-12 col-lg-12 col-sm-12 col-12">
+
+                <div class="crm_customer_table_main_wrapper float_left">
+
+                    <div class="crm_ct_search_wrapper">
+                        <div class="crm_ct_search_bottom_cont_Wrapper"> </div>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="myTable table datatables cs-table crm_customer_table_inner_Wrapper">
+                            <thead>
+                                <tr>
+                                    <th class="width_table1"> User</th>
+                                    <th class="width_table1">Role Username</th>
+                                    <th class="width_table1 text-center">Action</th>
+                                </tr>
+                            </thead>
+                            @if (Model != null && Model.Count() > 0)
+                            {
+                                <tbody>
+                                    @foreach (var roles in Model)
+                                    {
+                                        <tr class="background_white">
+                                            <td>
+                                                <div class="pretty p-svg p-curve">@roles.Name</div>
+                                            </td>
+                                            <td>
+                                                <div class="pretty p-svg p-curve">@roles.RoleUserName</div>
+                                            </td>
+                                            <td>
+                                                <nav class="navbar navbar-expand justify-content-center">
+                                                    <button type="button" class="btn button_color mr-2 p-2"
+                                                    onclick="selectUserRoleToBeRemoved('@roles.RoleUserName')" 
+                                                    data-target="#remove_role" data-toggle="modal">
+                                                        <i class="fa fa-trash m-r-5"></i> Remove Role
+                                                    </button>
+                                                </nav>
+                                            </td>
+
+                                        </tr>
+                                    }
+                                </tbody>
+                            }
+
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    </div>
+
+    <div class="crm_customer_table_main_wrapper float_left">
+        <div class="crm_ct_search_wrapper">
+
+        <div class="modal fade question_modal" id="addRoleModal" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content bg-dark">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+                            <div class="sv_question_pop float_left">
+
+                                <div class="sv_heading_wraper heading_wrapper_dark dark_heading hwd pt-5 mt-2">
+                                    
+                                    <h4>  <i class='fas fa-laptop-code'></i> 
+                                        Enter the <b>Username</b> of the GGC Member and select the Role.
+                                    </h4>
+                                </div>
+
+                                <div class="change_field px-3 mt-3">
+                                    <input id="userName" type="text" class="form-control" required placeholder="UserName">
+                                </div>
+                                <div class="change_field px-3 mt-3">
+                                    <select id="roleSelected" class="select" required asp-items="@(new SelectList(@ViewBag.roles,  "Id", "Name" ))"></select>
+                                </div>
+
+                                <div class="row p-3 mb-3">
+                                    <div class="col-sm-6 m-auto mb-3">
+                                        <div class="submit-section mb-3">
+                                            <button type="button" class="btn button_color btn-block" onclick="addNewRole()"> Add to Roles </button>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6 m-auto mb-3">
+                                        <div class="submit-section mb-3">
+                                            <button type="button" class="btn button_color btn-block" data-dismiss="modal"> Cancel </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+   
+        </div>
+
+        @*Remove From Admin role Modal*@
+           <div class="modal custom-modal fade" id="remove_role" role="dialog">
+                <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-body bg-dark">
+                    <div class="form-header text-center">
+                        <div class="form-header text-center">
+                            <h4 class="font-weight-bold mb-3 mt-1 text-white"> Remove Member  </h4>
+                            <p class="text-white">Are you sure you want to remove this Member?</p>
+                        </div>
+                    </div>
+                    <div class="modal-btn delete-action">
+
+                        <div class="row p-3 mt-2">
+                            <div class="form-group d-none">
+                                <input class="form-control" id="delRole" value="id" type="text">
+                            </div>
+                            <div class="col-sm-6 m-auto mt-5 mb-5">
+                                <div class="submit-section mb-3">
+                                    <button type="button" class="btn button_color btn-block" onclick="deleteUserFromAdminRole()"> <b> Remove from Role</b> </button>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 m-auto mt-5 mb-5">
+                                <div class="submit-section mb-3">
+                                    <button type="button" class="btn button_color btn-block" data-dismiss="modal"> Cancel </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+         @*/Remove From Admin role Modal*@
+    </div>
+
