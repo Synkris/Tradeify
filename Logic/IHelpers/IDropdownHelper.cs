@@ -1,4 +1,5 @@
 ﻿using Core.Models;
+using Logic.Helper;
 using Logic.Helpers;
 using System;
 using System.Collections.Generic;
@@ -18,6 +19,7 @@ namespace Logic.IHelpers
 		List<DropdownEnumModel> GetDropDownEnumsList();
 		Task<bool> CreateDropdownsAsync(CommonDropdowns commonDropdown);
 		List<DropDown> DropdownOfRoles();
+		List<EnumDropdownModalViewModel> GetMaxGenerationEnums();
 
 
 
