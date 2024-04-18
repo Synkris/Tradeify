@@ -1,5 +1,4 @@
-﻿
-function createpackages() {
+﻿function createpackages() {
     var defaultBtnValue = $('#submit_btn').html();
     $('#submit_btn').html("Please wait...");
     $('#submit_btn').attr("disabled", true);
@@ -12,8 +11,7 @@ function createpackages() {
         GenerationId: $('#generationId').val(),
     };
 
-    if (data.Name != "" && data.Price != 0 && data.BonusAmount != 0 && data.Description != "" && data.GenerationId != 0) 
-    {
+    if (data.Name != "" && data.Price != 0 && data.Description != "" && data.GenerationId != 0) {
         $.ajax({
             type: 'POST',
             url: '/RegistrationPackage/CreateRegPacks',
@@ -22,30 +20,25 @@ function createpackages() {
             {
                 CreatePackageData: JSON.stringify(data)
             },
-            success: function (result)
-            {
+            success: function (result) {
                 $('#submit_btn').html(defaultBtnValue);
-                if (!result.isError)
-                {
+                if (!result.isError) {
                     var url = '/RegistrationPackage/Index';
                     successAlertWithRedirect(result.msg, url);
                 }
-                else
-                {
+                else {
                     $('#submit_btn').attr("disabled", false);
                     errorAlert(result.msg);
                 }
             },
-            error: function (ex)
-            {
+            error: function (ex) {
                 $('#submit_btn').html(defaultBtnValue);
                 $('#submit_btn').attr("disabled", false);
                 errorAlert("Network failure, please try again");
             }
         });
     }
-    else
-    {
+    else {
         $('#submit_btn').html(defaultBtnValue);
         $('#submit_btn').attr("disabled", false);
         errorAlert("Please fill the form Correctly");
@@ -62,14 +55,18 @@ function editPackage(id) {
         },
         success: function (result) {
             if (!result.isError) {
+                debugger;
                 var resp = result.data;
                 $('#editId').val(resp.id);
                 $('#edit_Name').val(resp.name);
                 $('#edit_Price').val(resp.price);
                 $('#edit_BonusAmount').val(resp.bonusAmount);
                 $('#edit_description').val(resp.description);
-                $('#edit_generationId option[value="'+resp.maxGeneration+'"]').attr("selected", "selected");
+                $('#generationId option[value="' + resp.maxGeneration + '"]').attr("selected", "selected");
+                //$('#generationId').val(resp.maxGeneration);
                 $('#edit_Package').modal('show');
+                $('.select').niceSelect('update');
+
             } else {
                 errorAlert(result.msg);
             }
@@ -78,23 +75,25 @@ function editPackage(id) {
             errorAlert("Network failure, please try again");
         }
     });
-} 
+}
 
 function PackageToSave() {
     var defaultBtnValue = $('#submit-btn').html();
     $('#submit-btn').html("Please wait...");
     $('#submit-btn').attr("disabled", true);
+    debugger;
+    var se = $("li.option.selected").attr("data-value");
     var data = {
         Id: $("#editId").val(),
         Name: $("#edit_Name").val(),
         Price: $("#edit_Price").val(),
         BonusAmount: $("#edit_BonusAmount").val(),
         Description: $("#edit_description").val(),
-        GenerationId: $("#generationId").val(),       
+        //GenerationId: $("#generationId").val(),       
+        GenerationId: $("li.option.selected").attr("data-value"),
     };
-    if (data.Name !== "" && data.Price !== "" && data.BonusAmount != "" && data.Description != "" && data.GenerationId != "0")
-    {
-        var registrationPackage= JSON.stringify(data);
+    if (data.Name !== "" && data.Price !== "" && data.Description != "" && data.GenerationId != "0") {
+        var registrationPackage = JSON.stringify(data);
         $.ajax({
             type: 'POST',
             url: '/RegistrationPackage/EditedPackage',
@@ -154,5 +153,3 @@ function DeletePackage() {
 
     });
 }
-
-
