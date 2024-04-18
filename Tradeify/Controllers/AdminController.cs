@@ -193,6 +193,45 @@ namespace Tradeify.Controllers
             return Json(new { isError = true, msg = "Error Occurred" });
         }
 
+        [HttpGet]
+        public IActionResult Cordinator()
+        {
+            var cordinators = _adminHelper.listOfCordinators();
+            if (cordinators != null && cordinators.Count() > 0)
+            {
+                return View(cordinators);
+            }
+            return View(cordinators);
+        }
+
+        [HttpPost]
+        public JsonResult AddCordinator(string cordinatorUserName)
+        {
+            if (cordinatorUserName != null)
+            {
+
+                var loggedInUser = _userHelper.FindByUserName(User.Identity.Name);
+                var checkExistingCordinatorUserName = _adminHelper.CheckExistingCordinatorUserName(cordinatorUserName);
+                if (checkExistingCordinatorUserName == true)
+                {
+                    return Json(new { isError = true, msg = "Cordinator Name Already Exist" });
+                }
+                var getNewCordinatorDetails = _adminHelper.GetNewCordinatorDetails(cordinatorUserName);
+                if (getNewCordinatorDetails != null)
+                {
+                    var distributors = _adminHelper.CreateCordinator(getNewCordinatorDetails, loggedInUser.UserName);
+                    if (distributors != null)
+                    {
+                        return Json(new { isError = false, msg = "New Cordinator Added Successfully" });
+                    }
+                    return Json(new { isError = true, msg = "Unable To create New Cordinator" });
+                }
+                return Json(new { isError = true, msg = "Unable To Fetch User" });
+
+            }
+            return Json(new { isError = true, msg = "Please enter Valid Cordinator UserName" });
+        }
+
         [Authorize]
         [HttpPost]
         public JsonResult GetNameOfDropDownSelected(int dropdownId)
