@@ -502,5 +502,45 @@ namespace Logic.Helpers
 
         }
 
+        public List<PaymentFormViewModel> CoinDetails(string userId)
+        {
+            try
+            {
+                var paymentFormViewModel = new List<PaymentFormViewModel>();
+                if (userId != null)
+                {
+                    paymentFormViewModel = _context.PaymentForms.Where(x => x.UserId == userId && x.PaymentTypeId == PaymentType.TokenFee)
+                    .Select(x => new PaymentFormViewModel()
+                    {
+                        Amount = x.Amount,
+                        Date = x.Date,
+                        Details = x.Details,
+                        NoOfTokensBought = x.NoOfTokensBought,
+                        Status = x.Status,
+                    }).ToList();
+                }
+                return paymentFormViewModel;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public CompanySettings GetCompanySettingsDetails()
+        {
+            var companySettings = _context.CompanySettings.Where(x => x.Id != 0 && x.Active && !x.Deleted).FirstOrDefault();
+            if (companySettings != null)
+            {
+                return companySettings;
+            }
+            return null;
+        }
+
+        public Packages GetPackageUgradeDetails(int packageId)
+        {
+            return _context.Packages.Where(x => x.Id == packageId && x.Active && !x.Deleted).FirstOrDefault();
+        }
+
     }
 }

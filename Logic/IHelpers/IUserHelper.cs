@@ -36,5 +36,8 @@ namespace Logic.IHelpers
         List<RolesViewModel> GetUsersInAdminRole();
         Task<string> GetRolesName(RolesViewModel rolesname);
         News GetNewsById(int newsId);
+        List<PaymentFormViewModel> CoinDetails(string userId);
+        CompanySettings GetCompanySettingsDetails();
+        Packages GetPackageUgradeDetails(int packageId);
     }
 }

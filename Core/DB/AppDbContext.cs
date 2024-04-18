@@ -34,5 +34,6 @@ namespace Core.DB
         public DbSet<WalletHistory> WalletHistories { get; set; }
         //public DbSet<MatchingRequest> MatchingRequests { get; set; }
         public DbSet<News> News { get; set; }
+        public DbSet<CompanySettings> CompanySettings { get; set; }
     }
 }

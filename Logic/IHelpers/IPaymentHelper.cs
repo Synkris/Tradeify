@@ -30,6 +30,12 @@ namespace Logic.IHelpers
         IPagedList<AGCWalletHistoryViewModel> SortAGCWalletHistories(AGCSearchResultViewModel agcHistoryViewModel, int pageNumber, int pageSize);
         Task<AGCWallet> GetUserAGCWallet(string userId);
         IPagedList<WalletHistoryViewModel> SortUsersWalletHistory(WalletHistorySearchResultViewModel viewModel, int pageNumber, int pageSize);
+        bool CheckifDeactivated(string userId);
+        bool CheckIfUserhasPendingActPayment(string userId);
+        bool CheckForNoOfTokens(string token);
+        bool CreateCoinPayment(PaymentFormViewModel paymentDetails);
+        bool CheckActivationAmount(decimal amount);
+        bool CreateCryptoTokenPayment(PaymentFormViewModel paymentDetails);
 
 
 

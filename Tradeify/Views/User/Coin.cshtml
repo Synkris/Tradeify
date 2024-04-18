@@ -1,0 +1,157 @@
+﻿@model Core.ViewModels.PaymentFormViewModel
+@{
+    ViewData["Title"] = "Coins";
+    Layout = "~/Views/Shared/_DashboardLayout.cshtml";
+}
+
+<div class="deposit_list_wrapper float_left header_text">
+    <div class="row">
+        <div class="col-md-12 col-lg-12 col-sm-12 col-12 header_text">
+            <div class="sv_heading_wraper">
+                <h3 class="ml-3"> Token Purchase </h3>
+            </div>
+
+            <div class="col-auto float-right ml-auto">
+                <a href="#" class="btn button_color font-weight-bold p-2" data-toggle="modal" data-target="#addToken">
+                    <i class="fa fa-plus"></i> Purchase Token(s)
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!--  profile wrapper start -->
+    <div class="last_transaction_wrapper float_left">
+        <div class="row">
+            <div class="col-md-12 col-lg-12 col-sm-12 col-12">
+
+                <div class="crm_customer_table_main_wrapper float_left">
+
+                    <div class="crm_ct_search_wrapper">
+                        <div class="crm_ct_search_bottom_cont_Wrapper"> </div>
+                    </div>
+
+                    <div class="table-responsive">
+                        <table class="myTable table datatables cs-table crm_customer_table_inner_Wrapper">
+                            <thead>
+                                <tr>
+                                    @*<th class="width_table1"> S/N </th>*@
+                                    <th class="width_table1"> Detail </th>
+                                    <th class="width_table1"> Amount Paid</th>
+                                    <th class="width_table1"> Date bought</th>
+                                    <th class="width_table1"> Tokens bought</th>
+                                    <th class="width_table1"> Status </th>
+                                </tr>
+                            </thead>
+                            @if (Model != null && Model.UserTokenDetails != null)
+                            {
+                                <tbody>
+                                    @foreach (var token in Model.UserTokenDetails)
+                                    {
+                                        <tr class="background_white">
+                                           @* <td> </td>*@
+                                            <td>
+                                                <div class="pretty p-svg p-curve">@token.Details</div>
+                                            </td>
+                                            <td>
+                                                <div class="pretty p-svg p-curve"> $@token.Amount</div>
+                                            </td>
+                                            <td>
+                                                <div class="pretty p-svg p-curve">@token.Date.ToString("D")</div>
+                                            </td>
+                                            <td>
+                                                <div class="pretty p-svg p-curve">@token.NoOfTokensBought</div>
+                                            </td>
+                                            @if (token.Status == Core.Models.Status.Approved)
+                                            {
+                                                <td>
+                                                    <span class="badge badge-success p-2">Approved</span>
+                                                </td>
+                                            }
+                                            else if (token.Status == Core.Models.Status.Rejected)
+                                            {
+                                                <td> 
+                                                    <span class="badge badge-danger p-2"> Declined </span>
+                                                </td>
+                                            }
+                                            else
+                                            {
+                                                <td>
+                                                    <span class="badge badge-pill badge-warning p-2"> Pending </span>
+                                                </td>
+                                            }
+                                           
+                                        </tr>
+                                    }
+                                </tbody>
+                            }
+
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="crm_customer_table_main_wrapper float_left">
+        <div class="crm_ct_search_wrapper">
+
+            <div class="modal fade question_modal" id="addToken" role="dialog">
+                <div class="modal-dialog">
+                    <div class="modal-content bg-dark">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <div class="row">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+                                <div class="sv_question_pop float_left">
+                                    <h1 class="text-center text-white"> Calculate Token Amount </h1>
+                                    <p class="text-center text-white p"> Add the number of tokens you want to buy </p>
+                                    <p class="text-center text_color2 mt-0 pt-0"> <small>You can only purchase from @Model?.TokenMinimum to @Model?.TokenMaximum tokens </small></p>
+
+                                    <div class="row p-4 mt-2">
+                                        <div class="col-sm-12 col-lg-12 change_focus">
+                                            <input class="form-control" id="minToken" value="@Model?.TokenMinimum" type="number" hidden>
+                                            <input class="form-control" id="maxToken" value="@Model?.TokenMaximum" type="number" hidden>
+                                            <input class="form-control" id="amountPerToken" value="@Model?.AmountPerToken" type="number" hidden>
+                                           
+                                            <label> Number of Tokens: </label>
+                                            <input class="form-control" id="noOfTokens" type="number" onkeyup="giveTotalAmount()">
+                                            <p class="text_color2 mt-0 pt-0"> <small> Add the number of tokens you want and see the total amount </small></p>
+
+                                        </div>
+
+                                        <div class="col-sm-12 col-lg-12 mt-3 change_focus position-relative">
+                                            <label> <b> TOTAL AMOUNT: </b> </label>
+                                            <input class="form-control totalTokenAndAmount" type="number" disabled>
+                                            <div class="position-absolute text-dark d-flex justify-content-between total_text">
+                                                @*<p class="ml-4">Token: <b id="totalToken">0</b></p>*@
+                                                <p class="ml-4"> <b id="totalAmount">$ 0.00</b></p>
+                                               @* <p class="mr-4">Amount: <b id="totalAmount">&#x20A6; 0.00</b></p>*@
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row p-3 mb-3">
+                                        <div class="col-sm-6 m-auto mb-3">
+                                            <div class="submit-section mb-3">
+                                                <a class="btn button_color btn-block" asp-action="Payment" asp-controller="User"> Purchase Token </a>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6 m-auto mb-3">
+                                            <div class="submit-section mb-3">
+                                                <button type="button" class="btn button_color btn-block" data-dismiss="modal"> Cancel </button>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+</div>

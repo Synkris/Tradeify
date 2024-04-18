@@ -20,6 +20,7 @@ namespace Logic.IHelpers
 		Task<bool> CreateDropdownsAsync(CommonDropdowns commonDropdown);
 		List<DropDown> DropdownOfRoles();
 		List<EnumDropdownModalViewModel> GetMaxGenerationEnums();
+		List<DropdownEnumModel> GetPaymentTypeDropDownEnumsList();
 
 
 

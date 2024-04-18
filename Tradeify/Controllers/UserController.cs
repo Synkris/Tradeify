@@ -510,5 +510,230 @@ namespace Tradeify.Controllers
 			return Json(new { isError = true, msg = "Could Not find Member" });
 		}
 
-	}
+        public IActionResult RegistrationSuccessPage()
+        {
+            return View();
+        }
+
+        public IActionResult Coin()
+        {
+            var userId = _userHelper.GetCurrentUserId(User.Identity.Name);
+            var userTokens = _userHelper.CoinDetails(userId);
+            var companySettings = _userHelper.GetCompanySettingsDetails();
+            var coinDetails = new PaymentFormViewModel()
+            {
+                TokenMaximum = companySettings.MaximumToken,
+                TokenMinimum = companySettings.MinimumToken,
+                AmountPerToken = companySettings.Tokenamount,
+                UserTokenDetails = userTokens,
+            };
+            return View(coinDetails);
+        }
+        public IActionResult Payment()
+        {
+            return View();
+        }
+
+        public IActionResult PaymentDetails()
+        {
+            ViewBag.PaymentType = _dropdownHelper.GetPaymentTypeDropDownEnumsList();
+            ViewBag.Bank = _dropdownHelper.GetBankDropdownByKey(DropdownEnums.BankList).Result;
+            ViewBag.Package = _dropdownHelper.DropdownOfPackages();
+
+            return View();
+        }
+
+        [HttpPost]
+        public JsonResult CoinPayment(string details)
+        {
+            var loggedInUserId = _userHelper.GetCurrentUserId(User.Identity.Name);
+            if (details != null)
+            {
+                var paymentFormViewModel = JsonConvert.DeserializeObject<PaymentFormViewModel>(details);
+                if (paymentFormViewModel != null)
+                {
+                    paymentFormViewModel.UserId = loggedInUserId;
+                    var checkRegPayment = _paymentHelper.CheckIfUserHasPaidRegPayment(paymentFormViewModel.UserId);
+                    if (!checkRegPayment)
+                    {
+                        return Json(new { isError = true, msg = "You have not paid for Registration" });
+                    }
+                    if (paymentFormViewModel.PaymentTypeId == PaymentType.TokenFee || paymentFormViewModel.PaymentTypeId == PaymentType.PackageFee)
+                    {
+                        var checkIfDeactivated = _paymentHelper.CheckifDeactivated(paymentFormViewModel.UserId);
+                        if (checkIfDeactivated)
+                        {
+                            return Json(new { isError = true, msg = "Sorry, You need to pay activation fee to continue." });
+                        }
+                    }
+                    if (paymentFormViewModel.PaymentTypeId == PaymentType.ReActivationFee)
+                    {
+                        var checkPendingPayment = _paymentHelper.CheckIfUserhasPendingActPayment(paymentFormViewModel.UserId);
+                        if (checkPendingPayment)
+                        {
+                            return Json(new { isError = true, msg = "You have a pending Activation Payment" });
+                        }
+                    }
+                    if (paymentFormViewModel.PaymentTypeId == PaymentType.PackageFee)
+                    {
+                        var checkPackageUpgradeAmount = CheckPackageUpgradeAmount(paymentFormViewModel.Amount, paymentFormViewModel.UserId, paymentFormViewModel.PackageId);
+                        if (!checkPackageUpgradeAmount)
+                        {
+                            return Json(new { isError = true, msg = "This is not the correct amount to pay" });
+                        }
+                        else if (paymentFormViewModel.Amount < 0)
+                        {
+                            return Json(new { isError = true, msg = "This is not the correct package for upgrade" });
+                        }
+                    }
+
+                    if (paymentFormViewModel.PaymentTypeId != PaymentType.ReActivationFee && paymentFormViewModel.PaymentTypeId != PaymentType.PackageFee)
+                    {
+                        var checkNoOfTokens = _paymentHelper.CheckForNoOfTokens(paymentFormViewModel?.TokensBought);
+                        if (!checkNoOfTokens)
+                        {
+                            return Json(new { isError = true, msg = "You can not buy this number of tokens" });
+                        }
+                    }
+
+                    if (paymentFormViewModel.BankAccountId == 0)
+                    {
+                        return Json(new { isError = true, msg = "Bank name not selected" });
+                    }
+                    var coinPayment = _paymentHelper.CreateCoinPayment(paymentFormViewModel);
+                    if (coinPayment)
+                    {
+                        if (paymentFormViewModel.PaymentTypeId == PaymentType.TokenFee)
+                        {
+                            return Json(new { isError = false, msg = "Coin payment fee submitted successfully." });
+                        }
+                        else if (paymentFormViewModel.PaymentTypeId == PaymentType.ReActivationFee)
+                        {
+                            return Json(new { isError = false, data = paymentFormViewModel.PaymentTypeId, msg = "Re-Activation fee payment submitted successfully." });
+                        }
+                        else if (paymentFormViewModel.PaymentTypeId == PaymentType.PackageFee)
+                        {
+                            return Json(new { isError = false, data = paymentFormViewModel.PaymentTypeId, msg = "Package fee payment submitted successfully." });
+                        }
+
+                    }
+                    return Json(new { isError = true, msg = "Unable to Submit" });
+                }
+            }
+            return Json(new { isError = true, msg = "Network Failure" });
+        }
+        [HttpGet]
+        public IActionResult CryptoPaymentDetails()
+        {
+            ViewBag.PaymentType = _dropdownHelper.GetPaymentTypeDropDownEnumsList();
+            ViewBag.CryptoWallets = _dropdownHelper.GetCryptoDropdown(DropdownEnums.BankList).GetAwaiter().GetResult();
+            ViewBag.Package = _dropdownHelper.DropdownOfPackages();
+
+            return View();
+        }
+        [HttpPost]
+        public JsonResult CryptoCoinPayment(string details)
+        {
+            var loggedInUserId = _userHelper.GetCurrentUserId(User.Identity.Name);
+            if (details != null)
+            {
+                var paymentFormViewModel = JsonConvert.DeserializeObject<PaymentFormViewModel>(details);
+                if (paymentFormViewModel != null)
+                {
+                    paymentFormViewModel.UserId = loggedInUserId;
+                    var checkRegPayment = _paymentHelper.CheckIfUserHasPaidRegPayment(paymentFormViewModel.UserId);
+                    if (!checkRegPayment)
+                    {
+                        return Json(new { isError = true, msg = "You have not paid for Registration" });
+                    }
+                    if (paymentFormViewModel.PaymentTypeId == PaymentType.TokenFee || paymentFormViewModel.PaymentTypeId == PaymentType.PackageFee)
+                    {
+                        var checkIfDeactivated = _paymentHelper.CheckifDeactivated(paymentFormViewModel.UserId);
+                        if (checkIfDeactivated)
+                        {
+                            return Json(new { isError = true, msg = "Sorry, You need to pay activation fee to continue." });
+                        }
+                    }
+                    if (paymentFormViewModel.PaymentTypeId == PaymentType.ReActivationFee)
+                    {
+                        var checkPendingPayment = _paymentHelper.CheckIfUserhasPendingActPayment(paymentFormViewModel.UserId);
+                        if (checkPendingPayment)
+                        {
+                            return Json(new { isError = true, msg = "You have a pending Activation Payment" });
+                        }
+                    }
+                    if (paymentFormViewModel.PaymentTypeId == PaymentType.ReActivationFee)
+                    {
+                        var checkActivationAmount = _paymentHelper.CheckActivationAmount(paymentFormViewModel.Amount);
+                        if (!checkActivationAmount)
+                        {
+                            return Json(new { isError = true, msg = "This is not the correct amount to pay" });
+                        }
+                    }
+                    if (paymentFormViewModel.PaymentTypeId == PaymentType.PackageFee)
+                    {
+                        var checkPackageUpgradeAmount = CheckPackageUpgradeAmount(paymentFormViewModel.Amount, paymentFormViewModel.UserId, paymentFormViewModel.PackageId);
+                        if (!checkPackageUpgradeAmount)
+                        {
+                            return Json(new { isError = true, msg = "This is not the correct amount to pay" });
+                        }
+                        else if (paymentFormViewModel.Amount < 0)
+                        {
+                            return Json(new { isError = true, msg = "This is not the correct package for upgrade" });
+                        }
+                    }
+                    if (paymentFormViewModel.PaymentTypeId != PaymentType.ReActivationFee && paymentFormViewModel.PaymentTypeId != PaymentType.PackageFee)
+                    {
+                        var checkNoOfTokens = _paymentHelper.CheckForNoOfTokens(paymentFormViewModel.TokensBought);
+                        if (!checkNoOfTokens)
+                        {
+                            return Json(new { isError = true, msg = "You can not buy this number of tokens" });
+                        }
+                    }
+                    if (paymentFormViewModel.BankAccountId == 0)
+                    {
+                        return Json(new { isError = true, msg = "Wallet name not selected" });
+                    }
+                    var coinPayment = _paymentHelper.CreateCryptoTokenPayment(paymentFormViewModel);
+                    if (coinPayment)
+                    {
+                        if (paymentFormViewModel.PaymentTypeId == PaymentType.TokenFee)
+                        {
+                            return Json(new { isError = false, msg = "Crypto Fee Submitted Successfully." });
+                        }
+                        else if (paymentFormViewModel.PaymentTypeId == PaymentType.ReActivationFee)
+                        {
+                            return Json(new { isError = false, data = paymentFormViewModel.PaymentTypeId, msg = "Crypto fee for Re-Activation payment submitted successfully." });
+                        }
+                        else if (paymentFormViewModel.PaymentTypeId == PaymentType.PackageFee)
+                        {
+                            return Json(new { isError = false, data = paymentFormViewModel.PaymentTypeId, msg = "Crypto fee for Package payment submitted successfully." });
+                        }
+
+                    }
+                    return Json(new { isError = true, msg = "Unable to Submit" });
+                }
+            }
+            return Json(new { isError = true, msg = "Network Failure" });
+        }
+
+        public bool CheckPackageUpgradeAmount(decimal amount, string userId, int packageId)
+        {
+
+            var userPackage = _paymentHelper.GetUserPackage(userId);
+            var newPackageDetails = _userHelper.GetPackageUgradeDetails(packageId);
+            if (newPackageDetails.Price.HasValue)
+            {
+                var newPackagePrice = (decimal)newPackageDetails.Price;
+                var userPackageAmountToPay = newPackagePrice - userPackage.Amount;
+
+                if (userPackageAmountToPay == amount)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+    }
 }
