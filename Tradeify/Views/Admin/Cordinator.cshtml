@@ -1,0 +1,190 @@
+﻿@model IEnumerable<Core.ViewModels.CordinatorViewModel>
+@{
+    ViewData["Title"] = "Cordinator";
+    Layout = "~/Views/Shared/_AdminDashboardLayout.cshtml";
+}
+
+<div class="deposit_list_wrapper float_left header_text">
+    <div class="row">
+        <div class="col-md-12 col-lg-12 col-sm-12 col-12 header_text">
+            <div class="sv_heading_wraper">
+                <h3>List of All Cordinator</h3>
+            </div>
+
+            <div class="col-auto float-right ml-auto">
+                <a href="#" class="btn button_color font-weight-bold p-2" onclick="OpenCordinatorForm()">
+                    <i class="fa fa-plus"></i> Add Cordinator
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!--  profile wrapper start -->
+    <div class="last_transaction_wrapper float_left">
+        <div class="row">
+            <div class="col-md-12 col-lg-12 col-sm-12 col-12">
+
+                <div class="crm_customer_table_main_wrapper float_left">
+
+                    <div class="crm_ct_search_wrapper">
+                        <div class="crm_ct_search_bottom_cont_Wrapper"> </div>
+                    </div>
+
+                    <div class="table-responsive">
+                        <table class="myTable table datatables cs-table crm_customer_table_inner_Wrapper">
+                            <thead>
+                                <tr>
+                                    <th class="width_table1">Name</th>
+                                    <th class="width_table1">Cordinator UserName</th>
+                                    <th class="width_table1">Date Added</th>
+                                    <th class="width_table1">Added By</th>
+                                    <th class="width_table1 text-center">Action</th>
+                                </tr>
+                            </thead>
+                            @if (Model != null && Model.Count() > 0)
+                            {
+                                <tbody>
+                                    @foreach (var cordinator in Model)
+                                    {
+                                        <tr class="background_white">
+                                            <td>
+                                                <div class="pretty p-svg p-curve">@cordinator.Name</div>
+                                            </td>
+                                            <td>
+                                                <div class="pretty p-svg p-curve">@cordinator.CordinatorUserName</div>
+                                            </td>
+                                            <td>
+                                                <div class="pretty p-svg p-curve">@cordinator.DateAdded.ToString("D")</div>
+                                            </td>
+                                            <td class="flag">
+                                                <div class="pretty p-svg p-curve">@cordinator.AddedBy</div>
+                                            </td>
+                                            <td>
+                                                <nav class="navbar navbar-expand">
+                                                    <button type="button" class="btn button_color mr-2 p-2" onclick="selectCordinatorToBeRemoved('@cordinator.Id')" data-target="#delete_cordinator" data-toggle="modal">
+                                                        <i class="fa fa-trash m-r-5"></i> Remove
+                                                    </button>
+                                                </nav>
+                                            </td>
+
+                                        </tr>
+                                    }
+                                </tbody>
+                            }
+
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+    <div class="crm_customer_table_main_wrapper float_left">
+        <div class="crm_ct_search_wrapper">
+
+            <div class="modal fade question_modal" id="cordinatorModal" role="dialog">
+                <div class="modal-dialog">
+                    <div class="modal-content bg-dark">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <div class="row">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+                                <div class="sv_question_pop float_left">
+                                    <h1 class="text-center text-white">
+                                        Add Cordinator
+                                    </h1>
+                                    <div class="search_alert_box float_left" id="searchedNames">
+                                        <div class="change_field row">
+                                            <label class="col-form-label col-12 pl-0">Type Cordinator UserName:</label>
+                                            <input class="form-control col-12 userAutoComp" id="cordinatorUserName">
+                                        </div>
+                                    </div>
+                                    <div class="row p-3 mb-3">
+                                        <div class="col-sm-6 m-auto mb-3">
+                                            <div class="submit-section mb-3">
+                                                <button type="button" class="btn button_color btn-block" onclick="addNewCordinator()"> Add Cordinator </button>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6 m-auto mb-3">
+                                            <div class="submit-section mb-3">
+                                                <button type="button" class="btn button_color btn-block" data-dismiss="modal"> Cancel </button>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        @*Delete Cordinator Modal*@
+        <div class="modal custom-modal fade" id="delete_cordinator" role="dialog">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-body bg-dark">
+                        <div class="form-header text-center">
+                            <div class="form-header text-center">
+                                <h4 class="font-weight-bold mb-3 mt-1 text-white"> Remove Cordinator </h4>
+                                <p class="text-white">Are you sure you want to remove this Cordinator?</p>
+                            </div>
+                        </div>
+                        <div class="modal-btn delete-action">
+
+                            <div class="row p-3 mt-2">
+                                <div class="form-group d-none">
+                                    <input class="form-control" id="delId" value="id" type="text">
+                                </div>
+                                <div class="col-sm-6 m-auto mt-5 mb-5">
+                                    <div class="submit-section mb-3">
+                                        <button type="button" class="btn button_color btn-block" onclick="deleteCordinator()"> <b> Remove Cordinator </b> </button>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 m-auto mt-5 mb-5">
+                                    <div class="submit-section mb-3">
+                                        <button type="button" class="btn button_color btn-block" data-dismiss="modal"> Cancel </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        @*/Delete Cordinator Modal*@
+    </div>
+
+
+</div>
+<script>
+
+    $(document).ready(function () {
+
+        $(".userAutoComp").autocomplete({
+            minLength: 3,
+            appendTo: "#searchedNames",
+            source: function (request, response) {
+                debugger;
+                $.ajax({
+                    url: '/Admin/GetAllUsers',
+                    dataType: 'json',
+                    data:
+                    {
+                        term: request.term,
+                    },
+                    success: function (data) {
+                        response($.map(data, function (item) {
+                            var result = { label: item.userName };
+                            return result;
+                        }));
+                    },
+                    error: function (err) {
+                        errorAlert("Request not completed, Try again.", err);
+                    }
+                });
+            },
+        });
+    });
+</script>

@@ -236,5 +236,73 @@ namespace Logic.Helpers
             return false;
         }
 
+        public List<CordinatorViewModel> listOfCordinators()
+        {
+            var listOfCordinators = _context.Cordinators.Where(x => x.Id != 0 && !x.RemovedAsCordinator && x.CordinatorUserName != null).Include(a => a.Coordinator).OrderBy(a => a.CordinatorUserName)
+           .Select(a => new CordinatorViewModel
+           {
+               Id = a.Id,
+               CordinatorUserName = a.CordinatorUserName,
+               DateAdded = a.DateAdded,
+               AddedBy = a.AddedBy,
+               Name = a.Coordinator.Name,
+               CordinatorId = a.CordinatorId
+           }).ToList();
+            if (listOfCordinators != null && listOfCordinators.Count() > 0)
+            {
+                return listOfCordinators;
+            }
+            return listOfCordinators;
+        }
+
+        public bool CheckExistingCordinatorUserName(string cordinatorUserName)
+        {
+            var existingDistributor = _context.Cordinators
+                .Where(x => x.CordinatorUserName == cordinatorUserName && !x.RemovedAsCordinator)
+                .Any();
+
+            return existingDistributor;
+        }
+        public ApplicationUser GetNewCordinatorDetails(string cordinatorUserName)
+        {
+            return _context.ApplicationUser
+                .Where(x => x.UserName == cordinatorUserName && !x.Deactivated)
+                .FirstOrDefault();
+        }
+        public string CreateCordinator(ApplicationUser newCordinatorDetails, string loggedinAdmin)
+        {
+            if (newCordinatorDetails != null && loggedinAdmin != null)
+            {
+
+                var newCordinator = new Cordinator()
+                {
+                    CordinatorUserName = newCordinatorDetails.UserName,
+                    CordinatorId = newCordinatorDetails.Id,
+                    AddedBy = loggedinAdmin,
+                    RemovedAsCordinator = false,
+                    DateAdded = DateTime.Now,
+                };
+                _context.Cordinators.Add(newCordinator);
+                _context.SaveChanges();
+                return "Successfully Added User To Cordinator";
+            }
+            return null;
+        }
+        public string RemoveCordinator(int id)
+        {
+            if (id != 0)
+            {
+                var cordinatorToBeRemoved = _context.Cordinators.Where(x => x.Id == id && !x.RemovedAsCordinator).FirstOrDefault();
+                if (cordinatorToBeRemoved != null)
+                {
+                    cordinatorToBeRemoved.RemovedAsCordinator = true;
+                    _context.Cordinators.Update(cordinatorToBeRemoved);
+                    _context.SaveChanges();
+                    return "Cordinator Successfully Removed";
+                }
+            }
+            return "Cordinator failed To Removed";
+        }
+
     }
 }

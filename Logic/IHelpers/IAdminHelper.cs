@@ -1,4 +1,5 @@
-﻿using Core.ViewModels;
+﻿using Core.Models;
+using Core.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,5 +17,10 @@ namespace Logic.IHelpers
         bool UpdateDropDownService(string dropdown, int? id);
         string RemoveDropDown(int id);
         bool CheckExistingDropdownName(string name, int drpKey);
+        List<CordinatorViewModel> listOfCordinators();
+        bool CheckExistingCordinatorUserName(string cordinatorUserName);
+        ApplicationUser GetNewCordinatorDetails(string cordinatorUserName);
+        string CreateCordinator(ApplicationUser newCordinatorDetails, string loggedinAdmin);
+        string RemoveCordinator(int id);
     }
 }
