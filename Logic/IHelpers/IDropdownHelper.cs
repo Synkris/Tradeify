@@ -14,6 +14,9 @@ namespace Logic.IHelpers
 		Task<List<CommonDropdowns>> GetDropdownByKey(DropdownEnums dropdownKey, bool deleteOption = false);
 		Task<List<CommonDropdowns>> GetBankDropdownByKey(DropdownEnums dropdownKey, bool deleteOption = false);
 		Task<List<CommonDropdowns>> GetCryptoDropdown(DropdownEnums dropdownKey, bool deleteOption = false);
+		List<DropdownEnumModel> GetDropDownEnumsList();
+		Task<bool> CreateDropdownsAsync(CommonDropdowns commonDropdown);
 
-    }
+
+	}
 }

@@ -1,0 +1,399 @@
+﻿@model Core.ViewModels.CommonDropdownSearchResultViewModel
+@{
+    ViewData["Title"] = "DropDownList";
+    Layout = "~/Views/Shared/_AdminDashboardLayout.cshtml";
+}
+<style>
+
+    body {
+        counter-reset: Serial;
+    }
+
+    tr td:first-child:before {
+        counter-increment: Serial;
+        content: counter(Serial);
+    }
+
+    .arrow-container {
+        position: relative;
+    }
+
+    .arrow-up {
+        position: absolute;
+        top: 0.5em;
+    }
+
+    .arrow-down {
+        position: absolute;
+        top: 1em;
+    }
+</style>
+
+<!--  deposit wrapper start -->
+<div class="deposit_list_wrapper float_left header_text">
+
+    <div class="row">
+
+        <div class="col-md-12 col-lg-12 col-sm-12 col-12 header_text">
+            <div class="sv_heading_wraper">
+                <h3>List of All DropDowns</h3>
+            </div>
+
+            <div class="col-auto float-right ml-auto">
+                <a href="#" class="btn button_color font-weight-bold p-2" onclick="OpenCreateModalForm()">
+                    <i class="fa fa-plus"></i> Add DropDown
+                </a>
+            </div>
+        </div>
+    </div>
+    @if (TempData["Message"] != null)
+    {
+        var tempDatamessage = (GGC.Models.Message)TempData["Message"];
+        <partial name="_Message" model="tempDatamessage" />
+    }
+    <!--  profile wrapper start -->
+    <div class="last_transaction_wrapper float_left">
+        <div class="row">
+            <div class="col-md-12 col-lg-12 col-sm-12 col-12">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-12 mb-1">
+                    <form asp-controller="Admin" asp-action="DropDownList" method="get">
+
+                        <div class="float_left d-lg-none" id="faqs">
+                            <div class="investment_overlay faq_overlay"></div>
+                            <div class="container " id="FAQ">
+                                <div id="accordion" role="tablist">
+                                    <div class="row">
+                                        <div class="col-lg-6 col-md-12 col-sm-12 col-12">
+
+                                            <div class="card">
+                                                <div class="card_pagee" role="tab" id="headingTwo">
+                                                    <h5 class="h5-md">
+                                                        <a class="collapsed" data-toggle="collapse" href="#collapseTwo" role="button" aria-expanded="false" aria-controls="collapseTwo">
+                                                            Filter
+                                                        </a>
+                                                    </h5>
+                                                </div>
+
+                                                <div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingTwo" data-parent="#accordion" style="">
+                                                    <div class="card-body2">
+
+                                                        <div class="card_cntnt">
+
+                                                            <div class="row col-12">
+                                                                <div class="p-lg-2 col-12 col-lg-2 p-2">
+                                                                    <div class="form-pos">
+                                                                        <label>Date From :</label>
+                                                                        <div class="form-group i-name">
+                                                                            <input asp-for="SortTypeFrom" name="SortTypeFrom" value="" type="date" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="p-lg-2 col-12 col-lg-2 p-2">
+                                                                    <div class="form-pos">
+                                                                        <label>Date To :</label>
+                                                                        <div class="form-group i-name">
+                                                                            <input asp-for="SortTypeTo" name="SortTypeTo" value="" type="date" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="p-lg-2 col-12 col-lg-2 p-2">
+                                                                    <div class="form-pos">
+                                                                        <label>Name:</label>
+                                                                        <div class="form-group i-name">
+                                                                            <input asp-for="Name" name="Name" type="text" class="form-control" placeholder="Dropdown Name">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="col-lg-2 col-md-12">
+                                                                    <div class="tb_es_btn_div mt-4 pt-2">
+                                                                        <div class="form-group mt-2" style="display:grid">
+                                                                            <button type="submit" class="btn button_color">Filter</button>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="row col-12 d-lg-flex d-none">
+                            <div class="p-lg-2 col-12 col-lg-2 p-2">
+                                <div class="form-pos">
+                                    <label>Date From :</label>
+                                    <div class="form-group i-name">
+                                        <input asp-for="SortTypeFrom" name="SortTypeFrom" value="" type="date" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="p-lg-2 col-12 col-lg-2 p-2">
+                                <div class="form-pos">
+                                    <label>Date To :</label>
+                                    <div class="form-group i-name">
+                                        <input asp-for="SortTypeTo" name="SortTypeTo" value="" type="date" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="p-lg-2 col-12 col-lg-2 p-2">
+                                <div class="form-pos">
+                                    <label>Name:</label>
+                                    <div class="form-group i-name">
+                                        <input asp-for="Name" name="Name" type="text" class="form-control" placeholder="Dropdown Name">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-2 col-md-12">
+                                <div class="tb_es_btn_div mt-4 pt-2">
+                                    <div class="form-group mt-2" style="display:grid">
+                                        <button type="submit" class="btn button_color">Filter</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="row">
+                            <div class="">
+                                <div class="form-pos mt-2 ml-4">
+                                    <label>Page Size:</label>
+                                    <div class="form-group i-name">
+                                        <select asp-for="PageSize" name="PageSize">
+                                            <option value="10">10</option>
+                                            <option value="20">20</option>
+                                            <option value="50">50</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </form>
+                </div>
+
+
+                <div class="crm_customer_table_main_wrapper float_left">
+                    <div class="crm_ct_search_wrapper">
+                        <div class="crm_ct_search_bottom_cont_Wrapper"> </div>
+                    </div>
+
+                    @if (Model != null && Model.CommonDropdownRecords.Count() > 0)
+                    {
+                        <div class="table-responsive">
+                            <table class="table cs-table crm_customer_table_inner_Wrapper">
+                                <thead>
+                                    <tr>
+                                        <th class="width_table1">S/N</th>
+
+                                        <th class="width_table1">Dropdown Key</th>
+
+                                        <th class="width_table1">Name</th>
+
+                                        @*<th class="width_table1">Airtime Network Code</th>*@
+
+                                        <th class="width_table1">Date Created</th>
+
+                                        <th class="text-center"> Action </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var obj in Model.CommonDropdownRecords)
+                                    {
+                                        <tr class="background_white" style="color: #22c8db;">
+
+                                            <td></td>
+
+                                            <td>
+                                                <div class="pretty p-svg p-curve">@obj.DropdownKey</div>
+                                            </td>
+                                            <td>
+                                                <div class="pretty p-svg p-curve">@obj.Name</div>
+                                            </td>
+                                           @* <td class="flag">
+                                                <div class="pretty p-svg p-curve">@obj.Code</div>
+                                            </td>*@
+                                            <td class="flag">
+                                                <div class="pretty p-svg p-curve">@obj.DateCreated.ToString("D")</div>
+                                            </td>
+
+                                            <td class="flag">
+                                                <nav class="navbar navbar-expand justify-content-center">
+                                                    <button type="button" class="btn button_color mr-2 p-2"
+                                                    onclick="openSelectedDropDownForEditModal('@obj.Id')" 
+                                                    data-target="#edit_dropdown" data-toggle="modal">
+                                                        <i class="fa fa-pencil-alt m-r-5"></i> Edit
+                                                    </button>
+                                                    <button type="button" class="btn button_color mr-2 p-2"
+                                                    onclick="selectedDropdownToBeRemoved('@obj.Id')" 
+                                                    data-target="#delete_dropdown" data-toggle="modal">
+                                                        <i class="fa fa-trash m-r-5"></i> Remove
+                                                    </button>
+                                                </nav>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+
+                            </table>
+                        </div>
+                        <br />
+                        <div class="col-lg-2 col-md-12">
+                            Page @(Model.CommonDropdownRecords.PageNumber) of @Math.Ceiling((double)Model.CommonDropdownRecords.TotalItemCount / Model.CommonDropdownRecords.PageSize)
+                        </div>
+                        <br />
+                        <div class="col-md-6 col-lg-6 col-sm-6 col-5 float-right">
+                            @Html.Partial("_CommonDropdownPager",Model)
+                        </div>
+                    }
+                    else
+                    {
+                        <h2 class="text-warning font-weight-normal"> No Dropdowns Found</h2>
+                    }
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="crm_customer_table_main_wrapper float_left">
+    <div class="crm_ct_search_wrapper">
+
+        <div class="modal fade question_modal" id="edit_dropdown" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content bg-dark">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+                            <div class="sv_question_pop float_left">
+                                <h1 class="text-center text-white">
+                                    Edit Dropdown
+                                </h1>
+                                <div class="change_field px-3 mt-3">
+                                    <input type="text" hidden id="dropDownId">
+                                    <input id="name_edit" type="text" class="form-control" required placeholder="Name">
+                                </div>
+                                <div class="row p-3 mb-3">
+                                    <div class="col-sm-6 m-auto mb-3">
+                                        <div class="submit-section mb-3">
+                                            <button type="button" class="btn button_color btn-block" onclick="UpdateDropDown()"> Update Dropdown </button>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6 m-auto mb-3">
+                                        <div class="submit-section mb-3">
+                                            <button type="button" class="btn button_color btn-block" data-dismiss="modal"> Cancel </button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    
+    @*Remove From Admin role Modal*@
+    <div class="modal custom-modal fade" id="delete_dropdown" role="dialog">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-body bg-dark">
+                    <div class="form-header text-center">
+                        <div class="form-header text-center">
+                            <h4 class="font-weight-bold mb-3 mt-1 text-white"> Remove Dropdown </h4>
+                            <p class="text-white">Are you sure you want to remove this Dropdown?</p>
+                        </div>
+                    </div>
+                    <div class="modal-btn delete-action">
+
+                        <div class="row p-3 mt-2">
+                            <div class="form-group d-none">
+                                <input type="text" hidden id="deletelId">
+                            </div>
+                            <div class="col-sm-6 m-auto mt-5 mb-5">
+                                <div class="submit-section mb-3">
+                                    <button type="button" class="btn button_color btn-block" onclick="deleteToDropDown()"> <b> Remove Dropdown </b> </button>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 m-auto mt-5 mb-5">
+                                <div class="submit-section mb-3">
+                                    <button type="button" class="btn button_color btn-block" data-dismiss="modal"> Cancel </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    @*/Remove From Admin role Modal*@
+</div>
+
+@*Create Modal*@
+<div class="crm_customer_table_main_wrapper float_left">
+    <div class="crm_ct_search_wrapper">
+
+        <div class="modal fade question_modal" id="create_dropdown" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content bg-dark">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+                            <div class="sv_question_pop float_left">
+
+                                <div class="sv_heading_wraper heading_wrapper_dark dark_heading hwd pt-5">
+                                    <h4>  <i class='fas fa-laptop-code'></i> Enter the <b>Name</b> of the DropDown and select DropDown Keys.</h4>
+                                </div>
+
+                                <div class="change_field px-3 mt-3">
+                                    <input id="name" type="text" class="form-control" required placeholder="Name">
+                                </div>
+
+                                <div id="codeId" class="change_field px-3 mt-3">
+                                    <input id="code" class="form-control w-90" placeholder="Code"/>
+                                </div>
+                                <div class="change_field px-3 mt-3">
+                                    <select id="dropDownKeyId" class="select" asp-items="@(new SelectList(ViewBag.Dropdownkeys,"Id", "Name" ))"> </select>
+                                </div>
+
+                                <div class="row p-3 mb-3">
+                                    <div class="col-sm-6 m-auto mb-3">
+                                        <div class="submit-section mb-3">
+                                            <button type="button" class="btn button_color btn-block" onclick="createDropdown()"> Add Dropdown </button>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6 m-auto mb-3">
+                                        <div class="submit-section mb-3">
+                                            <button type="button" class="btn button_color btn-block" data-dismiss="modal"> Cancel </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</div>
+

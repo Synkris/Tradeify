@@ -106,5 +106,50 @@ namespace Logic.Helpers
             dropdowns.Insert(0, common);
             return dropdowns;
         }
-    }
+		public List<DropdownEnumModel> GetDropDownEnumsList()
+		{
+			return ((DropdownEnums[])Enum.GetValues(typeof(DropdownEnums))).Select(c => new DropdownEnumModel() { Id = (int)c, Name = c.ToString() }).Where(x => x.Id != (int)DropdownEnums.AdminNotice).ToList();
+		}
+
+		public async Task<bool> CreateDropdownsAsync(CommonDropdowns commonDropdown)
+		{
+			try
+			{
+				if (commonDropdown != null && commonDropdown.DropdownKey > 0 && commonDropdown.Name != null)
+				{
+					CommonDropdowns newCommonDropdowns = new CommonDropdowns
+					{
+						Name = commonDropdown.Name,
+						DropdownKey = commonDropdown.DropdownKey,
+						Code = commonDropdown.Code,
+						Deleted = false,
+						Active = true,
+						DateCreated = DateTime.Now,
+					};
+
+					var createdDropdowns = await _context.CommonDropdowns.AddAsync(newCommonDropdowns);
+
+					await _context.SaveChangesAsync();
+
+					if (createdDropdowns.Entity.Id > 0)
+					{
+						return true;
+					}
+					else
+					{
+						return false;
+					}
+
+				}
+				else
+				{
+					return false;
+				}
+			}
+			catch (Exception ex)
+			{
+				throw ex;
+			}
+		}
+	}
 }
