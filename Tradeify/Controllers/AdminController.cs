@@ -24,8 +24,10 @@ namespace Tradeify.Controllers
         private readonly IDropdownHelper _dropdownHelper;
         private readonly IAdminHelper _adminHelper;
         private readonly IPaymentHelper _paymentHelper;
+        private readonly IBonusHelper _bonusHelper;
+        private readonly IBinaryHelper _binaryHelper;
 
-        public AdminController(AppDbContext context, UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, IGeneralConfiguration generalConfiguration, IUserHelper userHelper, IDropdownHelper dropdownHelper, IAdminHelper adminHelper, IPaymentHelper paymentHelper, IWebHostEnvironment webHostEnvironment)
+        public AdminController(AppDbContext context, UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, IGeneralConfiguration generalConfiguration, IUserHelper userHelper, IDropdownHelper dropdownHelper, IAdminHelper adminHelper, IPaymentHelper paymentHelper, IWebHostEnvironment webHostEnvironment, IBonusHelper bonusHelper, IBinaryHelper binaryHelper)
         {
             _context = context;
             _userManager = userManager;
@@ -36,6 +38,8 @@ namespace Tradeify.Controllers
             _adminHelper = adminHelper;
             _paymentHelper = paymentHelper;
             _webHostEnvironment = webHostEnvironment;
+            _binaryHelper = binaryHelper;
+            _bonusHelper = bonusHelper;
         }
         public IActionResult Index()
         {
@@ -774,6 +778,107 @@ namespace Tradeify.Controllers
             catch (Exception exp)
             {
                 throw exp;
+            }
+        }
+
+        public IActionResult PaymentApproval(string refferer, DateTime sortTypeFrom, DateTime sortTypeTo, string name, int pageNumber, int pageSize)
+        {
+            try
+            {
+                var paymentViewModel = new PendingPaymentsSearchResultViewModel(_generalConfiguration)
+                {
+                    PageNumber = pageNumber == 0 ? _generalConfiguration.PageNumber : pageNumber,
+                    PageSize = pageSize == 0 ? _generalConfiguration.PageSize : pageSize,
+                    SortTypeFrom = sortTypeFrom,
+                    SortTypeTo = sortTypeTo,
+                    Name = name,
+                    Refferer = refferer,
+                    DollarRate = _generalConfiguration.DollarRate,
+                };
+                pageNumber = (pageNumber == 0 ? paymentViewModel.PageNumber : pageNumber);
+                pageSize = pageSize == 0 ? paymentViewModel.PageSize : pageSize;
+                var pendindRegPayments = _paymentHelper.PendingRegFeeDetails(paymentViewModel, pageNumber, pageSize);
+                paymentViewModel.PaymentRecords = pendindRegPayments;
+                if (pendindRegPayments != null)
+                {
+                    return View(paymentViewModel);
+                }
+                return View();
+            }
+            catch (Exception exp)
+            {
+                throw exp;
+            }
+        }
+        public async Task<JsonResult> ApproveRegFee(Guid paymentId)
+        {
+            var responseMsg = string.Empty;
+            try
+            {
+                if (paymentId != Guid.Empty)
+                {
+                    var user = _userHelper.GetCurrentUserId(User.Identity.Name);
+                    var payment = _context.PaymentForms.Where(x => x.Id == paymentId).Include(x => x.User).FirstOrDefault();
+                    var checkifApprovedBefore = _paymentHelper.CheckIfApproved(paymentId);
+                    if (checkifApprovedBefore)
+                    {
+                        return Json(new { isError = true, msg = "This registration has  been approved before" });
+                    }
+                    var checkIfUserHasPaid = _paymentHelper.CheckUserRegPayment(payment.User.Id);
+                    if (!checkIfUserHasPaid)
+                    {
+                        return Json(new { isError = true, msg = "This user has already paid registration fee" });
+                    }
+                    var approve = _paymentHelper.ApproveRegFee(paymentId, user);
+                    if (approve)
+                    {
+                        //Sending out matching bonuses to referrals
+                        _binaryHelper.SendUserGenerationBonuses(payment.UserId);
+
+                        //Sending out bonuses to users and cordinators
+                        await _bonusHelper.EnqueueApproveRegFeePaymentProcess(payment);
+                        return Json(new { isError = false, msg = "Registration Payment has been approved, all bonuses are now processing" });
+                    }
+                }
+                return Json(new { isError = true, msg = "Could not find registration to approve" });
+            }
+            catch (Exception ex)
+            {
+                return Json(new { isError = true, msg = ex.Message });
+            }
+        }
+        [HttpPost]
+        public JsonResult DeclineRegFee(Guid paymentId)
+        {
+            try
+            {
+                if (paymentId != Guid.Empty)
+                {
+                    var loggedInUser = _userHelper.GetCurrentUserId(User.Identity.Name);
+                    var regFeePayments = _context.PaymentForms.Where(s => s.Id == paymentId && s.Status == Status.Pending).Include(s => s.User).FirstOrDefault();
+                    if (regFeePayments != null)
+                    {
+                        if (regFeePayments.Status == Status.Approved)
+                        {
+                            return Json(new { isError = true, msg = " This Registration payment request has been approved" });
+                        }
+                        if (regFeePayments.Status == Status.Rejected)
+                        {
+                            return Json(new { isError = true, msg = "This Registration payment request has been rejected" });
+                        }
+                        var rejectPayment = _paymentHelper.RejectPayment(paymentId, loggedInUser);
+                        if (rejectPayment)
+                        {
+                            return Json(new { isError = false, msg = " Registration Fee Rejected" });
+                        }
+                        return Json(new { isError = true, msg = "Error occured while rejecting, try again." });
+                    }
+                }
+                return Json(new { isError = true, msg = " No Payment Request Found" });
+            }
+            catch (Exception ex)
+            {
+                return Json(new { isError = true, msg = ex.Message });
             }
         }
     }

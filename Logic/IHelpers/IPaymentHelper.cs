@@ -36,6 +36,12 @@ namespace Logic.IHelpers
         bool CreateCoinPayment(PaymentFormViewModel paymentDetails);
         bool CheckActivationAmount(decimal amount);
         bool CreateCryptoTokenPayment(PaymentFormViewModel paymentDetails);
+        IPagedList<PaymentFormViewModel> PendingRegFeeDetails(PendingPaymentsSearchResultViewModel pendingPaymentsSearch, int pageNumber, int pageSize);
+        bool CheckIfApproved(Guid paymentId);
+        bool CheckIfDeclined(Guid paymentId);
+        bool CheckUserRegPayment(string userId);
+        bool ApproveRegFee(Guid paymentId, string loggedInUser);
+        bool RejectPayment(Guid paymentId, string loggedInUser);
 
 
 
