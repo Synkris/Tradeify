@@ -1,0 +1,95 @@
+﻿@model Core.ViewModels.WithdrawalViewModel
+
+
+@{
+	ViewData["Title"] = "Crypto Cash out";
+	Layout = "~/Views/Shared/_DashboardLayout.cshtml";
+}
+
+<div class="contact_section float_left header_text">
+	<div class="container">
+		<div class="row">
+
+			@if (TempData["Message"] != null)
+			{
+				var tempDatamessage = (Tradeify.Models.Message)TempData["Message"];
+				<partial name="_Message" model="tempDatamessage" />
+			}
+
+			<div class="col-lg-12 col-md-12 col-sm-12 col-12 header_text">
+				<div class="sv_heading_wraper heading_wrapper_dark dark_heading">
+					<h4>Fill the withdrawal Form and the money will be sent to your Crypto wallet! </h4>
+					<br />
+					<h3> Withdraw To my Crypto Wallet </h3>
+					<br />
+					<h5 class="font-weight-bold theme-yellow">
+						<span> <i class="fas fa-exclamation-circle"></i> </span> Only Smartchain {BNB} & Bitcoin {BTC} Wallets are allowed.
+					</h5>
+				</div>
+			</div>
+
+
+			<div class="col-lg-10 offset-lg-1 col-md-12 col-sm-12 col-12">
+				<form asp-controller="user" asp-action="WithdrawByCrypto" method="post">
+					<div class="row">
+
+						<div class="payment_gateway_wrapper payment_select_wrapper col-lg-6">
+							<label class="ml-2"> Available Wallet Names :</label>
+							<select asp-for="BankAccountName"class="select" required style="background-color: #22c8db;">
+								<option selected value=""> Select Wallet Name of Your Wallet Id</option>
+							    <option value="SmartChain(BNB)">SmartChain(BNB) Wallet</option>
+								<option value="Bitcoin (BTC)">Bitcoin (BTC) Wallet</option>
+							</select>
+						</div>
+
+						<div class="col-lg-6 col-md-6">
+							<div class="form-pos">
+								<label>Your WalletId  :</label>
+								<div class="form-group i-name">
+									<input asp-for="AccountNumber" value="@Model?.AccountNumber" type="text" class="form-control" required placeholder="Wallet Id">
+								</div>
+							</div>
+						</div>
+
+						<div class="payment_gateway_wrapper payment_select_wrapper col-lg-6">
+							<label class="ml-2">Choose App Name :</label>
+							<select asp-for="AccountName" class="select" required style="background-color: #22c8db;">
+								<option selected value="">  Select your app name </option>
+								<option value="Trust Wallet App">Trust Wallet App</option>
+								<option value="Binance App">Binance App</option>
+							</select>
+						</div>
+
+
+						<div class="col-lg-6 col-md-6">
+							<div class="form-s">
+								<label>How many GGT do you want to withdraw :</label>
+								<div class="form-group i-subject">
+									<input asp-for="Amount" type="number" class="form-control" required placeholder="GGT Coins only" min="8">
+								</div>
+							</div>
+						</div>
+
+						@*<div class="col-lg-6 col-md-6">
+							<div class="form-s">
+								<div class="form-group i-subject">
+									<input asp-for="WithdrawalType" type="text" value="Withdrawal Request To Crypto Wallet" class="form-control text-warning" hidden>
+								</div>
+							</div>
+						</div>*@
+
+						<div class="col-md-12">
+							<div class="tb_es_btn_div">
+								<div class="tb_es_btn_wrapper conatct_btn2 cont_bnt mb-5">
+									<button type="submit" class="submitForm">submit Withdrawal </button>
+								</div>
+							</div>
+						</div>
+
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+

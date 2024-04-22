@@ -41,5 +41,7 @@ namespace Logic.IHelpers
         Packages GetPackageUgradeDetails(int packageId);
         List<ApplicationUser> GetAllUserForBonus();
         Task<bool> SubmitAppreciationRequest(Appreciation appreciation, string adminId, string userId);
+        WithdrawFunds GetExistingBankWithdrawalDetails(string userId);
+        WithdrawFunds GetExistingCryptoDetails(string userId);
     }
 }

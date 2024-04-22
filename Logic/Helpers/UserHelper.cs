@@ -600,5 +600,41 @@ namespace Logic.Helpers
             }
         }
 
+        public WithdrawFunds GetExistingBankWithdrawalDetails(string userId)
+        {
+            try
+            {
+                var existingRequest = _context.WithdrawFunds.Where(x => x.UserId == userId && x.WithdrawStatus == Status.Approved && x.WithdrawalType.Contains("Bank Account")).OrderByDescending(x => x.DateApprovedAndSent).FirstOrDefault();
+                if (existingRequest != null)
+                {
+                    return existingRequest;
+                }
+                return null;
+            }
+            catch (Exception exp)
+            {
+                throw exp;
+            }
+
+        }
+
+        public WithdrawFunds GetExistingCryptoDetails(string userId)
+        {
+            try
+            {
+                var existingRequest = _context.WithdrawFunds.Where(x => x.UserId == userId && x.WithdrawStatus == Status.Approved && x.WithdrawalType.Contains("Crypto Wallet")).OrderByDescending(x => x.DateApprovedAndSent).FirstOrDefault();
+                if (existingRequest != null)
+                {
+                    return existingRequest;
+                }
+                return null;
+            }
+            catch (Exception exp)
+            {
+                throw exp;
+            }
+
+        }
+
     }
 }
