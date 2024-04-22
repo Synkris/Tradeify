@@ -881,5 +881,65 @@ namespace Tradeify.Controllers
                 return Json(new { isError = true, msg = ex.Message });
             }
         }
+
+        public JsonResult ApproveToken(Guid paymentId)
+        {
+            try
+            {
+                if (paymentId != Guid.Empty)
+                {
+                    var user = _userHelper.GetCurrentUserId(User.Identity.Name);
+                    var checkifApprovedBefore = _paymentHelper.CheckIfApproved(paymentId);
+                    if (checkifApprovedBefore)
+                    {
+                        return Json(new { isError = true, msg = "This token has  been approved before" });
+                    }
+                    var approve = _paymentHelper.ApproveTokenFee(paymentId, user);
+                    if (approve)
+                    {
+                        return Json(new { isError = false, msg = "Token Payment has been approved successfully" });
+                    }
+                    return Json(new { isError = true, msg = "Could not approve" });
+                }
+                return Json(new { isError = true, msg = "Network Failure" });
+            }
+            catch (Exception ex)
+            {
+                return Json(new { isError = true, msg = ex.Message });
+            }
+        }
+        [HttpPost]
+        public JsonResult DeclineTokenPayment(Guid paymentId)
+        {
+            try
+            {
+                if (paymentId != Guid.Empty)
+                {
+                    var loggedInUser = _userHelper.GetCurrentUserId(User.Identity.Name);
+                    var checkifApprovedBefore = _paymentHelper.CheckIfApproved(paymentId);
+                    if (checkifApprovedBefore)
+                    {
+                        return Json(new { isError = true, msg = "This token payment has been approved before" });
+                    }
+                    var checkifRejectedBefore = _paymentHelper.CheckIfDeclined(paymentId);
+                    if (checkifRejectedBefore)
+                    {
+                        return Json(new { isError = true, msg = "This token payment has been declined before" });
+                    }
+                    var rejectPayment = _paymentHelper.RejectTokenPayment(paymentId, loggedInUser);
+                    if (rejectPayment)
+                    {
+                        return Json(new { isError = false, msg = " Token payment fee declined" });
+                    }
+                    return Json(new { isError = true, msg = "Error occured while rejecting, try again." });
+
+                }
+                return Json(new { isError = true, msg = " No Payment Request Found" });
+            }
+            catch (Exception ex)
+            {
+                return Json(new { isError = true, msg = ex.Message });
+            }
+        }
     }
 }

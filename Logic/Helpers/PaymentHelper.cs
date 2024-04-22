@@ -20,13 +20,15 @@ namespace Logic.Helpers
         private readonly AppDbContext _context;
         private readonly IUserHelper _userHelper;
         private readonly IGeneralConfiguration _generalConfiguration;
+        private readonly IBonusHelper _bonusHelper;
 
-        public PaymentHelper(IEmailService emailService, AppDbContext context, IUserHelper userHelper, IGeneralConfiguration generalConfiguration)
+        public PaymentHelper(IEmailService emailService, AppDbContext context, IUserHelper userHelper, IGeneralConfiguration generalConfiguration, IBonusHelper bonusHelper)
         {
             _emailService = emailService;
             _context = context;
             _userHelper = userHelper;
             _generalConfiguration = generalConfiguration;
+            _bonusHelper = bonusHelper;
         }
 
 
@@ -1432,6 +1434,96 @@ namespace Logic.Helpers
                 throw ex;
             }
 
+        }
+
+        public bool ApproveTokenFee(Guid paymentId, string loggedInUser)
+        {
+            string toEmailBug = _generalConfiguration.DeveloperEmail;
+            string subjectEmailBug = "AssignGrantLimitBonus Exception Message on GAP";
+            try
+            {
+                if (paymentId != Guid.Empty)
+                {
+                    var tokenApprove = _context.PaymentForms.Where(x => x.Id == paymentId && x.Status == Status.Pending).Include(x => x.User).FirstOrDefault();
+                    if (tokenApprove != null)
+                    {
+                        tokenApprove.Status = Status.Approved;
+                        tokenApprove.StatusBy = loggedInUser;
+                        tokenApprove.StatuseChangeDate = DateTime.Now;
+                        _context.Update(tokenApprove);
+                        _context.SaveChanges();
+                    }
+                    var wallet = GetUserWallet(tokenApprove?.UserId).Result;
+                    if (wallet != null)
+                    {
+                        var alreadyReceivedAGC = _context.AGCWalletHistories.Where(s => s.WalletId == wallet.Id && s.PaymentId == paymentId);
+                        if (!alreadyReceivedAGC.Any())
+                        {
+                            var creditAGCWallet = _bonusHelper.CreditAGCWallet(tokenApprove.UserId, (decimal)tokenApprove.NoOfTokensBought, paymentId).Result;
+
+                            var convertedTokenAmount = tokenApprove.Amount / _generalConfiguration.DollarRate;
+                            if (creditAGCWallet)
+                            {
+                                string toEmail = tokenApprove?.User?.Email;
+                                string subject = "Hooray!!!, Token Payment Approved ";
+                                string message = "Hello " + "<b>" + tokenApprove?.User?.UserName + ", </b>" + "<br> GAP has approved your payment of $" + " <b> " + convertedTokenAmount.ToString("F2") + " </b> and your corresponding token has been added to your Coin Wallet " + "<b>" + "<br> <br>" +
+
+                                " Continue to explore the myriad opportunities for growth and prosperity with GAP and get all your exclusive bonuses." +
+                                " <br> Keep Investing, Keep Earning. <br> " +
+                                " Thank you !!! ";
+                                _emailService.SendEmail(toEmail, subject, message);
+                                return true;
+                            }
+                        }
+                    }
+                    else
+                    {
+                        LogError($" wallet not found");
+                    }
+                }
+                else
+                {
+                    LogError($" paymentId not found");
+                }
+                return false;
+            }
+            catch (Exception ex)
+            {
+                LogCritical($" {ex.Message} This exception occured while trying to approve token payment in payment helper");
+
+                string message = "Exception " + ex.Message + " and inner exception:" + ex.InnerException.Message + "  Occured at " + DateTime.Now;
+                _emailService.SendEmail(toEmailBug, subjectEmailBug, message);
+                throw;
+            }
+        }
+
+        public bool RejectTokenPayment(Guid paymentId, string loggedInUser)
+        {
+            var rejectTokenPayment = _context.PaymentForms.Where(a => a.Id == paymentId && a.Status == Status.Pending).Include(a => a.User).FirstOrDefault();
+            if (rejectTokenPayment != null)
+            {
+                rejectTokenPayment.Status = Status.Rejected;
+                rejectTokenPayment.StatusBy = loggedInUser;
+                rejectTokenPayment.StatuseChangeDate = DateTime.Now;
+
+                _context.Update(rejectTokenPayment);
+                _context.SaveChanges();
+                var convertedTokenAmount = rejectTokenPayment.Amount / _generalConfiguration.DollarRate;
+                if (rejectTokenPayment.User.Email != null)
+                {
+                    string toEmail = rejectTokenPayment?.User?.Email;
+                    string subject = "Token Payment Declined";
+                    string message = "Hello " + "<b>" + rejectTokenPayment?.User?.UserName + "</b>" + ", <br> Your payment of $" + "<b>" + convertedTokenAmount.ToString("F2") + "</b> for " + rejectTokenPayment.Details + " have been declined. " +
+                    " Pls try and make the complete payment to continue. Keep Investing with GAP. <br> <br> Thanks!!! ";
+                    _emailService.SendEmail(toEmail, subject, message);
+                }
+                return true;
+            }
+            else
+            {
+                LogError($" Could not find token payment to reject with paymentId {paymentId}");
+            }
+            return false;
         }
 
 

@@ -975,3 +975,52 @@ function SaveEditedProfileDetails() {
     }
 }
 
+function approveTokenPayment(id) {
+    $.ajax({
+        type: 'POST',
+        url: '/Admin/ApproveToken',
+        dataType: 'json',
+        data: {
+            paymentId: id
+        },
+        success: function (result) {
+            if (!result.isError) {
+                var url = '/Admin/PaymentApproval';
+                successAlertWithRedirect(result.msg, url);
+                $('#submit_btn').html(defaultBtnValue);
+            }
+            else {
+                errorAlert(result.msg);
+            }
+        },
+        error: function (ex) {
+            "Something went wrong, contact the support - " + errorAlert(ex);
+        }
+    });
+}
+
+function declineTokenPayments(id) {
+    $.ajax({
+        type: 'POST',
+        url: '/Admin/DeclineTokenPayment', // we are calling json method
+        dataType: 'json',
+        data:
+        {
+            paymentId: id
+        },
+        success: function (result) {
+            if (!result.isError) {
+                var url = '/Admin/PaymentApproval';
+                successAlertWithRedirect(result.msg, url);
+                $('#submit_btn').html(defaultBtnValue);
+            }
+            else {
+                errorAlert(result.msg);
+            }
+        },
+        error: function (ex) {
+            errorAlert("Please, Contact the Support for --- " + ex);
+        }
+    });
+}
+
