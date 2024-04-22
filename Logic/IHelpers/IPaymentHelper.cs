@@ -42,6 +42,8 @@ namespace Logic.IHelpers
         bool CheckUserRegPayment(string userId);
         bool ApproveRegFee(Guid paymentId, string loggedInUser);
         bool RejectPayment(Guid paymentId, string loggedInUser);
+        bool ApproveTokenFee(Guid paymentId, string loggedInUser);
+        bool RejectTokenPayment(Guid paymentId, string loggedInUser);
 
 
 
