@@ -991,5 +991,83 @@ namespace Tradeify.Controllers
                 return Json(new { isError = true, msg = "An unexpected error occurred." + exp });
             }
         }
+
+        [Route("/Pending Withdrawals")]
+        public IActionResult PendingWithdrawals(string accountNumber, string accountName, DateTime sortTypeFrom, DateTime sortTypeTo, int pageNumber, int pageSize)
+        {
+            var PendingWithdrawalsViewModel = new PendingWithdrawalsSearchResultViewModel(_generalConfiguration)
+            {
+                PageNumber = pageNumber == 0 ? _generalConfiguration.PageNumber : pageNumber,
+                PageSize = pageSize == 0 ? _generalConfiguration.PageSize : pageSize,
+                SortTypeFrom = sortTypeFrom,
+                SortTypeTo = sortTypeTo,
+                AccountName = accountName,
+                AccountNumber = accountNumber,
+            };
+            pageNumber = (pageNumber == 0 ? PendingWithdrawalsViewModel.PageNumber : pageNumber);
+            pageSize = pageSize == 0 ? PendingWithdrawalsViewModel.PageSize : pageSize;
+            var pendings = _paymentHelper.GetPendingWithdrawals(PendingWithdrawalsViewModel, pageNumber, pageSize);
+            PendingWithdrawalsViewModel.WithdrawalRecords = pendings;
+
+            if (pendings != null)
+            {
+                return View(PendingWithdrawalsViewModel);
+            }
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<JsonResult> ApproveWithdrawals(Guid withdrawalRequestId)
+        {
+            var paymentId = Guid.Empty;
+            var responseMsg = string.Empty;
+            try
+            {
+                var currentUserId = _userHelper.GetCurrentUserId(User.Identity.Name);
+                var requestForm = await _context.WithdrawFunds.Where(s => s.Id == withdrawalRequestId).Include(s => s.User).FirstOrDefaultAsync();
+                if (requestForm != null && requestForm.WithdrawStatus == Status.Approved)
+                    return Json(new { isError = true, msg = "This transaction has already been approved" });
+
+                var responseStatus = _paymentHelper.ApproveWithdrawalRequest(requestForm, currentUserId, withdrawalRequestId);
+                if (responseStatus)
+                {
+                    var details = requestForm.Amount + " Debit from Withdrawal Request ";
+                    await _paymentHelper.DebitWallet(requestForm.UserId, requestForm.Amount, paymentId, details);
+                    return Json(new { isError = false, msg = "Approved successfully" });
+                }
+                return Json(new { isError = !responseStatus, msg = responseMsg });
+            }
+            catch (Exception ex)
+            {
+                return Json(new { isError = true, msg = ex.Message });
+            }
+        }
+
+        [HttpPost]
+        public JsonResult RejectWithdrawalRequest(Guid withdrawalId)
+        {
+            try
+            {
+                if (withdrawalId != Guid.Empty)
+                {
+                    var withdrawals = _paymentHelper.RejectWithdrawalRequest(withdrawalId);
+                    if (withdrawals != null)
+                    {
+                        return Json(new { isError = false, msg = " Withdrawal Request Rejected Successfully " });
+                    }
+                    else
+                    {
+                        return Json(new { isError = true, msg = "This withdrawal request has been approved, check other requests." });
+                    }
+                }
+                return Json(new { isError = true, msg = " Error occured while rejecting request, try again." });
+            }
+            catch (Exception ex)
+            {
+                return Json(new { isError = true, msg = ex.Message });
+            }
+        }
+
+
     }
 }

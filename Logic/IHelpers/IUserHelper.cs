@@ -40,5 +40,6 @@ namespace Logic.IHelpers
         CompanySettings GetCompanySettingsDetails();
         Packages GetPackageUgradeDetails(int packageId);
         List<ApplicationUser> GetAllUserForBonus();
+        Task<bool> SubmitAppreciationRequest(Appreciation appreciation, string adminId, string userId);
     }
 }

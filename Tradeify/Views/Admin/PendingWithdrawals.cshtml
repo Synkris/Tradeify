@@ -1,0 +1,448 @@
+﻿@model Core.ViewModels.PendingWithdrawalsSearchResultViewModel
+
+@{
+	ViewData["Title"] = "Pending withdrawals";
+	Layout = "~/Views/Shared/_AdminDashboardLayout.cshtml";
+}
+<style>
+
+	body {
+		counter-reset: Serial;
+	}
+
+	tr td:first-child:before {
+		counter-increment: Serial;
+		content: counter(Serial);
+	}
+
+	.arrow-container {
+		position: relative;
+	}
+
+	.arrow-up {
+		position: absolute;
+		top: 0.5em;
+	}
+
+	.arrow-down {
+		position: absolute;
+		top: 1em;
+	}
+</style>
+
+<!--  deposit wrapper start -->
+<div class="deposit_list_wrapper float_left header_text">
+	<div class="row">
+
+		<div class="col-md-12 col-lg-12 col-sm-12 col-12 header_text">
+			<div class="sv_heading_wraper">
+				<h3>All Pending  withdrawals</h3>
+			</div>
+		</div>
+
+	</div>
+
+	<div class="col-lg-12 col-md-12 col-sm-12 col-12 mb-1">
+		<form asp-controller="Admin" asp-action="PendingWithdrawals" method="get">
+
+			<div class="float_left d-lg-none" id="faqs">
+				<div class="investment_overlay faq_overlay"></div>
+				<div class="container " id="FAQ">
+					<div id="accordion" role="tablist">
+						<div class="row">
+							<div class="col-lg-6 col-md-12 col-sm-12 col-12">
+
+								<div class="card">
+									<div class="card_pagee" role="tab" id="headingTwo">
+										<h5 class="h5-md">
+											<a class="collapsed" data-toggle="collapse" href="#collapseTwo" role="button" aria-expanded="false" aria-controls="collapseTwo">
+												Filter
+											</a>
+										</h5>
+									</div>
+
+									<div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingTwo" data-parent="#accordion" style="">
+										<div class="card-body2">
+
+											<div class="card_cntnt">
+
+												<div class="row col-12">
+													<div class="p-lg-2 col-12 col-lg-2 p-2">
+														<div class="form-pos">
+															<label>Date From :</label>
+															<div class="form-group i-name">
+																<input asp-for="SortTypeFrom" name="SortTypeFrom" value="" type="date" class="form-control">
+															</div>
+														</div>
+													</div>
+
+													<div class="p-lg-2 col-12 col-lg-2 p-2">
+														<div class="form-pos">
+															<label>Date To :</label>
+															<div class="form-group i-name">
+																<input asp-for="SortTypeTo" name="SortTypeTo" value="" type="date" class="form-control">
+															</div>
+														</div>
+													</div>
+
+													<div class="p-lg-2 col-12 col-lg-2 p-2">
+														<div class="form-pos">
+															<label>Account Number:</label>
+															<div class="form-group i-name">
+																<input asp-for="AccountNumber" name="AccountNumber" type="text" class="form-control" placeholder="Account Number">
+															</div>
+														</div>
+													</div>
+
+													<div class="p-lg-2 col-12 col-lg-2 p-2">
+														<div class="form-pos">
+															<label>Account Name:</label>
+															<div class="form-group i-name">
+																<input asp-for="AccountName" name="AccountName" type="text" class="form-control" placeholder="Account Name">
+															</div>
+														</div>
+													</div>
+
+													<div class="col-lg-2 col-md-12">
+														<div class="tb_es_btn_div mt-4 pt-2">
+															<div class="form-group mt-2" style="display:grid">
+																<button type="submit" class="btn button_bg ">Filter</button>
+															</div>
+														</div>
+													</div>
+
+												</div>
+											</div>
+										</div>
+									</div>
+
+								</div>
+
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</div>
+
+			<div class="row col-12 d-lg-flex d-none">
+				<div class="p-lg-2 col-12 col-lg-2 p-2">
+					<div class="form-pos">
+						<label>Date From :</label>
+						<div class="form-group i-name">
+							<input asp-for="SortTypeFrom" name="SortTypeFrom" value="" type="date" class="form-control">
+						</div>
+					</div>
+				</div>
+
+				<div class="p-lg-2 col-12 col-lg-2 p-2">
+					<div class="form-pos">
+						<label>Date To :</label>
+						<div class="form-group i-name">
+							<input asp-for="SortTypeTo" name="SortTypeTo" value="" type="date" class="form-control">
+						</div>
+					</div>
+				</div>
+
+				<div class="p-lg-2 col-12 col-lg-2 p-2">
+					<div class="form-pos">
+						<label>Account Number:</label>
+						<div class="form-group i-name">
+							<input asp-for="AccountNumber" name="AccountNumber" type="text" class="form-control" placeholder="Account Number">
+						</div>
+					</div>
+				</div>
+
+				<div class="p-lg-2 col-12 col-lg-2 p-2">
+					<div class="form-pos">
+						<label>Account Name:</label>
+						<div class="form-group i-name">
+							<input asp-for="AccountName" name="AccountName" type="text" class="form-control" placeholder="Account Name">
+						</div>
+					</div>
+				</div>
+
+				<div class="col-lg-2 col-md-12">
+					<div class="tb_es_btn_div mt-4 pt-2">
+						<div class="form-group mt-2" style="display:grid">
+							<button type="submit" class="btn button_bg ">Filter</button>
+						</div>
+					</div>
+				</div>
+
+			</div>
+
+			<div class="row">
+				<div class="col-lg-2 col-md-12">
+					<div class="form-pos mt-2 ml-4">
+						<label>Page Size:</label>
+						<div class="form-group i-name">
+							<select asp-for="PageSize" name="PageSize">
+								<option value="10">10</option>
+								<option value="20">20</option>
+								<option value="50">50</option>
+							</select>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-md-6 col-lg-6 col-sm-12 col-12 mt-3">
+					<div class="deposit_tab_wrapper">
+						<ul class="nav nav-tabs">
+							<li class="nav-item">
+								<a class="nav-link active" data-toggle="tab" href="#home"> Pending Withdrawals </a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link " data-toggle="tab" href="#menu1"> Crpto Withdrawals </a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+
+		</form>
+	</div>
+
+
+	@if (TempData["Message"] != null)
+	{
+		var tempDatamessage = (Tradeify.Models.Message)TempData["Message"];
+		<partial name="_Message" model="tempDatamessage" />
+	}
+
+	<div class="crm_customer_table_main_wrapper deposit_tables float_left">
+		<div class="row">
+
+			<div class="col-md-12 col-lg-12 col-sm-12 col-12">
+				<div class="tab-content">
+					<!-- Start of Bank Withdrawals-->
+					<div id="home" class="tab-pane active">
+						<div class="row">
+							<div class="col-lg-12 col-md-12 col-12">
+								@if (Model != null && Model.WithdrawalRecords.Count() > 0)
+								{
+									<div class="table-responsive">
+										<table class="table cs-table crm_customer_table_inner_Wrapper">
+											<thead>
+												<tr>
+
+													<th class="width_table1">S/N</th>
+
+													<th class="width_table1">Amount in GGT </th>
+
+													<th class="width_table1">Requested By</th>
+
+													<th class="width_table1">Date Requested</th>
+
+													<th class="width_table1">Account Name </th>
+
+													<th class="width_table1">Account Number</th>
+
+													<th class="width_table1">Bank Name</th>
+
+													<th class="width_table1 text-center">Actions</th>
+
+												</tr>
+											</thead>
+											<tbody>
+											@foreach (var obj in Model.WithdrawalRecords)
+											{
+												if (obj.WithdrawalType.ToLower().Contains("bank"))
+												{
+													<tr class="background_white">
+
+														<td></td>
+
+														<td class="flag">
+															<div class="pretty p-svg p-curve">@obj.Amount.ToString("F0") GGT Coins</div>
+														</td>
+
+														<td class="flag">
+															<div class="pretty p-svg p-curve">@obj.RequestedBy</div>
+														</td>
+
+														<td>
+															<div class="pretty p-svg p-curve">@obj.DateRequested.ToString("D")</div>
+														</td>
+
+														<td>
+															<div class="pretty p-svg p-curve">@obj.AccountName</div>
+														</td>
+
+														<td class="flag">
+															<div class="pretty p-svg p-curve">@obj.AccountNumber</div>
+														</td>
+
+														<td class="flag">
+															<div class="pretty p-svg p-curve">@obj.BankAccountName</div>
+														</td>
+
+														<td>
+															<nav class="navbar navbar-expand justify-content-center">
+																	<button type="button" class="btn button_bg mr-2 p-2" onclick="PendingWithdrawalDetails('@obj.Id')">
+																	Full Details
+																</button>
+																	<button type="button" class="btn button_bg mr-2 p-2" onclick="approveWithdrawals('@obj.Id')">
+																	 Approve
+																</button>
+																	<button type="button" class="btn button_bg p-2" onclick="rejectWithdrawals('@obj.Id')">
+																	 Reject
+																</button>
+															</nav>
+														</td>
+													</tr>
+												}
+											} 
+											</tbody>
+										</table>
+
+									</div>
+									<br />
+									<div class="col-lg-2 col-md-12">
+										Page @(Model.WithdrawalRecords.PageNumber) of @Math.Ceiling((double)Model.WithdrawalRecords.TotalItemCount / Model.WithdrawalRecords.PageSize)
+									</div>
+									<br />
+									<div class="col-md-6 col-lg-6 col-sm-6 col-5 float-right">
+										@Html.Partial("_PendingWithdrawalPager",Model)
+									</div>
+								}
+								else
+								{
+									<h2 class="text-info text-center py-5"> No Pendings Withdrawals Found </h2>
+								}
+							</div>
+						</div>
+					</div>
+					<!--Bank Withdrawal Table Ends Here-->
+
+					<!-- Start of Crypto Withdrawals-->
+					<div id="menu1" class="tab-pane fade">
+						<div class="row">
+							<div class="col-lg-12 col-md-12 col-12">
+								@if (Model != null && Model.WithdrawalRecords.Count() > 0)
+								{
+									<div class="table-responsive">
+										<table class="table cs-table crm_customer_table_inner_Wrapper">
+											<thead>
+												<tr>
+
+													<th class="width_table1">S/N</th>
+
+													<th class="width_table1">Amount in GGT </th>
+
+													<th class="width_table1">Requested By</th>
+
+													<th class="width_table1">Date Of Request</th>
+
+													<th class="width_table1">Wallet Name </th>
+
+													<th class="width_table1">Wallet Id</th>
+
+													<th class="width_table1">Crypto App Name</th>
+
+													<th class="width_table1 text-center">Actions</th>
+												</tr>
+											</thead>
+											<tbody>
+												@foreach (var obj in Model.WithdrawalRecords)
+												{
+
+													if (obj.WithdrawalType.ToLower().Contains("crypto"))
+													{
+														<tr class="background_white">
+
+															<td></td>
+
+															<td class="flag">
+																<div class="pretty p-svg p-curve">@obj.Amount.ToString("F0") GGT Coins</div>
+															</td>
+
+															<td class="flag">
+																<div class="pretty p-svg p-curve">@obj.RequestedBy</div>
+															</td>
+
+															<td>
+																<div class="pretty p-svg p-curve">@obj.DateRequested.ToString("f")</div>
+															</td>
+
+															<td>
+																<div class="pretty p-svg p-curve">@obj.BankAccountName</div>
+															</td>
+
+															<td class="flag">
+																<div class="pretty p-svg p-curve">@obj.AccountNumber</div>
+															</td>
+
+															<td class="flag">
+																<div class="pretty p-svg p-curve">@obj.AccountName</div>
+															</td>
+
+															<td> 
+																<nav class="navbar navbar-expand justify-content-center">
+																	<button type="button" class="btn button_bg mr-2 p-2" onclick="PendingWithdrawalDetails('@obj.Id')">
+																		Full Details
+																	</button>
+																	<button type="button" class="btn button_bg mr-2 p-2" onclick="approveWithdrawals('@obj.Id')">
+																			Approve
+																	</button>
+																	<button type="button" class="btn button_bg p-2" onclick="rejectWithdrawals('@obj.Id')">
+																			Reject
+																	</button>
+																</nav>
+															</td>
+														</tr>
+													}
+												}
+											</tbody>
+										</table>
+
+									</div>
+									<br />
+									<div class="col-lg-2 col-md-12">
+										Page @(Model.WithdrawalRecords.PageNumber) of @Math.Ceiling((double)Model.WithdrawalRecords.TotalItemCount / Model.WithdrawalRecords.PageSize)
+									</div>
+									<br />
+									<div class="col-md-6 col-lg-6 col-sm-6 col-5 float-right">
+										@Html.Partial("_PendingWithdrawalPager",Model)
+									</div>
+								}
+								else
+								{
+									<h2 class="text-info text-center py-5"> No Pendings Withdrawals Found </h2>
+								}
+							</div>
+						</div>
+					</div>
+					<!--Crypto Withdrawal Table Ends Here-->
+
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!--  deposit wrapper end -->
+
+
+<div class="modal" id="myModal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content" id="myModalBody">
+			@*<img src="~/images/loader.gif" id="myLoader" />*@
+		</div>
+	</div>
+</div>
+
+
+<script type="text/javascript">
+
+	function PendingWithdrawalDetails(Id) {
+		debugger;
+		$.get('@Url.Action("WithdrawalFullDetails", "Admin")', { id: Id },
+			function (data) {
+				$("#myLoader").show();
+				$("#myModalBody").html(data);
+				$("#myLoader").fadeOut(5000);
+			});
+		$("#myModal").modal();
+	}
+
+</script>

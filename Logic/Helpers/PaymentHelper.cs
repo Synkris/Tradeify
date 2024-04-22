@@ -1526,6 +1526,278 @@ namespace Logic.Helpers
             return false;
         }
 
+        public async Task<bool> CreditWallet(string userId, decimal amount, Guid? paymentId, string details)
+        {
+
+            try
+            {
+                if (userId != null && amount > 0)
+                {
+                    //GetUserWallet
+                    var wallet = GetUserWalletNonAsync(userId);
+                    if (wallet == null)
+                    {
+                        wallet = CreateWalletByUserIdNonAsync(userId, amount);
+                        if (wallet.Balance > 0)
+                        {
+                            return true;
+                        }
+                    }
+                    else
+                    {
+                        wallet.Balance += amount;
+                        _context.Update(wallet);
+                        _context.SaveChanges();
+                        await _bonusHelper.CreditPvWallet(userId, amount, paymentId);
+                        var result = await LogWalletHistory(wallet, amount, TransactionType.Credit, paymentId, details);
+                        if (result)
+                            return true;
+                    }
+                }
+                return false;
+            }
+            catch (Exception ex)
+            {
+                LogCritical($" {ex.Message} This exception occured while trying to credit user Wallet in payment helper");
+                throw ex;
+            }
+        }
+
+        public Wallet GetUserWalletNonAsync(string userId)
+        {
+            try
+            {
+                if (userId != null)
+                {
+                    var wallet = _context.Wallets.Where(x => x.UserId == userId)?.Include(s => s.User)?.FirstOrDefault();
+                    if (wallet != null && wallet.UserId != null)
+                    {
+                        return wallet;
+                    }
+                    else
+                    {
+                        return CreateWalletByUserIdNonAsync(userId);
+                    }
+
+                }
+
+                return null;
+
+            }
+            catch (Exception ex)
+            {
+                LogCritical($" {ex.Message} This exception occured while trying to get user Wallet in payment helper");
+                throw ex;
+            }
+
+        }
+
+        public Wallet? CreateWalletByUserIdNonAsync(string userId, decimal amount = 0)
+        {
+            if (userId == null)
+            {
+                LogError($" UserId{userId} not found");
+                return null;
+            };
+            var user = _userHelper.FindById(userId);
+
+            if (user == null)
+            {
+                LogError($"An attempt to get user for creating wallet with userId{userId} failed");
+                return null;
+            }
+            var newWallet = new Wallet
+            {
+                UserId = user.Id,
+                Balance = amount,
+                LastUpdated = DateTime.Now,
+            };
+            _context.Add(newWallet);
+            _context.SaveChanges();
+            return newWallet;
+        }
+
+        public async Task<bool> LogWalletHistory(Wallet wallet, decimal amount, TransactionType transactionType, Guid? paymentId, string details)
+        {
+            try
+            {
+                if (wallet != null && wallet.UserId != null && amount > 0)
+                {
+                    WalletHistory newWalletHistory = new WalletHistory()
+                    {
+                        TransactionType = transactionType,
+                        Amount = amount,
+                        PaymentId = paymentId != Guid.Empty ? paymentId : null,
+                        WalletId = wallet.Id,
+                        Details = details,
+                        NewBalance = wallet.Balance,
+                        DateOfTransaction = DateTime.Now,
+
+                    };
+                    var result = _context.Add(newWalletHistory);
+                    _context.SaveChanges();
+                    if (result.Entity.Id != Guid.Empty)
+                    {
+                        return true;
+                    }
+                }
+                return false;
+            }
+            catch (Exception ex)
+            {
+                LogCritical($" {ex.Message} This exception occured while trying to log wallet history in payment helper");
+                throw ex;
+            }
+        }
+
+        public IPagedList<WithdrawalViewModel> GetPendingWithdrawals(PendingWithdrawalsSearchResultViewModel searchResultViewModel, int pageNumber, int pageSize)
+        {
+
+            var rate = _generalConfiguration.GGCWithdrawalConversionToNaira;
+            var pendingWithdrawQuery = _context.WithdrawFunds
+                .Where(s => s.WithdrawStatus == Status.Pending && s.UserId != null)
+                .OrderByDescending(s => s.DateRequested).AsQueryable();
+
+            if (!string.IsNullOrEmpty(searchResultViewModel.AccountNumber))
+            {
+                pendingWithdrawQuery = pendingWithdrawQuery.Where(v =>
+                    v.AccountNumber.ToLower().Contains(searchResultViewModel.AccountNumber.ToLower())
+                );
+            }
+            if (!string.IsNullOrEmpty(searchResultViewModel.AccountName))
+            {
+                pendingWithdrawQuery = pendingWithdrawQuery.Where(v =>
+                    v.AccountName.ToLower().Contains(searchResultViewModel.AccountName.ToLower())
+                );
+            }
+            if (searchResultViewModel.SortTypeFrom != DateTime.MinValue)
+            {
+                pendingWithdrawQuery = pendingWithdrawQuery.Where(v => v.DateRequested >= searchResultViewModel.SortTypeFrom);
+            }
+            if (searchResultViewModel.SortTypeTo != DateTime.MinValue)
+            {
+                pendingWithdrawQuery = pendingWithdrawQuery.Where(v => v.DateRequested <= searchResultViewModel.SortTypeTo);
+            }
+
+            var totalItemCount = pendingWithdrawQuery.Count();
+            var totalPages = (int)Math.Ceiling((double)totalItemCount / pageSize);
+
+            var pendingWithdrawals = pendingWithdrawQuery.Select(s => new WithdrawalViewModel
+            {
+                Id = s.Id,
+                DateRequested = s.DateRequested,
+                RequestedBy = s.RequestedBy,
+                AccountName = s.AccountName,
+                AccountNumber = s.AccountNumber,
+                BankAccountName = s.BankAccountName,
+                CreditedBy = s.CreditedBy,
+                WithdrawalType = s.WithdrawalType,
+                WithdrawStatus = s.WithdrawStatus,
+                DateApprovedAndSent = s.DateApprovedAndSent,
+                Amount = s.Amount / rate,
+            }).ToPagedList(pageNumber, pageSize, totalItemCount);
+            searchResultViewModel.PageCount = totalPages;
+            searchResultViewModel.WithdrawalRecords = pendingWithdrawals;
+            if (pendingWithdrawals.Any())
+            {
+                return pendingWithdrawals;
+            }
+            return pendingWithdrawals;
+        }
+
+        public bool ApproveWithdrawalRequest(WithdrawFunds withdrawFunds, string currentUserId, Guid withdrawalRequestId)
+        {
+            try
+            {
+                string toEmail = withdrawFunds.User.Email;
+                string subject = " Withdrawal Approved ";
+                string message = "Hello "
+
+                + "<b>" + withdrawFunds.User.UserName + "<b/>" + ", <br> Your Account has been credited with NGN " + "<b>"
+                + withdrawFunds.Amount.ToString("G29") + "<b/> For " + " requesting withdrawal. Keep Investing with GAP . " + "<br> Thanks!!! ";
+
+                if (withdrawFunds != null && withdrawFunds.WithdrawStatus == Status.Pending && withdrawFunds.User.RegFeePaid == true)
+                {
+                    withdrawFunds.WithdrawStatus = Status.Approved;
+                    withdrawFunds.CreditedBy = withdrawFunds.User.UserName;
+                    withdrawFunds.DateApprovedAndSent = DateTime.Now;
+                    withdrawFunds.CreditedBy = currentUserId;
+
+                    _context.Update(withdrawFunds);
+                    _context.SaveChanges();
+                    _emailService.SendEmail(toEmail, subject, message);
+                    return true;
+                }
+                return false;
+            }
+            catch (Exception ex)
+            {
+                LogCritical($" {ex.Message} This exception occured while trying to approve withdrawal request in payment helper");
+                throw ex;
+            }
+        }
+
+        public async Task<bool> DebitWallet(string userId, decimal amount, Guid? paymentId, string details)
+        {
+            try
+            {
+                if (userId != null && amount > 0)
+                {
+                    var wallet = await GetUserWallet(userId);
+                    if (wallet != null)
+                    {
+                        if (wallet.Balance >= amount)
+                        {
+                            wallet.Balance -= amount;
+                            _context.Update(wallet);
+                            await _context.SaveChangesAsync();
+                            await LogWalletHistory(wallet, amount, TransactionType.Debit, paymentId, details);
+                            return true;
+                        }
+                    }
+                }
+                return false;
+            }
+            catch (Exception ex)
+            {
+                LogCritical($" {ex.Message} This exception occured while trying to debit wallet in payment helper");
+                throw ex;
+            }
+        }
+
+        public WithdrawFunds RejectWithdrawalRequest(Guid withdrawalId)
+        {
+            try
+            {
+                if (withdrawalId != Guid.Empty)
+                {
+                    var withdrawal = _context.WithdrawFunds.Where(s => s.Id == withdrawalId && s.WithdrawStatus == Status.Pending || s.WithdrawStatus == Status.Approved).Include(s => s.User).FirstOrDefault();
+                    if (withdrawal != null)
+                    {
+                        if (withdrawal.WithdrawStatus == Status.Pending)
+                        {
+                            withdrawal.WithdrawStatus = Status.Rejected;
+                            _context.Update(withdrawal);
+                            _context.SaveChanges();
+
+                            string toEmail = withdrawal.User?.Email;
+                            string subject = " Withdrawal Approved ";
+                            string message = "Hello "
+                            + "<b>" + withdrawal?.User?.UserName + "<b/>" + ", <br> Your withdrawal request has been rejected. Try earning more funds before applying for withdrawal. " + " <br> <br>. Keep Investing with GAP . " + "<br> Thanks!!! ";
+                            return withdrawal;
+                        }
+                    }
+                }
+                return null;
+            }
+            catch (Exception ex)
+            {
+                LogCritical($" {ex.Message} This exception occured while trying to reject withdrawal request in payment helper");
+
+                throw ex;
+            }
+        }
+
 
     }
 }
