@@ -44,6 +44,11 @@ namespace Logic.IHelpers
         bool RejectPayment(Guid paymentId, string loggedInUser);
         bool ApproveTokenFee(Guid paymentId, string loggedInUser);
         bool RejectTokenPayment(Guid paymentId, string loggedInUser);
+        Task<bool> CreditWallet(string userId, decimal amount, Guid? paymentId, string details);
+        IPagedList<WithdrawalViewModel> GetPendingWithdrawals(PendingWithdrawalsSearchResultViewModel searchResultViewModel, int pageNumber, int pageSize);
+        bool ApproveWithdrawalRequest(WithdrawFunds withdrawFunds, string currentUserId, Guid withdrawalRequestId);
+        Task<bool> DebitWallet(string userId, decimal amount, Guid? paymentId, string details);
+        WithdrawFunds RejectWithdrawalRequest(Guid withdrawalId);
 
 
 

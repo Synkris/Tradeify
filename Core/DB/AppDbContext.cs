@@ -37,5 +37,6 @@ namespace Core.DB
         public DbSet<CompanySettings> CompanySettings { get; set; }
         public DbSet<UserGenerationLog> UserGenerationLogs { get; set; }
         public DbSet<RegFeeGrants> RegFeeGrants { get; set; }
+        public DbSet<WithdrawFunds> WithdrawFunds { get; set; }
     }
 }
