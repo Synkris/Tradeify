@@ -35,5 +35,7 @@ namespace Core.DB
         //public DbSet<MatchingRequest> MatchingRequests { get; set; }
         public DbSet<News> News { get; set; }
         public DbSet<CompanySettings> CompanySettings { get; set; }
+        public DbSet<UserGenerationLog> UserGenerationLogs { get; set; }
+        public DbSet<RegFeeGrants> RegFeeGrants { get; set; }
     }
 }

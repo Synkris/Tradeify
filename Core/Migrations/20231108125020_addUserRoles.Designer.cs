@@ -4,6 +4,7 @@ using Core.DB;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,16 +12,17 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Core.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20231108125020_addUserRoles")]
+    partial class addUserRoles
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "7.0.0")
+                .HasAnnotation("ProductVersion", "6.0.24")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
-            SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
+            SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
             modelBuilder.Entity("Core.Models.AGCWalletHistory", b =>
                 {
@@ -35,14 +37,12 @@ namespace Core.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Details")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<decimal>("NewBalance")
                         .HasColumnType("decimal(18,4)");
 
                     b.Property<Guid?>("PaymentId")
-                        .IsRequired()
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<int>("TransactionType")
@@ -60,13 +60,84 @@ namespace Core.Migrations
                     b.ToTable("AGCWalletHistories");
                 });
 
+            modelBuilder.Entity("Core.Models.Appreciation", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<decimal>("Amount")
+                        .HasColumnType("decimal(18,4)");
+
+                    b.Property<string>("AppreciatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("AppreciationDetails")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("DateAppreciated")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Appreciations");
+                });
+
+            modelBuilder.Entity("Core.Models.Bettings", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<bool>("Active")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("BetAnswers")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("BetCreatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("BetName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("BetQuestions")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<double>("BettingAmount")
+                        .HasColumnType("float");
+
+                    b.Property<double>("CashBack")
+                        .HasColumnType("float");
+
+                    b.Property<DateTime>("DateBetCreated")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("Deleted")
+                        .HasColumnType("bit");
+
+                    b.Property<int>("NumberOfDays")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Bettings");
+                });
+
             modelBuilder.Entity("Core.Models.CommonDropdowns", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<bool>("Active")
                         .HasColumnType("bit");
@@ -84,58 +155,11 @@ namespace Core.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Name")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
                     b.ToTable("CommonDropdowns");
-                });
-
-            modelBuilder.Entity("Core.Models.CompanySettings", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<decimal>("ActivationAmount")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<bool>("Active")
-                        .HasColumnType("bit");
-
-                    b.Property<DateTime>("DateCreated")
-                        .HasColumnType("datetime2");
-
-                    b.Property<bool>("Deleted")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("MaximumToken")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("MinimumToken")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("MiningDuration")
-                        .HasColumnType("int");
-
-                    b.Property<decimal>("MiningQuantity")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<decimal>("Tokenamount")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("CompanySettings");
                 });
 
             modelBuilder.Entity("Core.Models.Cordinator", b =>
@@ -144,18 +168,15 @@ namespace Core.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int?>("Id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int?>("Id"), 1L, 1);
 
                     b.Property<string>("AddedBy")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("CordinatorId")
-                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("CordinatorUserName")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("DateAdded")
@@ -184,14 +205,12 @@ namespace Core.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Details")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<decimal>("NewBalance")
                         .HasColumnType("decimal(18,4)");
 
                     b.Property<Guid?>("PaymentId")
-                        .IsRequired()
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<int>("TransactionType")
@@ -215,14 +234,12 @@ namespace Core.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<string>("AdifMemberId")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("AdminUserId")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("AmTheRealUser")
@@ -248,7 +265,7 @@ namespace Core.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<bool>("Active")
                         .HasColumnType("bit");
@@ -268,13 +285,10 @@ namespace Core.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("MasterImageUrl")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("RedBy")
+                    b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
@@ -288,7 +302,7 @@ namespace Core.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<bool>("Active")
                         .HasColumnType("bit");
@@ -309,7 +323,6 @@ namespace Core.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Name")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<double?>("Price")
@@ -320,6 +333,58 @@ namespace Core.Migrations
                     b.ToTable("Packages");
                 });
 
+            modelBuilder.Entity("Core.Models.Payment", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<decimal>("Amount")
+                        .HasColumnType("decimal(18,4)");
+
+                    b.Property<int?>("BankAccountId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("DateGenerated")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("FileUpload")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("InvoiceNumber")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("PackagesId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("PaidFrom")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("PaymentOptionId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("PaymentStatus")
+                        .HasColumnType("int");
+
+                    b.Property<int>("PaymentTypeId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("BankAccountId");
+
+                    b.HasIndex("PackagesId");
+
+                    b.HasIndex("PaymentOptionId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Payments");
+                });
+
             modelBuilder.Entity("Core.Models.PaymentForm", b =>
                 {
                     b.Property<Guid>("Id")
@@ -327,14 +392,15 @@ namespace Core.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("AccountNumberPaidFrom")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<decimal>("Amount")
                         .HasColumnType("decimal(18,2)");
 
+                    b.Property<int?>("BankAccountId")
+                        .HasColumnType("int");
+
                     b.Property<string>("BankNamePaidFrom")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("CryptoAmount")
@@ -344,27 +410,15 @@ namespace Core.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Details")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("GCCAccountId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("GGCAccountId")
-                        .HasColumnType("int");
-
-                    b.Property<decimal?>("NoOfTokensBought")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<int?>("PackageId")
-                        .HasColumnType("int");
+                    b.Property<string>("DistributorId")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("PaidFrom")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("PaymentMethod")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("PaymentTypeId")
@@ -376,22 +430,158 @@ namespace Core.Migrations
                     b.Property<string>("StatusBy")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime?>("StatuseChangeDate")
+                    b.Property<DateTime>("StatuseChangeDate")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("UserId")
-                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("GGCAccountId");
-
-                    b.HasIndex("PackageId");
+                    b.HasIndex("BankAccountId");
 
                     b.HasIndex("UserId");
 
                     b.ToTable("PaymentForms");
+                });
+
+            modelBuilder.Entity("Core.Models.Paystack", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("PaymentId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("access_code")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<decimal?>("amount")
+                        .HasColumnType("decimal(18,4)");
+
+                    b.Property<string>("authorization_url")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("bank")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("brand")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("card_type")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("channel")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("country_code")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("currency")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("domain")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("exp_month")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("exp_year")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("fees")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("gateway_response")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ip_address")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("last4")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("message")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("reference")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool?>("reusable")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("signature")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("status")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("transaction_date")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("PaymentId");
+
+                    b.ToTable("Paystacks");
+                });
+
+            modelBuilder.Entity("Core.Models.PendingBonuses", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<decimal>("Amount")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("PendingBonuses");
+                });
+
+            modelBuilder.Entity("Core.Models.Product", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<bool>("Active")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Code")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("Deleted")
+                        .HasColumnType("bit");
+
+                    b.Property<decimal>("Discount")
+                        .HasColumnType("decimal(18,4)");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("ParentId")
+                        .HasColumnType("int");
+
+                    b.Property<decimal>("Price")
+                        .HasColumnType("decimal(18,4)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ParentId");
+
+                    b.ToTable("Products");
                 });
 
             modelBuilder.Entity("Core.Models.PvWalletHistory", b =>
@@ -407,14 +597,12 @@ namespace Core.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Details")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<decimal>("NewBalance")
                         .HasColumnType("decimal(18,4)");
 
                     b.Property<Guid?>("PaymentId")
-                        .IsRequired()
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<int>("TransactionType")
@@ -445,7 +633,6 @@ namespace Core.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<Guid?>("PaymentId")
-                        .IsRequired()
                         .HasColumnType("uniqueidentifier");
 
                     b.HasKey("Id");
@@ -455,44 +642,52 @@ namespace Core.Migrations
                     b.ToTable("RegFeeGrants");
                 });
 
-            modelBuilder.Entity("Core.Models.UserGenerationLog", b =>
+            modelBuilder.Entity("Core.Models.UserBettings", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("uniqueidentifier");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    b.Property<bool>("Active")
+                        .HasColumnType("bit");
 
-                    b.Property<decimal>("BonusAmount")
+                    b.Property<decimal>("AmountStaked")
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<string>("ChildId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<string>("BetAnswerChosen")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("DateCreated")
-                        .HasColumnType("datetime2");
+                    b.Property<string>("BetApprovedBy")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime?>("DatePaid")
-                        .HasColumnType("datetime2");
+                    b.Property<string>("BetQuestion")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("Generation")
+                    b.Property<int>("BetStatus")
                         .HasColumnType("int");
 
-                    b.Property<int>("Status")
+                    b.Property<int>("BettingsId")
                         .HasColumnType("int");
+
+                    b.Property<DateTime>("DateStaked")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("DateWon")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("Deleted")
+                        .HasColumnType("bit");
 
                     b.Property<string>("UserId")
-                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ChildId");
+                    b.HasIndex("BettingsId");
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("UserGenerationLogs");
+                    b.ToTable("UserBettings");
                 });
 
             modelBuilder.Entity("Core.Models.UserGrantHistory", b =>
@@ -511,7 +706,6 @@ namespace Core.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("UserId")
-                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
@@ -538,16 +732,16 @@ namespace Core.Migrations
                     b.Property<string>("CryptoAmount")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime?>("DateBonusPaid")
+                    b.Property<DateTime>("DateBonusPaid")
                         .HasColumnType("datetime2");
 
                     b.Property<DateTime>("DateCreated")
                         .HasColumnType("datetime2");
 
-                    b.Property<DateTime?>("DateOfApproval")
+                    b.Property<DateTime>("DateOfApproval")
                         .HasColumnType("datetime2");
 
-                    b.Property<DateTime?>("DateOfPayment")
+                    b.Property<DateTime>("DateOfPayment")
                         .HasColumnType("datetime2");
 
                     b.Property<bool>("Deleted")
@@ -556,22 +750,22 @@ namespace Core.Migrations
                     b.Property<bool>("IsMatured")
                         .HasColumnType("bit");
 
-                    b.Property<int>("MaxGeneration")
-                        .HasColumnType("int");
-
                     b.Property<string>("Name")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<double>("PackageBonus")
+                        .HasColumnType("float");
+
+                    b.Property<int>("PackageBonusAmountStatus")
+                        .HasColumnType("int");
 
                     b.Property<int>("PackageId")
                         .HasColumnType("int");
 
-                    b.Property<Guid?>("PaymentId")
-                        .IsRequired()
+                    b.Property<Guid>("PaymentId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("UserId")
-                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
@@ -598,7 +792,6 @@ namespace Core.Migrations
                         .HasColumnType("bit");
 
                     b.Property<string>("UserId")
-                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Token");
@@ -625,7 +818,6 @@ namespace Core.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("UserId")
-                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
@@ -635,8 +827,6 @@ namespace Core.Migrations
                     b.ToTable("Wallets");
 
                     b.HasDiscriminator<string>("Discriminator").HasValue("Wallet");
-
-                    b.UseTphMappingStrategy();
                 });
 
             modelBuilder.Entity("Core.Models.WalletHistory", b =>
@@ -652,14 +842,12 @@ namespace Core.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Details")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<decimal>("NewBalance")
                         .HasColumnType("decimal(18,4)");
 
                     b.Property<Guid?>("PaymentId")
-                        .IsRequired()
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<int>("TransactionType")
@@ -675,6 +863,52 @@ namespace Core.Migrations
                     b.HasIndex("WalletId");
 
                     b.ToTable("WalletHistories");
+                });
+
+            modelBuilder.Entity("Core.Models.WithdrawFunds", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("AccountName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("AccountNumber")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<decimal>("Amount")
+                        .HasColumnType("decimal(18,4)");
+
+                    b.Property<string>("BankAccountName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CreditedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("DateApprovedAndSent")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("DateRequested")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("RequestedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("WithdrawStatus")
+                        .HasColumnType("int");
+
+                    b.Property<string>("WithdrawalType")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("WithdrawFunds");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -710,7 +944,7 @@ namespace Core.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<string>("ClaimType")
                         .HasColumnType("nvarchar(max)");
@@ -798,8 +1032,6 @@ namespace Core.Migrations
                     b.ToTable("AspNetUsers", (string)null);
 
                     b.HasDiscriminator<string>("Discriminator").HasValue("IdentityUser");
-
-                    b.UseTphMappingStrategy();
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
@@ -808,7 +1040,7 @@ namespace Core.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<string>("ClaimType")
                         .HasColumnType("nvarchar(max)");
@@ -883,27 +1115,6 @@ namespace Core.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("Core.Models.AGCWallet", b =>
-                {
-                    b.HasBaseType("Core.Models.Wallet");
-
-                    b.HasDiscriminator().HasValue("AGCWallet");
-                });
-
-            modelBuilder.Entity("Core.Models.GrantWallet", b =>
-                {
-                    b.HasBaseType("Core.Models.Wallet");
-
-                    b.HasDiscriminator().HasValue("GrantWallet");
-                });
-
-            modelBuilder.Entity("Core.Models.PvWallet", b =>
-                {
-                    b.HasBaseType("Core.Models.Wallet");
-
-                    b.HasDiscriminator().HasValue("PvWallet");
-                });
-
             modelBuilder.Entity("Core.Models.ApplicationUser", b =>
                 {
                     b.HasBaseType("Microsoft.AspNetCore.Identity.IdentityUser");
@@ -921,31 +1132,31 @@ namespace Core.Migrations
                         .HasColumnType("bit");
 
                     b.Property<string>("FirstName")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("GenderId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("LastGenPaid")
+                    b.Property<int>("LastGenPaid")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("LastLogoutTime")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("LastName")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("LastPendingGen")
+                    b.Property<int>("LastPendingGen")
                         .HasColumnType("int");
 
                     b.Property<string>("ParentId")
-                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<string>("RefferrerId")
+                    b.Property<string>("Password")
                         .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("RefferrerId")
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<bool?>("RegFeePaid")
@@ -968,13 +1179,18 @@ namespace Core.Migrations
                     b.HasDiscriminator().HasValue("ApplicationUser");
                 });
 
+            modelBuilder.Entity("Core.Models.PvWallet", b =>
+                {
+                    b.HasBaseType("Core.Models.Wallet");
+
+                    b.HasDiscriminator().HasValue("PvWallet");
+                });
+
             modelBuilder.Entity("Core.Models.AGCWalletHistory", b =>
                 {
                     b.HasOne("Core.Models.PaymentForm", "Payment")
                         .WithMany()
-                        .HasForeignKey("PaymentId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("PaymentId");
 
                     b.HasOne("Core.Models.Wallet", "Wallet")
                         .WithMany()
@@ -987,13 +1203,20 @@ namespace Core.Migrations
                     b.Navigation("Wallet");
                 });
 
+            modelBuilder.Entity("Core.Models.Appreciation", b =>
+                {
+                    b.HasOne("Core.Models.ApplicationUser", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId");
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("Core.Models.Cordinator", b =>
                 {
                     b.HasOne("Core.Models.ApplicationUser", "Coordinator")
                         .WithMany()
-                        .HasForeignKey("CordinatorId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("CordinatorId");
 
                     b.Navigation("Coordinator");
                 });
@@ -1002,9 +1225,7 @@ namespace Core.Migrations
                 {
                     b.HasOne("Core.Models.PaymentForm", "Payment")
                         .WithMany()
-                        .HasForeignKey("PaymentId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("PaymentId");
 
                     b.HasOne("Core.Models.Wallet", "Wallet")
                         .WithMany()
@@ -1017,38 +1238,86 @@ namespace Core.Migrations
                     b.Navigation("Wallet");
                 });
 
-            modelBuilder.Entity("Core.Models.PaymentForm", b =>
+            modelBuilder.Entity("Core.Models.Payment", b =>
                 {
-                    b.HasOne("Core.Models.CommonDropdowns", "GGCAccount")
+                    b.HasOne("Core.Models.CommonDropdowns", "BankAccount")
                         .WithMany()
-                        .HasForeignKey("GGCAccountId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("BankAccountId");
 
                     b.HasOne("Core.Models.Packages", "Packages")
                         .WithMany()
-                        .HasForeignKey("PackageId");
-
-                    b.HasOne("Core.Models.ApplicationUser", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId")
+                        .HasForeignKey("PackagesId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("GGCAccount");
+                    b.HasOne("Core.Models.CommonDropdowns", "PaymentOption")
+                        .WithMany()
+                        .HasForeignKey("PaymentOptionId");
+
+                    b.HasOne("Core.Models.ApplicationUser", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId");
+
+                    b.Navigation("BankAccount");
 
                     b.Navigation("Packages");
 
+                    b.Navigation("PaymentOption");
+
                     b.Navigation("User");
+                });
+
+            modelBuilder.Entity("Core.Models.PaymentForm", b =>
+                {
+                    b.HasOne("Core.Models.CommonDropdowns", "BankAccount")
+                        .WithMany()
+                        .HasForeignKey("BankAccountId");
+
+                    b.HasOne("Core.Models.ApplicationUser", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId");
+
+                    b.Navigation("BankAccount");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("Core.Models.Paystack", b =>
+                {
+                    b.HasOne("Core.Models.Payment", "Payment")
+                        .WithMany()
+                        .HasForeignKey("PaymentId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Payment");
+                });
+
+            modelBuilder.Entity("Core.Models.PendingBonuses", b =>
+                {
+                    b.HasOne("Core.Models.ApplicationUser", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("Core.Models.Product", b =>
+                {
+                    b.HasOne("Core.Models.CommonDropdowns", "Parent")
+                        .WithMany()
+                        .HasForeignKey("ParentId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Parent");
                 });
 
             modelBuilder.Entity("Core.Models.PvWalletHistory", b =>
                 {
                     b.HasOne("Core.Models.PaymentForm", "Payment")
                         .WithMany()
-                        .HasForeignKey("PaymentId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("PaymentId");
 
                     b.HasOne("Core.Models.Wallet", "Wallet")
                         .WithMany()
@@ -1065,28 +1334,24 @@ namespace Core.Migrations
                 {
                     b.HasOne("Core.Models.PaymentForm", "Payment")
                         .WithMany()
-                        .HasForeignKey("PaymentId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("PaymentId");
 
                     b.Navigation("Payment");
                 });
 
-            modelBuilder.Entity("Core.Models.UserGenerationLog", b =>
+            modelBuilder.Entity("Core.Models.UserBettings", b =>
                 {
-                    b.HasOne("Core.Models.ApplicationUser", "Child")
+                    b.HasOne("Core.Models.Bettings", "Bettings")
                         .WithMany()
-                        .HasForeignKey("ChildId")
+                        .HasForeignKey("BettingsId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("Core.Models.ApplicationUser", "User")
                         .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("UserId");
 
-                    b.Navigation("Child");
+                    b.Navigation("Bettings");
 
                     b.Navigation("User");
                 });
@@ -1099,9 +1364,7 @@ namespace Core.Migrations
 
                     b.HasOne("Core.Models.ApplicationUser", "User")
                         .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("UserId");
 
                     b.Navigation("RegFeeGrants");
 
@@ -1123,10 +1386,8 @@ namespace Core.Migrations
                         .IsRequired();
 
                     b.HasOne("Core.Models.ApplicationUser", "User")
-                        .WithMany("UserPackages")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .WithMany()
+                        .HasForeignKey("UserId");
 
                     b.Navigation("Package");
 
@@ -1139,9 +1400,7 @@ namespace Core.Migrations
                 {
                     b.HasOne("Core.Models.ApplicationUser", "User")
                         .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("UserId");
 
                     b.Navigation("User");
                 });
@@ -1150,9 +1409,7 @@ namespace Core.Migrations
                 {
                     b.HasOne("Core.Models.ApplicationUser", "User")
                         .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("UserId");
 
                     b.Navigation("User");
                 });
@@ -1161,9 +1418,7 @@ namespace Core.Migrations
                 {
                     b.HasOne("Core.Models.PaymentForm", "Payment")
                         .WithMany()
-                        .HasForeignKey("PaymentId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("PaymentId");
 
                     b.HasOne("Core.Models.Wallet", "Wallet")
                         .WithMany()
@@ -1174,6 +1429,15 @@ namespace Core.Migrations
                     b.Navigation("Payment");
 
                     b.Navigation("Wallet");
+                });
+
+            modelBuilder.Entity("Core.Models.WithdrawFunds", b =>
+                {
+                    b.HasOne("Core.Models.ApplicationUser", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId");
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -1237,15 +1501,11 @@ namespace Core.Migrations
 
                     b.HasOne("Core.Models.ApplicationUser", "Parent")
                         .WithMany()
-                        .HasForeignKey("ParentId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("ParentId");
 
                     b.HasOne("Core.Models.ApplicationUser", "Refferrer")
                         .WithMany()
-                        .HasForeignKey("RefferrerId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("RefferrerId");
 
                     b.HasOne("Core.Models.PaymentForm", "RegFeePayment")
                         .WithMany()
@@ -1258,11 +1518,6 @@ namespace Core.Migrations
                     b.Navigation("Refferrer");
 
                     b.Navigation("RegFeePayment");
-                });
-
-            modelBuilder.Entity("Core.Models.ApplicationUser", b =>
-                {
-                    b.Navigation("UserPackages");
                 });
 #pragma warning restore 612, 618
         }

@@ -1,0 +1,684 @@
+﻿@model Core.ViewModels.PendingPaymentsSearchResultViewModel
+
+@{
+	ViewData["Title"] = "Payment List";
+	Layout = "~/Views/Shared/_AdminDashboardLayout.cshtml";
+}
+<style>
+
+	body {
+		counter-reset: Serial;
+	}
+
+	tr td:first-child:before {
+		counter-increment: Serial;
+		content: counter(Serial);
+	}
+
+	.arrow-container {
+		position: relative;
+	}
+
+	.arrow-up {
+		position: absolute;
+		top: 0.5em;
+	}
+
+	.arrow-down {
+		position: absolute;
+		top: 1em;
+	}
+</style>
+
+<!--  deposit wrapper start -->
+<div class="deposit_list_wrapper float_left header_text">
+	<div class="row">
+		<div class="col-md-12 col-lg-12 col-sm-12 col-12 header_text">
+			<div class="sv_heading_wraper">
+				<h3> Pending Payments </h3>
+			</div>
+		</div>
+	</div>
+	<div class="col-lg-12 col-md-12 col-sm-12 col-12 mb-1">
+		<form asp-controller="Admin" asp-action="PaymentApproval" method="get">
+
+			<div class="float_left d-lg-none" id="faqs">
+				<div class="investment_overlay faq_overlay"></div>
+				<div class="container " id="FAQ">
+					<div id="accordion" role="tablist">
+						<div class="row">
+							<div class="col-lg-6 col-md-12 col-sm-12 col-12">
+
+								<div class="card">
+									<div class="card_pagee" role="tab" id="headingTwo">
+										<h5 class="h5-md">
+											<a class="collapsed" data-toggle="collapse" href="#collapseTwo" role="button" aria-expanded="false" aria-controls="collapseTwo">
+												Filter
+											</a>
+										</h5>
+									</div>
+
+									<div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingTwo" data-parent="#accordion" style="">
+										<div class="card-body2">
+
+											<div class="card_cntnt">
+												<div class="row col-12">
+													<div class="p-lg-2 col-12 col-lg-2 p-2">
+														<div class="form-pos">
+															<label>Date From :</label>
+															<div class="form-group i-name">
+																<input asp-for="SortTypeFrom" name="SortTypeFrom" value="" type="date" class="form-control">
+															</div>
+														</div>
+													</div>
+
+													<div class="p-lg-2 col-12 col-lg-2 p-2">
+														<div class="form-pos">
+															<label>Date To :</label>
+															<div class="form-group i-name">
+																<input asp-for="SortTypeTo" name="SortTypeTo" value="" type="date" class="form-control">
+															</div>
+														</div>
+													</div>
+
+													<div class="p-lg-2 col-12 col-lg-2 p-2">
+														<div class="form-pos">
+															<label>Refferer:</label>
+															<div class="form-group i-name">
+																<input asp-for="Refferer" name="Refferer" type="text" class="form-control" placeholder="Refferer Name">
+															</div>
+														</div>
+													</div>
+
+													<div class="p-lg-2 col-12 col-lg-2 p-2">
+														<div class="form-pos">
+															<label>Name:</label>
+															<div class="form-group i-name">
+																<input asp-for="Name" name="Name" type="text" class="form-control" placeholder="Name">
+															</div>
+														</div>
+													</div>
+
+													<div class="col-lg-2 col-md-12">
+														<div class="tb_es_btn_div mt-4 pt-2">
+															<div class="form-group mt-2" style="display:grid">
+																<button type="submit" class="btn button_color ">Filter</button>
+															</div>
+														</div>
+													</div>
+
+												</div>
+											</div>
+										</div>
+									</div>
+
+								</div>
+
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</div>
+
+			<div class="row col-12 d-lg-flex d-none">
+				<div class="p-lg-2 col-12 col-lg-2 p-2">
+					<div class="form-pos">
+						<label>Date From :</label>
+						<div class="form-group i-name">
+							<input asp-for="SortTypeFrom" name="SortTypeFrom" value="" type="date" class="form-control">
+						</div>
+					</div>
+				</div>
+
+				<div class="p-lg-2 col-12 col-lg-2 p-2">
+					<div class="form-pos">
+						<label>Date To :</label>
+						<div class="form-group i-name">
+							<input asp-for="SortTypeTo" name="SortTypeTo" value="" type="date" class="form-control">
+						</div>
+					</div>
+				</div>
+
+				<div class="p-lg-2 col-12 col-lg-2 p-2">
+					<div class="form-pos">
+						<label>Refferer:</label>
+						<div class="form-group i-name">
+							<input asp-for="Refferer" name="Refferer" type="text" class="form-control" placeholder="Refferer Name">
+						</div>
+					</div>
+				</div>
+
+				<div class="p-lg-2 col-12 col-lg-2 p-2">
+					<div class="form-pos">
+						<label>Name:</label>
+						<div class="form-group i-name">
+							<input asp-for="Name" name="Name" type="text" class="form-control" placeholder="Name">
+						</div>
+					</div>
+				</div>
+
+				<div class="col-lg-2 col-md-12">
+					<div class="tb_es_btn_div mt-4 pt-2">
+						<div class="form-group mt-2" style="display:grid">
+							<button type="submit" class="btn button_color ">Filter</button>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-lg-2 col-md-12">
+					<div class="form-pos mt-2 ml-4">
+						<label>Page Size:</label>
+						<div class="form-group i-name">
+							<select asp-for="PageSize" name="PageSize">
+								<option value="10">10</option>
+								<option value="20">20</option>
+								<option value="50">50</option>
+							</select>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-8 col-lg-8 col-sm-12 col-12 mt-3">
+					<div class="deposit_tab_wrapper">
+						<ul class="nav nav-tabs">
+							<li class="nav-item">
+								<a class="nav-link active" data-toggle="tab" href="#home"> Registration Fees</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link " data-toggle="tab" href="#menu1"> Token Fees </a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link " data-toggle="tab" href="#activate"> Activation Fees </a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link " data-toggle="tab" href="#packages"> Package Fees </a>
+							</li>
+						</ul>
+					</div>
+				</div>
+
+			</div>
+
+		</form>
+	</div>
+	<div class="crm_customer_table_main_wrapper deposit_tables float_left">
+		<div class="row">
+
+			<div class="col-md-12 col-lg-12 col-sm-12 col-12">
+				<div class="tab-content">
+					<!-- End of Reg Fee List -->
+					<div id="home" class="tab-pane active">
+						<div class="row">
+							<div class="col-lg-12 col-md-12 col-12">
+								@if (Model != null && Model.PaymentRecords.Count() > 0)
+								{
+									<div class="table-responsive">
+										<table class="table cs-table crm_customer_table_inner_Wrapper">
+											<thead>
+												<tr>
+													<th class="width_table1"> S/N</th>
+
+													<th class="width_table1"> Name</th>
+
+													<th class="width_table1">Details</th>
+
+													<th class="width_table1">Amount</th>
+
+													<th class="width_table1">Date Paid</th>
+
+													<th class="width_table1">Referrer</th>
+
+													<th class="text-center"> Actions </th>
+												</tr>
+											</thead>
+											<tbody>
+												@foreach (var obj in Model.PaymentRecords)
+												{
+													if (obj.PaymentTypeId == Core.Models.PaymentType.RegistrationFee)
+													{
+														var dollarAmount = obj.Amount; 
+														@*/ Model.DollarRate;*@
+
+														<tr class="background_white">
+
+															<td></td>
+
+															<td>
+																<div class="pretty p-svg p-curve">@obj.Name</div>
+															</td>
+
+															<td>
+																<div class="pretty p-svg p-curve">@obj.Details</div>
+															</td>
+
+															@if (obj.BankAccount?.Name == "ZENITH")
+															{
+																<td class="flag">
+																	<div class="pretty p-svg p-curve"> $@dollarAmount.ToString("F2")</div>
+																</td>
+															}
+															else
+															{
+																<td class="flag">
+																	<div class="pretty p-svg p-curve"> $@dollarAmount.ToString("F2") </div>
+																</td>
+															}
+															<td class="flag">
+																<div class="pretty p-svg p-curve">@obj.Date.ToString("D")</div>
+															</td>
+
+															<td>
+																<div class="pretty p-svg p-curve">@obj.Refferer</div>
+															</td>
+															<td class="flag">
+																<nav class="navbar navbar-expand justify-content-center">
+																	<button type="button" class="btn button_bg mr-2 p-2"
+																	onclick="GetUserDetails('@obj.UserId')">
+																		<i class="fa fa-pencil-alt m-r-5"></i> Edit
+																	</button>
+
+																	<button type="button" class="btn button_bg mr-2 p-2"
+																	onclick="approveRegPayment('@obj.Id')">
+																	 Approve
+																	</button>
+
+																	<button type="button" class="btn button_bg mr-2 p-2"
+																	onclick="declineRegPayments('@obj.Id')">
+																	Decline
+																	</button>
+																</nav>
+															</td>
+														</tr>
+													}
+												}
+											</tbody>
+										</table>
+
+									</div>
+									<br />
+									<div class="col-lg-2 col-md-12">
+										Page @(Model.PaymentRecords.PageNumber) of @Math.Ceiling((double)Model.PaymentRecords.TotalItemCount / Model.PaymentRecords.PageSize)
+									</div>
+									<br />
+									<div class="col-md-6 col-lg-6 col-sm-6 col-5 float-right">
+										@Html.Partial("_PendingPaymentPager",Model)
+									</div>
+								}
+								else
+								{
+									<h2 class="text-info text-center py-5"> No Pending Registration Fee Available </h2>
+								}
+							</div>
+						</div>
+					</div>
+					<!-- End of Reg Fee List -->
+					<!-- Start of Packages List -->
+					<div id="menu1" class="tab-pane fade">
+						<div class="row">
+							<div class="col-lg-12 col-md-12 col-12">
+								@if (Model != null && Model.PaymentRecords.Count() > 0)
+								{
+									<div class="table-responsive">
+										<table class="table cs-table crm_customer_table_inner_Wrapper">
+											<thead>
+												<tr>
+													<th class="width_table1">S/N</th>
+
+													<th class="width_table1">Name</th>
+
+													<th class="width_table1">Details</th>
+
+													<th class="width_table1">Amount Paid</th>
+
+													<th class="width_table1">Referrer</th>
+
+													<th class="width_table1">Tokens Bought</th>
+
+													<th class="width_table1"> Date Paid</th>
+
+													<th class="text-center"> Actions </th>
+
+												</tr>
+											</thead>
+											<tbody>
+												@foreach (var obj in Model.PaymentRecords)
+												{
+													if (obj.PaymentTypeId == Core.Models.PaymentType.TokenFee && obj.Status == Core.Models.Status.Pending)
+													{
+														var dollarAmount = obj.Amount / Model.DollarRate;
+														<tr class="background_white">
+
+															<td></td>
+
+															<td>
+																<div class="pretty p-svg p-curve">@obj?.Name</div>
+															</td>
+
+															<td>
+																<div class="pretty p-svg p-curve">@obj?.Details</div>
+															</td>
+
+															@if (obj.BankAccount?.Name == "ZENITH")
+															{
+																<td class="flag">
+																	<div class="pretty p-svg p-curve"> $@dollarAmount.ToString("F2")</div>
+																</td>
+															}
+															else
+															{
+																<td class="flag">
+																	<div class="pretty p-svg p-curve"> $@dollarAmount.ToString("F2") </div>
+																</td>
+															}
+															<td>
+																<div class="pretty p-svg p-curve">@obj.Refferer</div>
+															</td>
+															
+															<td>
+																<div class="pretty p-svg p-curve">@obj.NoOfTokensBought</div>
+															</td>
+
+															<td class="flag">
+																<div class="pretty p-svg p-curve">@obj.Date.ToString("D")</div>
+															</td>
+
+															<td class="flag">
+																<nav class="navbar navbar-expand justify-content-center">
+
+																	<button type="button" class="btn button_bg mr-2 p-2"
+																	onclick="approveTokenPayment('@obj.Id')">
+																		Approve
+																	</button>
+
+																	<button type="button" class="btn button_bg mr-2 p-2"
+																	onclick="declineTokenPayments('@obj.Id')">
+																		Decline
+																	</button>
+																</nav>
+															</td>
+														</tr>
+													}
+												}
+											</tbody>
+										</table>
+
+									</div>
+									<br />
+									<div class="col-lg-2 col-md-12">
+										Page @(Model.PaymentRecords.PageNumber) of @Math.Ceiling((double)Model.PaymentRecords.TotalItemCount / Model.PaymentRecords.PageSize)
+									</div>
+									<br />
+									<div class="col-md-6 col-lg-6 col-sm-6 col-5 float-right">
+										@Html.Partial("_PendingPaymentPager",Model)
+									</div>
+								}
+								else
+								{
+									<h2 class="text-info text-center py-5"> No Token Fee Payment available </h2>
+								}
+							</div>
+						</div>
+					</div>
+					<!-- End of Packages List -->
+					<!-- Start of Re-Activation List -->
+					<div id="activate" class="tab-pane fade">
+						<div class="row">
+							<div class="col-lg-12 col-md-12 col-12">
+								@if (Model != null && Model.PaymentRecords.Count() > 0)
+								{
+									<div class="table-responsive">
+										<table class="table cs-table crm_customer_table_inner_Wrapper">
+											<thead>
+												<tr>
+													<th class="width_table1">S/N</th>
+
+													<th class="width_table1">Name</th>
+
+													<th class="width_table1">Details</th>
+
+													<th class="width_table1">Amount Paid</th>
+
+													<th class="width_table1">Referrer</th>
+
+													@*<th class="width_table1">Tokens Bought</th>*@
+
+													<th class="width_table1"> Date Paid</th>
+
+													<th class="text-center"> Actions </th>
+
+												</tr>
+											</thead>
+											<tbody>
+												@foreach (var obj in Model.PaymentRecords)
+												{
+													if (obj.PaymentTypeId == Core.Models.PaymentType.ReActivationFee && obj.Status == Core.Models.Status.Pending)
+													{
+														var dollarAmount = obj.Amount / Model.DollarRate;
+														<tr class="background_white">
+
+															<td></td>
+
+															<td>
+																<div class="pretty p-svg p-curve">@obj?.Name</div>
+															</td>
+
+															<td>
+																<div class="pretty p-svg p-curve">@obj?.Details</div>
+															</td>
+
+															@if (obj.BankAccount?.Name == "ZENITH")
+															{
+																<td class="flag">
+																	<div class="pretty p-svg p-curve"> $@dollarAmount.ToString("F2")</div>
+																</td>
+															}
+															else
+															{
+																<td class="flag">
+																	<div class="pretty p-svg p-curve"> $@dollarAmount.ToString("F2") </div>
+																</td>
+															}
+															<td>
+																<div class="pretty p-svg p-curve">@obj.Refferer</div>
+															</td>
+
+@*															<td>
+																<div class="pretty p-svg p-curve">@obj.NoOfTokensBought</div>
+															</td>*@
+
+															<td class="flag">
+																<div class="pretty p-svg p-curve">@obj.Date.ToString("D")</div>
+															</td>
+
+															<td class="flag">
+																<nav class="navbar navbar-expand justify-content-center">
+
+																	<button type="button" class="btn button_bg mr-2 p-2"
+																			onclick="approveReActivationPayment('@obj.Id')">
+																		Approve
+																	</button>
+
+																	<button type="button" class="btn button_bg mr-2 p-2"
+																			onclick="declineReActivationPayments('@obj.Id')">
+																		Decline
+																	</button>
+																</nav>
+
+															</td>
+														</tr>
+													}
+												}
+											</tbody>
+										</table>
+
+									</div>
+									<br />
+									<div class="col-lg-2 col-md-12">
+										Page @(Model.PaymentRecords.PageNumber) of @Math.Ceiling((double)Model.PaymentRecords.TotalItemCount / Model.PaymentRecords.PageSize)
+									</div>
+									<br />
+									<div class="col-md-6 col-lg-6 col-sm-6 col-5 float-right">
+										@Html.Partial("_ReActivationPaymentPager",Model)
+									</div>
+								}
+								else
+								{
+									<h2 class="text-info text-center py-5"> No Re-Activation Fee Payment available </h2>
+								}
+							</div>
+						</div>
+					</div>
+					<!-- End of Re-Activation List -->
+					<!-- Start of Active Package List -->
+					<div id="packages" class="tab-pane fade">
+						<div class="row">
+							<div class="col-lg-12 col-md-12 col-12">
+								@if (Model != null && Model.PaymentRecords.Count() > 0)
+								{
+									<div class="table-responsive">
+										<table class="table cs-table crm_customer_table_inner_Wrapper">
+											<thead>
+												<tr>
+													<th class="width_table1">S/N</th>
+
+													<th class="width_table1">Name</th>
+
+													<th class="width_table1">Old Package</th>
+													<th class="width_table1">New Package</th>
+
+													<th class="width_table1">Details</th>
+
+													<th class="width_table1">Amount Paid</th>
+
+													<th class="width_table1">Referrer</th>
+
+													@*<th class="width_table1">Tokens Bought</th>*@
+
+													<th class="width_table1"> Date Paid</th>
+
+													<th class="text-center"> Actions </th>
+
+												</tr>
+											</thead>
+											<tbody>
+												@foreach (var obj in Model.PaymentRecords)
+												{
+													if (obj.PaymentTypeId == Core.Models.PaymentType.PackageFee && obj.Status == Core.Models.Status.Pending)
+													{
+														@*var dollarAmount = obj.Amount / Model.DollarRate;*@
+														<tr class="background_white">
+
+															<td></td>
+
+															<td>
+																<div class="pretty p-svg p-curve">@obj?.Name</div>
+															</td>
+
+															<td>
+																<div class="pretty p-svg p-curve">
+																		@obj?.OldPackage
+																</div>
+															</td>
+															<td>
+																<div class="pretty p-svg p-curve">
+																	@obj?.NewPackage
+																</div>
+															</td>
+															<td>
+																<div class="pretty p-svg p-curve">@obj?.Details</div>
+															</td>
+
+															@if (obj.BankAccount?.Name == "ZENITH")
+															{
+																<td class="flag">
+																	<div class="pretty p-svg p-curve"> $@obj.Amount.ToString("F2")</div>
+																</td>
+															}
+															else
+															{
+																<td class="flag">
+																	<div class="pretty p-svg p-curve"> $@obj.Amount.ToString("F2") </div>
+																</td>
+															}
+															<td>
+																<div class="pretty p-svg p-curve">@obj.Refferer</div>
+															</td>
+
+															@*															<td>
+												<div class="pretty p-svg p-curve">@obj.NoOfTokensBought</div>
+												</td>*@
+
+															<td class="flag">
+																<div class="pretty p-svg p-curve">@obj.Date.ToString("D")</div>
+															</td>
+
+															<td class="flag">
+																<nav class="navbar navbar-expand justify-content-center">
+
+																	<button type="button" class="btn button_bg mr-2 p-2"
+																		onclick="approveUserPackagePayment('@obj?.Id')">
+																		Approve
+																	</button>
+
+																	<button type="button" class="btn button_bg mr-2 p-2"
+																		onclick="declineUserPackagePayments('@obj?.Id')">
+																		Decline
+																	</button>
+																</nav>
+
+															</td>
+														</tr>
+													}
+												}
+											</tbody>
+										</table>
+
+									</div>
+									<br />
+									<div class="col-lg-2 col-md-12">
+										Page @(Model.PaymentRecords.PageNumber) of @Math.Ceiling((double)Model.PaymentRecords.TotalItemCount / Model.PaymentRecords.PageSize)
+									</div>
+									<br />
+									<div class="col-md-6 col-lg-6 col-sm-6 col-5 float-right">
+										@Html.Partial("_PackagePager",Model)
+									</div>
+								}
+								else
+								{
+									<h2 class="text-info text-center py-5"> No Active Package Payment Fee available </h2>
+								}
+							</div>
+						</div>
+					</div>
+					<!-- End of Re-Activation List -->
+				</div>
+			</div>
+		</div>
+	</div>
+
+</div>
+<!--  deposit wrapper end -->
+
+
+@*modal for editing user details*@
+	<div class="crm_customer_table_main_wrapper float_left">
+		<div class="crm_ct_search_wrapper">
+			<div class="modal fade question_modal" id="userModal" role="dialog">
+				<div class="modal-dialog modal-lg">
+					<div class="modal-content bg-dark">
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+						<div class="row">
+							<div class="col-lg-12 col-md-12 col-sm-12 col-12">
+								<div class="sv_question_pop float_left" id="userContent">
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
