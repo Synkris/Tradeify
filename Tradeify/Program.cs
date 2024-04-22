@@ -78,8 +78,9 @@ builder.Services.AddScoped<IUserHelper, UserHelper>();
 builder.Services.AddScoped<IDropdownHelper, DropdownHelper>();
 builder.Services.AddScoped<IEmailHelper, EmailHelper>();
 builder.Services.AddScoped<IEmailService, EmailService>();
-builder.Services.AddScoped<IAdminHelper, AdminHelper>();
-builder.Services.AddScoped<IPaymentHelper, PaymentHelper>();
+//builder.Services.AddScoped<IAdminHelper, AdminHelper>();
+//builder.Services.AddScoped<IPaymentHelper, PaymentHelper>();
+builder.Services.AddScoped<IBonusHelper, BonusHelper>();
 
 
 
