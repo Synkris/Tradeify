@@ -39,5 +39,6 @@ namespace Logic.IHelpers
         List<PaymentFormViewModel> CoinDetails(string userId);
         CompanySettings GetCompanySettingsDetails();
         Packages GetPackageUgradeDetails(int packageId);
+        List<ApplicationUser> GetAllUserForBonus();
     }
 }

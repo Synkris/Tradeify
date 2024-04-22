@@ -153,3 +153,37 @@ function DeletePackage() {
 
     });
 }
+
+function sendPayGrant() {
+    var data = {};
+    data.Amount = $("#amount").val();
+    data.AppreciationDetails = $("#appreciateReasons").val();
+    var listofUserId = memberIds;
+
+    if (listofUserId != "" && data.Amount != "" & data.AppreciationDetails != "") {
+        let details = JSON.stringify(data);
+        $.ajax({
+            url: '/Admin/AppreciateMember',
+            type: 'POST',
+            data:
+            {
+                userIds: listofUserId,
+                details: details
+            },
+            success: function (result) {
+                if (!result.isError) {
+                    var url = '/Admin/AppreciateMember';
+                    successAlertWithRedirect(result.msg, url);
+                } else {
+                    errorAlert(result.msg);
+                }
+            },
+            error: function (ex) {
+                errorAlert("Error occurred. Please try again.");
+            }
+        });
+
+    } else {
+        errorAlert("Please fill the form Correctly");
+    }
+}

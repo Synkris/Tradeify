@@ -941,5 +941,55 @@ namespace Tradeify.Controllers
                 return Json(new { isError = true, msg = ex.Message });
             }
         }
+
+        [HttpGet]
+        public IActionResult AppreciateMember()
+        {
+            var usersInBonus = _userHelper.GetAllUserForBonus();
+            ViewBag.UsersInBonus = usersInBonus;
+            return View();
+        }
+
+        [Authorize]
+        [HttpPost]
+        public async Task<JsonResult> AppreciateMember(List<string> userIds, string details)
+        {
+            try
+            {
+                if (userIds != null || userIds.Count > 0 && details != null)
+                {
+                    var appreciationDetails = JsonConvert.DeserializeObject<Appreciation>(details);
+                    if (appreciationDetails != null)
+                    {
+                        var paymentId = Guid.Empty;
+                        var currentAdminId = _userHelper.GetCurrentUserId(User.Identity.Name);
+                        var appreciatedAmountinNaira = _generalConfiguration.GGCWithdrawalConversionToNaira * appreciationDetails.Amount;
+                        var amountinGGC = appreciatedAmountinNaira / _generalConfiguration.GGCWithdrawalConversionToNaira;
+
+                        appreciationDetails.Amount = appreciatedAmountinNaira;
+                        foreach (var userId in userIds)
+                        {
+                            if (!string.IsNullOrEmpty(userId))
+                            {
+                                var submitRequest = await _userHelper.SubmitAppreciationRequest(appreciationDetails, currentAdminId, userId);
+
+                                if (submitRequest)
+                                {
+                                    var creaditdetails = "Credited " + appreciationDetails.Amount.ToString("F2") + " GAP, " + appreciationDetails.AppreciationDetails;
+                                    await _paymentHelper.CreditWallet(userId, appreciationDetails.Amount, paymentId, creaditdetails);
+                                }
+                            }
+                        }
+                        return Json(new { isError = false, msg = $"You have successfully appreciated members with {amountinGGC.ToString("F0")} GAP." });
+                    }
+                    return Json(new { isError = true, msg = "An error occurred." });
+                }
+                return Json(new { isError = true, msg = "No user selected" });
+            }
+            catch (Exception exp)
+            {
+                return Json(new { isError = true, msg = "An unexpected error occurred." + exp });
+            }
+        }
     }
 }
