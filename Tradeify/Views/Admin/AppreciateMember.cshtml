@@ -1,0 +1,165 @@
+﻿@model Core.Models.Appreciation
+
+@{
+	ViewData["Title"] = "Pay Bonus";
+	Layout = "~/Views/Shared/_AdminDashboardLayout.cshtml";
+}
+<script src="~/js/multi_select/multi_select.js"></script>
+
+
+<div class="contact_section float_left header_text">
+	<div class="container">
+		<div class="row">
+
+			@if (TempData["Message"] != null)
+			{
+				var tempDatamessage = (GGC.Models.Message)TempData["Message"];
+				<partial name="_Message" model="tempDatamessage" />
+			}
+
+			<div class="col-lg-12 col-md-12 col-sm-12 col-12 header_text">
+				<div class="sv_heading_wraper heading_wrapper_dark dark_heading">
+					<h3> Appreciation </h3>
+					<br />
+					<h4>Fill the appreciation form and the money or token will be sent to the GAP member's wallet</h4>
+				</div>
+			</div>
+
+			<div class="row m-auto">
+				<div class="col-lg-2 col-md-12">
+				</div>
+				<div class="col-md-12 col-lg-12 col-sm-12 col-12 mb-4">
+					<div class="deposit_tab_wrapper">
+						<ul class="nav nav-tabs">
+							<li class="nav-item">
+								<a class="nav-link active" data-toggle="tab" href="#home"> Member Appreciation</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link " data-toggle="tab" href="#token">Gift Token </a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-md-12 col-lg-12 col-sm-12 col-12">
+				<div class="tab-content">
+					<!-- grant bonus -->
+					<div id="home" class="tab-pane active">
+						<div class="col-lg-8 mx-auto offset-lg-1 col-md-12 col-sm-12 col-12">
+							<div class="row">
+								<div class="col-lg-8 col-md-6 col-sm--12">
+									<div class="form-pos">
+										<label>Member's Names to be appreciated:</label>
+										<select id="memberId" name="memberId" asp-items="@(new SelectList(ViewBag.usersInBonus ,"Id", "FirstName" ))"
+												multiple class="filter-multi-select form-control" required>
+										</select>
+									</div>
+								</div>
+
+								<div class="col-lg-4 col-md-6 col-sm-12">
+									<div class="form-s">
+										<label>Amount to be sent:</label>
+										<div class="form-group i-subject">
+											<input id="amount" type="number" class="form-control" required placeholder="Amount in GGT">
+										</div>
+									</div>
+								</div>
+
+								<div class="col-lg-12 col-md-12">
+									<div class="form-s">
+										<label>Reason for appreciation:</label>
+										<div class="form-group i-subject">
+											<textarea id="appreciateReasons" class="form-control" required placeholder=" Why do you want to appreciate this member"></textarea>
+										</div>
+									</div>
+								</div>
+
+								<div class="col-md-12">
+									<div class="tb_es_btn_div">
+										<div class="cont_bnt mb-5">
+											<button type="submit" class=" btn submitForm button_color" onclick="sendPayGrant()">Pay Bonus </button>
+										</div>
+									</div>
+								</div>
+
+							</div>
+						</div>
+					</div>
+					<!-- End of grant bonus -->
+					<!-- Start token bonus  -->
+					<div id="token" class="tab-pane fade">
+						<div class="col-lg-8 mx-auto offset-lg-1 col-md-12 col-sm-12 col-12">
+							<div class="row">
+								<div class="col-lg-8 col-md-6 col-sm--12">
+									<div class="form-pos">
+										<label>Member's Names to be appreciated:</label>
+										<select id="userId" name="userId" asp-items="@(new SelectList(ViewBag.usersInBonus ,"Id", "FirstName" ))"
+												multiple class="filter-multi-select form-control" required>
+										</select>
+									</div>
+								</div>
+
+								<div class="col-lg-4 col-md-6 col-sm-12">
+									<div class="form-s">
+										<label>No of Tokens to be sent:</label>
+										<div class="form-group i-subject">
+											<input id="tokenAmount" type="number" class="form-control" required placeholder="No of Tokens">
+										</div>
+									</div>
+								</div>
+
+								<div class="col-lg-12 col-md-12">
+									<div class="form-s">
+										<label>Reason for Appreciation :</label>
+										<div class="form-group i-subject">
+											<textarea id="reasonForAppreciation" class="form-control" required placeholder=" Why do you want to appreciate these members"></textarea>
+										</div>
+									</div>
+								</div>
+
+								<div class="col-md-12">
+									<div class="tb_es_btn_div">
+										<div class="cont_bnt mb-5">
+											<button type="submit" class="btn submitForm button_color" onclick="sendTokensToMembers()"> Send Tokens </button>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- End of token bonus -->
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script>
+	var memberIds = [];
+	$(document).ready(function () {
+		$('#memberId').on('optionselected', function (e) {
+			getSelectedIdss("selected", e.detail.value);
+		});
+		$('#memberId').on("optiondeselected", function (e) {
+			getSelectedIdss("deselected", e.detail.value);
+		});
+	});
+	function getSelectedIdss(event, selectedId) {
+		if (event == "selected") {
+			memberIds.push(selectedId);
+		}
+		else {
+			$.each(memberIds, function (i, id) {
+				if (selectedId == id) {
+					memberIds.splice(i, 1);
+				}
+			});
+		}
+	}
+
+	
+</script>
+
+
+

@@ -2,6 +2,7 @@
 using Core.Models;
 using Core.ViewModels;
 using Logic.IHelpers;
+using Logic.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -19,13 +20,15 @@ namespace Logic.Helpers
         private readonly AppDbContext _context;
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly IHttpContextAccessor _httpContext;
+        private readonly IEmailService _emailService;
 
 
-        public UserHelper(AppDbContext context, UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, IHttpContextAccessor httpContext)
+        public UserHelper(AppDbContext context, UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, IHttpContextAccessor httpContext, IEmailService emailService)
         {
             _context = context;
             _userManager = userManager;
             _httpContext = httpContext;
+            _emailService = emailService;
 
         }
 
@@ -540,6 +543,61 @@ namespace Logic.Helpers
         public Packages GetPackageUgradeDetails(int packageId)
         {
             return _context.Packages.Where(x => x.Id == packageId && x.Active && !x.Deleted).FirstOrDefault();
+        }
+
+        public List<ApplicationUser> GetAllUserForBonus()
+        {
+
+            var users = _context.ApplicationUser
+                .Where(a => !a.Deactivated && a.FirstName != "System")
+                .Select(x => new ApplicationUser
+                {
+                    Id = x.Id,
+                    FirstName = x.Name + " " + "(" + x.UserName + ")",
+                });
+            var userList = users.ToList();
+            return userList;
+        }
+
+        public async Task<bool> SubmitAppreciationRequest(Appreciation appreciation, string adminId, string userId)
+        {
+            try
+            {
+                var admin = FindById(adminId);
+                var user = FindById(userId);
+
+                if (appreciation != null && adminId != null && userId != null)
+                {
+                    var newAppreciationRequest = new Appreciation
+                    {
+                        UserId = userId,
+                        DateAppreciated = DateTime.Now,
+                        AppreciationDetails = appreciation.AppreciationDetails,
+                        AppreciatedBy = admin.UserName,
+                        Amount = appreciation.Amount,
+
+                    };
+
+                    var latestRequest = await _context.AddAsync(newAppreciationRequest);
+                    await _context.SaveChangesAsync();
+                    if (latestRequest.Entity.Id != Guid.Empty)
+                    {
+                        string toEmail = user?.Email;
+                        string subject = " GAP Appreciation Bonus";
+                        string message = "Hello " + newAppreciationRequest?.User?.UserName + ", <br> An appreciation bonus  has been given to you." + ". <br/> Keep investing with GAP. <br/> Thanks!!! ";
+
+                        _emailService.SendEmail(toEmail, subject, message);
+                        return true;
+                    }
+                    return false;
+                }
+
+                return false;
+            }
+            catch (Exception exp)
+            {
+                throw exp;
+            }
         }
 
     }
