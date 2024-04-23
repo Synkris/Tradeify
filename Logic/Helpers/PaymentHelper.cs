@@ -1798,6 +1798,117 @@ namespace Logic.Helpers
             }
         }
 
+        public async Task<bool> CreateWithdrawalRequest(WithdrawalViewModel withdrawFunds, string UserId)
+        {
+            try
+            {
+                if (UserId != null && withdrawFunds.Amount > 0)
+                {
+                    var user = _userHelper.FindById(UserId);
+                    if (user != null)
+                    {
+                        var FreshWithdrawalForm = new WithdrawFunds
+                        {
+                            DateRequested = DateTime.Now,
+                            AccountName = withdrawFunds.AccountName,
+                            WithdrawStatus = Status.Pending,
+                            WithdrawalType = "Bank Account Withdrawal Request",
+                            AccountNumber = withdrawFunds.AccountNumber,
+                            Amount = withdrawFunds.Amount,
+                            UserId = UserId,
+                            BankAccountName = withdrawFunds.BankAccountName,
+                            RequestedBy = user.Name,
+                            CreditedBy = "None",
+                        };
+                        var AddWithdrawalForm = await _context.AddAsync(FreshWithdrawalForm);
+                        await _context.SaveChangesAsync();
+                        var ConvertedAmount = withdrawFunds.Amount / _generalConfiguration.DollarRate;
+
+                        if (AddWithdrawalForm.Entity.Id != Guid.Empty)
+                        {
+                            string toEmail = _generalConfiguration.AdminEmail;
+                            string subject = " GAP Withdrawal Request To Bank Account";
+                            string message = "Hello Admin, <br> A withdrawal of $ <b>" + ConvertedAmount.ToString("F2") + " has been requested from "
+                                + user?.Name + "</b>"
+                                + " <br/> to be transferred to his/her " + "<b>" + FreshWithdrawalForm?.BankAccountName + "</b>" + "  Account with the account Number, "
+                                + "<b>" + FreshWithdrawalForm?.AccountNumber + " </b>" + ". <br/> Endeavor to Confirm and Approve the pending Withdrawal Request. <br/> Thanks!! ";
+
+                            _emailService.SendEmail(toEmail, subject, message);
+                            return true;
+                        }
+                    }
+                    else
+                    {
+                        LogError($" user not found");
+                    }
+                    return false;
+                }
+                return false;
+            }
+            catch (Exception ex)
+            {
+                LogCritical($" {ex.Message} This exception occured while trying to create withdrawal request in payment helper");
+                throw ex;
+            }
+        }
+
+        public async Task<bool> CreateCryptoWithdrawalRequest(WithdrawalViewModel withdrawFunds, string UserId)
+        {
+            try
+            {
+                if (UserId != null && withdrawFunds.Amount > 0)
+                {
+                    var user = _userHelper.FindById(UserId);
+
+                    if (user != null)
+                    {
+                        var FreshWithdrawalForm = new WithdrawFunds
+                        {
+                            DateRequested = DateTime.Now,
+                            AccountName = withdrawFunds.AccountName,
+                            WithdrawStatus = Status.Pending,
+                            WithdrawalType = "Crypto Wallet Withdrawal Request",
+                            AccountNumber = withdrawFunds.AccountNumber,
+                            Amount = withdrawFunds.Amount,
+                            UserId = UserId,
+                            BankAccountName = withdrawFunds.BankAccountName,
+                            RequestedBy = user.Name,
+                            CreditedBy = "None",
+                        };
+                        var AddWithdrawalForm = await _context.AddAsync(FreshWithdrawalForm);
+                        await _context.SaveChangesAsync();
+
+                        var ConvertedAmount = withdrawFunds.Amount / _generalConfiguration.DollarRate;
+                        if (AddWithdrawalForm.Entity.Id != Guid.Empty)
+                        {
+                            string toEmail = _generalConfiguration.AdminEmail;
+                            string subject = " GAP Withdrawal To Crypto wallet Request";
+                            string message = "Hello Admin, <br> A withdrawal of $ <b>" + ConvertedAmount.ToString("F2") + " has been requested from "
+                                + user?.Name + "</b>"
+                                + " <br/> to be transferred to his/her " + "<b>" + FreshWithdrawalForm?.BankAccountName + "</b>" + "  Crypto Wallet with the account Number, "
+                                + "<b>" + FreshWithdrawalForm?.AccountNumber + " </b>" + ". <br/> Endeavor to Confirm and Approve the pending Withdrawal Request. <br/> Thanks!! ";
+
+                            _emailService.SendEmail(toEmail, subject, message);
+                            return true;
+                        }
+                    }
+                    else
+                    {
+                        LogError($" user not found");
+                    }
+                    return false;
+                }
+                return false;
+            }
+            catch (Exception ex)
+            {
+                LogCritical($" {ex.Message} This exception occured while trying to create crypto withdrawal request in payment helper");
+                throw ex;
+            }
+        }
+
+
+
 
     }
 }

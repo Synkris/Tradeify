@@ -49,6 +49,9 @@ namespace Logic.IHelpers
         bool ApproveWithdrawalRequest(WithdrawFunds withdrawFunds, string currentUserId, Guid withdrawalRequestId);
         Task<bool> DebitWallet(string userId, decimal amount, Guid? paymentId, string details);
         WithdrawFunds RejectWithdrawalRequest(Guid withdrawalId);
+        Wallet GetUserWalletNonAsync(string userId);
+        Task<bool> CreateWithdrawalRequest(WithdrawalViewModel withdrawFunds, string UserId);
+        Task<bool> CreateCryptoWithdrawalRequest(WithdrawalViewModel withdrawFunds, string UserId);
 
 
 

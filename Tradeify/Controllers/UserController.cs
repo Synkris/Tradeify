@@ -735,5 +735,134 @@ namespace Tradeify.Controllers
             return false;
         }
 
+        [Authorize]
+        [Route("/WithdrawFunds")]
+        [HttpGet]
+        public IActionResult WithdrawFunds()
+        {
+            try
+            {
+                var currentUserId = _userHelper.GetCurrentUserId(User.Identity.Name);
+                var existingDetails = _userHelper.GetExistingBankWithdrawalDetails(currentUserId);
+                var model = new WithdrawalViewModel()
+                {
+                    BankAccountName = existingDetails?.BankAccountName,
+                    AccountName = existingDetails?.AccountName,
+                    AccountNumber = existingDetails?.AccountNumber,
+                };
+                return View(model);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        [Authorize]
+        [Route("/WithdrawFunds")]
+        [HttpPost]
+        public async Task<IActionResult> WithdrawFunds(WithdrawalViewModel withdrawFunds)
+        {
+            try
+            {
+                var convertGGCTorealAmount = withdrawFunds.Amount * _generalConfiguration.GGCWithdrawalConversionToNaira;
+
+                var currentUserId = _userHelper.GetCurrentUserId(User.Identity.Name);
+                var userWallet = _paymentHelper.GetUserWalletNonAsync(currentUserId);
+
+                if (userWallet.Balance >= Convert.ToDecimal(convertGGCTorealAmount.ToString("F4")))
+                {
+                    var existingRequest = _context.WithdrawFunds.Where(x => x.UserId == currentUserId && x.WithdrawStatus == Status.Pending);
+                    if (existingRequest.Any())
+                    {
+                        SetMessage("Your have a pending withdrawal request, try after your first request has been approved ", Message.Category.Warning);
+                        ModelState.Clear();
+                        return View();
+                    }
+                    withdrawFunds.Amount = convertGGCTorealAmount;
+                    var createdrequest = await _paymentHelper.CreateWithdrawalRequest(withdrawFunds, currentUserId);
+                    if (createdrequest)
+                    {
+                        SetMessage("Your withdrawal request was successful, account will be verified and credited shortly ", Message.Category.Information);
+                        ModelState.Clear();
+                        return View();
+                    }
+
+                }
+                SetMessage("Withdrawal Denied, Insufficient Wallet Balance ", Message.Category.Error);
+                ModelState.Clear();
+                return View();
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        [Authorize]
+        [Route("/WithdrawByCrypto")]
+        [HttpGet]
+        public IActionResult WithdrawByCrypto()
+        {
+            try
+            {
+                var currentUserId = _userHelper.GetCurrentUserId(User.Identity.Name);
+                var existingDetails = _userHelper.GetExistingCryptoDetails(currentUserId);
+                var model = new WithdrawalViewModel()
+                {
+                    AccountNumber = existingDetails?.AccountNumber,
+                };
+                return View(model);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        [Authorize]
+        [Route("/WithdrawByCrypto")]
+        [HttpPost]
+        public async Task<IActionResult> WithdrawByCrypto(WithdrawalViewModel withdrawFunds)
+        {
+            try
+            {
+                var convertGGCTorealAmount = withdrawFunds.Amount * _generalConfiguration.GGCWithdrawalConversionToNaira;
+                var currentUserId = _userHelper.GetCurrentUserId(User.Identity.Name);
+                var userWallet = _paymentHelper.GetUserWalletNonAsync(currentUserId);
+                if (userWallet.Balance >= Convert.ToDecimal(convertGGCTorealAmount.ToString("F4")))
+                {
+
+                    var existingRequest = _context.WithdrawFunds.Where(x => x.UserId == currentUserId && x.WithdrawStatus == Status.Pending);
+                    if (existingRequest.Any())
+                    {
+                        SetMessage("Your have a pending withdrawal request, try after your first request has been approved ", Message.Category.Warning);
+                        ModelState.Clear();
+                        return View();
+                    }
+                    withdrawFunds.Amount = convertGGCTorealAmount;
+                    var createdrequest = await _paymentHelper.CreateCryptoWithdrawalRequest(withdrawFunds, currentUserId);
+                    if (createdrequest)
+                    {
+                        SetMessage(" Your withdrawal request was successful & crypto wallet will be verified and credited shortly ", Message.Category.Information);
+                        ModelState.Clear();
+                        return View();
+                    }
+
+                }
+                SetMessage("Withdrawal Denied, Insufficient Wallet Balance ", Message.Category.Error);
+                ModelState.Clear();
+                return View();
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+
+
     }
 }
