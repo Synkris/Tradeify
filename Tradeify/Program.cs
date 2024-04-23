@@ -25,6 +25,7 @@ builder.Services.AddScoped<IEmailHelper, EmailHelper>();
 builder.Services.AddScoped<IEmailService, EmailService>();
 builder.Services.AddScoped<IAdminHelper, AdminHelper>();
 builder.Services.AddScoped<IPaymentHelper, PaymentHelper>();
+builder.Services.AddScoped<IPackageHelper, PackageHelper>();
 
 
 

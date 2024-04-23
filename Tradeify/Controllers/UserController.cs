@@ -6,6 +6,7 @@ using Logic.IHelpers;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 using Tradeify.Models;
 
@@ -20,9 +21,10 @@ namespace Tradeify.Controllers
         private readonly IPaymentHelper _paymentHelper;
         private IGeneralConfiguration _generalConfiguration;
         private readonly IAdminHelper _adminHelper;
+        private readonly IPackageHelper _packageHelper;
 
 
-        public UserController(AppDbContext context, IUserHelper userHelper, IDropdownHelper dropdownHelper, IConfiguration configuration, IGeneralConfiguration generalConfiguration, IPaymentHelper paymentHelper, IAdminHelper adminHelper)
+        public UserController(AppDbContext context, IUserHelper userHelper, IDropdownHelper dropdownHelper, IConfiguration configuration, IGeneralConfiguration generalConfiguration, IPaymentHelper paymentHelper, IAdminHelper adminHelper, IPackageHelper packageHelper)
         {
             _context = context;
             _userHelper = userHelper;
@@ -30,6 +32,7 @@ namespace Tradeify.Controllers
             _generalConfiguration = generalConfiguration;
             _paymentHelper = paymentHelper;
             _adminHelper = adminHelper;
+            _packageHelper = packageHelper;
         }
 
 
@@ -861,6 +864,98 @@ namespace Tradeify.Controllers
                 throw ex;
             }
         }
+
+        public IActionResult ViewUserPackages(string name, DateTime sortTypeFrom, DateTime sortTypeTo, int pageNumber, int pageSize)
+        {
+            try
+            {
+                var loggedInUserId = _userHelper.GetCurrentUserId(User.Identity.Name);
+                var userPackageViewModel = new UserPackagesSearchResultViewModel(_generalConfiguration)
+                {
+                    PageNumber = pageNumber == 0 ? _generalConfiguration.PageNumber : pageNumber,
+                    PageSize = pageSize == 0 ? _generalConfiguration.PageSize : pageSize,
+                    SortTypeFrom = sortTypeFrom,
+                    SortTypeTo = sortTypeTo,
+                    Name = name,
+
+                };
+                pageNumber = (pageNumber == 0 ? userPackageViewModel.PageNumber : pageNumber);
+                pageSize = pageSize == 0 ? userPackageViewModel.PageSize : pageSize;
+                // Retrieve user packages using the helper method
+                var userPackages = _userHelper.GetUserPackages(userPackageViewModel, loggedInUserId, pageNumber, pageSize);
+                userPackageViewModel.UserPackagesRecords = userPackages;
+                if (userPackages != null)
+                {
+                    return View(userPackageViewModel);
+                }
+                return View();
+            }
+            catch (Exception ex)
+            {
+                ViewBag.ErrorMessage = "An error occurred while fetching user packages.";
+                return View(new List<UserPackagesViewModel>());
+            }
+
+
+        }
+        public JsonResult GetUserPackageDetails(Guid id)
+        {
+            if (id == Guid.Empty)
+            {
+                return Json(new { isError = true, msg = "Package not found" });
+            }
+            var details = _context.UserPackages.Where(x => x.Id == id && x.Active && !x.Deleted).Include(x => x.Package).FirstOrDefault();
+            if (details != null)
+            {
+                return Json(new { isError = false, data = details });
+            }
+            return Json(new { isError = true, msg = " Details not found" });
+        }
+
+        [Authorize]
+        public IActionResult Packages()
+        {
+            try
+            {
+                var userId = _userHelper.GetCurrentUserId(User.Identity.Name);
+                var userPackage = _paymentHelper.GetUserPackage(userId);
+                ViewBag.getUserPackage = userPackage.PackageId;
+                var packages = _packageHelper.GetPackages();
+                if (packages != null)
+                {
+                    return View(packages);
+                }
+                return View();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+
+        public JsonResult GetPackageUpgradeDetailsForPaymentForm()
+        {
+            var userId = _userHelper.GetCurrentUserId(User.Identity.Name);
+
+            var newPackageDetails = _userHelper.GetPackageDetails();
+            var oldPackageDetails = _paymentHelper.GetUserPackage(userId);
+            var oldPackageAmount = oldPackageDetails?.Amount;
+
+            return Json(new { isError = false, data = JsonConvert.SerializeObject(newPackageDetails), results = oldPackageAmount });
+        }
+
+        public JsonResult GetPackageUpgradeAlertDetails(int packageId)
+        {
+            var userId = _userHelper.GetCurrentUserId(User.Identity.Name);
+
+            var newPackageDetails = _userHelper.GetPackageUgradeDetails(packageId);
+            var oldPackageDetails = _paymentHelper.GetUserPackage(userId);
+            var oldPackageAmount = oldPackageDetails.Amount;
+
+            return Json(new { isError = false, data = JsonConvert.SerializeObject(newPackageDetails), results = oldPackageAmount });
+        }
+
 
 
 

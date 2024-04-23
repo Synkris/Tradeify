@@ -43,5 +43,7 @@ namespace Logic.IHelpers
         Task<bool> SubmitAppreciationRequest(Appreciation appreciation, string adminId, string userId);
         WithdrawFunds GetExistingBankWithdrawalDetails(string userId);
         WithdrawFunds GetExistingCryptoDetails(string userId);
+        IPagedList<UserPackagesViewModel> GetUserPackages(UserPackagesSearchResultViewModel userPackageViewModel, string userId, int pageNumber, int pageSize);
+        List<Packages> GetPackageDetails();
     }
 }

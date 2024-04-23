@@ -1,0 +1,317 @@
+﻿@model Core.ViewModels.UserPackagesSearchResultViewModel
+
+@{
+    ViewData["Title"] = "My Packages";
+    if (User.IsInRole("Admin"))
+    { 
+        Layout = "~/Views/Shared/_AdminDashboardLayout.cshtml"; 
+    }
+    else { 
+        Layout = "~/Views/Shared/_DashboardLayout.cshtml"; 
+    }
+}
+<style>
+
+    body {
+        counter-reset: Serial;
+    }
+
+    tr td:first-child:before {
+        counter-increment: Serial;
+        content: counter(Serial);
+    }
+
+    .arrow-container {
+        position: relative;
+    }
+
+    .arrow-up {
+        position: absolute;
+        top: 0.5em;
+    }
+
+    .arrow-down {
+        position: absolute;
+        top: 1em;
+    }
+</style>
+
+<!--  deposit wrapper start -->
+<div class="deposit_list_wrapper float_left header_text">
+
+    <div class="row">
+
+        <div class="col-md-12 col-lg-12 col-sm-12 col-12 header_text">
+            <div class="sv_heading_wraper">
+                <h3>List of User Packages</h3>
+            </div>
+            @if (Model?.UserPackagesRecords.Count() > 0)
+            {
+                <div class="col-auto float-right ml-auto mb-3">
+                    <a href="/User/Packages" class="btn button_color font-weight-bold p-2">
+                        <i class="fa fa-plus"></i> Upgrade Package
+                    </a>
+                </div>
+            }
+        </div>
+    </div>
+
+    <div class="col-lg-12 col-md-12 col-sm-12 col-12 mb-1">
+        <form asp-controller="User" asp-action="ViewUserPackages" method="get">
+
+            <div class="float_left d-lg-none" id="faqs">
+                <div class="investment_overlay faq_overlay"></div>
+                <div class="container " id="FAQ">
+                    <div id="accordion" role="tablist">
+                        <div class="row">
+                            <div class="col-lg-6 col-md-12 col-sm-12 col-12">
+
+                                <div class="card">
+                                    <div class="card_pagee" role="tab" id="headingTwo">
+                                        <h5 class="h5-md">
+                                            <a class="collapsed" data-toggle="collapse" href="#collapseTwo" role="button" aria-expanded="false" aria-controls="collapseTwo">
+                                                Filter
+                                            </a>
+                                        </h5>
+                                    </div>
+
+                                    <div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingTwo" data-parent="#accordion" style="">
+                                        <div class="card-body2">
+
+                                            <div class="card_cntnt">
+
+                                                <div class="row col-12">
+                                                    <div class="p-lg-2 col-12 col-lg-2 p-2">
+                                                        <div class="form-pos">
+                                                            <label>Date From :</label>
+                                                            <div class="form-group i-name">
+                                                                <input asp-for="SortTypeFrom" name="SortTypeFrom" value="" type="date" class="form-control">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="p-lg-2 col-12 col-lg-2 p-2">
+                                                        <div class="form-pos">
+                                                            <label>Date To :</label>
+                                                            <div class="form-group i-name">
+                                                                <input asp-for="SortTypeTo" name="SortTypeTo" value="" type="date" class="form-control">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="p-lg-2 col-12 col-lg-2 p-2">
+                                                        <div class="form-pos">
+                                                            <label>Package:</label>
+                                                            <div class="form-group i-name">
+                                                                <input asp-for="Name" name="Name" type="text" class="form-control" placeholder="Package Name">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-lg-2 col-md-12">
+                                                        <div class="tb_es_btn_div mt-4 pt-2">
+                                                            <div class="form-group mt-2" style="display:grid">
+                                                                <button type="submit" class="btn button_color ">Filter</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="row col-12 d-lg-flex d-none">
+                <div class="p-lg-2 col-12 col-lg-2 p-2">
+                    <div class="form-pos">
+                        <label>Date From :</label>
+                        <div class="form-group i-name">
+                            <input asp-for="SortTypeFrom" name="SortTypeFrom" value="" type="date" class="form-control">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="p-lg-2 col-12 col-lg-2 p-2">
+                    <div class="form-pos">
+                        <label>Date To :</label>
+                        <div class="form-group i-name">
+                            <input asp-for="SortTypeTo" name="SortTypeTo" value="" type="date" class="form-control">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="p-lg-2 col-12 col-lg-2 p-2">
+                    <div class="form-pos">
+                        <label>Package:</label>
+                        <div class="form-group i-name">
+                            <input asp-for="Name" name="Name" type="text" class="form-control" placeholder="Package Name">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-2 col-md-12">
+                    <div class="tb_es_btn_div mt-4 pt-2">
+                        <div class="form-group mt-2" style="display:grid">
+                            <button type="submit" class="btn button_color ">Filter</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="row">
+                <div class="">
+                    <div class="form-pos mt-2 ml-4">
+                        <label>Page Size:</label>
+                        <div class="form-group i-name">
+                            <select asp-for="PageSize" name="PageSize">
+                                <option value="10">10</option>
+                                <option value="20">20</option>
+                                <option value="50">50</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </form>
+    </div>
+
+    @if (TempData["Message"] != null)
+    {
+        var tempDatamessage = (Tradeify.Models.Message)TempData["Message"];
+        <partial name="_Message" model="tempDatamessage" />
+    }
+
+    <!--  profile wrapper start -->
+    <div class="last_transaction_wrapper float_left">
+        <div class="row">
+            <div class="col-md-12 col-lg-12 col-sm-12 col-12">
+
+                <div class="crm_customer_table_main_wrapper float_left">
+                    <div class="crm_ct_search_wrapper">
+                        <div class="crm_ct_search_bottom_cont_Wrapper"> </div>
+                    </div>
+
+                    @if (Model != null && Model.UserPackagesRecords.Count() > 0)
+                    {
+                        <div class="table-responsive">
+                            <table class="table cs-table crm_customer_table_inner_Wrapper">
+                                <thead>
+                                    <tr>
+                                        <th class="width_table1">S/N</th>
+                                        <th class="width_table1">Name</th>
+                                        <th class="width_table1">Amount</th>
+                                        <th class="width_table1">Crypto Amount</th>
+                                        <th class="width_table1">Date Of Payment</th>
+                                        <th class="width_table1">Date Of Approval</th>
+                                        <th class="width_table1 text-center"> Description </th>
+                                        <th class="width_table1">Max Generation</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var obj in Model.UserPackagesRecords)
+                                    {
+                                        <tr class="background_white">
+
+                                            <td></td>
+                                            <td>
+                                                <div class="pretty p-svg p-curve">@obj?.Name</div>
+                                            </td>
+
+                                            <td>
+                                                <div class="pretty p-svg p-curve">@obj?.Amount</div>
+                                            </td>
+
+                                            <td>
+                                                <div class="pretty p-svg p-curve">@obj?.CryptoAmount</div>
+
+                                            </td>
+
+                                            <td>
+                                                <div class="pretty p-svg p-curve">@obj?.DateOfPayment?.ToString("D")</div>
+                                            </td>
+
+
+                                            <td>
+                                                <div class="pretty p-svg p-curve">@obj?.DateOfApproval?.ToString("D")</div>
+
+                                            </td>
+
+                                            <td>
+                                                <div class="text-center no-sort" data-toggle="modal" data-target="#detailsUserDescription" @Html.DisplayFor(modelItem => obj.Description) data-backdrop="static" onclick="viewUserPackageDetailModal('@obj.Id')" title="View Details">
+                                                    <i class="fa fa-eye" aria-hidden="true"></i>
+                                                </div>
+                                            </td>
+
+                                            <td class="flag text-center">
+                                                <div class="pretty p-svg p-curve">@obj?.MaxGeneration</div>
+                                            </td>
+
+                                            
+                                        </tr>
+                                    }
+                                </tbody>
+
+
+                            </table>
+                        </div>
+                        <br />
+                        <div class="col-lg-2 col-md-12">
+                            Page @(Model.UserPackagesRecords.PageNumber) of @Math.Ceiling((double)Model.UserPackagesRecords.TotalItemCount / Model.UserPackagesRecords.PageSize)
+                        </div>
+                        <br />
+                        <div class="col-md-6 col-lg-6 col-sm-6 col-5 float-right">
+                            @Html.Partial("_UserPackagePager",Model)
+                        </div>
+                    }
+                    else
+                    {
+                        <h2 class="text-info text-center py-5"> No user packages found! </h2>
+                    }
+
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+                                            
+<div class="modal custom-modal fade" id="detailsUserDescription" role="dialog">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-body bg-dark">
+                <div class="form-header text-center px-4">
+                    <h3 class="text-center text-white mb-3">
+                        Package Details
+                    </h3>
+                    <textarea id="userPackagesDetails" class="form-control" rows="4" readonly></textarea>
+                    
+                </div>
+                <div class="modal-btn delete-action">
+                    <div class="row p-3 mt-2">
+                                                
+                        <div class="col-sm-6 m-auto mt-5 mb-5">
+                            <div class="submit-section">
+                                <button type="button" class="btn button_color btn-block" data-dismiss="modal"> Cancel </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
