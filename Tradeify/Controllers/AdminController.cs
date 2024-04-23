@@ -1068,6 +1068,54 @@ namespace Tradeify.Controllers
             }
         }
 
+        [HttpGet]
+
+        public IActionResult CompanySettings()
+        {
+            try
+            {
+                var companySetting = _adminHelper.GetCompanySettings().Result;
+                if (companySetting != null)
+                {
+                    return View(companySetting);
+                }
+                return View();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        [HttpPost]
+        public JsonResult AddCompanySetting(string companySettingViewModel)
+        {
+            try
+            {
+                if (companySettingViewModel != null)
+                {
+                    var companySettingsDetails = JsonConvert.DeserializeObject<CompanySettingViewModel>(companySettingViewModel);
+                    if (companySettingsDetails != null)
+                    {
+                        var saveCompanySettings = _adminHelper.UpdateCompanySettings(companySettingsDetails);
+                        if (saveCompanySettings)
+                        {
+                            return Json(new { isError = false, msg = "Company settings added successfully" });
+                        }
+                        return Json(new { isError = true, msg = "Failed to Update Company Settings" });
+                    }
+                }
+                return Json(new { isError = true, msg = "Unable to Update Company Settings" });
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+
+
 
     }
 }

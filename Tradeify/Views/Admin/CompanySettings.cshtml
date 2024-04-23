@@ -1,0 +1,65 @@
+﻿@model Core.ViewModels.CompanySettingViewModel
+@{
+    ViewData["Title"] = "CompanySettings";
+    Layout = "~/Views/Shared/_AdminDashboardLayout.cshtml";
+}
+
+<!-- profile wrapper start -->
+<div class="payment_transfer_Wrapper float_left header_text">
+    <div class="row">
+        <div class="col-md-10 col-lg-10 col-sm-12 col-10 header_text">
+            <div class="sv_heading_wraper heading_center">
+                <h3>Company Settings</h3>
+            </div>
+        </div>
+    </div>
+
+        <div class="col-10 mx-auto">
+            <div class="row row-sm">
+                <div class="col-sm-12 col-xs-12 col-md-3 col-xl-3 col-lg-3">
+                    <div class="form-group">
+                        <label>Token Amount</label>
+                        <input type="number" class="form-control" id="tokenamount" placeholder="Enter Token Amount" value="@Model.Tokenamount" required>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-xs-12 col-md-3 col-xl-3 col-lg-3">
+                    <div class="form-group">
+                        <label>Minimum Token</label>
+                    <input class="form-control" type="number" id="minimumToken" placeholder="Enter Minimum Token" value="@Model.MinimumToken" required>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-xs-12 col-md-3 col-xl-3 col-lg-3">
+                    <div class="form-group">
+                        <label>Maximum Token</label>
+                    <input class="form-control" type="number" id="maximumToken" placeholder="Enter Maximum Token" value="@Model.MaximumToken" required>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-xs-12 col-md-3 col-xl-3 col-lg-3">
+                    <div class="form-group">
+                        <label>Mining Quantity</label>
+                    <input class="form-control" type="number" id="miningQuantity" placeholder="Enter Mining Quantity" value="@Model.MiningQuantity" required>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-xs-12 col-md-3 col-xl-3 col-lg-3">
+                    <div class="form-group">
+                        <label>Duration (hrs)</label>
+                    <input class="form-control" type="number" id="miningDuration" placeholder="Enter Duration in hours" value="@Model.MiningDuration" required>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-xs-12 col-md-3 col-xl-3 col-lg-3">
+                    <div class="form-group">
+                        <label> Activation Amount </label>
+                    <input class="form-control" type="number" id="activationAmount" placeholder="Enter Activation Amount" value="@Model.ActivationAmount" required>
+                    </div>
+                </div>
+
+
+            </div>
+
+            <div class="submit-section  float-right pt-4">
+                <button type="submit" class=" btn button_color form-control p-2 rounded" onclick="addCompanySetting()">Save</button>
+            </div>
+        </div>   
+</div>
+
+<!-- /Page Wrapper --> 

@@ -1024,3 +1024,187 @@ function declineTokenPayments(id) {
     });
 }
 
+function startMining(userId) {
+    disableButton();
+
+    $.ajax({
+        type: 'get',
+        dataType: 'json',
+        url: '/User/UserMiningLog',
+        data:
+        {
+            userId: userId,
+        },
+        success: function (result) {
+            if (!result.isError) {
+
+                successAlert(result.msg);
+
+                var date = result.data;
+                sessionStorage.setItem('user', userId.toString());
+                sessionStorage.setItem('date_' + userId + '', date);
+
+                startCountdown();
+                var existingAmount = $(".token_Amount").text().split(':')[1];
+                $(".token_Amount").text(": " + parseFloat(parseFloat(existingAmount) + result.token).toFixed(4));
+                //location.reload();
+
+
+            }
+            else {
+                errorAlert(result.msg)
+            }
+        },
+        error: function (ex) {
+            errorAlert("Network failure, please try again");
+        }
+    });
+}
+
+function startCountdown() {
+    var getSessionValue = null;
+    var userId = sessionStorage.getItem('user');
+    if (userId != null)
+        getSessionValue = sessionStorage.getItem('date_' + userId + '');
+
+    if (getSessionValue == null || getSessionValue == "undefined") {
+        $.ajax({
+            type: 'GET',
+            url: '/User/GetUserLastMining',
+            dataType: 'json',
+            data: {
+                //userId: userId
+            },
+            success: function (data) {
+                if (!data.isError) {
+                    var miningData = data.data;
+                    if (miningData) {
+                        var dateCreated = new Date(miningData);
+                        var timeDifference = dateCreated - new Date();
+                        if (timeDifference > 0) {
+                            disableButton();
+                            $("#ready_mine").hide();
+
+                        } else {
+                            enableButton();
+                            $('#countdown').append("<span id=\"ready_mine\" style=\"font-size:small;color:#22C8DB;display:block;\">Ready to mine</span>")
+                        }
+                        if (data.user != null) {
+                            sessionStorage.setItem('user', data.user?.toString());
+                            sessionStorage.setItem('date_' + data.user + '', dateCreated.toString());
+                        }
+
+
+                    }
+
+                }
+                else {
+                    //errorAlert(data.msg);
+                    console.log(data.msg)
+                }
+            },
+            error: function (ex) {
+                /*errorAlert("Please check and try again. Contact GGC Support if issue persists..");*/
+            }
+        });
+    } else {
+        var storedDate = new Date(getSessionValue);
+        var currentTime = new Date();
+        var hoursDifference = (storedDate - currentTime);
+
+        if (hoursDifference > 0) {
+            disableButton();
+        } else {
+            enableButton();
+        }
+
+    }
+
+}
+
+function updateCountDowntime() {
+    var userId = sessionStorage.getItem('user');
+    var nextMinDate = sessionStorage.getItem('date_' + userId + '');
+    if (!nextMinDate) {
+        //$('#days').text('0').css('color', 'white');
+        $('.hours').text('00');
+        $('.minutes').html('00');
+        $('.seconds').html('00');
+        return;
+    }
+
+    var nextDate = Date.parse(nextMinDate);
+    var currentTime = new Date();
+    var diff = nextDate - currentTime;
+
+    //const d = Math.floor(diff / 24);
+    const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+    const s = Math.floor((diff % (1000 * 60)) / 1000);
+
+    //$('#days').text(d);
+    $('.hours').text(h < 0 ? '00' : h);
+    $('.minutes').html(m < 0 ? '00' : m);
+    $('.seconds').html(s < 0 ? '00' : s);
+
+}
+
+setInterval(updateCountDowntime, 1000);
+
+function disableButton() {
+    $('#mineButton').addClass('disabled');
+    $('#mobileButton').addClass('disabled');
+
+    var labelElement = document.getElementById("mineButton");
+    var mobileLabelElement = document.getElementById("mobileButton");
+
+    if (labelElement && mobileLabelElement) {
+        labelElement.innerHTML = '<i id="icon" class="fa fa-cog fa-3x button_icon"></i>';
+        mobileLabelElement.innerHTML = '<i id="icon" class="fa fa-cog fa-3x button_icon"></i>';
+    }
+}
+
+var mineButton = $('#mineButton');
+var mobileButton = $('#mobileButton');
+
+function enableButton() {
+    mineButton.removeClass('disabled');
+    mobileButton.removeClass('disabled');
+
+}
+
+function addCompanySetting() {
+    var data = {};
+    data.MiningDuration = $('#miningDuration').val();
+    data.MiningQuantity = $('#miningQuantity').val();
+    data.MaximumToken = $('#maximumToken').val();
+    data.Tokenamount = $('#tokenamount').val();
+    data.MinimumToken = $('#minimumToken').val();
+    data.ActivationAmount = $('#activationAmount').val();
+    if (data.MaximumToken != "" && data.MinimumToken) {
+        let companySettinsDetails = JSON.stringify(data);
+        if (companySettinsDetails) {
+            $.ajax({
+                type: 'post',
+                dataType: 'Json',
+                url: '/Admin/AddCompanySetting',
+                data:
+                {
+                    companySettingViewModel: companySettinsDetails
+                },
+                success: function (result) {
+                    if (!result.isError) {
+                        var url = '/Admin/CompanySettings'
+                        successAlertWithRedirect(result.msg, url)
+                    }
+                    else {
+                        errorAlert(result.msg)
+                    }
+                },
+                error: function (ex) {
+                    errorAlert("Error occured try again");
+                }
+            })
+        }
+    }
+}

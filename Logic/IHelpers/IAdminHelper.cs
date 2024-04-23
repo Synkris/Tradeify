@@ -22,5 +22,7 @@ namespace Logic.IHelpers
         ApplicationUser GetNewCordinatorDetails(string cordinatorUserName);
         string CreateCordinator(ApplicationUser newCordinatorDetails, string loggedinAdmin);
         string RemoveCordinator(int id);
+        Task<CompanySettingViewModel> GetCompanySettings();
+        bool UpdateCompanySettings(CompanySettingViewModel companySettingViewModel);
     }
 }

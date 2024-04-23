@@ -38,5 +38,6 @@ namespace Core.DB
         public DbSet<UserGenerationLog> UserGenerationLogs { get; set; }
         public DbSet<RegFeeGrants> RegFeeGrants { get; set; }
         public DbSet<WithdrawFunds> WithdrawFunds { get; set; }
+        public DbSet<MiningLog> miningLogs { get; set; }
     }
 }

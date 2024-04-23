@@ -142,7 +142,7 @@ namespace Logic.Services
 
 
 
-                emailClient.Authenticate(_emailConfiguration.SmtpUsername, _emailConfiguration.SmtpPassword);
+               emailClient.Authenticate(_emailConfiguration.SmtpUsername, _emailConfiguration.SmtpPassword);
 
                 emailClient.Send(message);
 

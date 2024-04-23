@@ -45,5 +45,9 @@ namespace Logic.IHelpers
         WithdrawFunds GetExistingCryptoDetails(string userId);
         IPagedList<UserPackagesViewModel> GetUserPackages(UserPackagesSearchResultViewModel userPackageViewModel, string userId, int pageNumber, int pageSize);
         List<Packages> GetPackageDetails();
+        MiningLog UserLastMiningDetails(string userId);
+        Task<bool> LogUserMiningHistory(string userId, decimal amount);
+
+
     }
 }
