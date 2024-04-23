@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 using Tradeify.Models;
+using System.Data;
 
 namespace Tradeify.Controllers
 {
@@ -1069,7 +1070,6 @@ namespace Tradeify.Controllers
         }
 
         [HttpGet]
-
         public IActionResult CompanySettings()
         {
             try
@@ -1191,6 +1191,242 @@ namespace Tradeify.Controllers
             }
         }
 
+        public JsonResult GetAllUsers(string term)
+        {
+            if (term != null)
+            {
+                var user = _userHelper.GetUsers(term);
+                if (user != null)
+                {
+                    return Json(user);
+                }
+                return Json("Error Occurred");
+            }
+            return Json("Please add name");
+        }
+
+
+        [HttpPost]
+        public JsonResult DeleteCordinator(int id)
+        {
+            if (id != 0)
+            {
+                var distributor = _adminHelper.RemoveCordinator(id);
+                if (distributor != null)
+                {
+                    return Json(new { isError = false, msg = "Cordinator's Details Removed Successfully" });
+                }
+                return Json(new { isError = true, msg = "Unable To Remove Cordinator From Role" });
+            }
+            return Json(new { isError = true, msg = "Error Occurred" });
+        }
+
+        public IActionResult Users(string userName, string email, string phoneNumber, string name, int pageNumber, int pageSize)
+        {
+            try
+            {
+                var userDetailsViewModel = new ApplicationUserSearchResultViewModel(_generalConfiguration)
+                {
+                    PageNumber = pageNumber == 0 ? _generalConfiguration.PageNumber : pageNumber,
+                    PageSize = pageSize == 0 ? _generalConfiguration.PageSize : pageSize,
+                    Email = email,
+                    Name = name,
+                    PhoneNumber = phoneNumber,
+                    UserName = userName,
+                };
+                pageNumber = (pageNumber == 0 ? userDetailsViewModel.PageNumber : pageNumber);
+                pageSize = pageSize == 0 ? userDetailsViewModel.PageSize : pageSize;
+                var registeredUsers = _adminHelper.RegisteredUsersDetails(userDetailsViewModel, pageNumber, pageSize);
+                userDetailsViewModel.UserRecords = registeredUsers;
+                if (registeredUsers != null)
+                {
+                    return View(userDetailsViewModel);
+                }
+                return View();
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public JsonResult DeactivateUser(string userId)
+        {
+            if (userId != null)
+            {
+                var deactivate = _adminHelper.DeactivateUser(userId);
+                if (deactivate)
+                {
+                    return Json(new { isError = false, msg = " You have Deactivated this member" });
+                }
+            }
+            return Json(new { isError = true, msg = " Member Not Found" });
+        }
+        public IActionResult UserFullDetail(string id)
+        {
+            try
+            {
+                var user = _adminHelper.GetUserFullDetails(id);
+                return PartialView(user);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+        }
+
+        [HttpGet]
+        public IActionResult WithdrawalFullDetails(Guid id)
+        {
+            try
+            {
+                if (id != Guid.Empty)
+                {
+                    var withdrawalDetails = _adminHelper.GetWithdrawalDetails(id);
+                    return PartialView(withdrawalDetails);
+                }
+                return View();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+        }
+
+        [HttpGet]
+        [Route("GetOldMembers")]
+        public async Task<JsonResult> GetOldMembers()
+        {
+            var users = await _bonusHelper.GetOldMembers();
+            return Json($"{users}User found");
+        }
+
+        public async Task<JsonResult> ApprovePackageFee(Guid paymentId)
+        {
+            var responseMsg = string.Empty;
+            try
+            {
+                if (paymentId != Guid.Empty)
+                {
+                    var user = _userHelper.GetCurrentUserId(User.Identity.Name);
+                    var checkifApprovedBefore = _paymentHelper.CheckIfApproved(paymentId);
+                    if (checkifApprovedBefore)
+                    {
+                        return Json(new { isError = true, msg = "This Package Payment Fee has  been approved before" });
+                    }
+                    var approve = _paymentHelper.ApprovePackageFee(paymentId, user);
+                    if (approve)
+                    {
+                        return Json(new { isError = false, msg = "package fee Payment has been approved" });
+                    }
+
+                }
+                return Json(new { isError = true, msg = "Could not find package payment to approve" });
+            }
+            catch (Exception ex)
+            {
+                return Json(new { isError = true, msg = ex.Message });
+            }
+        }
+
+        [HttpPost]
+        public JsonResult DeclinePackagePaymentFee(Guid paymentId)
+        {
+            try
+            {
+                if (paymentId != Guid.Empty)
+                {
+                    var loggedInUser = _userHelper.GetCurrentUserId(User.Identity.Name);
+                    var checkifRejectedBefore = _paymentHelper.CheckIfDeclined(paymentId);
+                    if (checkifRejectedBefore)
+                    {
+                        return Json(new { isError = true, msg = "This token payment has been declined before" });
+                    }
+                    var rejectPayment = _paymentHelper.RejectPackagePaymentFee(paymentId, loggedInUser);
+                    if (rejectPayment)
+                    {
+                        return Json(new { isError = false, msg = " Package Fee Rejected" });
+                    }
+                    return Json(new { isError = true, msg = "Error occurred while rejecting payment, try again." });
+
+                }
+                return Json(new { isError = true, msg = " No package fee payment Request Found" });
+            }
+            catch (Exception ex)
+            {
+                return Json(new { isError = true, msg = ex.Message });
+            }
+        }
+
+        [Authorize]
+        [HttpPost]
+        public async Task<JsonResult> SendMemberTokens(List<string> peopleIds, string details)
+        {
+            try
+            {
+                if (peopleIds != null || peopleIds.Count > 0 && details != null)
+                {
+                    var appreciationDetails = JsonConvert.DeserializeObject<Appreciation>(details);
+                    if (appreciationDetails != null)
+                    {
+                        var paymentId = Guid.Empty;
+                        var currentAdminId = _userHelper.GetCurrentUserId(User.Identity.Name);
+
+                        foreach (var memberId in peopleIds)
+                        {
+                            if (!string.IsNullOrEmpty(memberId))
+                            {
+                                var submitToken = await _userHelper.SendTokensToMembers(appreciationDetails, currentAdminId, memberId);
+                                if (submitToken)
+                                {
+                                    await _bonusHelper.CreditAGCWallet(memberId, appreciationDetails.Amount, paymentId);
+                                }
+                            }
+                        }
+                        return Json(new { isError = false, msg = $"You have successfully appreciated members with {appreciationDetails.Amount} GAP Tokens." });
+                    }
+                    return Json(new { isError = true, msg = "An error occurred." });
+                }
+                return Json(new { isError = true, msg = "No user selected" });
+            }
+            catch (Exception exp)
+            {
+                return Json(new { isError = true, msg = "An unexpected error occurred." + exp });
+            }
+        }
+
+        [HttpGet]
+        public IActionResult MemberWalletBalance(string userName, string name, int pageNumber, int pageSize)
+        {
+            try
+            {
+                var loggInedUser = _userHelper.FindByUserName(User.Identity.Name);
+                var userWalleetsDetailsViewModel = new ApplicationUserSearchResultViewModel(_generalConfiguration)
+                {
+                    PageNumber = pageNumber == 0 ? _generalConfiguration.PageNumber : pageNumber,
+                    PageSize = pageSize == 0 ? _generalConfiguration.PageSize : pageSize,
+                    Name = name,
+                    UserName = userName,
+                };
+                pageNumber = (pageNumber == 0 ? userWalleetsDetailsViewModel.PageNumber : pageNumber);
+                pageSize = pageSize == 0 ? userWalleetsDetailsViewModel.PageSize : pageSize;
+                var getUsersWalletDetails = _userHelper.GetUserWalletsDetails(userWalleetsDetailsViewModel, pageNumber, pageSize);
+                userWalleetsDetailsViewModel.UserRecords = getUsersWalletDetails;
+                if (getUsersWalletDetails != null)
+                {
+                    return View(userWalleetsDetailsViewModel);
+                }
+                return View();
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
 
 
 

@@ -154,39 +154,6 @@ function DeletePackage() {
     });
 }
 
-function sendPayGrant() {
-    var data = {};
-    data.Amount = $("#amount").val();
-    data.AppreciationDetails = $("#appreciateReasons").val();
-    var listofUserId = memberIds;
-
-    if (listofUserId != "" && data.Amount != "" & data.AppreciationDetails != "") {
-        let details = JSON.stringify(data);
-        $.ajax({
-            url: '/Admin/AppreciateMember',
-            type: 'POST',
-            data:
-            {
-                userIds: listofUserId,
-                details: details
-            },
-            success: function (result) {
-                if (!result.isError) {
-                    var url = '/Admin/AppreciateMember';
-                    successAlertWithRedirect(result.msg, url);
-                } else {
-                    errorAlert(result.msg);
-                }
-            },
-            error: function (ex) {
-                errorAlert("Error occurred. Please try again.");
-            }
-        });
-
-    } else {
-        errorAlert("Please fill the form Correctly");
-    }
-}
 
 let upgradePackageDetailsToShow = [];
 let oldPackageAmount = [];
@@ -397,3 +364,86 @@ function declineReActivationPayments(id) {
         }
     });
 }
+
+$(document).ready(function () {
+    getLatestNews();
+});
+function getLatestNews() {
+    $.ajax({
+        url: '/User/GetNews',
+        method: 'GET',
+        dataType: 'json',
+        success: function (result) {
+            if (!result.isError) {
+                var newsContents = result.data;
+                newsContents.forEach(function (newsItem) {
+
+                    var newsId = newsItem.id;
+                    var newsName = newsItem.name;
+                    var newsHtml = `
+                    <div class="alert alert-primary alert-dismissible fade show" role="alert">
+                         <button type="button" class="close" data-dismiss="alert">&times;</button>
+                        <strong>${newsName}</strong> 
+                        <a class="alert-link" href="/News/SingleNews/${newsId}"> ..... Read More </a>
+                    </div>`;
+                    $('#alert_check').append(newsHtml);
+                });
+            }
+            console.log(result.msg)
+        },
+        error: function (ex) {
+        }
+    });
+}
+
+function logNewsRedByUserId(userName, newsId) {
+    $.ajax({
+        type: 'POST',
+        url: '/News/LogUserRedNews',
+        dataType: 'json',
+        data: { userName: userName, newsId: newsId },
+        success: function (result) {
+            if (!result.isError) {
+                console.log(result.msg)
+
+            }
+            console.log(result.msg)
+
+        },
+        error: function (ex) {
+        }
+    });
+}
+
+$.fn.spinButton = function (text) {
+    return this.each(function () {
+        var $button = $(this);
+        var defaultBtnValue = $button.html();
+        $button.html((defaultBtnValue || text) + ' ' + '<i class="fa fa-spinner fa-spin" style="font - size: 24px"></i>');
+
+        $.fn.stopSpin = function () {
+            $button.html(defaultBtnValue);
+        };
+    });
+};
+
+function startSpinForButton($button) {
+    $button.spinButton("Please wait");
+}
+
+function stopSpinForButton($button) {
+    $button.stopSpin();
+}
+
+function handleButtonClick(event) {
+    var $button = $(event.target);
+    startSpinForButton($button);
+
+    setTimeout(function () {
+        stopSpinForButton($button);
+    }, 600);
+}
+
+$(document).ready(function () {
+    $('.btn').click(handleButtonClick);
+});

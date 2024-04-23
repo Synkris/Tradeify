@@ -1,0 +1,333 @@
+﻿@model Core.ViewModels.ApplicationUserSearchResultViewModel
+
+@{
+    ViewData["Title"] = "All  Members";
+    Layout = "~/Views/Shared/_AdminDashboardLayout.cshtml";
+}
+<style>
+    body {
+        counter-reset: Serial;
+    }
+
+    tr td:first-child:before {
+        counter-increment: Serial;
+        content: counter(Serial);
+    }
+
+    .arrow-container {
+        position: relative;
+    }
+
+    .arrow-up {
+        position: absolute;
+        top: 0.5em;
+    }
+
+    .arrow-down {
+        position: absolute;
+        top: 1em;
+    }
+</style>
+
+<!--  deposit wrapper start -->
+<div class="deposit_list_wrapper float_left header_text">
+
+    <div class="row">
+        <div class="col-md-12 col-lg-12 col-sm-12 col-12 header_text">
+            <div class="sv_heading_wraper">
+
+                <h3> All Users </h3>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-12 col-md-12 col-sm-12 col-12 mb-1">
+        <form asp-controller="Admin" asp-action="Users" method="get">
+
+            <div class="float_left d-lg-none" id="faqs">
+                <div class="investment_overlay faq_overlay"></div>
+                <div class="container " id="FAQ">
+                    <div id="accordion" role="tablist">
+                        <div class="row">
+                            <div class="col-lg-6 col-md-12 col-sm-12 col-12">
+
+                                <div class="card">
+                                    <div class="card_pagee" role="tab" id="headingTwo">
+                                        <h5 class="h5-md">
+                                            <a class="collapsed" data-toggle="collapse" href="#collapseTwo" role="button" aria-expanded="false" aria-controls="collapseTwo">
+                                                Filter
+                                            </a>
+                                        </h5>
+                                    </div>
+
+                                    <div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingTwo" data-parent="#accordion" style="">
+                                        <div class="card-body2">
+
+                                            <div class="card_cntnt">
+
+                                                <div class="row col-12">
+                                                    <div class="p-lg-2 col-12 col-lg-2 p-2">
+                                                        <div class="form-pos">
+                                                            <label>Name:</label>
+                                                            <div class="form-group i-name">
+                                                                <input asp-for="Name" name="Name" value="" type="text" class="form-control" placeholder="Name">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="p-lg-2 col-12 col-lg-2 p-2">
+                                                        <div class="form-pos">
+                                                            <label>Email :</label>
+                                                            <div class="form-group i-name">
+                                                                <input asp-for="Email" name="Email" value="" type="text" class="form-control" placeholder="Email">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="p-lg-2 col-12 col-lg-2 p-2">
+                                                        <div class="form-pos">
+                                                            <label>Phone Number:</label>
+                                                            <div class="form-group i-name">
+                                                                <input asp-for="PhoneNumber" name="PhoneNumber" type="number" class="form-control" placeholder="Phone Number">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="p-lg-2 col-12 col-lg-2 p-2">
+                                                        <div class="form-pos">
+                                                            <label>Username:</label>
+                                                            <div class="form-group i-name">
+                                                                <input asp-for="UserName" name="UserName" type="text" class="form-control" placeholder="User Name">
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-lg-1 col-md-12">
+                                                        <div class="tb_es_btn_div mt-4 pt-2">
+                                                            <div class="form-group mt-2" style="display:grid">
+                                                                <button type="submit" class="btn button_bg ">Filter Users</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="row col-12 d-lg-flex d-none">
+                <div class="p-lg-2 col-12 col-lg-2 p-2">
+                    <div class="form-pos">
+                        <label>Name:</label>
+                        <div class="form-group i-name">
+                            <input asp-for="Name" name="Name" value="" type="text" class="form-control" placeholder="Name">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="p-lg-2 col-12 col-lg-2 p-2">
+                    <div class="form-pos">
+                        <label>Email :</label>
+                        <div class="form-group i-name">
+                            <input asp-for="Email" name="Email" value="" type="text" class="form-control" placeholder="Email">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="p-lg-2 col-12 col-lg-2 p-2">
+                    <div class="form-pos">
+                        <label>Phone Number:</label>
+                        <div class="form-group i-name">
+                            <input asp-for="PhoneNumber" name="PhoneNumber" type="number" class="form-control" placeholder="Phone Number">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="p-lg-2 col-12 col-lg-2 p-2">
+                    <div class="form-pos">
+                        <label>Username:</label>
+                        <div class="form-group i-name">
+                            <input asp-for="UserName" name="UserName" type="text" class="form-control" placeholder="User Name">
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-1 col-md-12">
+                    <div class="tb_es_btn_div mt-4 pt-2">
+                        <div class="form-group mt-2" style="display:grid">
+                            <button type="submit" class="btn button_bg ">Filter Users</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="row">
+                <div class="">
+                    <div class="form-pos mt-2 ml-4">
+                        <label>Page Size:</label>
+                        <div class="form-group i-name">
+                            <select asp-for="PageSize" name="PageSize">
+                                <option value="10">10</option>
+                                <option value="20">20</option>
+                                <option value="50">50</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </form>
+    </div>
+
+ 
+    <!--  profile wrapper start -->
+    <div class="last_transaction_wrapper float_left">
+        <div class="row">
+            <div class="col-md-12 col-lg-12 col-sm-12 col-12">
+
+                <div class="crm_customer_table_main_wrapper float_left">
+
+                    <div class="crm_ct_search_wrapper">
+                        <div class="crm_ct_search_bottom_cont_Wrapper"> </div>
+                    </div>
+
+                    @if (Model != null && Model.UserRecords.Count() > 0)
+                    {
+                        <div class="table-responsive">
+                            <table class="table cs-table crm_customer_table_inner_Wrapper">
+                                <thead>
+                                    <tr>
+                                        <th class="width_table1"> S/N</th>
+                                        <th class="width_table1"> Name</th>
+                                        <th class="width_table1"> Email</th>
+                                        <th class="width_table1"> Username </th>
+                                        <th class="width_table1"> Phonenumber</th>
+                                        <th class="width_table1"> Full Details</th>
+                                        <th class="width_table1"> Deactivate</th>
+                                        <th class="width_table1"> Reg Status </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var obj in Model.UserRecords)
+                                    {
+                                        <tr class="background_white">
+
+                                            <td></td>
+
+                                            <td>
+                                                <div class="pretty p-svg p-curve">@obj.FirstName @obj.LastName</div>
+                                            </td>
+                                            <td>
+                                                <div class="pretty p-svg p-curve">@obj.Email</div>
+                                            </td>
+                                            <td class="flag">
+                                                <div class="pretty p-svg p-curve">@obj.UserName</div>
+                                            </td>
+                                            <td>
+                                                <div class="pretty p-svg p-curve">@obj.Phonenumber</div>
+                                            </td>
+
+                                            <td class="flag">
+                                                <div class="about_btn float_left">
+
+                                                    <ul>
+                                                        <li>
+                                                            <a href="#" class="btn" onclick="userFullDetails('@obj.Id')"> Details</a>
+
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </td>
+                                            <td class="flag">
+                                                @if (obj.Deactivated == true)
+                                                {
+                                                    <div class="float_left">
+                                                        <ul>
+                                                            <li>
+                                                                <a href="#" class="btn btn-success" onclick="ReactivateUser('@obj.Id')"> Reactivate </a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                }
+                                                else
+                                                {
+                                                    <div class="about_btn float_left">
+                                                        <ul>
+                                                            <li>
+                                                                <a href="#" class="btn"onclick="DeactivateUser('@obj.Id')">Deactivate</a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                }
+                                            </td>
+                                            <td class="flag">
+                                                @{
+                                                    if (obj.RegFeePaid == true)
+                                                    {
+                                                        <div class="about_btn float_left">
+                                                            <ul>
+                                                                <li>
+                                                                    <a href="#"> Paid </a>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                    }
+                                                    else
+                                                    {
+                                                        <div class="about_btn float_left">
+                                                            <ul>
+                                                                <li>
+                                                                    <span class="badge badge-danger all-radius px-4 py-3"> Not Paid </span>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                    }
+                                                }
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+
+
+                            </table>
+                        </div>
+                        <br />
+                        <div class="col-lg-2 col-md-12">
+                            Page @(Model.UserRecords.PageNumber) of @Math.Ceiling((double)Model.UserRecords.TotalItemCount / Model.UserRecords.PageSize)
+                        </div>
+                        <br />
+                        <div class="col-md-6 col-lg-6 col-sm-6 co-5 float-right">
+                            @Html.Partial("_RegisteredUserPager",Model)
+                        </div>
+                    }
+                    else
+                    {
+                        <h2 class="text-info text-center py-5"> No Registered Users</h2>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal" id="myModal">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content" id="myModalBody">
+        </div>
+    </div>
+</div>
+

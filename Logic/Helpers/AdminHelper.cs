@@ -388,5 +388,104 @@ namespace Logic.Helpers
             return false;
         }
 
+        public IPagedList<ApplicationUserViewModel> RegisteredUsersDetails(ApplicationUserSearchResultViewModel applicationUserSearchResult, int pageNumber, int pageSize)
+        {
+            var userDetailsQuery = _context.ApplicationUser.Where(x => x.Id != string.Empty).Include(x => x.Gender).OrderByDescending(v => v.DateRegistered).AsQueryable();
+            if (!string.IsNullOrEmpty(applicationUserSearchResult.UserName))
+            {
+                userDetailsQuery = userDetailsQuery.Where(v =>
+                    v.UserName.ToLower().Contains(applicationUserSearchResult.UserName.ToLower())
+                );
+            }
+            if (!string.IsNullOrEmpty(applicationUserSearchResult.Name))
+            {
+                userDetailsQuery = userDetailsQuery.Where(v =>
+                    (v.FirstName + " " + v.LastName).ToLower().Contains(applicationUserSearchResult.Name.ToLower())
+                );
+            }
+            if (!string.IsNullOrEmpty(applicationUserSearchResult.PhoneNumber))
+            {
+                userDetailsQuery = userDetailsQuery.Where(v =>
+                    v.PhoneNumber.ToLower().Contains(applicationUserSearchResult.PhoneNumber.ToLower())
+                );
+            }
+            if (!string.IsNullOrEmpty(applicationUserSearchResult.Email))
+            {
+                userDetailsQuery = userDetailsQuery.Where(v =>
+                    v.Email.ToLower().Contains(applicationUserSearchResult.Email.ToLower())
+                );
+            }
+            var totalItemCount = userDetailsQuery.Count();
+            var totalPages = (int)Math.Ceiling((double)totalItemCount / pageSize);
+
+            var result = userDetailsQuery.Select(x => new ApplicationUserViewModel
+            {
+                LastName = x.LastName,
+                FirstName = x.FirstName,
+                Email = x.Email,
+                UserName = x.UserName,
+                Phonenumber = x.PhoneNumber,
+                Gender = x.Gender,
+                Id = x.Id,
+                RegFeePaid = x.RegFeePaid,
+                Deactivated = x.Deactivated,
+            }).ToPagedList(pageNumber, pageSize, totalItemCount);
+            applicationUserSearchResult.PageCount = totalPages;
+            applicationUserSearchResult.UserRecords = result;
+            if (result.Count() > 0)
+            {
+                return result;
+            }
+            return null;
+        }
+
+        public bool DeactivateUser(string userId)
+        {
+            var userToDeactivate = _context.ApplicationUser.Where(x => x.Id == userId && !x.Deactivated).FirstOrDefault();
+            if (userToDeactivate != null)
+            {
+                userToDeactivate.Deactivated = true;
+                _context.Update(userToDeactivate);
+                _context.SaveChanges();
+                return true;
+            }
+            return false;
+        }
+
+        public ApplicationUser GetUserFullDetails(string userId)
+        {
+            var user = _context.ApplicationUser.Where(x => x.Id == userId).Include(x => x.Gender).Include(s => s.Refferrer).Include(s => s.Parent).FirstOrDefault();
+            if (user != null)
+            {
+                return user;
+            }
+            return null;
+        }
+
+        public WithdrawalViewModel GetWithdrawalDetails(Guid id)
+        {
+            var conversionToNaira = _generalConfiguration.GGCWithdrawalConversionToNaira;
+            var details = _context.WithdrawFunds.Where(x => x.Id == id && x.WithdrawStatus == Status.Pending).Include(x => x.User).Select(x => new WithdrawalViewModel
+            {
+                Id = x.Id,
+                AccountName = x.AccountName,
+                AccountNumber = x.AccountNumber,
+                BankAccountName = x.BankAccountName,
+                RequestedBy = x.RequestedBy,
+                DateRequested = x.DateRequested,
+                AmountInGGC = x.Amount / conversionToNaira,
+                FullName = x.User.Name,
+                UserName = x.User.UserName,
+                WithdrawStatus = x.WithdrawStatus,
+                WithdrawalType = x.WithdrawalType,
+                Amount = x.Amount,
+            }).FirstOrDefault();
+            if (details != null)
+            {
+                return details;
+            }
+            return details;
+        }
+
     }
 }

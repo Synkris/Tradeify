@@ -55,6 +55,8 @@ namespace Logic.IHelpers
         Task<bool> CreditGGCToken(string userId, decimal token);
         bool ApproveReActivationFee(Guid paymentId, string loggedInUser);
         bool RejectReActivationPayment(Guid paymentId, string loggedInUser);
+        bool ApprovePackageFee(Guid paymentId, string loggedInUser);
+        bool RejectPackagePaymentFee(Guid paymentId, string loggedInUser);
 
 
 
