@@ -7,6 +7,28 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Include="Views\Admin\AllAGCHistories.cshtml" />
+    <None Include="Views\Admin\AllGrantHistories.cshtml" />
+    <None Include="Views\Admin\AllPvHistories.cshtml" />
+    <None Include="Views\Admin\AllWalletHistories.cshtml" />
+    <None Include="Views\Admin\AppreciateMember.cshtml" />
+    <None Include="Views\Admin\CompanySettings.cshtml" />
+    <None Include="Views\Admin\Cordinator.cshtml" />
+    <None Include="Views\Admin\DropDownList.cshtml" />
+    <None Include="Views\Admin\EditNews.cshtml" />
+    <None Include="Views\Admin\GetNews.cshtml" />
+    <None Include="Views\Admin\Index.cshtml" />
+    <None Include="Views\Admin\News.cshtml" />
+    <None Include="Views\Admin\PaymentApproval.cshtml" />
+    <None Include="Views\Admin\PendingWithdrawals.cshtml" />
+    <None Include="Views\Admin\Permission.cshtml" />
+    <None Include="Views\Admin\SortAllAGCTransactions.cshtml" />
+    <None Include="Views\Admin\SortAllGrantsTransactions.cshtml" />
+    <None Include="Views\Admin\SortAllPvTransactions.cshtml" />
+    <None Include="Views\Admin\SortAllWalletTransactions.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Hangfire.AspNetCore" Version="1.8.6" />
     <PackageReference Include="Hangfire.Core" Version="1.8.6" />
     <PackageReference Include="Hangfire.SqlServer" Version="1.8.6" />

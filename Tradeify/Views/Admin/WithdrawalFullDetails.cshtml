@@ -1,0 +1,133 @@
+﻿
+@model Core.ViewModels.WithdrawalViewModel
+
+
+<div class="col-lg-12 col-md-12 col-sm-12 col-12 bg-dark">
+	<div class="sv_question_pop float_left ">
+		<h1 class="text-center text-white ">
+			Withdrawer's FullName :&nbsp;&nbsp; <br />	@Model?.FullName.ToUpper()
+		</h1>
+
+		<div class="search_alert_box float_left">
+
+
+			<div class="change_field theme-yellow ">
+				<h1>
+					User Name :&nbsp;&nbsp; @Model?.UserName
+				</h1>
+			</div>
+
+			@if (Model.AccountNumber.Length > 10)
+			{
+
+				<div class="change_field text-light">
+					<h1>
+						Wallet Name :&nbsp;&nbsp; <mark class="bg-transparent theme-yellow font-weight-bold"> @Model?.BankAccountName </mark>
+					</h1>
+				</div>
+
+				<div class="change_field text-light">
+					<h1>
+						Wallet Id :&nbsp;&nbsp; <mark class="bg-transparent text-success font-weight-bold"> @Model?.AccountNumber </mark>
+					</h1>
+				</div>
+
+				<div class="change_field text-light">
+					<h1>
+						GGC Coins To Withdraw :&nbsp;&nbsp; <mark class="bg-transparent text-success font-weight-bold"> @Model?.AmountInGGC.ToString("F0") GGC </mark>
+					</h1>
+				</div>
+
+				<div class="change_field text-light">
+					<h1>
+						Withdrawal Status :&nbsp;&nbsp; <mark class="bg-transparent theme-yellow font-weight-bold"> @Model?.WithdrawStatus </mark>
+					</h1>
+				</div>
+
+				<div class="change_field text-light">
+					<h1>
+						Withdrawal Type :&nbsp;&nbsp; <mark class="bg-transparent theme-yellow font-weight-bold"> @Model?.WithdrawalType </mark>
+					</h1>
+				</div>
+
+				<div class="change_field text-light">
+					<h1>
+						App Name Withdrawing To :&nbsp;&nbsp;  <mark class="bg-transparent theme-yellow font-weight-bold"> @Model?.AccountName </mark>
+					</h1>
+				</div>
+
+				<div class="change_field text-light">
+					<h1>
+						Date Requested :&nbsp;&nbsp; <mark class="bg-transparent theme-yellow font-weight-bold"> @Model?.DateRequested.ToString("D") </mark>
+					</h1>
+				</div>
+			}
+			else
+			{
+				<div class="change_field text-light">
+					<h1>
+						Bank  Name :&nbsp;&nbsp; <mark class="bg-transparent theme-yellow font-weight-bold"> @Model?.BankAccountName </mark>
+					</h1>
+				</div>
+
+				<div class="change_field text-light">
+					<h1>
+						Account Name :&nbsp;&nbsp; <mark class="bg-transparent theme-yellow font-weight-bold"> @Model?.AccountName </mark>
+					</h1>
+				</div>
+
+				<div class="change_field text-light">
+					<h1>
+						Account Number :&nbsp;&nbsp;<mark class="bg-transparent theme-yellow font-weight-bold"> @Model?.AccountNumber </mark>
+					</h1>
+				</div>
+
+				<div class="change_field text-light">
+					<h1>
+						GGC Coins To Withdraw :&nbsp;&nbsp; <mark class="bg-transparent theme-yellow font-weight-bold"> @Model?.AmountInGGC.ToString("F0") GGC </mark>
+					</h1>
+				</div>
+
+				<div class="change_field text-light">
+					<h1>
+						Amount In Naira :&nbsp;&nbsp; <mark class="bg-transparent theme-yellow font-weight-bold"> &#x20A6; @Model?.Amount.ToString("F0") </mark>
+					</h1>
+				</div>
+
+				<div class="change_field text-light">
+					<h1>
+						Withdrawal Status :&nbsp;&nbsp;  <mark class="bg-transparent theme-yellow font-weight-bold"> @Model?.WithdrawStatus </mark>
+					</h1>
+				</div>
+
+				<div class="change_field text-light">
+					<h1>
+						Withdrawal Type :&nbsp;&nbsp; <mark class="bg-transparent theme-yellow font-weight-bold"> @Model?.WithdrawalType </mark>
+					</h1>
+				</div>
+
+
+
+				<div class="change_field text-light">
+					<h1>
+						Date Requested :&nbsp;&nbsp; <mark class="bg-transparent theme-yellow font-weight-bold"> @Model?.DateRequested.ToString("D") </mark>
+					</h1>
+				</div>
+			}
+
+		</div>
+
+		<div class="question_sec float_left">
+			<div class="cancel_wrapper">
+				<a href="#" class="" data-dismiss="modal">cancel</a>
+			</div>
+		</div>
+
+	</div>
+</div>
+
+<style>
+	.change_field h1 {
+		color: white;
+	}
+</style>                           

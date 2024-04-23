@@ -748,7 +748,102 @@ namespace Logic.Helpers
             }
         }
 
+        public List<ApplicationUser> GetUsers(string term)
+        {
+            return _userManager.Users
+                .Where(x => x.UserName.ToLower().Contains(term.ToLower()))
+                .Select(a => new ApplicationUser { Id = a.Id, UserName = a.UserName })
+                .ToList();
+        }
 
+        public async Task<bool> SendTokensToMembers(Appreciation appreciation, string adminId, string userId)
+        {
+            try
+            {
+                var admin = FindById(adminId);
+                var user = FindById(userId);
+
+                if (appreciation != null && adminId != null && userId != null)
+                {
+                    var newAppreciationRequest = new Appreciation
+                    {
+                        UserId = userId,
+                        DateAppreciated = DateTime.Now,
+                        AppreciationDetails = appreciation.AppreciationDetails,
+                        AppreciatedBy = admin?.UserName,
+                        Amount = appreciation.Amount,
+                    };
+                    var latestRequest = await _context.AddAsync(newAppreciationRequest);
+                    await _context.SaveChangesAsync();
+
+                    if (latestRequest.Entity.Id != Guid.Empty)
+                    {
+                        string toEmail = user?.Email;
+                        string subject = " GAP Gift Token";
+                        string message = "Hello " + newAppreciationRequest?.User?.UserName + ", <br> A Gift Token has been awarded to you." + ". <br/> Keep investing with GAP. <br/> Thanks!!! ";
+
+                        _emailService.SendEmail(toEmail, subject, message);
+                        return true;
+                    }
+                    return false;
+                }
+                return false;
+            }
+            catch (Exception exp)
+            {
+                throw exp;
+            }
+        }
+
+        public IPagedList<ApplicationUserViewModel> GetUserWalletsDetails(ApplicationUserSearchResultViewModel applicationUserSearchResult, int pageNumber, int pageSize)
+        {
+            try
+            {
+                var userList = new List<ApplicationUserViewModel>();
+
+                var userWallets = _context.Wallets.Where(x => x.Id != null).Include(x => x.User).AsQueryable();
+                var userPVs = userWallets.Where(x => EF.Property<string>(x, "Discriminator") == "PvWallet" && x.Id != null).AsQueryable();
+                var userAGCs = userWallets.Where(x => EF.Property<string>(x, "Discriminator") == "AGCWallet" && x.Id != null).AsQueryable();
+                var wallets = userWallets.Where(x => EF.Property<string>(x, "Discriminator") == "Wallet" && x.Id != null && x.User.FirstName != "System").AsQueryable();
+
+                if (!string.IsNullOrEmpty(applicationUserSearchResult.UserName))
+                {
+                    wallets = wallets.Where(v =>
+                        v.User.UserName.ToLower().Contains(applicationUserSearchResult.UserName.ToLower())
+                    );
+                }
+                if (!string.IsNullOrEmpty(applicationUserSearchResult.Name))
+                {
+                    wallets = wallets.Where(v =>
+                        (v.User.FirstName + " " + v.User.LastName).ToLower().Contains(applicationUserSearchResult.Name.ToLower())
+                    );
+                }
+
+                var totalItemCount = wallets.Count();
+                var totalPages = (int)Math.Ceiling((double)totalItemCount / pageSize);
+
+                var pageDetails = wallets.OrderBy(o => o.User.UserName)
+                    .Select(x => new ApplicationUserViewModel()
+                    {
+                        Id = x.User.Id,
+                        LastName = x.User.LastName,
+                        FirstName = x.User.FirstName,
+                        UserName = x.User.UserName,
+                        WalletBalance = x.Balance,
+                        PVBalance = userPVs.FirstOrDefault(p => p.UserId == x.User.Id) == null ? 0 : userPVs.FirstOrDefault(p => p.UserId == x.User.Id).Balance,
+                        AGCWalletBalance = userAGCs.FirstOrDefault(p => p.UserId == x.User.Id) == null ? 0 : userAGCs.FirstOrDefault(p => p.UserId == x.User.Id).Balance,
+                    }).ToPagedList(pageNumber, pageSize, totalItemCount);
+                applicationUserSearchResult.PageCount = totalPages;
+
+                return pageDetails;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
+        }
 
     }
 }

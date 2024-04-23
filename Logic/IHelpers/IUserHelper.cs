@@ -47,6 +47,9 @@ namespace Logic.IHelpers
         List<Packages> GetPackageDetails();
         MiningLog UserLastMiningDetails(string userId);
         Task<bool> LogUserMiningHistory(string userId, decimal amount);
+        List<ApplicationUser> GetUsers(string term);
+        Task<bool> SendTokensToMembers(Appreciation appreciation, string adminId, string userId);
+        IPagedList<ApplicationUserViewModel> GetUserWalletsDetails(ApplicationUserSearchResultViewModel applicationUserSearchResult, int pageNumber, int pageSize);
 
 
     }

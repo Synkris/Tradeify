@@ -25,5 +25,9 @@ namespace Logic.IHelpers
         Task<CompanySettingViewModel> GetCompanySettings();
         bool UpdateCompanySettings(CompanySettingViewModel companySettingViewModel);
         bool ReactivateUser(string userId);
+        IPagedList<ApplicationUserViewModel> RegisteredUsersDetails(ApplicationUserSearchResultViewModel applicationUserSearchResult, int pageNumber, int pageSize);
+        bool DeactivateUser(string userId);
+        ApplicationUser GetUserFullDetails(string userId);
+        WithdrawalViewModel GetWithdrawalDetails(Guid id);
     }
 }
