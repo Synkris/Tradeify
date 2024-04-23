@@ -702,6 +702,52 @@ namespace Logic.Helpers
             return _context.Packages.Where(x => x.Active && !x.Deleted).ToList();
         }
 
+        public MiningLog UserLastMiningDetails(string userId)
+        {
+            try
+            {
+                return _context.miningLogs.Where(x => x.UserId == userId).OrderBy(x => x.DateCreated).LastOrDefault();
+
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+
+        public async Task<bool> LogUserMiningHistory(string userId, decimal amount)
+        {
+            try
+            {
+                var miningSettings = _context.CompanySettings.Where(s => s.MiningQuantity == amount).FirstOrDefault();
+                if (userId != null && amount >= 0)
+                {
+                    MiningLog newMiningLogHistory = new MiningLog()
+                    {
+                        UserId = userId,
+                        MiningQuantity = amount,
+                        MiningDuration = miningSettings.MiningDuration,
+                        Active = true,
+                        DateCreated = DateTime.Now,
+                        Deleted = false,
+
+                    };
+                    var result = _context.Add(newMiningLogHistory);
+                    _context.SaveChanges();
+                    if (result.Entity.Id != null)
+                    {
+                        return true;
+                    }
+                }
+                return false;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
 
 
     }

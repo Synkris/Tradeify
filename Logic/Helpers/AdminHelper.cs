@@ -304,5 +304,73 @@ namespace Logic.Helpers
             return "Cordinator failed To Removed";
         }
 
+        public async Task<CompanySettingViewModel> GetCompanySettings()
+        {
+            var settings = new CompanySettingViewModel();
+
+            var existingSettings = _context.CompanySettings.FirstOrDefault(x => !x.Deleted && x.Active);
+
+            if (existingSettings == null)
+            {
+                var newCompanySettings = new CompanySettings()
+                {
+                    Tokenamount = 0,
+                    MinimumToken = "5",
+                    MaximumToken = "50",
+                    MiningDuration = 24,
+                    MiningQuantity = 10,
+                    ActivationAmount = 1,
+                    DateCreated = DateTime.Now,
+                    Active = true,
+                    Deleted = false,
+                };
+
+                _context.Add(newCompanySettings);
+                _context.SaveChanges();
+
+                settings.Tokenamount = newCompanySettings.Tokenamount;
+                settings.MiningQuantity = newCompanySettings.MiningQuantity;
+                settings.MaximumToken = newCompanySettings.MaximumToken;
+                settings.MinimumToken = newCompanySettings.MinimumToken;
+                settings.MiningDuration = newCompanySettings.MiningDuration;
+                settings.ActivationAmount = newCompanySettings.ActivationAmount;
+                return settings;
+
+            }
+            settings.Tokenamount = existingSettings.Tokenamount;
+            settings.MiningQuantity = existingSettings.MiningQuantity;
+            settings.MaximumToken = existingSettings.MaximumToken;
+            settings.MinimumToken = existingSettings.MinimumToken;
+            settings.MiningDuration = existingSettings.MiningDuration;
+            settings.ActivationAmount = existingSettings.ActivationAmount;
+            return settings;
+        }
+
+        public bool UpdateCompanySettings(CompanySettingViewModel companySettingViewModel)
+        {
+            try
+            {
+                var existingSettings = _context.CompanySettings.FirstOrDefault(x => x.Active && !x.Deleted);
+
+                if (existingSettings != null)
+                {
+                    existingSettings.MiningDuration = companySettingViewModel.MiningDuration;
+                    existingSettings.MiningQuantity = companySettingViewModel.MiningQuantity;
+                    existingSettings.MaximumToken = companySettingViewModel.MaximumToken;
+                    existingSettings.Tokenamount = companySettingViewModel.Tokenamount;
+                    existingSettings.MinimumToken = companySettingViewModel.MinimumToken;
+                    existingSettings.ActivationAmount = companySettingViewModel.ActivationAmount;
+                    _context.CompanySettings.Update(existingSettings);
+                    _context.SaveChanges();
+                    return true;
+                }
+                return false;
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+        }
+
     }
 }

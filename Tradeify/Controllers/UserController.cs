@@ -956,6 +956,85 @@ namespace Tradeify.Controllers
             return Json(new { isError = false, data = JsonConvert.SerializeObject(newPackageDetails), results = oldPackageAmount });
         }
 
+        public async Task<JsonResult> UserMiningLog(string userId)
+        {
+            try
+            {
+                var getUserMiningAdminSetup = await _adminHelper.GetCompanySettings();
+                var miningLog = _userHelper.UserLastMiningDetails(userId);
+
+                var checkIfUserHasPaidRegistrationFee = _paymentHelper.CheckIfUserHasPaidRegPayment(userId);
+                if (!checkIfUserHasPaidRegistrationFee)
+                {
+                    return Json(new { isError = true, msg = "You have not made Registration Payment" });
+                }
+
+                if (getUserMiningAdminSetup != null)
+                {
+                    var amount = getUserMiningAdminSetup.MiningQuantity;
+                    if (miningLog != null)
+                    {
+                        var userLastMining = (DateTime.Now - miningLog.DateCreated).TotalHours;
+                        var isMiningDue = userLastMining >= getUserMiningAdminSetup.MiningDuration;
+                        if (isMiningDue)
+                        {
+                            var creditedUser = await _paymentHelper.CreditGGCToken(userId, amount).ConfigureAwait(false);
+                            if (creditedUser)
+                            {
+                                var date = DateTime.Now.AddHours(getUserMiningAdminSetup.MiningDuration);
+                                return Json(new { isError = false, msg = "Token mined successfully.", data = date, token = amount });
+                            }
+                        }
+                        return Json(new { isError = true, msg = "Not due for another mining, try again later." });
+                    }
+                    else
+                    {
+                        var creditedUser = await _paymentHelper.CreditGGCToken(userId, amount).ConfigureAwait(false);
+
+                        if (creditedUser)
+                        {
+                            var date = DateTime.Now.AddHours(getUserMiningAdminSetup.MiningDuration);
+                            return Json(new { isError = false, data = date, msg = "Token mined successfully.", token = amount });
+                        }
+                    }
+
+                    return Json(new { isError = true, msg = "Error occurred while mining, try again later." });
+
+                }
+                else
+                {
+                    return Json(new { isError = true, msg = "Error occurred, please contact admin" });
+                }
+
+
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+
+        [Authorize]
+        public IActionResult GetUserLastMining()
+        {
+            var userName = User.Identity?.Name;
+            if (userName != null)
+            {
+                var userId = _userHelper.GetCurrentUserId(userName);
+                var getAdminSetup = _adminHelper.GetCompanySettings().Result;
+                var userLastMiningDetails = _userHelper.UserLastMiningDetails(userId);
+                var lastMiningDate = userLastMiningDetails?.DateCreated;
+                if (lastMiningDate != null)
+                {
+                    lastMiningDate = lastMiningDate.Value.AddHours(getAdminSetup.MiningDuration);
+                    return Json(new { isError = false, user = userId, data = lastMiningDate });
+                }
+                return Json(new { isError = true, msg = "There is no mining history" });
+            }
+            return Json(new { isError = true, msg = "Could Not get the last mining" });
+        }
+
 
 
 

@@ -1907,6 +1907,46 @@ namespace Logic.Helpers
             }
         }
 
+        public async Task<bool> CreditGGCToken(string userId, decimal token)
+        {
+            try
+            {
+                if (userId != null && token > 0)
+                {
+
+                    var wallet = GetUserAGCWalletNonAsync(userId);
+                    if (wallet == null)
+                    {
+                        wallet = CreateAGCWalletByUserIdNonAsync(userId, token);
+                        if (wallet.Balance > 0)
+                        {
+                            return true;
+                        }
+                    }
+                    else
+                    {
+
+                        wallet.Balance += token;
+                        _context.Update(wallet);
+                        _context.SaveChanges();
+                        await _bonusHelper.LogAGCWalletHistory(wallet, token, TransactionType.Credit, Guid.Empty);
+                        await _userHelper.LogUserMiningHistory(userId, token);
+                        return true;
+
+                    }
+
+
+                }
+                return false;
+            }
+            catch (Exception ex)
+            {
+                LogCritical($" {ex.Message} This exception occured while trying to credit GGC Token in payment helper");
+
+                throw ex;
+            }
+        }
+
 
 
 

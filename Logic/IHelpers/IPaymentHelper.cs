@@ -52,6 +52,7 @@ namespace Logic.IHelpers
         Wallet GetUserWalletNonAsync(string userId);
         Task<bool> CreateWithdrawalRequest(WithdrawalViewModel withdrawFunds, string UserId);
         Task<bool> CreateCryptoWithdrawalRequest(WithdrawalViewModel withdrawFunds, string UserId);
+        Task<bool> CreditGGCToken(string userId, decimal token);
 
 
 
