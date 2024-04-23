@@ -187,3 +187,166 @@ function sendPayGrant() {
         errorAlert("Please fill the form Correctly");
     }
 }
+
+let upgradePackageDetailsToShow = [];
+let oldPackageAmount = [];
+
+$(window).on("load", function () {
+
+    $.ajax({
+        type: 'GET',
+        url: '/User/GetPackageUpgradeDetailsForPaymentForm',
+        success: function (result) {
+            if (!result.isError) {
+                upgradePackageDetailsToShow = JSON.parse(result.data);
+                oldPackageAmount = result.results;
+
+            }
+            else {
+                errorAlert(result.msg);
+            }
+        },
+        error: function (ex) {
+            errorAlert("Network failure, please try again", ex);
+        }
+    });
+
+});
+
+$(document).ready(function () {
+    $('#packageId').change(function () {
+        var selectedUpgradePackageId = $(this).val();
+        displaySelectedPackageUpgradeDetails(selectedUpgradePackageId);
+    });
+});
+
+function displaySelectedPackageUpgradeDetails(selectedUpgradePackageId) {
+    var selectedPackageDetailsElement = $('#selectedPackageUpgradeDetails');
+    selectedPackageDetailsElement.empty();
+    if (selectedUpgradePackageId !== "") {
+        var selectedPackageUpgrade = upgradePackageDetailsToShow.find(p => p.Id == selectedUpgradePackageId);
+        var upgradePrice = selectedPackageUpgrade.Price - oldPackageAmount;
+
+        var apps = "<div style=\"border-bottom: 2px solid #22c8db; color: white; text-align: left; padding: 5px\">" +
+            "<h5 style=\"margin-bottom: 2px; color: white;\">" + "Package Name: " + selectedPackageUpgrade.Name + "</h5>" +
+            "<p>" + "Package Price: $" + selectedPackageUpgrade.Price + "</p>" +
+            //"<p>" + "Package Bonus Amount: $" + selectedPackageUpgrade.BonusAmount + "</p>" +
+            "<p>" + "Package Maximum Generation: " + selectedPackageUpgrade.MaxGeneration + "</p>" +
+            "<p>" + "Amount To Pay For Upgrade: $" + upgradePrice + "</p>" +
+            "<p>" + "Description: " + selectedPackageUpgrade.Description + "</p>" +
+            "</div>";
+        $("#selectedPackageUpgradeDetails").append(apps);
+        $("#amount").val(upgradePrice);
+
+    }
+}
+
+function displaySelectedPackageDetailsAlert(packageId) {
+    let upgradePackageDetailsToShowAlert = [];
+
+    $.ajax({
+        type: 'GET',
+        url: '/User/GetPackageUpgradeAlertDetails',
+        dataType: 'json',
+        data: {
+            packageId: packageId
+        },
+        success: function (result) {
+            if (!result.isError) {
+                upgradePackageDetailsToShowAlert = JSON.parse(result.data);
+                oldPackageAmount = result.results;
+
+                var selectedUpgradePackageIdd = upgradePackageDetailsToShowAlert.Id;
+
+                if (selectedUpgradePackageIdd !== "") {
+                    var selectedPackageUpgrade = upgradePackageDetailsToShowAlert;
+                    var upgradePrice = selectedPackageUpgrade.Price - oldPackageAmount;
+
+                    var appsDetails = {
+                        name: selectedPackageUpgrade.Name,
+                        description: selectedPackageUpgrade.Description,
+                        price: selectedPackageUpgrade.Price,
+                        //bonusAmount: selectedPackageUpgrade.BonusAmount,
+                        maxGeneration: selectedPackageUpgrade.MaxGeneration,
+                        upgradeBalance: upgradePrice
+                    };
+                    var url = '/User/Payment';
+
+                    swal.fire({
+                        title: "Upgrade Package Details",
+                        html:
+                            "<p><strong>Package Name:</strong> " + appsDetails.name + "</p>" +
+                            "<p><strong>Package Price:</strong> $" + appsDetails.price + "</p>" +
+                            //"<p><strong>Package Bonus Amount:</strong> $" + appsDetails.bonusAmount + "</p>" +
+                            "<p><strong>Package Maximum Generation:</strong> " + appsDetails.maxGeneration + "</p>" +
+                            "<p><strong>Amount To Pay For Upgrade:</strong> $" + appsDetails.upgradeBalance + "</p>" +
+                            "<p><strong>Description:</strong> " + appsDetails.description + "</p>",
+
+                        icon: "success",
+                        showCancelButton: false,
+                        showConfirmButton: true,
+                        confirmButtonText: "OK",
+
+
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            window.location.href = url;
+                        }
+                    });
+                }
+            } else {
+                errorAlert(result.msg);
+            }
+        },
+        error: function (ex) {
+            errorAlert("Network failure, please try again", ex);
+        }
+    });
+}
+
+function approveUserPackagePayment(id) {
+    $.ajax({
+        type: 'POST',
+        url: '/Admin/ApprovePackageFee',
+        dataType: 'json',
+        data: {
+            paymentId: id
+        },
+        success: function (result) {
+            if (!result.isError) {
+                var url = '/Admin/PaymentApproval';
+                successAlertWithRedirect(result.msg, url);
+            }
+            else {
+                errorAlert(result.msg);
+            }
+        },
+        error: function (ex) {
+            "Something went wrong, contact the support - " + errorAlert(ex);
+        }
+    });
+}
+
+function declineUserPackagePayments(id) {
+    $.ajax({
+        type: 'POST',
+        url: '/Admin/DeclinePackagePaymentFee', // we are calling json method
+        dataType: 'json',
+        data:
+        {
+            paymentId: id
+        },
+        success: function (result) {
+            if (!result.isError) {
+                var url = '/Admin/PaymentApproval';
+                successAlertWithRedirect(result.msg, url);
+            }
+            else {
+                errorAlert(result.msg);
+            }
+        },
+        error: function (ex) {
+            errorAlert("Please, Contact the Support for --- " + ex);
+        }
+    });
+}

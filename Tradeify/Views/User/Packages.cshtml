@@ -1,0 +1,71 @@
+﻿@model IEnumerable<Core.Models.Packages>
+@{
+    ViewData["Title"] = "Packages";
+    Layout = "~/Views/Shared/_DashboardLayout.cshtml";
+}
+@{
+    var userPackageId = ViewBag.getUserPackage;
+}
+<div class="investment_plans index2_investment_plans float_left">
+    <div class="investment_overlay"></div>
+    <div class="container mt-5 pt-5">
+        <div class="row">
+
+            <div class="col-md-12 col-lg-12 col-sm-12 col-12">
+                <div class="sv_heading_wraper heading_wrapper_dark index2_heading index2_heading_center">
+                    <h4> our plans </h4>
+                    <h3> Our Investment Plans </h3>
+                    <div class="line_shape"></div>
+                </div>
+            </div>
+
+            @foreach (var obj in Model)
+            {
+                <div class="col-xl-4 col-md-6 col-lg-6 col-sm-6 col-12">
+                    <div class="investment_box_wrapper index2_investment_box_Wraper float_left">
+                        <div class="investment_icon_circle icon_color parpal_color">
+                            <i class="flaticon-bar-chart"></i>
+                        </div>
+                        <div class="investment_border_wrapper"></div>
+                        <div class="investment_content_wrapper">
+                            <h1><a href="#">@Html.DisplayFor(modelItem => obj.Name)</a></h1>
+                            <div class="line_shape investment_line_shape"></div>
+                            <p>
+                                <br><span>Package cost: $@obj.Price</span>
+                                @*<br><span>Package Bonus Amount: $@obj.BonusAmount</span>*@
+                                <br><span>Package Max Generation: @obj.MaxGeneration</span>
+                                <br> <span>Package Details: </span>
+                                     <span>@obj.Description </span>
+
+                            </p>
+                        </div>
+                        <div class="about_btn plans_btn index2_investment_btn bg_btn_color text-white">
+                            @if (userPackageId == obj.Id)
+                            {
+                                <p>This is your current package</p>
+
+                            }
+                            else
+                            {
+                                <ul>
+                                    <li>
+                                        <a class="btn" onclick="displaySelectedPackageDetailsAlert('@obj.Id')">Buy</a>
+                                    </li>
+                                </ul>
+                            }
+                        </div>
+                    </div>
+                </div>
+            }
+
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+

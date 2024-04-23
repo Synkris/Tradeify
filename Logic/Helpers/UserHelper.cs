@@ -636,5 +636,73 @@ namespace Logic.Helpers
 
         }
 
+        public IPagedList<UserPackagesViewModel> GetUserPackages(UserPackagesSearchResultViewModel userPackageViewModel, string userId, int pageNumber, int pageSize)
+        {
+            try
+            {
+                var userPackageQuery = _context.UserPackages
+                    .Where(u => u.UserId == userId && u.Deleted != true && u.PaymentId != null)
+                    .Include(u => u.Payment)
+                    .Include(u => u.Package)
+                    .OrderByDescending(s => s.DateOfPayment).AsQueryable();
+                if (!string.IsNullOrEmpty(userPackageViewModel.Name))
+                {
+                    userPackageQuery = userPackageQuery.Where(v =>
+                        v.Package.Name.ToLower().Contains(userPackageViewModel.Name.ToLower())
+                    );
+                }
+                if (userPackageViewModel.SortTypeFrom != DateTime.MinValue)
+                {
+                    userPackageQuery = userPackageQuery.Where(v => v.DateOfPayment >= userPackageViewModel.SortTypeFrom);
+                }
+                if (userPackageViewModel.SortTypeTo != DateTime.MinValue)
+                {
+                    userPackageQuery = userPackageQuery.Where(v => v.DateOfPayment <= userPackageViewModel.SortTypeTo);
+                }
+
+                var totalItemCount = userPackageQuery.Count();
+                var totalPages = (int)Math.Ceiling((double)totalItemCount / pageSize);
+
+                var userPackages = userPackageQuery.Select(package => new UserPackagesViewModel
+                {
+                    Id = package.Id,
+                    Name = package.Name,
+                    UserId = package.UserId,
+                    UserName = package.User.UserName,
+                    Amount = package.Amount,
+                    CryptoAmount = package.CryptoAmount,
+                    DateOfPayment = package.DateOfPayment,
+                    DateOfApproval = package.DateOfApproval,
+                    DateBonusPaid = package.DateBonusPaid,
+                    MaxGeneration = package.MaxGeneration,
+                    PackageId = package.PackageId,
+                    IsMatured = package.IsMatured,
+                }).ToPagedList(pageNumber, pageSize, totalItemCount);
+                userPackageViewModel.PageCount = totalPages;
+                userPackageViewModel.UserPackagesRecords = userPackages;
+                if (userPackages.Count() > 0)
+                {
+                    return userPackages;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+
+        }
+
+        public List<Packages> GetPackageDetails()
+        {
+            return _context.Packages.Where(x => x.Active && !x.Deleted).ToList();
+        }
+
+
+
     }
 }
