@@ -24,5 +24,6 @@ namespace Logic.IHelpers
         string RemoveCordinator(int id);
         Task<CompanySettingViewModel> GetCompanySettings();
         bool UpdateCompanySettings(CompanySettingViewModel companySettingViewModel);
+        bool ReactivateUser(string userId);
     }
 }

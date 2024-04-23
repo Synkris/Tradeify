@@ -372,5 +372,21 @@ namespace Logic.Helpers
             }
         }
 
+        public bool ReactivateUser(string userId)
+        {
+            if (userId != null)
+            {
+                var reActivate = _context.ApplicationUser.Where(b => b.Id == userId && b.Deactivated).FirstOrDefault();
+                if (reActivate != null)
+                {
+                    reActivate.Deactivated = false;
+                    _context.Update(reActivate);
+                    _context.SaveChanges();
+                    return true;
+                }
+            }
+            return false;
+        }
+
     }
 }

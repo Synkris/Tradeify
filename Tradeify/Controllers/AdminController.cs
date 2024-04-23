@@ -1114,6 +1114,83 @@ namespace Tradeify.Controllers
             }
         }
 
+        public JsonResult ReactivateUser(string userId)
+        {
+            if (userId != null)
+            {
+                var Reactivate = _adminHelper.ReactivateUser(userId);
+                if (Reactivate)
+                {
+                    return Json(new { isError = false, msg = " You have Reactivated this member" });
+                }
+            }
+            return Json(new { isError = true, msg = " Member Not Found" });
+        }
+
+        public async Task<JsonResult> ApproveReActivationFee(Guid paymentId)
+        {
+            var responseMsg = string.Empty;
+            try
+            {
+                if (paymentId != Guid.Empty)
+                {
+                    var userId = _userHelper.GetCurrentUserId(User.Identity.Name);
+                    //var payment = _context.PaymentForms.Where(x => x.Id == paymentId).Include(x => x.User).FirstOrDefault();
+                    var checkifApprovedBefore = _paymentHelper.CheckIfApproved(paymentId);
+                    if (checkifApprovedBefore)
+                    {
+                        return Json(new { isError = true, msg = "This Re-Activation has  been approved before" });
+                    }
+                    var approve = _paymentHelper.ApproveReActivationFee(paymentId, userId);
+                    if (approve)
+                    {
+                        return Json(new { isError = false, msg = "Re-Activation Payment has been approved" });
+                    }
+
+                }
+                return Json(new { isError = true, msg = "Could not find Re-Activation to approve" });
+            }
+            catch (Exception ex)
+            {
+                return Json(new { isError = true, msg = ex.Message });
+            }
+        }
+
+        [HttpPost]
+        public JsonResult DeclineReActivationFee(Guid paymentId)
+        {
+            try
+            {
+                if (paymentId != Guid.Empty)
+                {
+                    var loggedInUser = _userHelper.GetCurrentUserId(User.Identity.Name);
+                    var regFeePayments = _context.PaymentForms.Where(s => s.Id == paymentId && s.Status == Status.Pending).Include(s => s.User).FirstOrDefault();
+                    if (regFeePayments != null)
+                    {
+                        if (regFeePayments.Status == Status.Approved)
+                        {
+                            return Json(new { isError = true, msg = " This Re-Activation payment request has been approved" });
+                        }
+                        if (regFeePayments.Status == Status.Rejected)
+                        {
+                            return Json(new { isError = true, msg = "This Re-Activation payment request has been rejected" });
+                        }
+                        var rejectPayment = _paymentHelper.RejectReActivationPayment(paymentId, loggedInUser);
+                        if (rejectPayment)
+                        {
+                            return Json(new { isError = false, msg = " Re-Activation Fee Rejected" });
+                        }
+                        return Json(new { isError = true, msg = "Error occurred while rejecting payment, try again." });
+                    }
+                }
+                return Json(new { isError = true, msg = " No Re-Activation Request Found" });
+            }
+            catch (Exception ex)
+            {
+                return Json(new { isError = true, msg = ex.Message });
+            }
+        }
+
 
 
 

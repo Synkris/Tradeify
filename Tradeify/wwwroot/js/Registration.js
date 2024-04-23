@@ -350,3 +350,50 @@ function declineUserPackagePayments(id) {
         }
     });
 }
+
+function approveReActivationPayment(id) {
+    $.ajax({
+        type: 'POST',
+        url: '/Admin/ApproveReActivationFee',
+        dataType: 'json',
+        data: {
+            paymentId: id
+        },
+        success: function (result) {
+            if (!result.isError) {
+                var url = '/Admin/PaymentApproval';
+                successAlertWithRedirect(result.msg, url);
+            }
+            else {
+                errorAlert(result.msg);
+            }
+        },
+        error: function (ex) {
+            "Something went wrong, contact the support - " + errorAlert(ex);
+        }
+    });
+}
+
+function declineReActivationPayments(id) {
+    $.ajax({
+        type: 'POST',
+        url: '/Admin/DeclineReActivationFee', // we are calling json method
+        dataType: 'json',
+        data:
+        {
+            paymentId: id
+        },
+        success: function (result) {
+            if (!result.isError) {
+                var url = '/Admin/PaymentApproval';
+                successAlertWithRedirect(result.msg, url);
+            }
+            else {
+                errorAlert(result.msg);
+            }
+        },
+        error: function (ex) {
+            errorAlert("Please, Contact the Support for --- " + ex);
+        }
+    });
+}
