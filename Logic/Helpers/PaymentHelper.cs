@@ -4,6 +4,7 @@ using Core.Models;
 using Core.ViewModels;
 using Logic.IHelpers;
 using Logic.Services;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -21,14 +22,16 @@ namespace Logic.Helpers
         private readonly IUserHelper _userHelper;
         private readonly IGeneralConfiguration _generalConfiguration;
         private readonly IBonusHelper _bonusHelper;
+        private UserManager<ApplicationUser> _userManager;
 
-        public PaymentHelper(IEmailService emailService, AppDbContext context, IUserHelper userHelper, IGeneralConfiguration generalConfiguration, IBonusHelper bonusHelper)
+        public PaymentHelper(IEmailService emailService, AppDbContext context, IUserHelper userHelper, IGeneralConfiguration generalConfiguration, IBonusHelper bonusHelper, UserManager<ApplicationUser> userManager)
         {
             _emailService = emailService;
             _context = context;
             _userHelper = userHelper;
             _generalConfiguration = generalConfiguration;
             _bonusHelper = bonusHelper;
+            _userManager = userManager;
         }
 
 
@@ -1947,7 +1950,120 @@ namespace Logic.Helpers
             }
         }
 
+        public bool ApproveReActivationFee(Guid paymentId, string loggedInUser)
+        {
+            string toEmailBug = _generalConfiguration.DeveloperEmail;
+            string subjectEmailBug = "AssignGrantLimitBonus Exception Message on GAP";
+            try
+            {
+                if (paymentId != Guid.Empty)
+                {
+                    var firstGenPackage = GetGen1Package();
+                    var reActivationApprove = _context.PaymentForms.Where(x => x.Id == paymentId && x.Status == Status.Pending).Include(x => x.User).FirstOrDefault();
+                    if (reActivationApprove != null)
+                    {
+                        reActivationApprove.Status = Status.Approved;
+                        reActivationApprove.StatusBy = loggedInUser;
+                        reActivationApprove.StatuseChangeDate = DateTime.Now;
+                        reActivationApprove.PackageId = firstGenPackage?.Id;
+                        _context.Update(reActivationApprove);
 
+                        var user = _context.ApplicationUser.Where(a => a.Id == reActivationApprove.UserId && a.RegFeePaid == true).FirstOrDefault();
+                        if (user != null)
+                        {
+                            user.Deactivated = false;
+                            _context.Update(user);
+
+                            var userPackage = new UserPackages
+                            {
+                                Name = firstGenPackage?.Name,
+                                Amount = (decimal)firstGenPackage?.Price,
+                                UserId = reActivationApprove.UserId,
+                                PackageId = (int)reActivationApprove?.PackageId,
+                                DateCreated = DateTime.Now,
+                                Active = true,
+                                Deleted = false,
+                                MaxGeneration = (int)firstGenPackage?.MaxGeneration,
+                                CryptoAmount = "0",
+                                DateOfPayment = DateTime.Now,
+                                DateOfApproval = DateTime.Now,
+                                PaymentId = paymentId,
+                            };
+                            _context.Add(userPackage);
+                        }
+                        _context.SaveChanges();
+                        _userManager.AddToRoleAsync(user, "user");
+
+                        var convertedPaymentAmount = reActivationApprove.Amount / _generalConfiguration.DollarRate;
+                        if (reActivationApprove?.User?.Email != null)
+                        {
+                            string toEmail = reActivationApprove?.User?.Email;
+                            string subject = " Account Re-Activation Payment Approved";
+                            string message = "Hello " + "<b>" + reActivationApprove?.User?.UserName + "</b>" + ", <br> Your payment of $" + "<b>" + convertedPaymentAmount.ToString("F2") + ",</b> " + reActivationApprove?.Details + " has been Approved. </br> </br> You have also been awarded the <b> " + firstGenPackage?.Name + " </b>. </br> You can easily upgrade your package at any time to experience and benefit from the numerous rewards." + "<br> </br>" +
+                                " Continue to explore the myriad opportunities for growth and prosperity with GAP and get all your exclusive bonuses." +
+                                " <br> Keep Investing, Keep Earning. <br> " +
+                                " Thank you !!! ";
+                            _emailService.SendEmail(toEmail, subject, message);
+                        }
+                        return true;
+                    }
+                }
+                else
+                {
+                    LogError($" paymentId not found");
+                }
+                return false;
+            }
+            catch (Exception ex)
+            {
+                LogCritical($" {ex.Message} This exception occured while trying to approve reactivation fee in payment helper");
+
+                string message = "Exception " + ex.Message + " and inner exception:" + ex.InnerException.Message + "  Occurred at " + DateTime.Now;
+                _emailService.SendEmail(toEmailBug, subjectEmailBug, message);
+                throw;
+            }
+        }
+
+        public Packages GetGen1Package()
+        {
+            var package = _context.Packages.Where(x => x.Id > 0 && x.MaxGeneration == GenerationEnum.FirstGeneration && x.Active && !x.Deleted).FirstOrDefault();
+            if (package != null)
+            {
+                return package;
+            }
+
+            return null;
+        }
+
+        public bool RejectReActivationPayment(Guid paymentId, string loggedInUser)
+        {
+            var rejectPayment = _context.PaymentForms.Where(a => a.Id == paymentId && a.Status == Status.Pending).Include(a => a.User).FirstOrDefault();
+            if (rejectPayment != null)
+            {
+                rejectPayment.Status = Status.Rejected;
+                rejectPayment.StatusBy = loggedInUser;
+                rejectPayment.StatuseChangeDate = DateTime.Now;
+
+                _context.Update(rejectPayment);
+                _context.SaveChanges();
+                var convertedPaymentAmount = rejectPayment.Amount / _generalConfiguration.DollarRate;
+                if (rejectPayment.User.Email != null)
+                {
+                    string toEmail = rejectPayment.User.Email;
+                    string subject = " Account Re-Activation Payment Declined";
+                    string message = "Hello " + "<b>" + rejectPayment?.User?.UserName + "</b>" + ", <br> Your payment of $" + "<b>" + convertedPaymentAmount.ToString("F2") + "</b> For " + rejectPayment.Details + " has been Declined. " +
+                     "Keep Investing with GAP. <br> <br> Thanks!!! ";
+                    _emailService.SendEmail(toEmail, subject, message);
+                }
+                return true;
+
+            }
+            else
+            {
+                LogError($" Could not find reactivation payment to reject with paymentId {paymentId}");
+            }
+            return false;
+        }
 
 
     }

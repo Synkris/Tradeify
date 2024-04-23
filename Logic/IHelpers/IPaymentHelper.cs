@@ -53,6 +53,8 @@ namespace Logic.IHelpers
         Task<bool> CreateWithdrawalRequest(WithdrawalViewModel withdrawFunds, string UserId);
         Task<bool> CreateCryptoWithdrawalRequest(WithdrawalViewModel withdrawFunds, string UserId);
         Task<bool> CreditGGCToken(string userId, decimal token);
+        bool ApproveReActivationFee(Guid paymentId, string loggedInUser);
+        bool RejectReActivationPayment(Guid paymentId, string loggedInUser);
 
 
 
