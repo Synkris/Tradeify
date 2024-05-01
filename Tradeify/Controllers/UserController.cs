@@ -86,96 +86,111 @@ namespace Tradeify.Controllers
         public async Task<IActionResult> RegistrationPayment()
         {
             var loggedInUserId = _userHelper.GetCurrentUserId(User.Identity.Name);
+            var checkApprovedRegFee = _paymentHelper.CheckIfUserHasPaidRegPayment(loggedInUserId);
+            if (checkApprovedRegFee)
+            {
+                return RedirectToAction("Index", "User");
+            }
             ViewBag.Bank = await _dropdownHelper.GetBankDropdownByKey(DropdownEnums.BankList);
             ViewBag.Package = _dropdownHelper.DropdownOfPackages();
-            var userPackage = _paymentHelper?.GetUserPackage(loggedInUserId);
-            var package = new PaymentFormViewModel()
+            var userPackage = _paymentHelper.GetUserPackage(loggedInUserId);
+            if (userPackage != null)
             {
-                PackageId = userPackage.PackageId,
-            };
-            return View(package);
+                var package = new PaymentFormViewModel()
+                {
+                    PackageId = userPackage.PackageId,
+                };
+                return View(package);
+            }
+            return View();
         }
 
 		[HttpPost]
 		public JsonResult RegistrationFeePayment(string details)
 		{
-			var loggedInUserId = _userHelper.GetCurrentUserId(User.Identity.Name);
-			if (details != null)
-			{
-				var paymentFormViewModel = JsonConvert.DeserializeObject<PaymentFormViewModel>(details);
-				if (paymentFormViewModel != null)
-				{
-					paymentFormViewModel.UserId = loggedInUserId;
-					var checkPendingPayments = _paymentHelper.CheckIfUserhasPendingRegPayment(paymentFormViewModel.UserId);
-					if (checkPendingPayments)
-					{
-						return Json(new { isError = true, msg = "You have a pending Registration Payment" });
-					}
-					if (paymentFormViewModel.BankAccountId == 0)
-					{
-						return Json(new { isError = true, msg = "Bank name not selected" });
-					}
-					var regFee = _paymentHelper.CreateRegFee(paymentFormViewModel);
-					if (regFee)
-					{
-						return Json(new { isError = false, msg = "Registration Fee Submitted Successfully" });
-					}
-					return Json(new { isError = true, msg = "Unable to Submit" });
-				}
-			}
-			return Json(new { isError = true, msg = "Network Failure" });
-		}
+            var loggedInUserId = _userHelper.GetCurrentUserId(User.Identity.Name);
+            if (details != null)
+            {
+                var paymentFormViewModel = JsonConvert.DeserializeObject<PaymentFormViewModel>(details);
+                if (paymentFormViewModel != null)
+                {
+                    paymentFormViewModel.UserId = loggedInUserId;
+                    var checkPendingPayments = _paymentHelper.CheckIfUserhasPendingRegPayment(paymentFormViewModel.UserId);
+                    if (checkPendingPayments)
+                    {
+                        return Json(new { isError = true, msg = "You have a pending Registration Payment" });
+                    }
+
+                    if (paymentFormViewModel.BankAccountId == 0)
+                    {
+                        return Json(new { isError = true, msg = "Bank name not selected" });
+                    }
+                    var regFee = _paymentHelper.CreateRegFee(paymentFormViewModel);
+                    if (regFee)
+                    {
+                        return Json(new { isError = false, msg = "Registration Fee Submitted Successfully" });
+                    }
+                    return Json(new { isError = true, msg = "Unable to Submit" });
+                }
+            }
+            return Json(new { isError = true, msg = "Network Failure" });
+        }
 
 		[HttpGet]
 		public async Task<IActionResult> RegistrationCryptoPayment()
 		{
-			try
-			{
-				var loggedInUserId = _userHelper.GetCurrentUserId(User.Identity.Name);
-				ViewBag.CryptoWallets = await _dropdownHelper.GetCryptoDropdown(DropdownEnums.BankList);
-				ViewBag.Package = _dropdownHelper.DropdownOfPackages();
-				var userPackage = _paymentHelper.GetUserPackage(loggedInUserId);
-				var package = new PaymentFormViewModel()
-				{
-					PackageId = userPackage.PackageId,
-				};
-				return View(package);
-			}
-			catch (Exception exp)
-			{
-				throw exp;
-			}
-		}
+            try
+            {
+                var loggedInUserId = _userHelper.GetCurrentUserId(User.Identity.Name);
+                var checkApprovedRegFee = _paymentHelper.CheckIfUserHasPaidRegPayment(loggedInUserId);
+                if (checkApprovedRegFee)
+                {
+                    return RedirectToAction("Index", "User");
+                }
+                ViewBag.CryptoWallets = await _dropdownHelper.GetCryptoDropdown(DropdownEnums.BankList);
+                ViewBag.Package = _dropdownHelper.DropdownOfPackages();
+                var userPackage = _paymentHelper.GetUserPackage(loggedInUserId);
+                var package = new PaymentFormViewModel()
+                {
+                    PackageId = userPackage.PackageId,
+                };
+                return View(package);
+            }
+            catch (Exception exp)
+            {
+                throw exp;
+            }
+        }
 
 		public JsonResult RegistrationCryptoPayment(string details)
 		{
-			var loggedInUserId = _userHelper.GetCurrentUserId(User.Identity.Name);
+            var loggedInUserId = _userHelper.GetCurrentUserId(User.Identity.Name);
 
-			if (details != null)
-			{
-				var paymentFormViewModel = JsonConvert.DeserializeObject<PaymentFormViewModel>(details);
-				if (paymentFormViewModel != null)
-				{
-					paymentFormViewModel.UserId = loggedInUserId;
-					var checkPendingPayments = _paymentHelper.CheckIfUserhasPendingRegPayment(paymentFormViewModel.UserId);
-					if (checkPendingPayments)
-					{
-						return Json(new { isError = true, msg = "You have a pending Registration Payment" });
-					}
-					if (paymentFormViewModel.BankAccountId == 0)
-					{
-						return Json(new { isError = true, msg = "Wallet name not selected" });
-					}
-					var regFee = _paymentHelper.CreateCryptoRegFeeAsync(paymentFormViewModel);
-					if (regFee)
-					{
-						return Json(new { isError = false, msg = "Crypto Registration Fee Submitted Successfully" });
-					}
-					return Json(new { isError = true, msg = "Unable to Submit" });
-				}
-			}
-			return Json(new { isError = true, msg = "Network Failure" });
-		}
+            if (details != null)
+            {
+                var paymentFormViewModel = JsonConvert.DeserializeObject<PaymentFormViewModel>(details);
+                if (paymentFormViewModel != null)
+                {
+                    paymentFormViewModel.UserId = loggedInUserId;
+                    var checkPendingPayments = _paymentHelper.CheckIfUserhasPendingRegPayment(paymentFormViewModel.UserId);
+                    if (checkPendingPayments)
+                    {
+                        return Json(new { isError = true, msg = "You have a pending Registration Payment" });
+                    }
+                    if (paymentFormViewModel.BankAccountId == 0)
+                    {
+                        return Json(new { isError = true, msg = "Wallet name not selected" });
+                    }
+                    var regFee = _paymentHelper.CreateCryptoRegFeeAsync(paymentFormViewModel);
+                    if (regFee)
+                    {
+                        return Json(new { isError = false, msg = "Crypto Registration Fee Submitted Successfully" });
+                    }
+                    return Json(new { isError = true, msg = "Unable to Submit" });
+                }
+            }
+            return Json(new { isError = true, msg = "Network Failure" });
+        }
 
 		[HttpGet]
 		public JsonResult ReferralLink()
@@ -1035,8 +1050,33 @@ namespace Tradeify.Controllers
             return Json(new { isError = true, msg = "Could Not get the last mining" });
         }
 
+        public JsonResult GetNews()
+        {
+            try
+            {
+                var user = User.Identity.Name;
+                var userId = _userHelper.GetCurrentUserId(user);
+                var newCreatedNews = _userHelper.GetNews();
+                if (newCreatedNews.Any())
+                {
+                    foreach (var news in newCreatedNews.ToList())
+                    {
+                        string existingUserIds = news?.RedBy;
+                        if (existingUserIds != null && existingUserIds.Split(',').Contains(userId))
+                        {
+                            newCreatedNews.Remove(news);
+                        }
+                    }
+                    return Json(new { isError = false, data = newCreatedNews });
+                }
+                return Json(new { isError = true, msg = "News Not Found" });
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
 
 
-
-    }
+	}
 }
