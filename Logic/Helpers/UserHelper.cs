@@ -845,5 +845,23 @@ namespace Logic.Helpers
 
         }
 
+        public List<News> GetNews()
+        {
+            try
+            {
+                var newCreatedNews = new List<News>();
+                newCreatedNews = _context.News.Where(x => x.Deleted == false && x.Active).OrderByDescending(x => x.DateCreated).ToList();
+                if (newCreatedNews.Any())
+                {
+                    return newCreatedNews;
+                }
+                return newCreatedNews;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
     }
 }

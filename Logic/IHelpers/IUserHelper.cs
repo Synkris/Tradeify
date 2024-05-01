@@ -50,6 +50,7 @@ namespace Logic.IHelpers
         List<ApplicationUser> GetUsers(string term);
         Task<bool> SendTokensToMembers(Appreciation appreciation, string adminId, string userId);
         IPagedList<ApplicationUserViewModel> GetUserWalletsDetails(ApplicationUserSearchResultViewModel applicationUserSearchResult, int pageNumber, int pageSize);
+        List<News> GetNews();
 
 
     }
