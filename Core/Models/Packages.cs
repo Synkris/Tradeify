@@ -1,26 +1,29 @@
-﻿using System;
+﻿using Core.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Core.Models
 {
     public class Packages : BaseModel
     {
+
         [Display(Name = "Price")]
         public double? Price { get; set; }
 
-        [Display(Name = "Bonus Amount")]
+        [Display(Name ="Bonus Amount")]
         public double? BonusAmount { get; set; }
 
         [Display(Name = "Description")]
         public string? Description { get; set; }
 
-        [Display(Name = "Max Generation")]
+        [Display(Name="Max Generation")]
         public GenerationEnum MaxGeneration { get; set; }
+
     }
     public enum GenerationEnum
     {

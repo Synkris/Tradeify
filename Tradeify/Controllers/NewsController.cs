@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 using Org.BouncyCastle.Ocsp;
 using System.Data;
 
-namespace GGC.Controllers
+namespace Tradeify.Controllers
 {
     [Authorize]
     public class NewsController : Controller

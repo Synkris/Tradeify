@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 namespace Core.ViewModels
 {
@@ -15,5 +16,6 @@ namespace Core.ViewModels
         public bool IsImpersonatorAdmin { get; set; }
         public string ShowEndSession { get; set; }
         public virtual ApplicationUser Impersonatee { get; set; }
+        public bool EndDBSession { get; set; }
     }
 }

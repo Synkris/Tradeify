@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Core.Config
 {
-    public class GeneralConfiguration : IGeneralConfiguration
+   public class GeneralConfiguration :IGeneralConfiguration
     {
         public string TransitApiKey { get; set; }
 
@@ -67,11 +67,11 @@ namespace Core.Config
         public decimal Gen4Bonus { get; set; }
         public decimal Gen5Bonus { get; set; }
         public decimal CoordinatorBonus { get; set; }
-        public int PageSize { get; set; }
-        public int PageNumber { get; set; }
-        public string OldGGCEndPoint { get; set; }
-        public bool MapGenButton { get; set; }
-        public string OldUsers { get; set; }
+		public int PageSize { get; set; }
+		public int PageNumber { get; set; }
+		public string OldGGCEndPoint { get; set; }
+		public bool MapGenButton { get; set; }
+		public string OldUsers { get; set; }
 
-    }
+	}
 }

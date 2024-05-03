@@ -1,16 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
+﻿using Microsoft.AspNetCore.Identity;
+using System;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Identity;
+using System.ComponentModel.DataAnnotations.Schema;
+
 
 namespace Core.Models
 {
     public class ApplicationUser : IdentityUser
-    {
+   {
         [Display(Name = "First Name")]
         public virtual string FirstName { get; set; }
 
@@ -67,9 +64,9 @@ namespace Core.Models
 
         public bool Deactivated { get; set; }
 
-        public int? LastGenPaid { get; set; }
+		public int? LastGenPaid { get; set; }
 
-        public int? LastPendingGen { get; set; }
+		public int? LastPendingGen { get; set; }
 
         [Display(Name = "VTU Activation Fee Paid")]
         public bool VTUActivationFeePaid { get; set; }

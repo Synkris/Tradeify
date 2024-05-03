@@ -62,6 +62,5 @@ namespace Logic.Helpers
         }
 
 
-
     }
 }

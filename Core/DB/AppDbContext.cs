@@ -39,5 +39,21 @@ namespace Core.DB
         public DbSet<RegFeeGrants> RegFeeGrants { get; set; }
         public DbSet<WithdrawFunds> WithdrawFunds { get; set; }
         public DbSet<MiningLog> miningLogs { get; set; }
+        public DbSet<Product> Products { get; set; }
+        public DbSet<Payment> Payments { get; set; }
+        public DbSet<Paystack> Paystacks { get; set; }
+
+        //Start Of GGC
+
+
+        public DbSet<Appreciation> Appreciations { get; set; }
+
+        public DbSet<Bettings> Bettings { get; set; }
+
+        public DbSet<UserBettings> UserBettings { get; set; }
+
+        public DbSet<PendingBonuses> PendingBonuses { get; set; }
+
+
     }
 }

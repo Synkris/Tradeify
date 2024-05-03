@@ -11,5 +11,6 @@ namespace Logic.IHelpers
     {
         void ForgotPasswordTemplateEmailer(ApplicationUser userEmail, string linkToClick);
         Task PasswordResetedTemplateEmailerAsync(ApplicationUser userEmail);
+
     }
 }

@@ -1,9 +1,11 @@
 ﻿using Core.DB;
 using Core.Models;
+using Core.ViewModels;
 using Logic.Helper;
 using Logic.IHelpers;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -11,21 +13,23 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 namespace Logic.Helpers
 {
-	public class DropdownHelper : IDropdownHelper
-	{
-		private readonly AppDbContext _context;
-		private readonly IUserHelper _userHelper;
-		private UserManager<ApplicationUser> _userManager;
+    public class DropdownHelper : IDropdownHelper
+    {
+        private readonly AppDbContext _context;
+        private readonly IUserHelper _userHelper;
+        private UserManager<ApplicationUser> _userManager;
 
-		public DropdownHelper(AppDbContext context, UserManager<ApplicationUser> userManager, IUserHelper userHelper)
-		{
-			_context = context;
-			_userHelper = userHelper;
-			_userManager = userManager;
-		}
+        public DropdownHelper(AppDbContext context, UserManager<ApplicationUser> userManager, IUserHelper userHelper)
+        {
+            _context = context;
+            _userHelper = userHelper;
+            _userManager = userManager;
+            
+        }
         public List<Cordinator> DropdownOfCordinator()
         {
             try
@@ -108,22 +112,22 @@ namespace Logic.Helpers
             return dropdowns;
         }
 
-        public List<DropDown> DropdownOfRoles()
-        {
-            try
-            {
-                var common = new DropDown()
-                {
-                    Id = "0",
-                    Name = "Select Role"
-                };
-                var roles = _context.Roles.Where(r => !r.Name.ToLower().Contains("SuperAdmin")).Select(r => new DropDown
-                {
-                    Id = r.Id,
-                    Name = r.Name,
-                }).ToList();
+		public List<DropDown> DropdownOfRoles()
+		{
+			try
+			{
+				var common = new DropDown()
+				{
+					Id = "0",
+					Name = "Select Role"
+				};
+				var roles = _context.Roles.Where(r => !r.Name.ToLower().Contains("SuperAdmin")).Select(r => new DropDown
+				{
+					Id = r.Id,
+					Name = r.Name,
+				}).ToList();
 
-                roles.Insert(0, common);
+				roles.Insert(0, common);
                 return roles;
             }
             catch (Exception exp)
@@ -135,7 +139,7 @@ namespace Logic.Helpers
         {
             var data = new List<EnumDropdownModalViewModel>();
             var modules = ((GenerationEnum[])Enum.GetValues(typeof(GenerationEnum)));
-
+              
             foreach (var item in modules)
             {
                 var enumId = (GenerationEnum)item;
@@ -211,41 +215,41 @@ namespace Logic.Helpers
             }
         }
 
-        public List<DropdownEnumModel> GetPaymentTypeDropDownEnumsList()
-        {
-            var data = new List<DropdownEnumModel>();
+		public List<DropdownEnumModel> GetPaymentTypeDropDownEnumsList()
+		{
+			var data = new List<DropdownEnumModel>();
             var enumsList = ((PaymentType[])Enum.GetValues(typeof(PaymentType))).Where(e => e != PaymentType.RegistrationFee && e != PaymentType.VtuActivationFee);
 
-            data.Add(new DropdownEnumModel { Id = 0, Name = "-- Select Payment Type --" });
+			data.Add(new DropdownEnumModel { Id = 0, Name = "-- Select Payment Type --" });
 
-            foreach (var item in enumsList)
-            {
-                var enumId = (PaymentType)item;
-                var descriptionEnum = GetEnumDescription(enumId);
-                var mydata = new DropdownEnumModel()
-                {
-                    Name = descriptionEnum,
-                    Id = (int)item,
-                };
-                data.Add(mydata);
-            }
+			foreach (var item in enumsList)
+			{
+				var enumId = (PaymentType)item;
+				var descriptionEnum = GetEnumDescription(enumId);
+				var mydata = new DropdownEnumModel()
+				{
+					Name = descriptionEnum,
+					Id = (int)item,
+				};
+				data.Add(mydata);
+			}
             return data;
 
-        }
-        
+		}
 
-    }
 
-    public class DropDown
+	}
+
+
+	public class DropDown
     {
         public string? Id { get; set; }
         public string? Name { get; set; }
     }
-    public class DropdownEnumModel
-    {
-        public int Id { get; set; }
-        public string Name { get; set; }
-    }
-
+	public class DropdownEnumModel
+	{
+		public int Id { get; set; }
+		public string Name { get; set; }
+	}
 
 }
