@@ -21,5 +21,6 @@ namespace Core.ViewModels
         [Required]
         [Compare("Password", ErrorMessage = "Password and Confirm Password must be the same. ")]
         public string ConfirmPassword { get; set; }
+
     }
 }

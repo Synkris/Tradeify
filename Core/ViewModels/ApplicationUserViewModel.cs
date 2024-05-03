@@ -1,38 +1,41 @@
-﻿using Core.Config;
-using Core.Models;
+﻿using Core.Models;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 using X.PagedList;
+using Core.Config;
 
 namespace Core.ViewModels
 {
     public class ApplicationUserSearchResultViewModel
     {
-        private readonly IGeneralConfiguration _generalConfiguration;
+		private readonly IGeneralConfiguration _generalConfiguration;
 
-        public ApplicationUserSearchResultViewModel(IGeneralConfiguration generalConfiguration)
-        {
-            _generalConfiguration = generalConfiguration;
-        }
-        public IPagedList<ApplicationUserViewModel> UserRecords { get; set; }
+		public ApplicationUserSearchResultViewModel(IGeneralConfiguration generalConfiguration)
+		{
+			_generalConfiguration = generalConfiguration;
+		}
+		public IPagedList<ApplicationUserViewModel> UserRecords { get; set; }
 
-        public int PageNumber { get; set; }
-        public int PageSize { get; set; }
-        public string Name { get; set; }
-        public string PhoneNumber { get; set; }
-        public string Email { get; set; }
-        public string UserName { get; set; }
-        public int PageCount { get; set; }
-        public string PasswordHash { get; set; }
+            public int PageNumber { get; set; }
+            public int PageSize { get; set; }
+            public string Name { get; set; }
+            public string PhoneNumber { get; set; }
+            public string Email { get; set; }
+            public string UserName { get; set; }
+            public int PageCount { get; set; }
+            public string PasswordHash { get; set; }
 
-        public ApplicationUserSearchResultViewModel()
-        {
-            PageNumber = _generalConfiguration.PageNumber;
-            PageSize = _generalConfiguration.PageSize;
-        }
+            public ApplicationUserSearchResultViewModel()
+            {
+			    PageNumber = _generalConfiguration.PageNumber;
+			    PageSize = _generalConfiguration.PageSize;
+		    }
 
     }
     public class ApplicationUserViewModel
@@ -40,7 +43,7 @@ namespace Core.ViewModels
         public string Id { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public string Email { get; set; }
+		public string Email { get; set; }
         public string UserName { get; set; }
         public string Phonenumber { get; set; }
         public string Name => FirstName + " " + LastName;
@@ -75,19 +78,18 @@ namespace Core.ViewModels
         public decimal GrantAmount { get; set; }
         public virtual PvWallet userPv { get; set; }
         public decimal Pv { get; set; }
-        public decimal ConvertedGrant { get; set; }
-        public decimal ConvertedGrantToGGC { get; set; }
-        public decimal ConvertedBalanceToGGC { get; set; }
-        public decimal ConvertedBalance { get; set; }
-        public decimal ConvertedToken { get; set; }
-        public bool MapGenButton { get; set; }
-        public decimal? WalletBalance { get; set; } = 0;
-        public decimal? PVBalance { get; set; } = 0;
+		public decimal ConvertedGrant { get; set; }
+		public decimal ConvertedGrantToGGC { get; set; }
+		public decimal ConvertedBalanceToGGC { get; set; }
+		public decimal ConvertedBalance { get; set; }
+		public decimal ConvertedToken { get; set; }
+		public bool MapGenButton { get; set; }
+		public decimal? WalletBalance { get; set; } = 0;
+		public decimal? PVBalance { get; set; } = 0;
         public decimal? AGCWalletBalance { get; set; } = 0;
-        public List<ApplicationUserViewModel> UserbalanceList { get; set; }
-
-
-    }
+		public List<ApplicationUserViewModel> UserbalanceList { get; set; }
+		public bool isImpersonated { get; set; }
+	}
 
     public class NewApplicationUser
     {

@@ -1,15 +1,16 @@
-﻿using System;
+﻿using Core.DB;
+using Core.Models;
+using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Core.Models
 {
     public class UserPackages : BaseModel
-    {
+    { 
         [Key]
         public new Guid Id { get; set; }
 
@@ -38,9 +39,9 @@ namespace Core.Models
 
         [Display(Name = "Max Generation")]
         public int MaxGeneration { get; set; }
-        public Guid? PaymentId { get; set; }
+        public Guid? PaymentId { get; set; } 
         [Display(Name = "PaymentId")]
-        [ForeignKey("PaymentId")]
+        [ForeignKey("PaymentId")]      
         public virtual PaymentForm Payment { get; set; }
         public int PackageId { get; set; }
         [Display(Name = "Package")]
@@ -48,5 +49,6 @@ namespace Core.Models
         public virtual Packages Package { get; set; }
         [Display(Name = "Withdrawal Status")]
         public bool IsMatured { get; set; }
+
     }
 }

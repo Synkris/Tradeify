@@ -41,29 +41,35 @@ namespace Tradeify.Controllers
         {
             var user = _userHelper.FindByUserName(User?.Identity?.Name);
             var userWallet = _paymentHelper.GetUserWallet(user?.Id).Result;
-            var userDetails = _userHelper.FindById(user.Id);
+            //var userDetails = _userHelper.FindById(user.Id);
             //var userWalletBalance = userWallet.Balance;
             var rate = _generalConfiguration.DollarRate;
             var convertedBalance = userWallet.Balance / rate;
             var pv = _paymentHelper.GetUserPvWalletNonAsync(user?.Id);
-            var userGrantWallet = _paymentHelper.GetUserGrantWalletNonAsync(user?.Id);
-            var convertedGrant = userGrantWallet.Balance / rate;
-            var convertedGrantToGGC = convertedGrant * 4;
-            var convertedBalanceToGGC = convertedBalance * 4;
+            //var userGrantWallet = _paymentHelper.GetUserGrantWalletNonAsync(user?.Id);
+            //var convertedGrant = userGrantWallet.Balance / rate;
+            //var convertedGrantToGGC = convertedGrant * 4;
+            var convertedBalanceToGGC = convertedBalance / _generalConfiguration.GGCConversionToDollar;
             var userGiftCardWallet = _paymentHelper.GetUserAGCWalletNonAsync(user.Id);
-
+            var impersonated = _userHelper.CheckForImpersonation(user.UserName).Result;
+            var showModal = true;
+            if (impersonated?.EndDBSession == false && impersonated?.ShowEndSession != null)
+            {
+                showModal = false;
+            }
             var model = new ApplicationUserViewModel()
             {
-                ConvertedGrant = convertedGrant,
-                ConvertedGrantToGGC = convertedGrantToGGC,
+                //ConvertedGrant = convertedGrant,
+                //ConvertedGrantToGGC = convertedGrantToGGC,
                 ConvertedBalanceToGGC = convertedBalanceToGGC,
                 ConvertedBalance = convertedBalance,
                 Pv = pv.Balance,
                 ConvertedToken = userGiftCardWallet.Balance,
-                DateRegistered = userDetails.DateRegistered,
-                CurrentLastLoginTime = userDetails.CurrentLastLoginTime,
-                Id = userDetails.Id,
-                Deactivated = userDetails.Deactivated,
+                DateRegistered = user.DateRegistered,
+                CurrentLastLoginTime = user.CurrentLastLoginTime,
+                Id = user.Id,
+                Deactivated = user.Deactivated,
+                isImpersonated = showModal,
             };
 
             return View(model);
@@ -1078,5 +1084,5 @@ namespace Tradeify.Controllers
         }
 
 
-	}
+    }
 }

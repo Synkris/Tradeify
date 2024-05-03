@@ -50,18 +50,18 @@ namespace Tradeify.Controllers
             var rate = _generalConfiguration.DollarRate;
             var convertedBalance = userWallet.Balance / rate;
             var pv = _paymentHelper.GetUserPvWalletNonAsync(user?.Id);
-            var userGrantWallet = _paymentHelper.GetUserGrantWalletNonAsync(user?.Id);
-            var convertedGrant = userGrantWallet.Balance / rate;
+            //var userGrantWallet = _paymentHelper.GetUserGrantWalletNonAsync(user?.Id);
+            //var convertedGrant = userGrantWallet.Balance / rate;
             //var userWalletBalance = userWallet.Balance;
-            var convertedGrantToGGC = convertedGrant * 4;
-            var convertedBalanceToGGC = convertedBalance * 4;
+            //var convertedGrantToGGC = convertedGrant * 4;
+            var convertedBalanceToGGC = convertedBalance / _generalConfiguration.GGCConversionToDollar;
             var userGiftCardWallet = _paymentHelper.GetUserAGCWalletNonAsync(user.Id);
             var genButton = _generalConfiguration.MapGenButton;
 
             var model = new ApplicationUserViewModel()
             {
-                ConvertedGrant = convertedGrant,
-                ConvertedGrantToGGC = convertedGrantToGGC,
+                //ConvertedGrant = convertedGrant,
+                //ConvertedGrantToGGC = convertedGrantToGGC,
                 ConvertedBalanceToGGC = convertedBalanceToGGC,
                 ConvertedBalance = convertedBalance,
                 ConvertedToken = userGiftCardWallet.Balance,
@@ -1428,6 +1428,20 @@ namespace Tradeify.Controllers
             }
         }
 
+
+        public JsonResult GetPackageDetails(int id)
+        {
+            if (id == 0)
+            {
+                return Json(new { isError = true, msg = "Package not found" });
+            }
+            var details = _context.Packages.Where(x => x.Id == id && x.Active && !x.Deleted).FirstOrDefault();
+            if (details != null)
+            {
+                return Json(new { isError = false, data = details });
+            }
+            return Json(new { isError = true, msg = " Details not found" });
+        }
 
 
     }

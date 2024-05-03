@@ -3,22 +3,132 @@
   "WorkspaceRootPath": "C:\\Users\\User\\source\\repos\\Tradeify\\Tradeify\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{02E4C0C2-6F7E-4B51-9AE0-92982A8D1026}|Tradeify.csproj|c:\\users\\user\\source\\repos\\tradeify\\tradeify\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{02E4C0C2-6F7E-4B51-9AE0-92982A8D1026}|Tradeify.csproj|solutionrelative:controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{6DDAC13A-CE81-4013-990B-3F8FFB9EC014}|..\\Core\\Core.csproj|c:\\users\\user\\source\\repos\\tradeify\\core\\config\\generalconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{02E4C0C2-6F7E-4B51-9AE0-92982A8D1026}|Tradeify.csproj|c:\\users\\user\\source\\repos\\tradeify\\tradeify\\views\\user\\paymentmethods.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{02E4C0C2-6F7E-4B51-9AE0-92982A8D1026}|Tradeify.csproj|solutionrelative:views\\user\\paymentmethods.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{6DDAC13A-CE81-4013-990B-3F8FFB9EC014}|..\\Core\\Core.csproj|c:\\users\\user\\source\\repos\\tradeify\\core\\viewmodels\\pvsearchresultviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6DDAC13A-CE81-4013-990B-3F8FFB9EC014}|..\\Core\\Core.csproj|c:\\users\\user\\source\\repos\\tradeify\\core\\viewmodels\\paymentformviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6DDAC13A-CE81-4013-990B-3F8FFB9EC014}|..\\Core\\Core.csproj|c:\\users\\user\\source\\repos\\tradeify\\core\\viewmodels\\enumdropdownmodalviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6DDAC13A-CE81-4013-990B-3F8FFB9EC014}|..\\Core\\Core.csproj|c:\\users\\user\\source\\repos\\tradeify\\core\\viewmodels\\agcsearchresultviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6DDAC13A-CE81-4013-990B-3F8FFB9EC014}|..\\Core\\Core.csproj|c:\\users\\user\\source\\repos\\tradeify\\core\\models\\applicationuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6DDAC13A-CE81-4013-990B-3F8FFB9EC014}|..\\Core\\Core.csproj|c:\\users\\user\\source\\repos\\tradeify\\core\\models\\agcwallethistory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6DDAC13A-CE81-4013-990B-3F8FFB9EC014}|..\\Core\\Core.csproj|c:\\users\\user\\source\\repos\\tradeify\\core\\models\\agcwallet.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6DDAC13A-CE81-4013-990B-3F8FFB9EC014}|..\\Core\\Core.csproj|c:\\users\\user\\source\\repos\\tradeify\\core\\db\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C61D1D66-DA11-4741-9347-C1066AD34DB8}|..\\Logic\\Logic.csproj|c:\\users\\user\\source\\repos\\tradeify\\logic\\helpers\\userhelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C61D1D66-DA11-4741-9347-C1066AD34DB8}|..\\Logic\\Logic.csproj|c:\\users\\user\\source\\repos\\tradeify\\logic\\ihelpers\\iuserhelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C61D1D66-DA11-4741-9347-C1066AD34DB8}|..\\Logic\\Logic.csproj|c:\\users\\user\\source\\repos\\tradeify\\logic\\ihelpers\\iregistrationpackagehelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C61D1D66-DA11-4741-9347-C1066AD34DB8}|..\\Logic\\Logic.csproj|c:\\users\\user\\source\\repos\\tradeify\\logic\\ihelpers\\ipaymenthelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C61D1D66-DA11-4741-9347-C1066AD34DB8}|..\\Logic\\Logic.csproj|c:\\users\\user\\source\\repos\\tradeify\\logic\\ihelpers\\ipackagehelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C61D1D66-DA11-4741-9347-C1066AD34DB8}|..\\Logic\\Logic.csproj|c:\\users\\user\\source\\repos\\tradeify\\logic\\ihelpers\\iemailconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C61D1D66-DA11-4741-9347-C1066AD34DB8}|..\\Logic\\Logic.csproj|c:\\users\\user\\source\\repos\\tradeify\\logic\\ihelpers\\idropdownhelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C61D1D66-DA11-4741-9347-C1066AD34DB8}|..\\Logic\\Logic.csproj|c:\\users\\user\\source\\repos\\tradeify\\logic\\ihelpers\\iadminhelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C61D1D66-DA11-4741-9347-C1066AD34DB8}|..\\Logic\\Logic.csproj|c:\\users\\user\\source\\repos\\tradeify\\logic\\helpers\\registrationpackagehelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C61D1D66-DA11-4741-9347-C1066AD34DB8}|..\\Logic\\Logic.csproj|c:\\users\\user\\source\\repos\\tradeify\\logic\\helpers\\paymenthelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C61D1D66-DA11-4741-9347-C1066AD34DB8}|..\\Logic\\Logic.csproj|c:\\users\\user\\source\\repos\\tradeify\\logic\\helpers\\packagehelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C61D1D66-DA11-4741-9347-C1066AD34DB8}|..\\Logic\\Logic.csproj|c:\\users\\user\\source\\repos\\tradeify\\logic\\helpers\\emailhelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C61D1D66-DA11-4741-9347-C1066AD34DB8}|..\\Logic\\Logic.csproj|c:\\users\\user\\source\\repos\\tradeify\\logic\\helpers\\adminhelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C61D1D66-DA11-4741-9347-C1066AD34DB8}|..\\Logic\\Logic.csproj|c:\\users\\user\\source\\repos\\tradeify\\logic\\helpers\\binaryhelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C61D1D66-DA11-4741-9347-C1066AD34DB8}|..\\Logic\\Logic.csproj|c:\\users\\user\\source\\repos\\tradeify\\logic\\helpers\\dropdownhelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C61D1D66-DA11-4741-9347-C1066AD34DB8}|..\\Logic\\Logic.csproj|c:\\users\\user\\source\\repos\\tradeify\\logic\\helpers\\bonushelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C61D1D66-DA11-4741-9347-C1066AD34DB8}|..\\Logic\\Logic.csproj|c:\\users\\user\\source\\repos\\tradeify\\logic\\helpers\\basehelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{02E4C0C2-6F7E-4B51-9AE0-92982A8D1026}|Tradeify.csproj|c:\\users\\user\\source\\repos\\tradeify\\tradeify\\controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{02E4C0C2-6F7E-4B51-9AE0-92982A8D1026}|Tradeify.csproj|solutionrelative:controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C61D1D66-DA11-4741-9347-C1066AD34DB8}|..\\Logic\\Logic.csproj|c:\\users\\user\\source\\repos\\tradeify\\logic\\ihelpers\\iuserhelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{02E4C0C2-6F7E-4B51-9AE0-92982A8D1026}|Tradeify.csproj|c:\\users\\user\\source\\repos\\tradeify\\tradeify\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{02E4C0C2-6F7E-4B51-9AE0-92982A8D1026}|Tradeify.csproj|solutionrelative:controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C61D1D66-DA11-4741-9347-C1066AD34DB8}|..\\Logic\\Logic.csproj|c:\\users\\user\\source\\repos\\tradeify\\logic\\helpers\\userhelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{02E4C0C2-6F7E-4B51-9AE0-92982A8D1026}|Tradeify.csproj|c:\\users\\user\\source\\repos\\tradeify\\tradeify\\controllers\\registrationpackagecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{02E4C0C2-6F7E-4B51-9AE0-92982A8D1026}|Tradeify.csproj|solutionrelative:controllers\\registrationpackagecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{02E4C0C2-6F7E-4B51-9AE0-92982A8D1026}|Tradeify.csproj|c:\\users\\user\\source\\repos\\tradeify\\tradeify\\controllers\\newscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{02E4C0C2-6F7E-4B51-9AE0-92982A8D1026}|Tradeify.csproj|solutionrelative:controllers\\newscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{02E4C0C2-6F7E-4B51-9AE0-92982A8D1026}|Tradeify.csproj|c:\\users\\user\\source\\repos\\tradeify\\tradeify\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{02E4C0C2-6F7E-4B51-9AE0-92982A8D1026}|Tradeify.csproj|solutionrelative:controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{02E4C0C2-6F7E-4B51-9AE0-92982A8D1026}|Tradeify.csproj|c:\\users\\user\\source\\repos\\tradeify\\tradeify\\controllers\\bonuscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{02E4C0C2-6F7E-4B51-9AE0-92982A8D1026}|Tradeify.csproj|solutionrelative:controllers\\bonuscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{02E4C0C2-6F7E-4B51-9AE0-92982A8D1026}|Tradeify.csproj|c:\\users\\user\\source\\repos\\tradeify\\tradeify\\controllers\\binarycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{02E4C0C2-6F7E-4B51-9AE0-92982A8D1026}|Tradeify.csproj|solutionrelative:controllers\\binarycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{02E4C0C2-6F7E-4B51-9AE0-92982A8D1026}|Tradeify.csproj|c:\\users\\user\\source\\repos\\tradeify\\tradeify\\controllers\\basecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{02E4C0C2-6F7E-4B51-9AE0-92982A8D1026}|Tradeify.csproj|solutionrelative:controllers\\basecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{02E4C0C2-6F7E-4B51-9AE0-92982A8D1026}|Tradeify.csproj|c:\\users\\user\\source\\repos\\tradeify\\tradeify\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{02E4C0C2-6F7E-4B51-9AE0-92982A8D1026}|Tradeify.csproj|solutionrelative:controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{02E4C0C2-6F7E-4B51-9AE0-92982A8D1026}|Tradeify.csproj|c:\\users\\user\\source\\repos\\tradeify\\tradeify\\views\\user\\paymentmethods.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{02E4C0C2-6F7E-4B51-9AE0-92982A8D1026}|Tradeify.csproj|solutionrelative:views\\user\\paymentmethods.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6DDAC13A-CE81-4013-990B-3F8FFB9EC014}|..\\Core\\Core.csproj|c:\\users\\user\\source\\repos\\tradeify\\core\\viewmodels\\impersonationviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6DDAC13A-CE81-4013-990B-3F8FFB9EC014}|..\\Core\\Core.csproj|c:\\users\\user\\source\\repos\\tradeify\\core\\viewmodels\\applicationuserviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{02E4C0C2-6F7E-4B51-9AE0-92982A8D1026}|Tradeify.csproj|c:\\users\\user\\source\\repos\\tradeify\\tradeify\\wwwroot\\js\\site.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{02E4C0C2-6F7E-4B51-9AE0-92982A8D1026}|Tradeify.csproj|solutionrelative:wwwroot\\js\\site.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{02E4C0C2-6F7E-4B51-9AE0-92982A8D1026}|Tradeify.csproj|c:\\users\\user\\source\\repos\\tradeify\\tradeify\\wwwroot\\js\\registration.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
@@ -27,18 +137,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{02E4C0C2-6F7E-4B51-9AE0-92982A8D1026}|Tradeify.csproj|c:\\users\\user\\source\\repos\\tradeify\\tradeify\\tradeify.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
       "RelativeMoniker": "D:0:0:{02E4C0C2-6F7E-4B51-9AE0-92982A8D1026}|Tradeify.csproj|solutionrelative:tradeify.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C61D1D66-DA11-4741-9347-C1066AD34DB8}|..\\Logic\\Logic.csproj|c:\\users\\user\\source\\repos\\tradeify\\logic\\ihelpers\\ipaymenthelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C61D1D66-DA11-4741-9347-C1066AD34DB8}|..\\Logic\\Logic.csproj|c:\\users\\user\\source\\repos\\tradeify\\logic\\helpers\\paymenthelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C61D1D66-DA11-4741-9347-C1066AD34DB8}|..\\Logic\\Logic.csproj|c:\\users\\user\\source\\repos\\tradeify\\logic\\helpers\\adminhelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C61D1D66-DA11-4741-9347-C1066AD34DB8}|..\\Logic\\Logic.csproj|c:\\users\\user\\source\\repos\\tradeify\\logic\\ihelpers\\iadminhelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{02E4C0C2-6F7E-4B51-9AE0-92982A8D1026}|Tradeify.csproj|c:\\users\\user\\source\\repos\\tradeify\\tradeify\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
@@ -52,21 +150,8 @@
       "AbsoluteMoniker": "D:0:0:{C61D1D66-DA11-4741-9347-C1066AD34DB8}|..\\Logic\\Logic.csproj|c:\\users\\user\\source\\repos\\tradeify\\logic\\services\\emailservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{02E4C0C2-6F7E-4B51-9AE0-92982A8D1026}|Tradeify.csproj|c:\\users\\user\\source\\repos\\tradeify\\tradeify\\wwwroot\\js\\site.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
-      "RelativeMoniker": "D:0:0:{02E4C0C2-6F7E-4B51-9AE0-92982A8D1026}|Tradeify.csproj|solutionrelative:wwwroot\\js\\site.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6DDAC13A-CE81-4013-990B-3F8FFB9EC014}|..\\Core\\Core.csproj|c:\\users\\user\\source\\repos\\tradeify\\core\\db\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{02E4C0C2-6F7E-4B51-9AE0-92982A8D1026}|Tradeify.csproj|c:\\users\\user\\source\\repos\\tradeify\\tradeify\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{02E4C0C2-6F7E-4B51-9AE0-92982A8D1026}|Tradeify.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C61D1D66-DA11-4741-9347-C1066AD34DB8}|..\\Logic\\Logic.csproj|c:\\users\\user\\source\\repos\\tradeify\\logic\\helpers\\packagehelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C61D1D66-DA11-4741-9347-C1066AD34DB8}|..\\Logic\\Logic.csproj|c:\\users\\user\\source\\repos\\tradeify\\logic\\helpers\\bonushelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{C61D1D66-DA11-4741-9347-C1066AD34DB8}|..\\Logic\\Logic.csproj|c:\\users\\user\\source\\repos\\tradeify\\logic\\ihelpers\\ibonushelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
@@ -76,12 +161,6 @@
     },
     {
       "AbsoluteMoniker": "D:0:0:{6DDAC13A-CE81-4013-990B-3F8FFB9EC014}|..\\Core\\Core.csproj|c:\\users\\user\\source\\repos\\tradeify\\core\\models\\usergenerationlog.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C61D1D66-DA11-4741-9347-C1066AD34DB8}|..\\Logic\\Logic.csproj|c:\\users\\user\\source\\repos\\tradeify\\logic\\ihelpers\\idropdownhelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C61D1D66-DA11-4741-9347-C1066AD34DB8}|..\\Logic\\Logic.csproj|c:\\users\\user\\source\\repos\\tradeify\\logic\\helpers\\dropdownhelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{02E4C0C2-6F7E-4B51-9AE0-92982A8D1026}|Tradeify.csproj|c:\\users\\user\\source\\repos\\tradeify\\tradeify\\views\\user\\sortwallettransactions.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
@@ -103,22 +182,10 @@
       "RelativeMoniker": "D:0:0:{02E4C0C2-6F7E-4B51-9AE0-92982A8D1026}|Tradeify.csproj|solutionrelative:views\\user\\agctransactionhistory.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{6DDAC13A-CE81-4013-990B-3F8FFB9EC014}|..\\Core\\Core.csproj|c:\\users\\user\\source\\repos\\tradeify\\core\\config\\generalconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{6DDAC13A-CE81-4013-990B-3F8FFB9EC014}|..\\Core\\Core.csproj|c:\\users\\user\\source\\repos\\tradeify\\core\\models\\usergranthistory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{6DDAC13A-CE81-4013-990B-3F8FFB9EC014}|..\\Core\\Core.csproj|c:\\users\\user\\source\\repos\\tradeify\\core\\config\\igeneralconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6DDAC13A-CE81-4013-990B-3F8FFB9EC014}|..\\Core\\Core.csproj|c:\\users\\user\\source\\repos\\tradeify\\core\\viewmodels\\applicationuserviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6DDAC13A-CE81-4013-990B-3F8FFB9EC014}|..\\Core\\Core.csproj|c:\\users\\user\\source\\repos\\tradeify\\core\\models\\agcwallet.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6DDAC13A-CE81-4013-990B-3F8FFB9EC014}|..\\Core\\Core.csproj|c:\\users\\user\\source\\repos\\tradeify\\core\\models\\applicationuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{6DDAC13A-CE81-4013-990B-3F8FFB9EC014}|..\\Core\\Core.csproj|c:\\users\\user\\source\\repos\\tradeify\\core\\migrations\\appdbcontextmodelsnapshot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
@@ -139,17 +206,17 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 51,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 26,
               "Title": "AdminController.cs",
               "DocumentMoniker": "C:\\Users\\User\\source\\repos\\Tradeify\\Tradeify\\Controllers\\AdminController.cs",
               "RelativeDocumentMoniker": "Controllers\\AdminController.cs",
               "ToolTip": "C:\\Users\\User\\source\\repos\\Tradeify\\Tradeify\\Controllers\\AdminController.cs",
               "RelativeToolTip": "Controllers\\AdminController.cs",
-              "ViewState": "AQIAAAYAAAAAAAAAAAAAAAsAAAASAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAPQBAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-04-17T07:34:46.856Z",
               "IsPinned": true,
@@ -157,13 +224,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 27,
               "Title": "UserController.cs",
               "DocumentMoniker": "C:\\Users\\User\\source\\repos\\Tradeify\\Tradeify\\Controllers\\UserController.cs",
               "RelativeDocumentMoniker": "Controllers\\UserController.cs",
               "ToolTip": "C:\\Users\\User\\source\\repos\\Tradeify\\Tradeify\\Controllers\\UserController.cs",
               "RelativeToolTip": "Controllers\\UserController.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAADUEAAAJAAAA",
+              "ViewState": "AQIAAD8AAAAAAAAAAAAowDwEAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-04-17T07:34:46.047Z",
               "IsPinned": true,
@@ -171,16 +238,276 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 35,
               "Title": "PaymentMethods.cshtml",
               "DocumentMoniker": "C:\\Users\\User\\source\\repos\\Tradeify\\Tradeify\\Views\\User\\PaymentMethods.cshtml",
               "RelativeDocumentMoniker": "Views\\User\\PaymentMethods.cshtml",
               "ToolTip": "C:\\Users\\User\\source\\repos\\Tradeify\\Tradeify\\Views\\User\\PaymentMethods.cshtml",
               "RelativeToolTip": "Views\\User\\PaymentMethods.cshtml",
-              "ViewState": "AQIAAEUAAAAAAAAAAAAAAGgAAAAyAAAA",
+              "ViewState": "AQIAADYAAAAAAAAAAAAAAGgAAAAzAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2024-04-17T07:34:46.93Z",
               "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "PvSearchResultViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\Tradeify\\Core\\ViewModels\\PvSearchResultViewModel.cs",
+              "RelativeDocumentMoniker": "..\\Core\\ViewModels\\PvSearchResultViewModel.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\Tradeify\\Core\\ViewModels\\PvSearchResultViewModel.cs",
+              "RelativeToolTip": "..\\Core\\ViewModels\\PvSearchResultViewModel.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-03T10:01:40.508Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "PaymentFormViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\Tradeify\\Core\\ViewModels\\PaymentFormViewModel.cs",
+              "RelativeDocumentMoniker": "..\\Core\\ViewModels\\PaymentFormViewModel.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\Tradeify\\Core\\ViewModels\\PaymentFormViewModel.cs",
+              "RelativeToolTip": "..\\Core\\ViewModels\\PaymentFormViewModel.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-03T10:01:38.416Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "EnumDropdownModalViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\Tradeify\\Core\\ViewModels\\EnumDropdownModalViewModel.cs",
+              "RelativeDocumentMoniker": "..\\Core\\ViewModels\\EnumDropdownModalViewModel.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\Tradeify\\Core\\ViewModels\\EnumDropdownModalViewModel.cs",
+              "RelativeToolTip": "..\\Core\\ViewModels\\EnumDropdownModalViewModel.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-03T10:01:36.572Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "AGCSearchResultViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\Tradeify\\Core\\ViewModels\\AGCSearchResultViewModel.cs",
+              "RelativeDocumentMoniker": "..\\Core\\ViewModels\\AGCSearchResultViewModel.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\Tradeify\\Core\\ViewModels\\AGCSearchResultViewModel.cs",
+              "RelativeToolTip": "..\\Core\\ViewModels\\AGCSearchResultViewModel.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-03T10:01:32.873Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "AGCWalletHistory.cs",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\Tradeify\\Core\\Models\\AGCWalletHistory.cs",
+              "RelativeDocumentMoniker": "..\\Core\\Models\\AGCWalletHistory.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\Tradeify\\Core\\Models\\AGCWalletHistory.cs",
+              "RelativeToolTip": "..\\Core\\Models\\AGCWalletHistory.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-03T10:00:16.189Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "IRegistrationPackageHelper.cs",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\Tradeify\\Logic\\IHelpers\\IRegistrationPackageHelper.cs",
+              "RelativeDocumentMoniker": "..\\Logic\\IHelpers\\IRegistrationPackageHelper.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\Tradeify\\Logic\\IHelpers\\IRegistrationPackageHelper.cs",
+              "RelativeToolTip": "..\\Logic\\IHelpers\\IRegistrationPackageHelper.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-03T09:51:05.976Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "IPackageHelper.cs",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\Tradeify\\Logic\\IHelpers\\IPackageHelper.cs",
+              "RelativeDocumentMoniker": "..\\Logic\\IHelpers\\IPackageHelper.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\Tradeify\\Logic\\IHelpers\\IPackageHelper.cs",
+              "RelativeToolTip": "..\\Logic\\IHelpers\\IPackageHelper.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-03T09:50:53.514Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "IEmailConfiguration.cs",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\Tradeify\\Logic\\IHelpers\\IEmailConfiguration.cs",
+              "RelativeDocumentMoniker": "..\\Logic\\IHelpers\\IEmailConfiguration.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\Tradeify\\Logic\\IHelpers\\IEmailConfiguration.cs",
+              "RelativeToolTip": "..\\Logic\\IHelpers\\IEmailConfiguration.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-03T09:50:48.448Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "RegistrationPackageHelper.cs",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\Tradeify\\Logic\\Helpers\\RegistrationPackageHelper.cs",
+              "RelativeDocumentMoniker": "..\\Logic\\Helpers\\RegistrationPackageHelper.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\Tradeify\\Logic\\Helpers\\RegistrationPackageHelper.cs",
+              "RelativeToolTip": "..\\Logic\\Helpers\\RegistrationPackageHelper.cs",
+              "ViewState": "AQIAAH0AAAAAAAAAAAAuwAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-03T09:49:43.945Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "EmailHelper.cs",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\Tradeify\\Logic\\Helpers\\EmailHelper.cs",
+              "RelativeDocumentMoniker": "..\\Logic\\Helpers\\EmailHelper.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\Tradeify\\Logic\\Helpers\\EmailHelper.cs",
+              "RelativeToolTip": "..\\Logic\\Helpers\\EmailHelper.cs",
+              "ViewState": "AQIAABEAAAAAAAAAAAAQwAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-03T09:48:49.12Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "BinaryHelper.cs",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\Tradeify\\Logic\\Helpers\\BinaryHelper.cs",
+              "RelativeDocumentMoniker": "..\\Logic\\Helpers\\BinaryHelper.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\Tradeify\\Logic\\Helpers\\BinaryHelper.cs",
+              "RelativeToolTip": "..\\Logic\\Helpers\\BinaryHelper.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-03T09:48:37.568Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "BaseHelper.cs",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\Tradeify\\Logic\\Helpers\\BaseHelper.cs",
+              "RelativeDocumentMoniker": "..\\Logic\\Helpers\\BaseHelper.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\Tradeify\\Logic\\Helpers\\BaseHelper.cs",
+              "RelativeToolTip": "..\\Logic\\Helpers\\BaseHelper.cs",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-03T09:44:45.394Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 28,
+              "Title": "RegistrationPackageController.cs",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\Tradeify\\Tradeify\\Controllers\\RegistrationPackageController.cs",
+              "RelativeDocumentMoniker": "Controllers\\RegistrationPackageController.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\Tradeify\\Tradeify\\Controllers\\RegistrationPackageController.cs",
+              "RelativeToolTip": "Controllers\\RegistrationPackageController.cs",
+              "ViewState": "AQIAAGEAAAAAAAAAAAAcwAkAAAASAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-03T09:36:50.625Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 29,
+              "Title": "NewsController.cs",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\Tradeify\\Tradeify\\Controllers\\NewsController.cs",
+              "RelativeDocumentMoniker": "Controllers\\NewsController.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\Tradeify\\Tradeify\\Controllers\\NewsController.cs",
+              "RelativeToolTip": "Controllers\\NewsController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAASAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-03T09:36:08.489Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 30,
+              "Title": "HomeController.cs",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\Tradeify\\Tradeify\\Controllers\\HomeController.cs",
+              "RelativeDocumentMoniker": "Controllers\\HomeController.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\Tradeify\\Tradeify\\Controllers\\HomeController.cs",
+              "RelativeToolTip": "Controllers\\HomeController.cs",
+              "ViewState": "AQIAAA8AAAAAAAAAAAA5wAQAAAASAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-03T09:34:29.456Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 31,
+              "Title": "BonusController.cs",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\Tradeify\\Tradeify\\Controllers\\BonusController.cs",
+              "RelativeDocumentMoniker": "Controllers\\BonusController.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\Tradeify\\Tradeify\\Controllers\\BonusController.cs",
+              "RelativeToolTip": "Controllers\\BonusController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAAkAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-03T09:32:44.399Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 32,
+              "Title": "BinaryController.cs",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\Tradeify\\Tradeify\\Controllers\\BinaryController.cs",
+              "RelativeDocumentMoniker": "Controllers\\BinaryController.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\Tradeify\\Tradeify\\Controllers\\BinaryController.cs",
+              "RelativeToolTip": "Controllers\\BinaryController.cs",
+              "ViewState": "AQIAACEAAAAAAAAAAAAowA0AAAAsAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-03T09:26:30.12Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 33,
+              "Title": "BaseController.cs",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\Tradeify\\Tradeify\\Controllers\\BaseController.cs",
+              "RelativeDocumentMoniker": "Controllers\\BaseController.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\Tradeify\\Tradeify\\Controllers\\BaseController.cs",
+              "RelativeToolTip": "Controllers\\BaseController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-03T09:25:34.809Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 36,
+              "Title": "ImpersonationViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\Tradeify\\Core\\ViewModels\\ImpersonationViewModel.cs",
+              "RelativeDocumentMoniker": "..\\Core\\ViewModels\\ImpersonationViewModel.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\Tradeify\\Core\\ViewModels\\ImpersonationViewModel.cs",
+              "RelativeToolTip": "..\\Core\\ViewModels\\ImpersonationViewModel.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABIAAAAuAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-03T09:20:54.543Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 34,
+              "Title": "AccountController.cs",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\Tradeify\\Tradeify\\Controllers\\AccountController.cs",
+              "RelativeDocumentMoniker": "Controllers\\AccountController.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\Tradeify\\Tradeify\\Controllers\\AccountController.cs",
+              "RelativeToolTip": "Controllers\\AccountController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-03T08:40:36.658Z",
               "EditorCaption": ""
             },
             {
@@ -189,31 +516,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "PaymentHelper.cs",
-              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\Tradeify\\Logic\\Helpers\\PaymentHelper.cs",
-              "RelativeDocumentMoniker": "..\\Logic\\Helpers\\PaymentHelper.cs",
-              "ToolTip": "C:\\Users\\User\\source\\repos\\Tradeify\\Logic\\Helpers\\PaymentHelper.cs",
-              "RelativeToolTip": "..\\Logic\\Helpers\\PaymentHelper.cs",
-              "ViewState": "AQIAAEwIAAAAAAAAAAAgwFsIAAAPAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-17T07:34:46.881Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 16,
               "Title": "IAdminHelper.cs",
               "DocumentMoniker": "C:\\Users\\User\\source\\repos\\Tradeify\\Logic\\IHelpers\\IAdminHelper.cs",
               "RelativeDocumentMoniker": "..\\Logic\\IHelpers\\IAdminHelper.cs",
               "ToolTip": "C:\\Users\\User\\source\\repos\\Tradeify\\Logic\\IHelpers\\IAdminHelper.cs",
               "RelativeToolTip": "..\\Logic\\IHelpers\\IAdminHelper.cs",
-              "ViewState": "AQIAAA0AAAAAAAAAAAA1wB4AAAA6AAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAB4AAAA6AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-17T07:34:46.875Z"
+              "WhenOpened": "2024-04-17T07:34:46.875Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 42,
               "Title": "appsettings.json",
               "DocumentMoniker": "C:\\Users\\User\\source\\repos\\Tradeify\\Tradeify\\appsettings.json",
               "RelativeDocumentMoniker": "appsettings.json",
@@ -225,7 +541,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 41,
               "Title": "appsettings.Development.json",
               "DocumentMoniker": "C:\\Users\\User\\source\\repos\\Tradeify\\Tradeify\\appsettings.Development.json",
               "RelativeDocumentMoniker": "appsettings.Development.json",
@@ -237,57 +553,85 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 21,
               "Title": "AdminHelper.cs",
               "DocumentMoniker": "C:\\Users\\User\\source\\repos\\Tradeify\\Logic\\Helpers\\AdminHelper.cs",
               "RelativeDocumentMoniker": "..\\Logic\\Helpers\\AdminHelper.cs",
               "ToolTip": "C:\\Users\\User\\source\\repos\\Tradeify\\Logic\\Helpers\\AdminHelper.cs",
               "RelativeToolTip": "..\\Logic\\Helpers\\AdminHelper.cs",
-              "ViewState": "AQIAALwBAAAAAAAAAAAQwNABAAAPAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAOIBAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-17T07:34:46.848Z"
+              "WhenOpened": "2024-04-17T07:34:46.848Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 10,
               "Title": "IUserHelper.cs",
               "DocumentMoniker": "C:\\Users\\User\\source\\repos\\Tradeify\\Logic\\IHelpers\\IUserHelper.cs",
               "RelativeDocumentMoniker": "..\\Logic\\IHelpers\\IUserHelper.cs",
               "ToolTip": "C:\\Users\\User\\source\\repos\\Tradeify\\Logic\\IHelpers\\IUserHelper.cs",
               "RelativeToolTip": "..\\Logic\\IHelpers\\IUserHelper.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABEAAAAfAAAA",
+              "ViewState": "AQIAAAsAAAAAAAAAAAAwwBEAAAAfAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-04-17T07:34:46.852Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 9,
               "Title": "UserHelper.cs",
               "DocumentMoniker": "C:\\Users\\User\\source\\repos\\Tradeify\\Logic\\Helpers\\UserHelper.cs",
               "RelativeDocumentMoniker": "..\\Logic\\Helpers\\UserHelper.cs",
               "ToolTip": "C:\\Users\\User\\source\\repos\\Tradeify\\Logic\\Helpers\\UserHelper.cs",
               "RelativeToolTip": "..\\Logic\\Helpers\\UserHelper.cs",
-              "ViewState": "AQIAAPYCAAAAAAAAAAAxwE8DAAAPAAAA",
+              "ViewState": "AQIAAK0BAAAAAAAAAAAYwMABAAAPAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-04-17T07:34:46.85Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 38,
+              "Title": "site.js",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\Tradeify\\Tradeify\\wwwroot\\js\\site.js",
+              "RelativeDocumentMoniker": "wwwroot\\js\\site.js",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\Tradeify\\Tradeify\\wwwroot\\js\\site.js",
+              "RelativeToolTip": "wwwroot\\js\\site.js",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAIEAAAcAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2024-04-17T10:33:14.481Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "PaymentHelper.cs",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\Tradeify\\Logic\\Helpers\\PaymentHelper.cs",
+              "RelativeDocumentMoniker": "..\\Logic\\Helpers\\PaymentHelper.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\Tradeify\\Logic\\Helpers\\PaymentHelper.cs",
+              "RelativeToolTip": "..\\Logic\\Helpers\\PaymentHelper.cs",
+              "ViewState": "AQIAAJUEAAAAAAAAAAAswFsIAAAPAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-17T07:34:46.881Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
               "Title": "IPaymentHelper.cs",
               "DocumentMoniker": "C:\\Users\\User\\source\\repos\\Tradeify\\Logic\\IHelpers\\IPaymentHelper.cs",
               "RelativeDocumentMoniker": "..\\Logic\\IHelpers\\IPaymentHelper.cs",
               "ToolTip": "C:\\Users\\User\\source\\repos\\Tradeify\\Logic\\IHelpers\\IPaymentHelper.cs",
               "RelativeToolTip": "..\\Logic\\IHelpers\\IPaymentHelper.cs",
-              "ViewState": "AQIAACIAAAAAAAAAAAAxwDoAAABKAAAA",
+              "ViewState": "AQIAADoAAAAAAAAAAAAowDoAAABKAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-17T07:34:46.883Z"
+              "WhenOpened": "2024-04-17T07:34:46.883Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 40,
               "Title": "Tradeify.csproj",
               "DocumentMoniker": "C:\\Users\\User\\source\\repos\\Tradeify\\Tradeify\\Tradeify.csproj",
               "RelativeDocumentMoniker": "Tradeify.csproj",
@@ -299,7 +643,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 39,
               "Title": "Registration.js",
               "DocumentMoniker": "C:\\Users\\User\\source\\repos\\Tradeify\\Tradeify\\wwwroot\\js\\Registration.js",
               "RelativeDocumentMoniker": "wwwroot\\js\\Registration.js",
@@ -311,31 +655,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 8,
               "Title": "AppDbContext.cs",
               "DocumentMoniker": "C:\\Users\\User\\source\\repos\\Tradeify\\Core\\DB\\AppDbContext.cs",
               "RelativeDocumentMoniker": "..\\Core\\DB\\AppDbContext.cs",
               "ToolTip": "C:\\Users\\User\\source\\repos\\Tradeify\\Core\\DB\\AppDbContext.cs",
               "RelativeToolTip": "..\\Core\\DB\\AppDbContext.cs",
-              "ViewState": "AQIAABQAAAAAAAAAAAAIwCkAAAAAAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABQAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-18T09:48:30.066Z"
+              "WhenOpened": "2024-04-18T09:48:30.066Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "site.js",
-              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\Tradeify\\Tradeify\\wwwroot\\js\\site.js",
-              "RelativeDocumentMoniker": "wwwroot\\js\\site.js",
-              "ToolTip": "C:\\Users\\User\\source\\repos\\Tradeify\\Tradeify\\wwwroot\\js\\site.js",
-              "RelativeToolTip": "wwwroot\\js\\site.js",
-              "ViewState": "AQIAAAIEAAAAAAAAAAAqwLoEAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2024-04-17T10:33:14.481Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 44,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\User\\source\\repos\\Tradeify\\Tradeify\\Program.cs",
               "RelativeDocumentMoniker": "Program.cs",
@@ -347,7 +680,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 43,
               "Title": "EmailService.cs",
               "DocumentMoniker": "C:\\Users\\User\\source\\repos\\Tradeify\\Logic\\Services\\EmailService.cs",
               "RelativeDocumentMoniker": "..\\Logic\\Services\\EmailService.cs",
@@ -359,19 +692,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 19,
               "Title": "PackageHelper.cs",
               "DocumentMoniker": "C:\\Users\\User\\source\\repos\\Tradeify\\Logic\\Helpers\\PackageHelper.cs",
               "RelativeDocumentMoniker": "..\\Logic\\Helpers\\PackageHelper.cs",
               "ToolTip": "C:\\Users\\User\\source\\repos\\Tradeify\\Logic\\Helpers\\PackageHelper.cs",
               "RelativeToolTip": "..\\Logic\\Helpers\\PackageHelper.cs",
-              "ViewState": "AQIAACYAAAAAAAAAAAAIwD4AAAAAAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAD4AAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-23T08:57:13.955Z"
+              "WhenOpened": "2024-04-23T08:57:13.955Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 46,
               "Title": "PaymentForm.cs",
               "DocumentMoniker": "C:\\Users\\User\\source\\repos\\Tradeify\\Core\\Models\\PaymentForm.cs",
               "RelativeDocumentMoniker": "..\\Core\\Models\\PaymentForm.cs",
@@ -383,19 +717,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 24,
               "Title": "BonusHelper.cs",
               "DocumentMoniker": "C:\\Users\\User\\source\\repos\\Tradeify\\Logic\\Helpers\\BonusHelper.cs",
               "RelativeDocumentMoniker": "..\\Logic\\Helpers\\BonusHelper.cs",
               "ToolTip": "C:\\Users\\User\\source\\repos\\Tradeify\\Logic\\Helpers\\BonusHelper.cs",
               "RelativeToolTip": "..\\Logic\\Helpers\\BonusHelper.cs",
-              "ViewState": "AQIAAJ4EAAAAAAAAAAAYwGUFAAA1AAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAJ0EAACFAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-22T10:00:17.72Z"
+              "WhenOpened": "2024-04-22T10:00:17.72Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 24,
+              "DocumentIndex": 48,
               "Title": "SortWalletTransactions.cshtml",
               "DocumentMoniker": "C:\\Users\\User\\source\\repos\\Tradeify\\Tradeify\\Views\\User\\SortWalletTransactions.cshtml",
               "RelativeDocumentMoniker": "Views\\User\\SortWalletTransactions.cshtml",
@@ -407,7 +742,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
+              "DocumentIndex": 45,
               "Title": "IBonusHelper.cs",
               "DocumentMoniker": "C:\\Users\\User\\source\\repos\\Tradeify\\Logic\\IHelpers\\IBonusHelper.cs",
               "RelativeDocumentMoniker": "..\\Logic\\IHelpers\\IBonusHelper.cs",
@@ -419,7 +754,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 21,
+              "DocumentIndex": 47,
               "Title": "UserGenerationLog.cs",
               "DocumentMoniker": "C:\\Users\\User\\source\\repos\\Tradeify\\Core\\Models\\UserGenerationLog.cs",
               "RelativeDocumentMoniker": "..\\Core\\Models\\UserGenerationLog.cs",
@@ -431,7 +766,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 22,
+              "DocumentIndex": 15,
               "Title": "IDropdownHelper.cs",
               "DocumentMoniker": "C:\\Users\\User\\source\\repos\\Tradeify\\Logic\\IHelpers\\IDropdownHelper.cs",
               "RelativeDocumentMoniker": "..\\Logic\\IHelpers\\IDropdownHelper.cs",
@@ -439,7 +774,8 @@
               "RelativeToolTip": "..\\Logic\\IHelpers\\IDropdownHelper.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAABYAAAA8AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-17T07:34:46.935Z"
+              "WhenOpened": "2024-04-17T07:34:46.935Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -449,13 +785,14 @@
               "RelativeDocumentMoniker": "..\\Logic\\Helpers\\DropdownHelper.cs",
               "ToolTip": "C:\\Users\\User\\source\\repos\\Tradeify\\Logic\\Helpers\\DropdownHelper.cs",
               "RelativeToolTip": "..\\Logic\\Helpers\\DropdownHelper.cs",
-              "ViewState": "AQIAAJkAAAAAAAAAAAA8wNUAAAAPAAAA",
+              "ViewState": "AQIAAJoAAAAAAAAAAAAmwNUAAAAPAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-17T07:34:46.932Z"
+              "WhenOpened": "2024-04-17T07:34:46.932Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 26,
+              "DocumentIndex": 50,
               "Title": "WalletTransactionHistory.cshtml",
               "DocumentMoniker": "C:\\Users\\User\\source\\repos\\Tradeify\\Tradeify\\Views\\User\\WalletTransactionHistory.cshtml",
               "RelativeDocumentMoniker": "Views\\User\\WalletTransactionHistory.cshtml",
@@ -467,7 +804,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 25,
+              "DocumentIndex": 49,
               "Title": "PaystackResponse.cs",
               "DocumentMoniker": "C:\\Users\\User\\source\\repos\\Tradeify\\Core\\Config\\PaystackResponse.cs",
               "RelativeDocumentMoniker": "..\\Core\\Config\\PaystackResponse.cs",
@@ -479,7 +816,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 27,
+              "DocumentIndex": 51,
               "Title": "GrantTransactionHistory.cshtml",
               "DocumentMoniker": "C:\\Users\\User\\source\\repos\\Tradeify\\Tradeify\\Views\\User\\GrantTransactionHistory.cshtml",
               "RelativeDocumentMoniker": "Views\\User\\GrantTransactionHistory.cshtml",
@@ -491,7 +828,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 28,
+              "DocumentIndex": 52,
               "Title": "AGCTransactionHistory.cshtml",
               "DocumentMoniker": "C:\\Users\\User\\source\\repos\\Tradeify\\Tradeify\\Views\\User\\AGCTransactionHistory.cshtml",
               "RelativeDocumentMoniker": "Views\\User\\AGCTransactionHistory.cshtml",
@@ -503,7 +840,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 30,
+              "DocumentIndex": 53,
               "Title": "UserGrantHistory.cs",
               "DocumentMoniker": "C:\\Users\\User\\source\\repos\\Tradeify\\Core\\Models\\UserGrantHistory.cs",
               "RelativeDocumentMoniker": "..\\Core\\Models\\UserGrantHistory.cs",
@@ -515,31 +852,33 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 29,
+              "DocumentIndex": 0,
               "Title": "GeneralConfiguration.cs",
               "DocumentMoniker": "C:\\Users\\User\\source\\repos\\Tradeify\\Core\\Config\\GeneralConfiguration.cs",
               "RelativeDocumentMoniker": "..\\Core\\Config\\GeneralConfiguration.cs",
               "ToolTip": "C:\\Users\\User\\source\\repos\\Tradeify\\Core\\Config\\GeneralConfiguration.cs",
               "RelativeToolTip": "..\\Core\\Config\\GeneralConfiguration.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAE0AAAAAAAAA",
+              "ViewState": "AQIAADoAAAAAAAAAAAAAwE0AAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-17T07:34:46.88Z"
+              "WhenOpened": "2024-04-17T07:34:46.88Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 32,
+              "DocumentIndex": 37,
               "Title": "ApplicationUserViewModel.cs",
               "DocumentMoniker": "C:\\Users\\User\\source\\repos\\Tradeify\\Core\\ViewModels\\ApplicationUserViewModel.cs",
               "RelativeDocumentMoniker": "..\\Core\\ViewModels\\ApplicationUserViewModel.cs",
               "ToolTip": "C:\\Users\\User\\source\\repos\\Tradeify\\Core\\ViewModels\\ApplicationUserViewModel.cs",
               "RelativeToolTip": "..\\Core\\ViewModels\\ApplicationUserViewModel.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAHsAAAAFAAAA",
+              "ViewState": "AQIAAEkAAAAAAAAAAAAtwFsAAAABAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-17T07:34:46.859Z"
+              "WhenOpened": "2024-04-17T07:34:46.859Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 31,
+              "DocumentIndex": 54,
               "Title": "IGeneralConfiguration.cs",
               "DocumentMoniker": "C:\\Users\\User\\source\\repos\\Tradeify\\Core\\Config\\IGeneralConfiguration.cs",
               "RelativeDocumentMoniker": "..\\Core\\Config\\IGeneralConfiguration.cs",
@@ -551,19 +890,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 34,
+              "DocumentIndex": 5,
               "Title": "ApplicationUser.cs",
               "DocumentMoniker": "C:\\Users\\User\\source\\repos\\Tradeify\\Core\\Models\\ApplicationUser.cs",
               "RelativeDocumentMoniker": "..\\Core\\Models\\ApplicationUser.cs",
               "ToolTip": "C:\\Users\\User\\source\\repos\\Tradeify\\Core\\Models\\ApplicationUser.cs",
               "RelativeToolTip": "..\\Core\\Models\\ApplicationUser.cs",
-              "ViewState": "AQIAACIAAAAAAAAAAAAuwFUAAAAzAAAA",
+              "ViewState": "AQIAAC4AAAAAAAAAAAAUwEIAAAAnAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-17T07:34:46.905Z"
+              "WhenOpened": "2024-04-17T07:34:46.905Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 36,
+              "DocumentIndex": 56,
               "Title": "RegistrationCryptoPayment.cshtml",
               "DocumentMoniker": "C:\\Users\\User\\source\\repos\\Tradeify\\Tradeify\\Views\\User\\RegistrationCryptoPayment.cshtml",
               "RelativeDocumentMoniker": "Views\\User\\RegistrationCryptoPayment.cshtml",
@@ -575,7 +915,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 33,
+              "DocumentIndex": 7,
               "Title": "AGCWallet.cs",
               "DocumentMoniker": "C:\\Users\\User\\source\\repos\\Tradeify\\Core\\Models\\AGCWallet.cs",
               "RelativeDocumentMoniker": "..\\Core\\Models\\AGCWallet.cs",
@@ -583,11 +923,12 @@
               "RelativeToolTip": "..\\Core\\Models\\AGCWallet.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAjAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-17T07:34:46.921Z"
+              "WhenOpened": "2024-04-17T07:34:46.921Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 35,
+              "DocumentIndex": 55,
               "Title": "AppDbContextModelSnapshot.cs",
               "DocumentMoniker": "C:\\Users\\User\\source\\repos\\Tradeify\\Core\\Migrations\\AppDbContextModelSnapshot.cs",
               "RelativeDocumentMoniker": "..\\Core\\Migrations\\AppDbContextModelSnapshot.cs",
@@ -599,7 +940,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 37,
+              "DocumentIndex": 57,
               "Title": "RegistrationPayment.cshtml",
               "DocumentMoniker": "C:\\Users\\User\\source\\repos\\Tradeify\\Tradeify\\Views\\User\\RegistrationPayment.cshtml",
               "RelativeDocumentMoniker": "Views\\User\\RegistrationPayment.cshtml",

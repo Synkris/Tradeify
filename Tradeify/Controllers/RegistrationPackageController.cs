@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System.Data;
 
-namespace GGC.Controllers
+namespace Tradeify.Controllers
 {
     [Authorize(Roles = "Admin")]
     public class RegistrationPackageController : Controller

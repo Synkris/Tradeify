@@ -1,10 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore.Metadata.Internal;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace Core.Models
 {
@@ -37,4 +34,8 @@ namespace Core.Models
         public string authorization_url { get; set; }
         public string access_code { get; set; }
     }
+
+
+
 }
+

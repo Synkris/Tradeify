@@ -1,16 +1,13 @@
-﻿using Microsoft.EntityFrameworkCore.Metadata.Internal;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.ComponentModel.DataAnnotations;
 using System.ComponentModel;
-using System.Linq;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace Core.Models
 {
-    public class Payment
+    public class Payment 
     {
         public Guid Id { get; set; }
         [Column(TypeName = "decimal(18,4)")]
@@ -39,9 +36,9 @@ namespace Core.Models
         public virtual CommonDropdowns BankAccount { get; set; }
 
         [Display(Name = "Account Name Paid From")]
-        public string PaidFrom { get; set; }
+        public string PaidFrom {get; set;}
 
-        [Display(Name = "Upload")]
+        [Display (Name ="Upload")]
         public string FileUpload { get; set; }
     }
 

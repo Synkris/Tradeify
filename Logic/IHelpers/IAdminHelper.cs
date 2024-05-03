@@ -11,23 +11,26 @@ namespace Logic.IHelpers
 {
     public interface IAdminHelper
     {
-        ApplicationUserViewModel UserDetailsToEdit(string userId);
-        bool EditedDetails(ApplicationUserViewModel userDetails);
-        IPagedList<CommonDropdownViewModel> GetCommonDropdowns(CommonDropdownSearchResultViewModel commonDropdownSearch, int pageNumber, int pageSize);
-        bool UpdateDropDownService(string dropdown, int? id);
-        string RemoveDropDown(int id);
-        bool CheckExistingDropdownName(string name, int drpKey);
-        List<CordinatorViewModel> listOfCordinators();
         bool CheckExistingCordinatorUserName(string cordinatorUserName);
         ApplicationUser GetNewCordinatorDetails(string cordinatorUserName);
         string CreateCordinator(ApplicationUser newCordinatorDetails, string loggedinAdmin);
+        List<CordinatorViewModel> listOfCordinators();
         string RemoveCordinator(int id);
-        Task<CompanySettingViewModel> GetCompanySettings();
-        bool UpdateCompanySettings(CompanySettingViewModel companySettingViewModel);
-        bool ReactivateUser(string userId);
-        IPagedList<ApplicationUserViewModel> RegisteredUsersDetails(ApplicationUserSearchResultViewModel applicationUserSearchResult, int pageNumber, int pageSize);
-        bool DeactivateUser(string userId);
+        //List<CommonDropdownViewModel> GetCommonDropdowns();
+        bool UpdateDropDownService(string dropdown, int? id);
+        string RemoveDropDown(int id);
+
+		//List<ApplicationUserViewModel> ApprovedUsersDetails();
+		bool DeactivateUser(string userId);
         ApplicationUser GetUserFullDetails(string userId);
-        WithdrawalViewModel GetWithdrawalDetails(Guid id);
+        ApplicationUserViewModel UserDetailsToEdit(string userId);
+        bool EditedDetails(ApplicationUserViewModel userDetails);
+        IPagedList<ApplicationUserViewModel> RegisteredUsersDetails(ApplicationUserSearchResultViewModel applicationUserSearchResult, int pageNumber, int pageSize);
+        IPagedList<CommonDropdownViewModel> GetCommonDropdowns(CommonDropdownSearchResultViewModel commonDropdownSearch, int pageNumber, int pageSize);
+		WithdrawalViewModel GetWithdrawalDetails(Guid id);
+        bool CheckExistingDropdownName(string name, int drpKey);
+        Task<CompanySettingViewModel> GetCompanySettings();
+		bool UpdateCompanySettings(CompanySettingViewModel companySettingViewModel);
+        bool ReactivateUser(string userId);
     }
 }
