@@ -39,7 +39,7 @@
     }
 
     .onoffswitch-inner:before {
-        background-color: #dba622;
+        background-color: #006400;
         color: #fff;
         content: "ON ROBOT";
         padding-left: 14px;
@@ -73,4 +73,46 @@
 
 .onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-switch {
     right: 0px;
+}
+.mine-button.disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.button_icon {
+    animation: rotate 5s linear infinite;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.spinner {
+    border: 4px solid rgba(0, 0, 0, 0.1);
+    border-left-color: white;
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    animation: spin 1s linear infinite;
+    margin-right: 10px;
+    display: inline-block;
+    vertical-align: middle;
+    position: relative;
 }

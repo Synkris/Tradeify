@@ -1083,6 +1083,5 @@ namespace Tradeify.Controllers
             }
         }
 
-
     }
 }

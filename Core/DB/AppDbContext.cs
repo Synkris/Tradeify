@@ -43,7 +43,7 @@ namespace Core.DB
         public DbSet<Payment> Payments { get; set; }
         public DbSet<Paystack> Paystacks { get; set; }
 
-        //Start Of GGC
+        //Start Of Tradeify
 
 
         public DbSet<Appreciation> Appreciations { get; set; }
@@ -53,7 +53,6 @@ namespace Core.DB
         public DbSet<UserBettings> UserBettings { get; set; }
 
         public DbSet<PendingBonuses> PendingBonuses { get; set; }
-
 
     }
 }

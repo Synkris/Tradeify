@@ -1578,7 +1578,5 @@ namespace Logic.Helpers
         {
             return _context.CommonDropdowns.FirstOrDefault(x => x.Name.ToLower() == name.ToLower());
         }
-
-
     }
 }

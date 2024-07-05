@@ -1,0 +1,49 @@
+﻿
+@model Core.ViewModels.ApplicationUserViewModel
+<link rel="stylesheet" type="text/css" href="~/css/nice-select.css" />
+<link href="~/css/mutiniceselect.css" rel="stylesheet" />
+<link href="~/css/nice-select.css" rel="stylesheet" />
+<script src="~/js/jquery.nice-select.min.js"></script>
+
+<div class="col-lg-12 col-md-12 col-sm-12 col-12 bg-dark">
+    <h5 class="mt-3 mb-4 font-weight-bold text-center text-white"> Edit Member Details </h5>
+    <div class="row p-3 mt-2">
+
+        <div class="col-sm-6 change_field">
+            <label> First Name </label>
+            <input class="form-control p-3" value="@Model?.FirstName" id="edited_fName" type="text">
+            <input class="form-control" id="user_Id" value="@Model?.Id" hidden type="text">
+        </div>
+
+        <div class="col-sm-6 change_field">
+            <label> Last Name </label>
+            <input class="form-control p-3" id="edited_lName" value="@Model?.LastName" type="text">
+        </div>
+
+        <div class="col-sm-6 change_field">
+            <label> Email </label>
+            <input class="form-control p-3" id="edited_email" value="@Model?.Email" type="text">
+        </div>
+        <div class="col-sm-6 change_field">
+            <label> PhoneNumber </label>
+            <input class="form-control p-3" id="edited_phoneNumber" value="@Model?.Phonenumber" type="number">
+        </div>
+        <div class="col-sm-6 mb-4 change_field">
+            <label> Cordinator </label>
+            <select asp-for="CordinatorId" id="edited_cordinatorId" asp-items="@(new SelectList(ViewBag.Cordinator,"CordinatorId","CordinatorUserName", Model?.CordinatorId))"
+                    class="select form-control">
+            </select>
+        </div>
+        <div class="col-sm-6 mb-4 change_field">
+            <label> Package </label>
+            <select asp-for="PackageId" id="edited_packageId" asp-items="@(new SelectList(ViewBag.Package,"Id","Name", Model?.PackageId))"
+                    class="select form-control">
+            </select>
+        </div>
+        <div class="col-sm-6 m-auto mt-5 mb-5">
+            <div class="submit-section">
+                <button class="btn button_color btn-block" style="cursor:pointer ;" id="submit_Btn" onclick="SaveEditedDetails()"> Submit </button>
+            </div>
+        </div>
+    </div>
+</div>                         

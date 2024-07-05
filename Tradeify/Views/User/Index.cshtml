@@ -40,7 +40,7 @@
                 </dl>
             </div>
             <div class="userdet user_transcation mb-3">
-                <h3 class="font-weight-bold" style="color: #22c8db;">Withdrawable Balance</h3>
+                <h3 class="font-weight-bold" style="color: #006400;">Withdrawable Balance</h3>
                 <dl class="userdescc">
                     <dt> Wallet </dt>
                     <dd>
@@ -55,7 +55,7 @@
 
             <nav class="navbar navbar-expand float-right mt-1 d-none d-lg-block">
                 <a id="mineButton" class="btn mr-2 rounded-circle py-2"
-                   style="background-color: transparent;color: white; border: 12px double #22c8db; box-shadow: 0px 4px 4px 8px #00d0ff99;"
+                   style="background-color: transparent;color: white; border: 12px double #006400; box-shadow: 0px 4px 4px 8px #00d0ff99;"
                     onclick="startMining('@Model.Id')">
                     <b id="label"> Mine token </b>
                    
@@ -63,7 +63,7 @@
             </nav>
             <nav class="navbar navbar-expand float-left mt-1 mb-2 d-lg-none">
                 <a id="mobileButton" class="btn mr-2 rounded-circle py-2"
-                   style="background-color: transparent;color: white; border: 12px double #22c8db; box-shadow: 0px 4px 4px 8px #00d0ff99;"
+                   style="background-color: transparent;color: white; border: 12px double #006400; box-shadow: 0px 4px 4px 8px #00d0ff99;"
                    onclick="startMining('@Model.Id')">
                     <b id="mobileLabel"> Mine token </b>
                 </a>
@@ -95,10 +95,10 @@
                                     <td class="invest_td1">: $@Model.ConvertedBalance.ToString("F2") USD </td>
                                 </tr>
 
-                                @*<tr>
-                                    <td class="invest_td1">Total Earning($)</td>
-                                    <td class="invest_td1">: $@convertedBonus.ToString("F2") USD </td>
-                                </tr>*@
+                                <tr>
+                                    <td class="invest_td1">Withdrawable Balance(GGT)</td>
+                                    <td class="invest_td1">: @Model.ConvertedBalanceToGGC.ToString("F2") GGT </td>
+                                </tr>
                                 <tr>
                                     <td class="invest_td1"> Available PV</td>
                                     <td class="invest_td1">: @Model.Pv.ToString("G29") PVs </td>
@@ -191,8 +191,12 @@
                                                                     <td class="invest_td1">Withdrawable Balance($)</td>
                                                                     <td class="invest_td1">: $@Model.ConvertedBalance.ToString("F2") USD </td>
                                                                 </tr>
+                                                                <tr>
+                                                                    <td class="invest_td1">Withdrawable Balance(GGT)</td>
+                                                                    <td class="invest_td1">: @Model.ConvertedBalanceToGGC.ToString("F2") GGT </td>
+                                                                </tr>
                                                                <tr>
-                                                                    <td class="invest_td1"> Avalaible PV </td>
+                                                                    <td class="invest_td1"> Available PV </td>
                                                                     <td class="invest_td1">: @Model.Pv.ToString("G29") PVs </td>
                                                                 </tr>
                                                             </tbody>
@@ -308,7 +312,8 @@
 <script>
     $(document).ready(function () {
         var isDeactivated = @((Model.Deactivated ? "true" : "false"));
-        if (isDeactivated === true) {
+        var isImpersonated = @((Model.isImpersonated ? "true" : "false"));
+        if (isDeactivated === true && isImpersonated === true) {
             $("#payActivation").modal({ backdrop: "static" });
             $('#payActivation').modal('show');
         }

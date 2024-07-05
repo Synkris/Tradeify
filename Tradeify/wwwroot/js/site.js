@@ -354,7 +354,7 @@ function regFeePayment() {
         let details = JSON.stringify(data);
         $.ajax({
             type: 'Post',
-            url: '/User/RegFeePayment',
+            url: '/User/RegistrationFeePayment',
             dataType: 'json',
             data:
             {
@@ -403,7 +403,7 @@ function regCrptoPayment() {
         let details = JSON.stringify(data);
         $.ajax({
             type: 'Post',
-            url: '/User/RegCryptoPayment',
+            url: '/User/RegistrationCryptoPayment',
             dataType: 'json',
             data:
             {
@@ -780,62 +780,62 @@ function rejectWithdrawals(id) {
 }
 
 
-$(document).ready(function () {
-    //Bonus Approval for Multiple Users
-    $('.approve-selected, .reject-selected').on('click', function ()
-    {
-        var selectedUserIds = [];
-        var action = $(this).hasClass('approve-selected') ? 'approve' : 'reject';
-        $('.user-checkbox:checked').each(function () {
-            selectedUserIds.push($(this).data('user-id'));
-        });
-        $.ajax({
-            type: 'POST',
-            url: '/Bonus/UpdateUserStatus', 
-            data: {
-                genLogIds: selectedUserIds,
-                action: action
-            },
-            success: function (result) {
-                if (!result.isError) {
-                    var url = '/Bonus/UserGenLog';
-                    successAlertWithRedirect(result.msg, url);
-                } else {
-                    errorAlert(result.msg);
-                }
-            },
-            error: function (ex) {
-                errorAlert("Error occurred. Please try again.");
-            }
-        });
-    });
+//$(document).ready(function () {
+//    //Bonus Approval for Multiple Users
+//    $('.approve-selected, .reject-selected').on('click', function ()
+//    {
+//        var selectedUserIds = [];
+//        var action = $(this).hasClass('approve-selected') ? 'approve' : 'reject';
+//        $('.user-checkbox:checked').each(function () {
+//            selectedUserIds.push($(this).data('user-id'));
+//        });
+//        $.ajax({
+//            type: 'POST',
+//            url: '/Bonus/UpdateUserStatus', 
+//            data: {
+//                genLogIds: selectedUserIds,
+//                action: action
+//            },
+//            success: function (result) {
+//                if (!result.isError) {
+//                    var url = '/Bonus/UserGenLog';
+//                    successAlertWithRedirect(result.msg, url);
+//                } else {
+//                    errorAlert(result.msg);
+//                }
+//            },
+//            error: function (ex) {
+//                errorAlert("Error occurred. Please try again.");
+//            }
+//        });
+//    });
     
-    //Bonus Approval for Single User
-    $('.approve-button, .reject-button').on('click', function () {
-        var userId = $(this).data('user-id');
-        var action = $(this).hasClass('approve-button') ? 'approve' : 'reject';
+//    //Bonus Approval for Single User
+//    $('.approve-button, .reject-button').on('click', function () {
+//        var userId = $(this).data('user-id');
+//        var action = $(this).hasClass('approve-button') ? 'approve' : 'reject';
 
-        $.ajax({
-            url: '/Bonus/UpdateOneUserStatus',
-            type: 'POST',
-            data: {
-                genLogId: userId,
-                action: action
-            },
-            success: function (result) {
-                if (!result.isError) {
-                    var url = '/Bonus/UserGenLog';
-                    successAlertWithRedirect(result.msg, url);
-                } else {
-                    errorAlert(result.msg);
-                }
-            },
-            error: function (ex) {
-                errorAlert("Error occurred. Please try again.");
-            }
-        });
-    });
-});
+//        $.ajax({
+//            url: '/Bonus/UpdateOneUserStatus',
+//            type: 'POST',
+//            data: {
+//                genLogId: userId,
+//                action: action
+//            },
+//            success: function (result) {
+//                if (!result.isError) {
+//                    var url = '/Bonus/UserGenLog';
+//                    successAlertWithRedirect(result.msg, url);
+//                } else {
+//                    errorAlert(result.msg);
+//                }
+//            },
+//            error: function (ex) {
+//                errorAlert("Error occurred. Please try again.");
+//            }
+//        });
+//    });
+//});
 
 function ChildReferralLink(userId) {
     $.ajax({
@@ -1207,4 +1207,191 @@ function addCompanySetting() {
             })
         }
     }
+}
+
+function giveTotalAmount() {
+    var minToken = parseFloat($("#minToken").val());
+    var maxToken = parseFloat($("#maxToken").val());
+
+    var amountperToken = (parseFloat($("#amountPerToken").val())) ? (parseFloat($("#amountPerToken").val())) : 0;
+    var noOfTokens = (parseFloat($("#noOfTokens").val())) ? (parseFloat($("#noOfTokens").val())) : 0;
+
+    if (amountperToken && noOfTokens) {
+        if (noOfTokens < minToken) {
+            infoAlert("Token number is less than minimum token");
+        }
+        else if (noOfTokens > maxToken) {
+            infoAlert("Token number is greater than maximum token");
+        }
+        else {
+            var result = amountperToken * noOfTokens;
+            $("#totalAmount").text(result.toFixed(2));
+            $("#totalAmount").prepend('$');
+        }
+    }
+    else {
+        var amountperToken = 0;
+        var noOfTokens = 0;
+        var result = amountperToken * noOfTokens;
+        $("#totalAmount").text(result.toFixed(2));
+        $("#totalAmount").prepend('$');
+    }
+
+
+
+}
+
+function handlePaymentTypeChange() {
+    var selectedPaymentType = $('#paymentTypeId').val();
+    var noOfTokensField = $('#noOfTokensField');
+    var packageIdField = $('#packageIdField');
+
+    if (selectedPaymentType === "5") {
+        noOfTokensField.hide();
+        packageIdField.hide();
+        $('#noOfTokens').prop('required', false);
+        $('#packageId').prop('required', false);
+
+    }
+    else if (selectedPaymentType === "2") {
+        noOfTokensField.hide();
+        packageIdField.show();
+        $('#noOfTokens').prop('required', false);
+        $('#packageId').prop('required', true);
+    }
+    else {
+        noOfTokensField.show();
+        packageIdField.hide();
+        $('#noOfTokens').prop('required', true);
+        $('#packageId').prop('required', false);
+    }
+}
+
+function cryptoPayment() {
+
+    var defaultBtnValue = $('#submit_btn').html();
+    $('#submit_btn').html("Please wait...");
+    $('#submit_btn').attr("disabled", true);
+
+    var data = {};
+    data.BankAccountId = $('#bankAccountId').val();
+    data.PaidFrom = $('#accountPaidFrom').val();
+    data.BankNamePaidFrom = $('#bankNamePaidFrom').val();
+    data.AccountNumberPaidFrom = $('#accountNumberPaidFrom').val();
+    data.PaymentMethod = $('#paymentMethod').val();
+    data.NoOfTokensBought = $("#noOfTokens").val();
+    data.TokensBought = $("#noOfTokens").val();
+    data.Amount = $("#amount").val();
+    data.PaymentTypeId = $('#paymentTypeId').val();
+    data.PackageId = $('#packageId').val();
+
+
+    var noOfTokensRequired = data.PaymentTypeId === "5";
+    var packageIdRequired = data.PackageId === "2";
+
+    if (data.PaidFrom != "" && data.BankNamePaidFrom != "" && data.AccountNumberPaidFrom != "" && data.PaymentMethod != "" && data.PaymentTypeId != "" &&
+        noOfTokensRequired !== "" && packageIdRequired !== ""
+    ) {
+        let details = JSON.stringify(data);
+        $.ajax({
+            type: 'Post',
+            url: '/User/CryptoCoinPayment',
+            dataType: 'json',
+            data:
+            {
+                details: details,
+            },
+            success: function (result) {
+                if (!result.isError) {
+                    var returnResult = result.data
+                    var url = "";
+                    if (returnResult && returnResult == "5" || returnResult == "2") {
+                        url = '/User/Index';
+                    } else {
+                        url = '/User/Coin';
+                    }
+                    //var url = '/User/Coin';
+                    successAlertWithRedirect(result.msg, url);
+                    $('#submit_btn').html(defaultBtnValue);
+                }
+                else {
+                    $('#submit_btn').html(defaultBtnValue);
+                    $('#submit_btn').attr("disabled", false);
+                    errorAlert(result.msg);
+                }
+            },
+            error: function (ex) {
+                $('#submit_btn').html(defaultBtnValue);
+                $('#submit_btn').attr("disabled", false);
+                errorAlert("Please check and try again.");
+            }
+        });
+    } else {
+        $('#submit_btn').html(defaultBtnValue);
+        $('#submit_btn').attr("disabled", false);
+        errorAlert("Please fill the form Correctly");
+    }
+}
+
+function feePayment() {
+    var defaultBtnValue = $('#submit_btn').html();
+    $('#submit_btn').html("Please wait...");
+    $('#submit_btn').attr("disabled", true);
+
+    var data = {};
+    data.BankAccountId = $('#bankAccountId').val();
+    data.PaidFrom = $('#accountPaidFrom').val();
+    data.BankNamePaidFrom = $('#bankNamePaidFrom').val();
+    data.AccountNumberPaidFrom = $('#accountNumberPaidFrom').val();
+    data.PaymentMethod = $('#paymentMethod').val();
+    data.NoOfTokensBought = $("#noOfTokens").val();
+    data.TokensBought = $("#noOfTokens").val();
+    data.Amount = $("#amount").val();
+    data.PaymentTypeId = $('#paymentTypeId').val();
+    data.PackageId = $('#packageId').val();
+
+    var noOfTokensRequired = data.PaymentTypeId === "5";
+    var packageIdRequired = data.PackageId === "2";
+    if (
+        data.PaidFrom !== "" &&
+        data.BankNamePaidFrom !== "" &&
+        data.AccountNumberPaidFrom !== "" &&
+        data.PaymentMethod !== "" &&
+        noOfTokensRequired !== "" &&
+        packageIdRequired !== "" &&
+        data.PaymentTypeId !== ""
+    ) {
+        let details = JSON.stringify(data);
+        $.ajax({
+            type: 'POST',
+            url: '/User/CoinPayment',
+            dataType: 'json',
+            data: {
+                details: details,
+            },
+            success: function (result) {
+                if (!result.isError) {
+                    var returnResult = result.data
+                    var url = "";
+                    if (returnResult && returnResult == "5" || returnResult == "2") {
+                        url = '/User/Index';
+                    } else {
+                        url = '/User/Coin';
+                    }
+                    successAlertWithRedirect(result.msg, url);
+                } else {
+                    $('#submit_btn').html(defaultBtnValue).attr("disabled", false);
+                    errorAlert(result.msg);
+                }
+            },
+            error: function (ex) {
+                $('#submit_btn').html(defaultBtnValue).attr("disabled", false);
+                errorAlert("Please fill the form correctly");
+            },
+        });
+    } else {
+        $('#submit_btn').html(defaultBtnValue).attr("disabled", false);
+        errorAlert("Please fill the form correctly");
+    }
+
 }

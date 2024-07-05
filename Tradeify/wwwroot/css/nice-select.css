@@ -3,8 +3,8 @@
     /*background-color: transparent;*/
     background: #fff;
     border-radius: 5px;
-    border: solid 1px white /*#dba622*/;
-    color: #dba622 !important;
+    border: solid 1px white /*#006400*/;
+    color: #006400 !important;
     box-sizing: border-box;
     clear: both;
     cursor: pointer;
@@ -33,7 +33,7 @@
     .nice-select:hover {
         border-color: white;
         background: #fff;
-        color: #dba622 !important;
+        color: #006400 !important;
     }
 /*
     .nice-select li {
@@ -45,8 +45,8 @@
     }
 
     .nice-select:after {
-        border-bottom: 2px solid #dba622;
-        border-right: 2px solid #dba622;
+        border-bottom: 2px solid #006400;
+        border-right: 2px solid #006400;
         content: '';
         display: block;
         height: 5px;

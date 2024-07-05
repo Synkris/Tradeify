@@ -1,4 +1,5 @@
-﻿namespace Tradeify.Models
+﻿
+namespace Tradeify.Models
 {
     public class Message
     {

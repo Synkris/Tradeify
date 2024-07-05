@@ -1,0 +1,1400 @@
+2024-07-04 16:20:04.296 +01:00 [WRN] Navigations 'ApplicationUser.RegFeePayment' and 'PaymentForm.User' were separated into two relationships since the [ForeignKey] attribute was specified on navigations on both sides.
+2024-07-04 16:20:06.305 +01:00 [WRN] No store type was specified for the decimal property 'ActivationAmount' on entity type 'CompanySettings'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-04 16:20:06.316 +01:00 [WRN] No store type was specified for the decimal property 'MiningQuantity' on entity type 'CompanySettings'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-04 16:20:06.323 +01:00 [WRN] No store type was specified for the decimal property 'Tokenamount' on entity type 'CompanySettings'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-04 16:20:06.339 +01:00 [WRN] No store type was specified for the decimal property 'MiningQuantity' on entity type 'MiningLog'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-04 16:20:06.346 +01:00 [WRN] No store type was specified for the decimal property 'Amount' on entity type 'PaymentForm'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-04 16:20:06.357 +01:00 [WRN] No store type was specified for the decimal property 'NoOfTokensBought' on entity type 'PaymentForm'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-04 16:20:06.366 +01:00 [WRN] No store type was specified for the decimal property 'Amount' on entity type 'PendingBonuses'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-04 16:20:06.378 +01:00 [WRN] No store type was specified for the decimal property 'AmountStaked' on entity type 'UserBettings'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-04 16:20:06.385 +01:00 [WRN] No store type was specified for the decimal property 'BonusAmount' on entity type 'UserGenerationLog'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-04 16:20:06.395 +01:00 [WRN] No store type was specified for the decimal property 'Amount' on entity type 'UserPackages'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-04 16:20:11.671 +01:00 [INF] Executed DbCommand (49ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-07-04 16:20:11.762 +01:00 [INF] Executed DbCommand (65ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-07-04 16:20:11.769 +01:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-07-04 16:20:11.773 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-07-04 16:20:11.828 +01:00 [INF] Executed DbCommand (32ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2024-07-04 16:20:11.870 +01:00 [INF] No migrations were applied. The database is already up to date.
+2024-07-04 16:20:11.926 +01:00 [INF] Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-07-04 16:20:11.937 +01:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-07-04 16:20:11.947 +01:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-07-04 16:20:11.960 +01:00 [INF] Executed DbCommand (9ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-07-04 16:20:11.977 +01:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2024-07-04 16:20:11.986 +01:00 [INF] No migrations were applied. The database is already up to date.
+2024-07-04 16:20:12.323 +01:00 [INF] Start installing Hangfire SQL objects...
+2024-07-04 16:20:14.553 +01:00 [INF] Hangfire SQL objects installed.
+2024-07-04 16:20:14.591 +01:00 [INF] Starting Hangfire Server using job storage: 'SQL Server: DESKTOP-PJC031G\SQLEXPRESS@TRADEIFYHangfire'
+2024-07-04 16:20:14.594 +01:00 [INF] Using the following options for SQL Server job storage: Queue poll interval: 00:00:00.
+2024-07-04 16:20:14.599 +01:00 [INF] Using the following options for Hangfire Server:
+    Worker count: 20
+    Listening queues: 'default'
+    Shutdown timeout: 00:00:15
+    Schedule polling interval: 00:00:15
+2024-07-04 16:20:14.671 +01:00 [INF] Start installing Hangfire SQL objects...
+2024-07-04 16:20:15.256 +01:00 [INF] Server desktop-pjc031g.23a5f184-1ac0-4358-a0eb-2c479c07a633:11628:7e67c76e successfully announced in 584.1101 ms
+2024-07-04 16:20:15.273 +01:00 [INF] Server desktop-pjc031g.23a5f184-1ac0-4358-a0eb-2c479c07a633:11628:7e67c76e is starting the registered dispatchers: ServerWatchdog, ServerJobCancellationWatcher, ExpirationManager, CountersAggregator, SqlServerHeartbeatProcess, Worker, DelayedJobScheduler, RecurringJobScheduler...
+2024-07-04 16:20:15.347 +01:00 [INF] 1 servers were removed due to timeout
+2024-07-04 16:20:15.569 +01:00 [INF] Server desktop-pjc031g.23a5f184-1ac0-4358-a0eb-2c479c07a633:11628:7e67c76e all the dispatchers started
+2024-07-04 16:20:15.905 +01:00 [INF] Hangfire SQL objects installed.
+2024-07-04 16:20:16.514 +01:00 [INF] User profile is available. Using 'C:\Users\User\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-07-04 16:20:17.803 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-07-04 16:20:17.824 +01:00 [INF] Hosting environment: Development
+2024-07-04 16:20:17.862 +01:00 [INF] Content root path: C:\Users\User\Source\Repos\Tradeify\Tradeify
+2024-07-04 16:20:18.089 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/ - -
+2024-07-04 16:20:18.752 +01:00 [INF] Executing endpoint 'Tradeify.Controllers.HomeController.Index (Tradeify)'
+2024-07-04 16:20:18.765 +01:00 [INF] Route matched with {action = "Index", controller = "Home"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index() on controller Tradeify.Controllers.HomeController (Tradeify).
+2024-07-04 16:20:18.792 +01:00 [INF] Executing ViewResult, running view Index.
+2024-07-04 16:20:20.055 +01:00 [INF] Executed DbCommand (414ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Discriminator] = N'ApplicationUser' AND [a].[Deactivated] = CAST(0 AS bit)
+2024-07-04 16:20:20.521 +01:00 [INF] Executed ViewResult - view Index executed in 1691.6738ms.
+2024-07-04 16:20:20.527 +01:00 [INF] Executed action Tradeify.Controllers.HomeController.Index (Tradeify) in 1759.0048ms
+2024-07-04 16:20:20.527 +01:00 [INF] Executed endpoint 'Tradeify.Controllers.HomeController.Index (Tradeify)'
+2024-07-04 16:20:20.581 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/js/bootstrap.min.js - -
+2024-07-04 16:20:20.581 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/js/jquery-3.3.1.min.js - -
+2024-07-04 16:20:20.603 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/lib/bootstrap/dist/js/bootstrap.bundle.min.js - -
+2024-07-04 16:20:20.629 +01:00 [INF] The file /lib/bootstrap/dist/js/bootstrap.bundle.min.js was not modified
+2024-07-04 16:20:20.629 +01:00 [INF] The file /js/bootstrap.min.js was not modified
+2024-07-04 16:20:20.629 +01:00 [INF] The file /js/jquery-3.3.1.min.js was not modified
+2024-07-04 16:20:20.635 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/lib/bootstrap/dist/js/bootstrap.bundle.min.js - - - 304 - text/javascript 30.5475ms
+2024-07-04 16:20:20.635 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/js/bootstrap.min.js - - - 304 - text/javascript 52.8462ms
+2024-07-04 16:20:20.635 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/js/jquery-3.3.1.min.js - - - 304 - text/javascript 52.8526ms
+2024-07-04 16:20:20.637 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/js/plugin.js - -
+2024-07-04 16:20:20.637 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/js/jquery.menu-aim.js - -
+2024-07-04 16:20:20.637 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/js/jquery.countTo.js - -
+2024-07-04 16:20:20.638 +01:00 [INF] The file /js/jquery.menu-aim.js was not modified
+2024-07-04 16:20:20.638 +01:00 [INF] The file /js/jquery.countTo.js was not modified
+2024-07-04 16:20:20.638 +01:00 [INF] The file /js/plugin.js was not modified
+2024-07-04 16:20:20.639 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/js/plugin.js - - - 304 - text/javascript 2.0975ms
+2024-07-04 16:20:20.639 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/js/jquery.menu-aim.js - - - 304 - text/javascript 2.0878ms
+2024-07-04 16:20:20.639 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/js/jquery.countTo.js - - - 304 - text/javascript 2.0845ms
+2024-07-04 16:20:20.646 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/js/datatables.js - -
+2024-07-04 16:20:20.646 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/js/dropify.min.js - -
+2024-07-04 16:20:20.646 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/lib/jquery/dist/jquery.min.js - -
+2024-07-04 16:20:20.647 +01:00 [INF] The file /js/datatables.js was not modified
+2024-07-04 16:20:20.647 +01:00 [INF] The file /lib/jquery/dist/jquery.min.js was not modified
+2024-07-04 16:20:20.647 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/lib/jquery/dist/jquery.min.js - - - 304 - text/javascript 0.7632ms
+2024-07-04 16:20:20.647 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/js/datatables.js - - - 304 - text/javascript 0.7329ms
+2024-07-04 16:20:20.647 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/js/jquery.magnific-popup.js - -
+2024-07-04 16:20:20.647 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/js/jquery.inview.min.js - -
+2024-07-04 16:20:20.648 +01:00 [INF] The file /js/jquery.inview.min.js was not modified
+2024-07-04 16:20:20.648 +01:00 [INF] The file /js/jquery.magnific-popup.js was not modified
+2024-07-04 16:20:20.648 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/js/jquery.magnific-popup.js - - - 304 - text/javascript 0.9062ms
+2024-07-04 16:20:20.649 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/js/jquery.nice-select.min.js - -
+2024-07-04 16:20:20.648 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/js/jquery.inview.min.js - - - 304 - text/javascript 0.7741ms
+2024-07-04 16:20:20.649 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/js/owl.carousel.js - -
+2024-07-04 16:20:20.649 +01:00 [INF] The file /js/jquery.nice-select.min.js was not modified
+2024-07-04 16:20:20.649 +01:00 [INF] The file /js/owl.carousel.js was not modified
+2024-07-04 16:20:20.650 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/js/jquery.nice-select.min.js - - - 304 - text/javascript 1.0353ms
+2024-07-04 16:20:20.650 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/js/custom.js - -
+2024-07-04 16:20:20.650 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/js/owl.carousel.js - - - 304 - text/javascript 1.0344ms
+2024-07-04 16:20:20.651 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/js/calculator.js - -
+2024-07-04 16:20:20.651 +01:00 [INF] The file /js/custom.js was not modified
+2024-07-04 16:20:20.652 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/js/custom.js - - - 304 - text/javascript 1.5392ms
+2024-07-04 16:20:20.652 +01:00 [INF] The file /js/calculator.js was not modified
+2024-07-04 16:20:20.652 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/js/clipboard.min.js - -
+2024-07-04 16:20:20.652 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/js/calculator.js - - - 304 - text/javascript 1.3343ms
+2024-07-04 16:20:20.652 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/js/sweetalert2.all.min.js - -
+2024-07-04 16:20:20.653 +01:00 [INF] The file /js/clipboard.min.js was not modified
+2024-07-04 16:20:20.653 +01:00 [INF] The file /js/sweetalert2.all.min.js was not modified
+2024-07-04 16:20:20.653 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/js/clipboard.min.js - - - 304 - text/javascript 0.6666ms
+2024-07-04 16:20:20.743 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/js/modernizr.js - -
+2024-07-04 16:20:20.743 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/css/animate.css - -
+2024-07-04 16:20:20.744 +01:00 [INF] The file /css/animate.css was not modified
+2024-07-04 16:20:20.744 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/css/animate.css - - - 304 - text/css 0.6731ms
+2024-07-04 16:20:20.754 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/css/fonts.css - -
+2024-07-04 16:20:20.743 +01:00 [INF] The file /js/dropify.min.js was not modified
+2024-07-04 16:20:20.755 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/js/dropify.min.js - - - 304 - text/javascript 109.0248ms
+2024-07-04 16:20:20.755 +01:00 [INF] The file /css/fonts.css was not modified
+2024-07-04 16:20:20.756 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/js/popper.min.js - -
+2024-07-04 16:20:20.756 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/css/fonts.css - - - 304 - text/css 1.7020ms
+2024-07-04 16:20:20.756 +01:00 [INF] The file /js/popper.min.js was not modified
+2024-07-04 16:20:20.756 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/js/grant.js - -
+2024-07-04 16:20:20.653 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/js/sweetalert2.all.min.js - - - 304 - text/javascript 0.4779ms
+2024-07-04 16:20:20.757 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/js/site.js?v=cZ1fxmBXamf3MuYQSYYqfouTonQdx3I3m8zvicY0w5M - -
+2024-07-04 16:20:20.757 +01:00 [INF] The file /js/site.js was not modified
+2024-07-04 16:20:20.758 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/js/site.js?v=cZ1fxmBXamf3MuYQSYYqfouTonQdx3I3m8zvicY0w5M - - - 304 - text/javascript 0.9743ms
+2024-07-04 16:20:20.758 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/css/flaticon.css - -
+2024-07-04 16:20:20.758 +01:00 [INF] The file /css/flaticon.css was not modified
+2024-07-04 16:20:20.759 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/css/flaticon.css - - - 304 - text/css 0.8309ms
+2024-07-04 16:20:20.759 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/css/font-awesome.css - -
+2024-07-04 16:20:20.760 +01:00 [INF] The file /css/font-awesome.css was not modified
+2024-07-04 16:20:20.760 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/css/font-awesome.css - - - 304 - text/css 0.8518ms
+2024-07-04 16:20:20.760 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/css/owl.carousel.css - -
+2024-07-04 16:20:20.761 +01:00 [INF] The file /css/owl.carousel.css was not modified
+2024-07-04 16:20:20.761 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/css/owl.carousel.css - - - 304 - text/css 0.6483ms
+2024-07-04 16:20:20.761 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/css/owl.theme.default.css - -
+2024-07-04 16:20:20.762 +01:00 [INF] The file /css/owl.theme.default.css was not modified
+2024-07-04 16:20:20.762 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/css/owl.theme.default.css - - - 304 - text/css 0.6565ms
+2024-07-04 16:20:20.762 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/css/nice-select.css - -
+2024-07-04 16:20:20.763 +01:00 [INF] The file /css/nice-select.css was not modified
+2024-07-04 16:20:20.763 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/css/nice-select.css - - - 304 - text/css 0.6726ms
+2024-07-04 16:20:20.763 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/fontawesome-free/js/all.js - -
+2024-07-04 16:20:20.764 +01:00 [INF] The file /fontawesome-free/js/all.js was not modified
+2024-07-04 16:20:20.764 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/fontawesome-free/js/all.js - - - 304 - text/javascript 0.7652ms
+2024-07-04 16:20:20.764 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/css/datatables.css - -
+2024-07-04 16:20:20.765 +01:00 [INF] The file /css/datatables.css was not modified
+2024-07-04 16:20:20.766 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/css/datatables.css - - - 304 - text/css 1.4636ms
+2024-07-04 16:20:20.880 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/js/popper.min.js - - - 304 - text/javascript 0.6314ms
+2024-07-04 16:20:20.880 +01:00 [INF] The file /js/modernizr.js was not modified
+2024-07-04 16:20:20.880 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/css/magnific-popup.css - -
+2024-07-04 16:20:20.880 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/js/modernizr.js - - - 304 - text/javascript 136.7785ms
+2024-07-04 16:20:20.880 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/css/style.css - -
+2024-07-04 16:20:20.880 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/css/reset.css - -
+2024-07-04 16:20:20.880 +01:00 [INF] The file /css/magnific-popup.css was not modified
+2024-07-04 16:20:20.880 +01:00 [INF] The file /css/style.css was not modified
+2024-07-04 16:20:20.881 +01:00 [INF] The file /css/reset.css was not modified
+2024-07-04 16:20:20.881 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/css/style.css - - - 304 - text/css 0.4580ms
+2024-07-04 16:20:20.881 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/css/reset.css - - - 304 - text/css 0.3664ms
+2024-07-04 16:20:20.882 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/css/responsive.css - -
+2024-07-04 16:20:20.882 +01:00 [INF] The file /css/responsive.css was not modified
+2024-07-04 16:20:20.882 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/css/responsive.css - - - 304 - text/css 0.7501ms
+2024-07-04 16:20:20.882 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/images/Web_Photo_Editor.png - -
+2024-07-04 16:20:20.883 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/images/abt_3.png - -
+2024-07-04 16:20:20.881 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/css/magnific-popup.css - - - 304 - text/css 0.6329ms
+2024-07-04 16:20:20.883 +01:00 [INF] The file /images/abt_3.png was not modified
+2024-07-04 16:20:20.883 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/css/bootstrap.min.css - -
+2024-07-04 16:20:20.883 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/images/abt_3.png - - - 304 - image/png 0.5426ms
+2024-07-04 16:20:20.883 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/css/dropify.min.css - -
+2024-07-04 16:20:20.883 +01:00 [INF] The file /css/bootstrap.min.css was not modified
+2024-07-04 16:20:20.883 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/css/bootstrap.min.css - - - 304 - text/css 0.5528ms
+2024-07-04 16:20:20.884 +01:00 [INF] The file /css/dropify.min.css was not modified
+2024-07-04 16:20:20.884 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/css/dropify.min.css - - - 304 - text/css 0.4801ms
+2024-07-04 16:20:20.911 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/js/grant.js - - - 302 - - 155.5000ms
+2024-07-04 16:20:20.913 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/ - - - 200 - text/html;+charset=utf-8 2826.3008ms
+2024-07-04 16:20:20.935 +01:00 [INF] The file /images/Web_Photo_Editor.png was not modified
+2024-07-04 16:20:20.936 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/images/Web_Photo_Editor.png - - - 304 - image/png 53.2940ms
+2024-07-04 16:20:20.962 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/Home/AccessDenied - -
+2024-07-04 16:20:20.990 +01:00 [INF] Executing endpoint 'Tradeify.Controllers.HomeController.AccessDenied (Tradeify)'
+2024-07-04 16:20:20.993 +01:00 [INF] Route matched with {action = "AccessDenied", controller = "Home"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult AccessDenied() on controller Tradeify.Controllers.HomeController (Tradeify).
+2024-07-04 16:20:20.999 +01:00 [INF] Executing ViewResult, running view AccessDenied.
+2024-07-04 16:20:21.033 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/images/ac1.jpg - -
+2024-07-04 16:20:21.035 +01:00 [INF] The file /images/ac1.jpg was not modified
+2024-07-04 16:20:21.035 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/images/ac1.jpg - - - 304 - image/jpeg 2.0436ms
+2024-07-04 16:20:21.035 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/images/ac2.jpg - -
+2024-07-04 16:20:21.036 +01:00 [INF] The file /images/ac2.jpg was not modified
+2024-07-04 16:20:21.036 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/images/ac2.jpg - - - 304 - image/jpeg 0.6706ms
+2024-07-04 16:20:21.092 +01:00 [INF] Executed DbCommand (17ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Discriminator] = N'ApplicationUser' AND [a].[Deactivated] = CAST(0 AS bit)
+2024-07-04 16:20:21.110 +01:00 [INF] Executed ViewResult - view AccessDenied executed in 113.3389ms.
+2024-07-04 16:20:21.111 +01:00 [INF] Executed action Tradeify.Controllers.HomeController.AccessDenied (Tradeify) in 117.1052ms
+2024-07-04 16:20:21.111 +01:00 [INF] Executed endpoint 'Tradeify.Controllers.HomeController.AccessDenied (Tradeify)'
+2024-07-04 16:20:21.112 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/Home/AccessDenied - - - 200 - text/html;+charset=utf-8 149.7867ms
+2024-07-04 16:20:21.139 +01:00 [INF] Request starting HTTP/1.1 GET https://localhost:44308/lib/bootstrap/dist/js/bootstrap.bundle.min.js.map - -
+2024-07-04 16:20:21.257 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/images/loader.gif - -
+2024-07-04 16:20:21.262 +01:00 [INF] The file /images/loader.gif was not modified
+2024-07-04 16:20:21.262 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/images/loader.gif - - - 304 - image/gif 5.3342ms
+2024-07-04 16:20:21.280 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/images/ac3.jpg - -
+2024-07-04 16:20:21.280 +01:00 [INF] The file /images/ac3.jpg was not modified
+2024-07-04 16:20:21.282 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/images/ac3.jpg - - - 304 - image/jpeg 1.0565ms
+2024-07-04 16:20:21.284 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/images/faq.jpg - -
+2024-07-04 16:20:21.285 +01:00 [INF] The file /images/faq.jpg was not modified
+2024-07-04 16:20:21.285 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/images/faq.jpg - - - 304 - image/jpeg 0.8517ms
+2024-07-04 16:20:21.305 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/_vs/browserLink - -
+2024-07-04 16:20:21.313 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/_framework/aspnetcore-browser-refresh.js - -
+2024-07-04 16:20:21.322 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/_framework/aspnetcore-browser-refresh.js - - - 200 13752 application/javascript;+charset=utf-8 7.9198ms
+2024-07-04 16:20:21.356 +01:00 [INF] Sending file. Request path: '/lib/bootstrap/dist/js/bootstrap.bundle.min.js.map'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.min.js.map'
+2024-07-04 16:20:21.430 +01:00 [INF] Request finished HTTP/1.1 GET https://localhost:44308/lib/bootstrap/dist/js/bootstrap.bundle.min.js.map - - - 200 327261 text/plain 291.4740ms
+2024-07-04 16:20:21.545 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/fonts/Flaticon.woff2 - -
+2024-07-04 16:20:21.545 +01:00 [INF] The file /fonts/Flaticon.woff2 was not modified
+2024-07-04 16:20:21.546 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/fonts/Flaticon.woff2 - - - 304 - font/woff2 0.9124ms
+2024-07-04 16:20:21.546 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/webfonts/fa-solid-900.woff2 - -
+2024-07-04 16:20:21.547 +01:00 [INF] The file /webfonts/fa-solid-900.woff2 was not modified
+2024-07-04 16:20:21.547 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/webfonts/fa-solid-900.woff2 - - - 304 - font/woff2 0.7291ms
+2024-07-04 16:20:21.550 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/webfonts/fa-brands-400.woff2 - -
+2024-07-04 16:20:21.551 +01:00 [INF] The file /webfonts/fa-brands-400.woff2 was not modified
+2024-07-04 16:20:21.563 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/webfonts/fa-brands-400.woff2 - - - 304 - font/woff2 13.4972ms
+2024-07-04 16:20:21.910 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 607.8355ms
+2024-07-04 16:22:15.994 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/lib/bootstrap/dist/js/bootstrap.bundle.min.js.map - -
+2024-07-04 16:22:15.995 +01:00 [INF] The file /lib/bootstrap/dist/js/bootstrap.bundle.min.js.map was not modified
+2024-07-04 16:22:15.998 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/lib/bootstrap/dist/js/bootstrap.bundle.min.js.map - - - 304 - text/plain 3.5606ms
+2024-07-04 16:26:48.382 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/ - -
+2024-07-04 16:26:48.428 +01:00 [INF] Executing endpoint 'Tradeify.Controllers.HomeController.Index (Tradeify)'
+2024-07-04 16:26:48.429 +01:00 [INF] Route matched with {action = "Index", controller = "Home"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index() on controller Tradeify.Controllers.HomeController (Tradeify).
+2024-07-04 16:26:48.430 +01:00 [INF] Executing ViewResult, running view Index.
+2024-07-04 16:26:49.365 +01:00 [INF] Executed DbCommand (121ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Discriminator] = N'ApplicationUser' AND [a].[Deactivated] = CAST(0 AS bit)
+2024-07-04 16:26:49.368 +01:00 [INF] Executed ViewResult - view Index executed in 939.4862ms.
+2024-07-04 16:26:49.368 +01:00 [INF] Executed action Tradeify.Controllers.HomeController.Index (Tradeify) in 939.7526ms
+2024-07-04 16:26:49.369 +01:00 [INF] Executed endpoint 'Tradeify.Controllers.HomeController.Index (Tradeify)'
+2024-07-04 16:26:49.370 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/ - - - 200 - text/html;+charset=utf-8 987.6057ms
+2024-07-04 16:26:49.512 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/lib/bootstrap/dist/js/bootstrap.bundle.min.js - -
+2024-07-04 16:26:49.531 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/js/modernizr.js - -
+2024-07-04 16:26:49.576 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/js/jquery.menu-aim.js - -
+2024-07-04 16:26:49.593 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/lib/jquery/dist/jquery.min.js - -
+2024-07-04 16:26:49.883 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/js/plugin.js - -
+2024-07-04 16:26:50.012 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/js/jquery.countTo.js - -
+2024-07-04 16:26:50.012 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/js/datatables.js - -
+2024-07-04 16:26:50.012 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/js/dropify.min.js - -
+2024-07-04 16:26:50.032 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/js/jquery.nice-select.min.js - -
+2024-07-04 16:26:50.087 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/js/jquery.inview.min.js - -
+2024-07-04 16:26:50.212 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/js/jquery.magnific-popup.js - -
+2024-07-04 16:26:50.215 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/js/owl.carousel.js - -
+2024-07-04 16:26:50.216 +01:00 [INF] Sending file. Request path: '/js/jquery.menu-aim.js'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\js\jquery.menu-aim.js'
+2024-07-04 16:26:50.219 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/js/calculator.js - -
+2024-07-04 16:26:50.219 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/js/jquery.menu-aim.js - - - 200 14937 text/javascript 642.4752ms
+2024-07-04 16:26:50.219 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/js/custom.js - -
+2024-07-04 16:26:50.251 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/js/jquery-3.3.1.min.js - -
+2024-07-04 16:26:50.344 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/js/bootstrap.min.js - -
+2024-07-04 16:26:50.346 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/js/popper.min.js - -
+2024-07-04 16:26:50.419 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/js/clipboard.min.js - -
+2024-07-04 16:26:50.486 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/fontawesome-free/js/all.js - -
+2024-07-04 16:26:50.486 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/js/sweetalert2.all.min.js - -
+2024-07-04 16:26:50.518 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/css/animate.css - -
+2024-07-04 16:26:50.518 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/css/fonts.css - -
+2024-07-04 16:26:50.518 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/css/bootstrap.min.css - -
+2024-07-04 16:26:50.537 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/js/grant.js - -
+2024-07-04 16:26:50.542 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/js/site.js?v=cZ1fxmBXamf3MuYQSYYqfouTonQdx3I3m8zvicY0w5M - -
+2024-07-04 16:26:50.553 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/css/flaticon.css - -
+2024-07-04 16:26:50.569 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/css/font-awesome.css - -
+2024-07-04 16:26:50.569 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/css/owl.carousel.css - -
+2024-07-04 16:26:50.593 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/css/owl.theme.default.css - -
+2024-07-04 16:26:50.599 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/js/grant.js - - - 302 - - 62.5913ms
+2024-07-04 16:26:50.600 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/css/datatables.css - -
+2024-07-04 16:26:50.600 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/css/magnific-popup.css - -
+2024-07-04 16:26:50.600 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/css/style.css - -
+2024-07-04 16:26:50.620 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/images/Web_Photo_Editor.png - -
+2024-07-04 16:26:50.620 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/css/responsive.css - -
+2024-07-04 16:26:50.630 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/images/abt_3.png - -
+2024-07-04 16:26:50.665 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/css/dropify.min.css - -
+2024-07-04 16:26:50.667 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/css/nice-select.css - -
+2024-07-04 16:26:50.665 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/css/reset.css - -
+2024-07-04 16:26:50.680 +01:00 [INF] Sending file. Request path: '/js/jquery.countTo.js'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\js\jquery.countTo.js'
+2024-07-04 16:26:50.681 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/js/jquery.countTo.js - - - 200 2581 text/javascript 669.0441ms
+2024-07-04 16:26:50.716 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/Home/AccessDenied - -
+2024-07-04 16:26:50.717 +01:00 [INF] Sending file. Request path: '/js/jquery.nice-select.min.js'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\js\jquery.nice-select.min.js'
+2024-07-04 16:26:50.720 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/js/jquery.nice-select.min.js - - - 200 2945 text/javascript 688.0803ms
+2024-07-04 16:26:50.730 +01:00 [INF] Executing endpoint 'Tradeify.Controllers.HomeController.AccessDenied (Tradeify)'
+2024-07-04 16:26:50.730 +01:00 [INF] Route matched with {action = "AccessDenied", controller = "Home"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult AccessDenied() on controller Tradeify.Controllers.HomeController (Tradeify).
+2024-07-04 16:26:50.730 +01:00 [INF] Executing ViewResult, running view AccessDenied.
+2024-07-04 16:26:50.749 +01:00 [INF] Sending file. Request path: '/js/jquery.inview.min.js'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\js\jquery.inview.min.js'
+2024-07-04 16:26:50.750 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/js/jquery.inview.min.js - - - 200 1424 text/javascript 663.0036ms
+2024-07-04 16:26:50.754 +01:00 [INF] Sending file. Request path: '/js/custom.js'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\js\custom.js'
+2024-07-04 16:26:50.760 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/js/custom.js - - - 200 15221 text/javascript 540.9078ms
+2024-07-04 16:26:50.763 +01:00 [INF] Sending file. Request path: '/js/dropify.min.js'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\js\dropify.min.js'
+2024-07-04 16:26:50.769 +01:00 [INF] Sending file. Request path: '/js/modernizr.js'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\js\modernizr.js'
+2024-07-04 16:26:50.778 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/js/dropify.min.js - - - 200 13328 text/javascript 765.9193ms
+2024-07-04 16:26:50.785 +01:00 [INF] Sending file. Request path: '/css/flaticon.css'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\css\flaticon.css'
+2024-07-04 16:26:50.786 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/css/flaticon.css - - - 200 2065 text/css 233.5820ms
+2024-07-04 16:26:50.786 +01:00 [INF] Sending file. Request path: '/css/owl.carousel.css'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\css\owl.carousel.css'
+2024-07-04 16:26:50.796 +01:00 [INF] Sending file. Request path: '/js/clipboard.min.js'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\js\clipboard.min.js'
+2024-07-04 16:26:50.796 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/css/owl.carousel.css - - - 200 4198 text/css 226.6909ms
+2024-07-04 16:26:50.796 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/js/clipboard.min.js - - - 200 8839 text/javascript 376.9432ms
+2024-07-04 16:26:50.810 +01:00 [INF] Sending file. Request path: '/css/owl.theme.default.css'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\css\owl.theme.default.css'
+2024-07-04 16:26:50.811 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/css/owl.theme.default.css - - - 200 1353 text/css 217.3497ms
+2024-07-04 16:26:50.811 +01:00 [INF] Sending file. Request path: '/css/datatables.css'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\css\datatables.css'
+2024-07-04 16:26:50.815 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/css/datatables.css - - - 200 13843 text/css 214.9077ms
+2024-07-04 16:26:50.819 +01:00 [INF] Sending file. Request path: '/css/magnific-popup.css'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\css\magnific-popup.css'
+2024-07-04 16:26:50.820 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/css/magnific-popup.css - - - 200 7302 text/css 219.5270ms
+2024-07-04 16:26:50.860 +01:00 [INF] Sending file. Request path: '/js/calculator.js'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\js\calculator.js'
+2024-07-04 16:26:50.860 +01:00 [INF] Sending file. Request path: '/css/dropify.min.css'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\css\dropify.min.css'
+2024-07-04 16:26:50.860 +01:00 [INF] Sending file. Request path: '/css/nice-select.css'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\css\nice-select.css'
+2024-07-04 16:26:50.860 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/css/dropify.min.css - - - 200 9456 text/css 195.0214ms
+2024-07-04 16:26:50.860 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/js/calculator.js - - - 200 5387 text/javascript 641.2466ms
+2024-07-04 16:26:50.860 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/css/nice-select.css - - - 200 5335 text/css 192.5822ms
+2024-07-04 16:26:50.860 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/js/modernizr.js - - - 200 30169 text/javascript 1328.7673ms
+2024-07-04 16:26:50.860 +01:00 [INF] Executed DbCommand (16ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Discriminator] = N'ApplicationUser' AND [a].[Deactivated] = CAST(0 AS bit)
+2024-07-04 16:26:50.860 +01:00 [INF] Sending file. Request path: '/js/popper.min.js'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\js\popper.min.js'
+2024-07-04 16:26:50.861 +01:00 [INF] Sending file. Request path: '/css/fonts.css'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\css\fonts.css'
+2024-07-04 16:26:50.861 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/css/fonts.css - - - 200 24411 text/css 342.7696ms
+2024-07-04 16:26:50.902 +01:00 [INF] Executed ViewResult - view AccessDenied executed in 170.8039ms.
+2024-07-04 16:26:50.903 +01:00 [INF] Executed action Tradeify.Controllers.HomeController.AccessDenied (Tradeify) in 172.981ms
+2024-07-04 16:26:50.903 +01:00 [INF] Executed endpoint 'Tradeify.Controllers.HomeController.AccessDenied (Tradeify)'
+2024-07-04 16:26:50.904 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/Home/AccessDenied - - - 200 - text/html;+charset=utf-8 189.3457ms
+2024-07-04 16:26:50.913 +01:00 [INF] Sending file. Request path: '/js/jquery.magnific-popup.js'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\js\jquery.magnific-popup.js'
+2024-07-04 16:26:50.914 +01:00 [INF] Sending file. Request path: '/css/reset.css'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\css\reset.css'
+2024-07-04 16:26:50.915 +01:00 [INF] Sending file. Request path: '/css/responsive.css'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\css\responsive.css'
+2024-07-04 16:26:50.916 +01:00 [INF] Sending file. Request path: '/lib/bootstrap/dist/js/bootstrap.bundle.min.js'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.min.js'
+2024-07-04 16:26:50.916 +01:00 [INF] Sending file. Request path: '/js/bootstrap.min.js'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\js\bootstrap.min.js'
+2024-07-04 16:26:50.931 +01:00 [INF] Sending file. Request path: '/js/site.js'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\js\site.js'
+2024-07-04 16:26:50.933 +01:00 [INF] Sending file. Request path: '/css/animate.css'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\css\animate.css'
+2024-07-04 16:26:50.934 +01:00 [INF] Sending file. Request path: '/css/font-awesome.css'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\css\font-awesome.css'
+2024-07-04 16:26:50.935 +01:00 [INF] Sending file. Request path: '/lib/jquery/dist/jquery.min.js'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\lib\jquery\dist\jquery.min.js'
+2024-07-04 16:26:50.946 +01:00 [INF] Sending file. Request path: '/js/jquery-3.3.1.min.js'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\js\jquery-3.3.1.min.js'
+2024-07-04 16:26:50.948 +01:00 [INF] Sending file. Request path: '/js/sweetalert2.all.min.js'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\js\sweetalert2.all.min.js'
+2024-07-04 16:26:50.949 +01:00 [INF] Sending file. Request path: '/js/owl.carousel.js'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\js\owl.carousel.js'
+2024-07-04 16:26:50.950 +01:00 [INF] Sending file. Request path: '/js/datatables.js'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\js\datatables.js'
+2024-07-04 16:26:50.955 +01:00 [INF] Sending file. Request path: '/css/bootstrap.min.css'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\css\bootstrap.min.css'
+2024-07-04 16:26:50.967 +01:00 [INF] Sending file. Request path: '/images/abt_3.png'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\images\abt_3.png'
+2024-07-04 16:26:50.982 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/js/popper.min.js - - - 200 25275 text/javascript 635.7618ms
+2024-07-04 16:26:50.982 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/js/jquery.magnific-popup.js - - - 200 43557 text/javascript 769.5216ms
+2024-07-04 16:26:50.982 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/css/reset.css - - - 200 32466 text/css 317.5280ms
+2024-07-04 16:26:50.983 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/css/responsive.css - - - 200 32137 text/css 363.3356ms
+2024-07-04 16:26:50.986 +01:00 [INF] Sending file. Request path: '/js/plugin.js'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\js\plugin.js'
+2024-07-04 16:26:50.987 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/lib/bootstrap/dist/js/bootstrap.bundle.min.js - - - 200 78474 text/javascript 1475.0938ms
+2024-07-04 16:26:50.991 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/js/bootstrap.min.js - - - 200 51004 text/javascript 647.1283ms
+2024-07-04 16:26:50.992 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/js/site.js?v=cZ1fxmBXamf3MuYQSYYqfouTonQdx3I3m8zvicY0w5M - - - 200 45033 text/javascript 454.9569ms
+2024-07-04 16:26:50.993 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/css/animate.css - - - 200 75599 text/css 475.1385ms
+2024-07-04 16:26:50.993 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/css/font-awesome.css - - - 200 53590 text/css 424.5997ms
+2024-07-04 16:26:50.994 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/lib/jquery/dist/jquery.min.js - - - 200 89478 text/javascript 1400.6884ms
+2024-07-04 16:26:50.994 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/js/jquery-3.3.1.min.js - - - 200 86929 text/javascript 742.5110ms
+2024-07-04 16:26:50.997 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/js/datatables.js - - - 200 82575 text/javascript 985.5210ms
+2024-07-04 16:26:51.003 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/css/bootstrap.min.css - - - 200 140897 text/css 485.5320ms
+2024-07-04 16:26:51.009 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/js/sweetalert2.all.min.js - - - 200 72859 text/javascript 523.5356ms
+2024-07-04 16:26:51.010 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/js/owl.carousel.js - - - 200 88643 text/javascript 795.4543ms
+2024-07-04 16:26:51.017 +01:00 [INF] Sending file. Request path: '/fontawesome-free/js/all.js'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\fontawesome-free\js\all.js'
+2024-07-04 16:26:51.018 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/images/abt_3.png - - - 200 158002 image/png 388.3171ms
+2024-07-04 16:26:51.183 +01:00 [INF] Sending file. Request path: '/css/style.css'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\css\style.css'
+2024-07-04 16:26:51.262 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/lib/bootstrap/dist/js/bootstrap.bundle.min.js.map - -
+2024-07-04 16:26:51.484 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/css/style.css - - - 200 196839 text/css 883.6917ms
+2024-07-04 16:26:51.484 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/images/ac1.jpg - -
+2024-07-04 16:26:51.520 +01:00 [INF] Sending file. Request path: '/images/ac1.jpg'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\images\ac1.jpg'
+2024-07-04 16:26:51.520 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/images/ac1.jpg - - - 200 819 image/jpeg 35.8958ms
+2024-07-04 16:26:51.544 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/js/plugin.js - - - 200 612194 text/javascript 1661.7297ms
+2024-07-04 16:26:51.684 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/images/ac2.jpg - -
+2024-07-04 16:26:51.764 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/fontawesome-free/js/all.js - - - 200 1252841 text/javascript 1278.7012ms
+2024-07-04 16:26:52.494 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/images/loader.gif - -
+2024-07-04 16:26:52.494 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/_framework/aspnetcore-browser-refresh.js - -
+2024-07-04 16:26:52.496 +01:00 [INF] Sending file. Request path: '/images/ac2.jpg'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\images\ac2.jpg'
+2024-07-04 16:26:52.496 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/images/ac2.jpg - - - 200 819 image/jpeg 811.7457ms
+2024-07-04 16:26:52.496 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/_framework/aspnetcore-browser-refresh.js - - - 200 13752 application/javascript;+charset=utf-8 1.7480ms
+2024-07-04 16:26:52.496 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/_vs/browserLink - -
+2024-07-04 16:26:52.494 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/images/ac3.jpg - -
+2024-07-04 16:26:53.233 +01:00 [INF] Sending file. Request path: '/images/ac3.jpg'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\images\ac3.jpg'
+2024-07-04 16:26:53.233 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/fonts/Flaticon.woff2 - -
+2024-07-04 16:26:53.234 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/images/ac3.jpg - - - 200 819 image/jpeg 739.3703ms
+2024-07-04 16:26:53.234 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/webfonts/fa-solid-900.woff2 - -
+2024-07-04 16:26:53.235 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/images/faq.jpg - -
+2024-07-04 16:26:53.235 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/webfonts/fa-brands-400.woff2 - -
+2024-07-04 16:26:53.358 +01:00 [INF] Sending file. Request path: '/fonts/Flaticon.woff2'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\fonts\Flaticon.woff2'
+2024-07-04 16:26:53.358 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/fonts/Flaticon.woff2 - - - 200 5044 font/woff2 125.3671ms
+2024-07-04 16:26:53.413 +01:00 [INF] Sending file. Request path: '/images/faq.jpg'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\images\faq.jpg'
+2024-07-04 16:26:53.544 +01:00 [INF] Sending file. Request path: '/webfonts/fa-brands-400.woff2'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\webfonts\fa-brands-400.woff2'
+2024-07-04 16:26:53.544 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 1047.8292ms
+2024-07-04 16:26:53.544 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/images/faq.jpg - - - 200 34801 image/jpeg 309.7053ms
+2024-07-04 16:26:53.753 +01:00 [INF] Sending file. Request path: '/webfonts/fa-solid-900.woff2'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\webfonts\fa-solid-900.woff2'
+2024-07-04 16:26:53.758 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/webfonts/fa-brands-400.woff2 - - - 200 74288 font/woff2 522.4434ms
+2024-07-04 16:26:53.769 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/webfonts/fa-solid-900.woff2 - - - 200 79100 font/woff2 534.1693ms
+2024-07-04 16:26:53.819 +01:00 [INF] Sending file. Request path: '/lib/bootstrap/dist/js/bootstrap.bundle.min.js.map'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.min.js.map'
+2024-07-04 16:26:53.853 +01:00 [INF] Sending file. Request path: '/images/Web_Photo_Editor.png'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\images\Web_Photo_Editor.png'
+2024-07-04 16:26:53.865 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/lib/bootstrap/dist/js/bootstrap.bundle.min.js.map - - - 200 327261 text/plain 2602.5862ms
+2024-07-04 16:26:53.880 +01:00 [INF] Sending file. Request path: '/images/loader.gif'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\images\loader.gif'
+2024-07-04 16:26:53.928 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/images/loader.gif - - - 200 475965 image/gif 1434.1902ms
+2024-07-04 16:26:53.994 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/images/Web_Photo_Editor.png - - - 200 928695 image/png 3374.8230ms
+2024-07-04 16:26:54.010 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/images/Web_Photo_Editor.png - -
+2024-07-04 16:26:54.079 +01:00 [INF] Sending file. Request path: '/images/Web_Photo_Editor.png'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\images\Web_Photo_Editor.png'
+2024-07-04 16:26:55.769 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/images/Web_Photo_Editor.png - - - 200 928695 image/png 1759.8287ms
+2024-07-04 16:26:56.714 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/ - -
+2024-07-04 16:26:56.729 +01:00 [INF] Executing endpoint 'Tradeify.Controllers.HomeController.Index (Tradeify)'
+2024-07-04 16:26:56.731 +01:00 [INF] Route matched with {action = "Index", controller = "Home"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index() on controller Tradeify.Controllers.HomeController (Tradeify).
+2024-07-04 16:26:56.735 +01:00 [INF] Executing ViewResult, running view Index.
+2024-07-04 16:26:56.770 +01:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Discriminator] = N'ApplicationUser' AND [a].[Deactivated] = CAST(0 AS bit)
+2024-07-04 16:26:57.168 +01:00 [INF] Executed ViewResult - view Index executed in 436.6406ms.
+2024-07-04 16:26:57.169 +01:00 [INF] Executed action Tradeify.Controllers.HomeController.Index (Tradeify) in 437.0705ms
+2024-07-04 16:26:57.169 +01:00 [INF] Executed endpoint 'Tradeify.Controllers.HomeController.Index (Tradeify)'
+2024-07-04 16:26:57.180 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/ - - - 200 - text/html;+charset=utf-8 465.0900ms
+2024-07-04 16:26:57.203 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/js/grant.js - -
+2024-07-04 16:26:57.392 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/js/grant.js - - - 302 - - 188.6642ms
+2024-07-04 16:26:57.413 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/_framework/aspnetcore-browser-refresh.js - -
+2024-07-04 16:26:57.428 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/_framework/aspnetcore-browser-refresh.js - - - 200 13752 application/javascript;+charset=utf-8 14.6234ms
+2024-07-04 16:26:57.910 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/_vs/browserLink - -
+2024-07-04 16:26:57.968 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/Home/AccessDenied - -
+2024-07-04 16:26:57.975 +01:00 [INF] Executing endpoint 'Tradeify.Controllers.HomeController.AccessDenied (Tradeify)'
+2024-07-04 16:26:57.979 +01:00 [INF] Route matched with {action = "AccessDenied", controller = "Home"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult AccessDenied() on controller Tradeify.Controllers.HomeController (Tradeify).
+2024-07-04 16:26:57.981 +01:00 [INF] Executing ViewResult, running view AccessDenied.
+2024-07-04 16:26:57.995 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 84.1012ms
+2024-07-04 16:26:58.015 +01:00 [INF] Executed DbCommand (13ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Discriminator] = N'ApplicationUser' AND [a].[Deactivated] = CAST(0 AS bit)
+2024-07-04 16:26:58.019 +01:00 [INF] Executed ViewResult - view AccessDenied executed in 39.32ms.
+2024-07-04 16:26:58.019 +01:00 [INF] Executed action Tradeify.Controllers.HomeController.AccessDenied (Tradeify) in 39.8963ms
+2024-07-04 16:26:58.019 +01:00 [INF] Executed endpoint 'Tradeify.Controllers.HomeController.AccessDenied (Tradeify)'
+2024-07-04 16:26:58.019 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/Home/AccessDenied - - - 200 - text/html;+charset=utf-8 51.7519ms
+2024-07-04 16:32:46.585 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/ - -
+2024-07-04 16:32:46.595 +01:00 [INF] Executing endpoint 'Tradeify.Controllers.HomeController.Index (Tradeify)'
+2024-07-04 16:32:46.595 +01:00 [INF] Route matched with {action = "Index", controller = "Home"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index() on controller Tradeify.Controllers.HomeController (Tradeify).
+2024-07-04 16:32:46.595 +01:00 [INF] Executing ViewResult, running view Index.
+2024-07-04 16:32:47.860 +01:00 [INF] Executed DbCommand (138ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Discriminator] = N'ApplicationUser' AND [a].[Deactivated] = CAST(0 AS bit)
+2024-07-04 16:32:47.863 +01:00 [INF] Executed ViewResult - view Index executed in 1267.7316ms.
+2024-07-04 16:32:47.864 +01:00 [INF] Executed action Tradeify.Controllers.HomeController.Index (Tradeify) in 1268.5028ms
+2024-07-04 16:32:47.864 +01:00 [INF] Executed endpoint 'Tradeify.Controllers.HomeController.Index (Tradeify)'
+2024-07-04 16:32:47.868 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/ - - - 200 - text/html;+charset=utf-8 1283.5878ms
+2024-07-04 16:32:47.983 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/lib/bootstrap/dist/js/bootstrap.bundle.min.js - -
+2024-07-04 16:32:48.052 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/js/modernizr.js - -
+2024-07-04 16:32:48.061 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/js/jquery.countTo.js - -
+2024-07-04 16:32:48.070 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/js/jquery.menu-aim.js - -
+2024-07-04 16:32:48.081 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/js/plugin.js - -
+2024-07-04 16:32:48.119 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/js/dropify.min.js - -
+2024-07-04 16:32:48.290 +01:00 [INF] Sending file. Request path: '/js/jquery.countTo.js'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\js\jquery.countTo.js'
+2024-07-04 16:32:48.290 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/js/jquery.countTo.js - - - 200 2581 text/javascript 228.7956ms
+2024-07-04 16:32:48.290 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/js/datatables.js - -
+2024-07-04 16:32:48.290 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/js/jquery.nice-select.min.js - -
+2024-07-04 16:32:48.372 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/js/jquery.inview.min.js - -
+2024-07-04 16:32:48.376 +01:00 [INF] Sending file. Request path: '/js/dropify.min.js'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\js\dropify.min.js'
+2024-07-04 16:32:48.376 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/js/jquery.magnific-popup.js - -
+2024-07-04 16:32:48.376 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/js/dropify.min.js - - - 200 13328 text/javascript 258.7379ms
+2024-07-04 16:32:48.377 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/js/owl.carousel.js - -
+2024-07-04 16:32:48.377 +01:00 [INF] Sending file. Request path: '/js/jquery.menu-aim.js'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\js\jquery.menu-aim.js'
+2024-07-04 16:32:48.381 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/js/jquery.menu-aim.js - - - 200 14937 text/javascript 308.2642ms
+2024-07-04 16:32:48.384 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/js/calculator.js - -
+2024-07-04 16:32:48.386 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/js/custom.js - -
+2024-07-04 16:32:48.388 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/js/popper.min.js - -
+2024-07-04 16:32:48.394 +01:00 [INF] Sending file. Request path: '/js/modernizr.js'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\js\modernizr.js'
+2024-07-04 16:32:48.405 +01:00 [INF] Sending file. Request path: '/js/jquery.nice-select.min.js'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\js\jquery.nice-select.min.js'
+2024-07-04 16:32:48.406 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/js/jquery.nice-select.min.js - - - 200 2945 text/javascript 115.6246ms
+2024-07-04 16:32:48.418 +01:00 [INF] Sending file. Request path: '/js/jquery.inview.min.js'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\js\jquery.inview.min.js'
+2024-07-04 16:32:48.418 +01:00 [INF] Sending file. Request path: '/js/calculator.js'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\js\calculator.js'
+2024-07-04 16:32:48.418 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/js/jquery.inview.min.js - - - 200 1424 text/javascript 46.2695ms
+2024-07-04 16:32:48.418 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/js/calculator.js - - - 200 5387 text/javascript 34.2949ms
+2024-07-04 16:32:48.419 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/js/clipboard.min.js - -
+2024-07-04 16:32:48.419 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/js/sweetalert2.all.min.js - -
+2024-07-04 16:32:48.419 +01:00 [INF] Sending file. Request path: '/js/custom.js'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\js\custom.js'
+2024-07-04 16:32:48.419 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/js/custom.js - - - 200 15221 text/javascript 32.9968ms
+2024-07-04 16:32:48.423 +01:00 [INF] Sending file. Request path: '/lib/bootstrap/dist/js/bootstrap.bundle.min.js'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.min.js'
+2024-07-04 16:32:48.423 +01:00 [INF] Sending file. Request path: '/js/popper.min.js'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\js\popper.min.js'
+2024-07-04 16:32:48.427 +01:00 [INF] Sending file. Request path: '/js/jquery.magnific-popup.js'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\js\jquery.magnific-popup.js'
+2024-07-04 16:32:48.427 +01:00 [INF] Sending file. Request path: '/js/clipboard.min.js'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\js\clipboard.min.js'
+2024-07-04 16:32:48.427 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/fontawesome-free/js/all.js - -
+2024-07-04 16:32:48.427 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/js/clipboard.min.js - - - 200 8839 text/javascript 8.4242ms
+2024-07-04 16:32:48.427 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/js/grant.js - -
+2024-07-04 16:32:48.429 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/js/site.js?v=cZ1fxmBXamf3MuYQSYYqfouTonQdx3I3m8zvicY0w5M - -
+2024-07-04 16:32:48.433 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/css/animate.css - -
+2024-07-04 16:32:48.440 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/js/grant.js - - - 302 - - 12.4143ms
+2024-07-04 16:32:48.442 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/css/bootstrap.min.css - -
+2024-07-04 16:32:48.476 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/css/fonts.css - -
+2024-07-04 16:32:48.476 +01:00 [INF] Sending file. Request path: '/js/owl.carousel.js'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\js\owl.carousel.js'
+2024-07-04 16:32:48.476 +01:00 [INF] Sending file. Request path: '/js/datatables.js'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\js\datatables.js'
+2024-07-04 16:32:48.476 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/css/flaticon.css - -
+2024-07-04 16:32:48.490 +01:00 [INF] Sending file. Request path: '/js/site.js'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\js\site.js'
+2024-07-04 16:32:48.490 +01:00 [INF] Sending file. Request path: '/js/sweetalert2.all.min.js'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\js\sweetalert2.all.min.js'
+2024-07-04 16:32:48.491 +01:00 [INF] Sending file. Request path: '/css/flaticon.css'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\css\flaticon.css'
+2024-07-04 16:32:48.491 +01:00 [INF] Sending file. Request path: '/css/fonts.css'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\css\fonts.css'
+2024-07-04 16:32:48.491 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/css/flaticon.css - - - 200 2065 text/css 15.5376ms
+2024-07-04 16:32:48.491 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/css/font-awesome.css - -
+2024-07-04 16:32:48.492 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/css/owl.carousel.css - -
+2024-07-04 16:32:48.492 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/css/fonts.css - - - 200 24411 text/css 15.7475ms
+2024-07-04 16:32:48.492 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/css/owl.theme.default.css - -
+2024-07-04 16:32:48.511 +01:00 [INF] Sending file. Request path: '/css/owl.carousel.css'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\css\owl.carousel.css'
+2024-07-04 16:32:48.521 +01:00 [INF] Sending file. Request path: '/css/animate.css'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\css\animate.css'
+2024-07-04 16:32:48.524 +01:00 [INF] Sending file. Request path: '/css/owl.theme.default.css'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\css\owl.theme.default.css'
+2024-07-04 16:32:48.524 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/css/owl.carousel.css - - - 200 4198 text/css 32.5648ms
+2024-07-04 16:32:48.524 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/css/owl.theme.default.css - - - 200 1353 text/css 32.3975ms
+2024-07-04 16:32:48.524 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/css/nice-select.css - -
+2024-07-04 16:32:48.524 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/css/datatables.css - -
+2024-07-04 16:32:48.524 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/css/dropify.min.css - -
+2024-07-04 16:32:48.537 +01:00 [INF] Sending file. Request path: '/css/dropify.min.css'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\css\dropify.min.css'
+2024-07-04 16:32:48.539 +01:00 [INF] Sending file. Request path: '/css/font-awesome.css'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\css\font-awesome.css'
+2024-07-04 16:32:48.539 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/css/dropify.min.css - - - 200 9456 text/css 14.5391ms
+2024-07-04 16:32:48.539 +01:00 [INF] Sending file. Request path: '/css/datatables.css'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\css\datatables.css'
+2024-07-04 16:32:48.540 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/css/datatables.css - - - 200 13843 text/css 15.1581ms
+2024-07-04 16:32:48.540 +01:00 [INF] Sending file. Request path: '/css/bootstrap.min.css'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\css\bootstrap.min.css'
+2024-07-04 16:32:48.540 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/css/reset.css - -
+2024-07-04 16:32:48.540 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/lib/jquery/dist/jquery.min.js - -
+2024-07-04 16:32:48.555 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/js/jquery-3.3.1.min.js - -
+2024-07-04 16:32:48.555 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/css/responsive.css - -
+2024-07-04 16:32:48.558 +01:00 [INF] Sending file. Request path: '/css/reset.css'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\css\reset.css'
+2024-07-04 16:32:48.573 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/js/bootstrap.min.js - -
+2024-07-04 16:32:48.574 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/images/abt_3.png - -
+2024-07-04 16:32:48.575 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/images/Web_Photo_Editor.png - -
+2024-07-04 16:32:48.586 +01:00 [INF] Sending file. Request path: '/css/responsive.css'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\css\responsive.css'
+2024-07-04 16:32:48.590 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/css/style.css - -
+2024-07-04 16:32:48.590 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/css/magnific-popup.css - -
+2024-07-04 16:32:48.590 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/js/modernizr.js - - - 200 30169 text/javascript 538.3044ms
+2024-07-04 16:32:48.590 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/js/popper.min.js - - - 200 25275 text/javascript 202.3692ms
+2024-07-04 16:32:48.591 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/js/jquery.magnific-popup.js - - - 200 43557 text/javascript 214.4578ms
+2024-07-04 16:32:48.594 +01:00 [INF] Sending file. Request path: '/lib/jquery/dist/jquery.min.js'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\lib\jquery\dist\jquery.min.js'
+2024-07-04 16:32:48.603 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/lib/bootstrap/dist/js/bootstrap.bundle.min.js - - - 200 78474 text/javascript 619.4083ms
+2024-07-04 16:32:48.604 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/Home/AccessDenied - -
+2024-07-04 16:32:48.604 +01:00 [INF] Sending file. Request path: '/css/magnific-popup.css'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\css\magnific-popup.css'
+2024-07-04 16:32:48.604 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/css/magnific-popup.css - - - 200 7302 text/css 14.2060ms
+2024-07-04 16:32:48.604 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/js/owl.carousel.js - - - 200 88643 text/javascript 227.6178ms
+2024-07-04 16:32:48.607 +01:00 [INF] Sending file. Request path: '/js/bootstrap.min.js'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\js\bootstrap.min.js'
+2024-07-04 16:32:48.608 +01:00 [INF] Sending file. Request path: '/js/jquery-3.3.1.min.js'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\js\jquery-3.3.1.min.js'
+2024-07-04 16:32:48.608 +01:00 [INF] Executing endpoint 'Tradeify.Controllers.HomeController.AccessDenied (Tradeify)'
+2024-07-04 16:32:48.609 +01:00 [INF] Route matched with {action = "AccessDenied", controller = "Home"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult AccessDenied() on controller Tradeify.Controllers.HomeController (Tradeify).
+2024-07-04 16:32:48.609 +01:00 [INF] Executing ViewResult, running view AccessDenied.
+2024-07-04 16:32:48.610 +01:00 [INF] Sending file. Request path: '/css/style.css'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\css\style.css'
+2024-07-04 16:32:48.613 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/js/datatables.js - - - 200 82575 text/javascript 322.0227ms
+2024-07-04 16:32:48.613 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/js/site.js?v=cZ1fxmBXamf3MuYQSYYqfouTonQdx3I3m8zvicY0w5M - - - 200 45033 text/javascript 184.5065ms
+2024-07-04 16:32:48.614 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/js/sweetalert2.all.min.js - - - 200 72859 text/javascript 194.8898ms
+2024-07-04 16:32:48.614 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/css/animate.css - - - 200 75599 text/css 180.7599ms
+2024-07-04 16:32:48.614 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/css/font-awesome.css - - - 200 53590 text/css 122.6408ms
+2024-07-04 16:32:48.614 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/css/bootstrap.min.css - - - 200 140897 text/css 172.6375ms
+2024-07-04 16:32:48.614 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/css/reset.css - - - 200 32466 text/css 74.3857ms
+2024-07-04 16:32:48.639 +01:00 [INF] Sending file. Request path: '/css/nice-select.css'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\css\nice-select.css'
+2024-07-04 16:32:48.640 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/css/nice-select.css - - - 200 5335 text/css 115.3377ms
+2024-07-04 16:32:48.642 +01:00 [INF] Sending file. Request path: '/images/abt_3.png'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\images\abt_3.png'
+2024-07-04 16:32:48.643 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/css/responsive.css - - - 200 32137 text/css 87.8435ms
+2024-07-04 16:32:48.672 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/images/abt_3.png - - - 200 158002 image/png 97.5934ms
+2024-07-04 16:32:48.672 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/css/style.css - - - 200 196839 text/css 82.1331ms
+2024-07-04 16:32:48.672 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/js/bootstrap.min.js - - - 200 51004 text/javascript 99.1566ms
+2024-07-04 16:32:48.672 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/lib/jquery/dist/jquery.min.js - - - 200 89478 text/javascript 132.2120ms
+2024-07-04 16:32:48.672 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/js/jquery-3.3.1.min.js - - - 200 86929 text/javascript 116.9479ms
+2024-07-04 16:32:48.673 +01:00 [INF] Executed DbCommand (33ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Discriminator] = N'ApplicationUser' AND [a].[Deactivated] = CAST(0 AS bit)
+2024-07-04 16:32:48.675 +01:00 [INF] Executed ViewResult - view AccessDenied executed in 66.0508ms.
+2024-07-04 16:32:48.675 +01:00 [INF] Executed action Tradeify.Controllers.HomeController.AccessDenied (Tradeify) in 66.3788ms
+2024-07-04 16:32:48.676 +01:00 [INF] Executed endpoint 'Tradeify.Controllers.HomeController.AccessDenied (Tradeify)'
+2024-07-04 16:32:48.676 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/Home/AccessDenied - - - 200 - text/html;+charset=utf-8 72.3288ms
+2024-07-04 16:32:48.840 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/lib/bootstrap/dist/js/bootstrap.bundle.min.js.map - -
+2024-07-04 16:32:48.975 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/images/ac1.jpg - -
+2024-07-04 16:32:49.005 +01:00 [INF] Sending file. Request path: '/images/ac1.jpg'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\images\ac1.jpg'
+2024-07-04 16:32:49.006 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/images/ac1.jpg - - - 200 819 image/jpeg 30.4191ms
+2024-07-04 16:32:49.023 +01:00 [INF] Sending file. Request path: '/js/plugin.js'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\js\plugin.js'
+2024-07-04 16:32:49.057 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/images/ac2.jpg - -
+2024-07-04 16:32:49.121 +01:00 [INF] Sending file. Request path: '/images/ac2.jpg'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\images\ac2.jpg'
+2024-07-04 16:32:49.121 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/images/ac2.jpg - - - 200 819 image/jpeg 64.1211ms
+2024-07-04 16:32:49.122 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/js/plugin.js - - - 200 612194 text/javascript 1053.0187ms
+2024-07-04 16:32:49.129 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/_framework/aspnetcore-browser-refresh.js - -
+2024-07-04 16:32:49.132 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/_framework/aspnetcore-browser-refresh.js - - - 200 13752 application/javascript;+charset=utf-8 3.2752ms
+2024-07-04 16:32:49.139 +01:00 [INF] Sending file. Request path: '/lib/bootstrap/dist/js/bootstrap.bundle.min.js.map'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.min.js.map'
+2024-07-04 16:32:49.173 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/lib/bootstrap/dist/js/bootstrap.bundle.min.js.map - - - 200 327261 text/plain 333.3648ms
+2024-07-04 16:32:49.235 +01:00 [INF] Sending file. Request path: '/images/Web_Photo_Editor.png'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\images\Web_Photo_Editor.png'
+2024-07-04 16:32:49.357 +01:00 [INF] Sending file. Request path: '/fontawesome-free/js/all.js'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\fontawesome-free\js\all.js'
+2024-07-04 16:32:49.433 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/fontawesome-free/js/all.js - - - 200 1252841 text/javascript 1005.4382ms
+2024-07-04 16:32:49.438 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/images/Web_Photo_Editor.png - - - 200 928695 image/png 863.7128ms
+2024-07-04 16:32:49.540 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/images/ac3.jpg - -
+2024-07-04 16:32:49.560 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/_vs/browserLink - -
+2024-07-04 16:32:49.560 +01:00 [INF] Sending file. Request path: '/images/ac3.jpg'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\images\ac3.jpg'
+2024-07-04 16:32:49.560 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/images/loader.gif - -
+2024-07-04 16:32:49.560 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/images/ac3.jpg - - - 200 819 image/jpeg 20.0281ms
+2024-07-04 16:32:49.604 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 43.6786ms
+2024-07-04 16:32:49.619 +01:00 [INF] Sending file. Request path: '/images/loader.gif'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\images\loader.gif'
+2024-07-04 16:32:49.633 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/images/loader.gif - - - 200 475965 image/gif 73.1528ms
+2024-07-04 16:32:49.664 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/images/faq.jpg - -
+2024-07-04 16:32:49.676 +01:00 [INF] Sending file. Request path: '/images/faq.jpg'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\images\faq.jpg'
+2024-07-04 16:32:49.684 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/fonts/Flaticon.woff2 - -
+2024-07-04 16:32:49.691 +01:00 [INF] Sending file. Request path: '/fonts/Flaticon.woff2'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\fonts\Flaticon.woff2'
+2024-07-04 16:32:49.692 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/webfonts/fa-solid-900.woff2 - -
+2024-07-04 16:32:49.692 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/fonts/Flaticon.woff2 - - - 200 5044 font/woff2 8.0173ms
+2024-07-04 16:32:49.692 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/images/faq.jpg - - - 200 34801 image/jpeg 25.7258ms
+2024-07-04 16:32:49.692 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/webfonts/fa-brands-400.woff2 - -
+2024-07-04 16:32:49.716 +01:00 [INF] Sending file. Request path: '/webfonts/fa-brands-400.woff2'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\webfonts\fa-brands-400.woff2'
+2024-07-04 16:32:49.717 +01:00 [INF] Sending file. Request path: '/webfonts/fa-solid-900.woff2'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\webfonts\fa-solid-900.woff2'
+2024-07-04 16:32:49.738 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/webfonts/fa-brands-400.woff2 - - - 200 74288 font/woff2 45.4349ms
+2024-07-04 16:32:49.738 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/webfonts/fa-solid-900.woff2 - - - 200 79100 font/woff2 45.9662ms
+2024-07-04 16:32:50.941 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/images/Web_Photo_Editor.png - -
+2024-07-04 16:32:51.055 +01:00 [INF] Sending file. Request path: '/images/Web_Photo_Editor.png'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\images\Web_Photo_Editor.png'
+2024-07-04 16:32:51.098 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/images/Web_Photo_Editor.png - - - 200 928695 image/png 156.6565ms
+2024-07-04 16:32:56.036 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/ - -
+2024-07-04 16:32:56.040 +01:00 [INF] Executing endpoint 'Tradeify.Controllers.HomeController.Index (Tradeify)'
+2024-07-04 16:32:56.040 +01:00 [INF] Route matched with {action = "Index", controller = "Home"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index() on controller Tradeify.Controllers.HomeController (Tradeify).
+2024-07-04 16:32:56.040 +01:00 [INF] Executing ViewResult, running view Index.
+2024-07-04 16:32:56.071 +01:00 [INF] Executed DbCommand (10ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Discriminator] = N'ApplicationUser' AND [a].[Deactivated] = CAST(0 AS bit)
+2024-07-04 16:32:56.073 +01:00 [INF] Executed ViewResult - view Index executed in 32.6469ms.
+2024-07-04 16:32:56.073 +01:00 [INF] Executed action Tradeify.Controllers.HomeController.Index (Tradeify) in 32.884ms
+2024-07-04 16:32:56.073 +01:00 [INF] Executed endpoint 'Tradeify.Controllers.HomeController.Index (Tradeify)'
+2024-07-04 16:32:56.075 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/ - - - 200 - text/html;+charset=utf-8 39.3608ms
+2024-07-04 16:32:56.249 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/lib/bootstrap/dist/js/bootstrap.bundle.min.js - -
+2024-07-04 16:32:56.310 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/js/modernizr.js - -
+2024-07-04 16:32:56.325 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/js/jquery.menu-aim.js - -
+2024-07-04 16:32:56.337 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/js/plugin.js - -
+2024-07-04 16:32:56.350 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/js/jquery.countTo.js - -
+2024-07-04 16:32:56.372 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/js/dropify.min.js - -
+2024-07-04 16:32:56.372 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/js/datatables.js - -
+2024-07-04 16:32:56.377 +01:00 [INF] Sending file. Request path: '/js/jquery.menu-aim.js'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\js\jquery.menu-aim.js'
+2024-07-04 16:32:56.377 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/js/jquery.menu-aim.js - - - 200 14937 text/javascript 51.8680ms
+2024-07-04 16:32:56.379 +01:00 [INF] Sending file. Request path: '/js/jquery.countTo.js'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\js\jquery.countTo.js'
+2024-07-04 16:32:56.383 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/js/jquery.countTo.js - - - 200 2581 text/javascript 33.3633ms
+2024-07-04 16:32:56.384 +01:00 [INF] Sending file. Request path: '/js/modernizr.js'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\js\modernizr.js'
+2024-07-04 16:32:56.384 +01:00 [INF] Sending file. Request path: '/js/dropify.min.js'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\js\dropify.min.js'
+2024-07-04 16:32:56.385 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/js/dropify.min.js - - - 200 13328 text/javascript 12.8932ms
+2024-07-04 16:32:56.385 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/js/jquery.nice-select.min.js - -
+2024-07-04 16:32:56.388 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/js/jquery.inview.min.js - -
+2024-07-04 16:32:56.419 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/js/calculator.js - -
+2024-07-04 16:32:56.420 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/js/custom.js - -
+2024-07-04 16:32:56.424 +01:00 [INF] Sending file. Request path: '/lib/bootstrap/dist/js/bootstrap.bundle.min.js'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.min.js'
+2024-07-04 16:32:56.424 +01:00 [INF] Sending file. Request path: '/js/jquery.nice-select.min.js'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\js\jquery.nice-select.min.js'
+2024-07-04 16:32:56.424 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/js/jquery.nice-select.min.js - - - 200 2945 text/javascript 38.9558ms
+2024-07-04 16:32:56.435 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/js/owl.carousel.js - -
+2024-07-04 16:32:56.435 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/js/jquery.magnific-popup.js - -
+2024-07-04 16:32:56.442 +01:00 [INF] Sending file. Request path: '/js/jquery.inview.min.js'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\js\jquery.inview.min.js'
+2024-07-04 16:32:56.442 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/js/jquery.inview.min.js - - - 200 1424 text/javascript 54.0666ms
+2024-07-04 16:32:56.442 +01:00 [INF] Sending file. Request path: '/js/calculator.js'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\js\calculator.js'
+2024-07-04 16:32:56.442 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/js/popper.min.js - -
+2024-07-04 16:32:56.443 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/js/calculator.js - - - 200 5387 text/javascript 23.2667ms
+2024-07-04 16:32:56.443 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/js/clipboard.min.js - -
+2024-07-04 16:32:56.457 +01:00 [INF] Sending file. Request path: '/js/custom.js'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\js\custom.js'
+2024-07-04 16:32:56.458 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/js/custom.js - - - 200 15221 text/javascript 38.0096ms
+2024-07-04 16:32:56.491 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/js/sweetalert2.all.min.js - -
+2024-07-04 16:32:56.493 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/fontawesome-free/js/all.js - -
+2024-07-04 16:32:56.493 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/js/grant.js - -
+2024-07-04 16:32:56.494 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/js/site.js?v=cZ1fxmBXamf3MuYQSYYqfouTonQdx3I3m8zvicY0w5M - -
+2024-07-04 16:32:56.501 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/css/animate.css - -
+2024-07-04 16:32:56.501 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/js/grant.js - - - 302 - - 8.1830ms
+2024-07-04 16:32:56.503 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/css/bootstrap.min.css - -
+2024-07-04 16:32:56.510 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/css/fonts.css - -
+2024-07-04 16:32:56.548 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/css/font-awesome.css - -
+2024-07-04 16:32:56.551 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/css/owl.carousel.css - -
+2024-07-04 16:32:56.556 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/css/owl.theme.default.css - -
+2024-07-04 16:32:56.556 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/css/nice-select.css - -
+2024-07-04 16:32:56.558 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/css/datatables.css - -
+2024-07-04 16:32:56.558 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/css/dropify.min.css - -
+2024-07-04 16:32:56.559 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/css/reset.css - -
+2024-07-04 16:32:56.560 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/lib/jquery/dist/jquery.min.js - -
+2024-07-04 16:32:56.591 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/css/flaticon.css - -
+2024-07-04 16:32:56.605 +01:00 [INF] Sending file. Request path: '/js/clipboard.min.js'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\js\clipboard.min.js'
+2024-07-04 16:32:56.606 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/js/clipboard.min.js - - - 200 8839 text/javascript 162.7553ms
+2024-07-04 16:32:56.616 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/css/style.css - -
+2024-07-04 16:32:56.617 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/css/responsive.css - -
+2024-07-04 16:32:56.620 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/js/jquery-3.3.1.min.js - -
+2024-07-04 16:32:56.623 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/js/bootstrap.min.js - -
+2024-07-04 16:32:56.624 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/js/modernizr.js - - - 200 30169 text/javascript 314.4221ms
+2024-07-04 16:32:56.624 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/lib/bootstrap/dist/js/bootstrap.bundle.min.js - - - 200 78474 text/javascript 374.8394ms
+2024-07-04 16:32:56.624 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/css/magnific-popup.css - -
+2024-07-04 16:32:56.625 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/Home/AccessDenied - -
+2024-07-04 16:32:56.633 +01:00 [INF] Executing endpoint 'Tradeify.Controllers.HomeController.AccessDenied (Tradeify)'
+2024-07-04 16:32:56.638 +01:00 [INF] Route matched with {action = "AccessDenied", controller = "Home"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult AccessDenied() on controller Tradeify.Controllers.HomeController (Tradeify).
+2024-07-04 16:32:56.640 +01:00 [INF] Executing ViewResult, running view AccessDenied.
+2024-07-04 16:32:56.657 +01:00 [INF] Sending file. Request path: '/js/datatables.js'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\js\datatables.js'
+2024-07-04 16:32:56.657 +01:00 [INF] Sending file. Request path: '/css/nice-select.css'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\css\nice-select.css'
+2024-07-04 16:32:56.658 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/css/nice-select.css - - - 200 5335 text/css 101.1757ms
+2024-07-04 16:32:56.658 +01:00 [INF] Sending file. Request path: '/js/jquery.magnific-popup.js'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\js\jquery.magnific-popup.js'
+2024-07-04 16:32:56.658 +01:00 [INF] Sending file. Request path: '/css/flaticon.css'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\css\flaticon.css'
+2024-07-04 16:32:56.659 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/css/flaticon.css - - - 200 2065 text/css 67.8682ms
+2024-07-04 16:32:56.659 +01:00 [INF] Sending file. Request path: '/css/owl.carousel.css'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\css\owl.carousel.css'
+2024-07-04 16:32:56.659 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/css/owl.carousel.css - - - 200 4198 text/css 108.0795ms
+2024-07-04 16:32:56.660 +01:00 [INF] Sending file. Request path: '/css/owl.theme.default.css'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\css\owl.theme.default.css'
+2024-07-04 16:32:56.660 +01:00 [INF] Sending file. Request path: '/css/datatables.css'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\css\datatables.css'
+2024-07-04 16:32:56.660 +01:00 [INF] Sending file. Request path: '/css/dropify.min.css'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\css\dropify.min.css'
+2024-07-04 16:32:56.660 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/css/owl.theme.default.css - - - 200 1353 text/css 104.6020ms
+2024-07-04 16:32:56.660 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/css/datatables.css - - - 200 13843 text/css 102.6564ms
+2024-07-04 16:32:56.660 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/css/dropify.min.css - - - 200 9456 text/css 102.4193ms
+2024-07-04 16:32:56.661 +01:00 [INF] Sending file. Request path: '/js/popper.min.js'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\js\popper.min.js'
+2024-07-04 16:32:56.671 +01:00 [INF] Sending file. Request path: '/css/magnific-popup.css'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\css\magnific-popup.css'
+2024-07-04 16:32:56.671 +01:00 [INF] Sending file. Request path: '/css/fonts.css'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\css\fonts.css'
+2024-07-04 16:32:56.671 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/css/magnific-popup.css - - - 200 7302 text/css 46.6856ms
+2024-07-04 16:32:56.671 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/css/fonts.css - - - 200 24411 text/css 161.0435ms
+2024-07-04 16:32:56.671 +01:00 [INF] Sending file. Request path: '/css/reset.css'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\css\reset.css'
+2024-07-04 16:32:56.672 +01:00 [INF] Sending file. Request path: '/css/responsive.css'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\css\responsive.css'
+2024-07-04 16:32:56.672 +01:00 [INF] Sending file. Request path: '/js/site.js'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\js\site.js'
+2024-07-04 16:32:56.675 +01:00 [INF] Sending file. Request path: '/css/font-awesome.css'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\css\font-awesome.css'
+2024-07-04 16:32:56.675 +01:00 [INF] Sending file. Request path: '/js/sweetalert2.all.min.js'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\js\sweetalert2.all.min.js'
+2024-07-04 16:32:56.676 +01:00 [INF] Sending file. Request path: '/js/owl.carousel.js'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\js\owl.carousel.js'
+2024-07-04 16:32:56.679 +01:00 [INF] Sending file. Request path: '/js/bootstrap.min.js'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\js\bootstrap.min.js'
+2024-07-04 16:32:56.680 +01:00 [INF] Sending file. Request path: '/css/animate.css'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\css\animate.css'
+2024-07-04 16:32:56.705 +01:00 [INF] Sending file. Request path: '/js/jquery-3.3.1.min.js'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\js\jquery-3.3.1.min.js'
+2024-07-04 16:32:56.705 +01:00 [INF] Sending file. Request path: '/css/bootstrap.min.css'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\css\bootstrap.min.css'
+2024-07-04 16:32:56.707 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/js/jquery.magnific-popup.js - - - 200 43557 text/javascript 272.4518ms
+2024-07-04 16:32:56.707 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/js/datatables.js - - - 200 82575 text/javascript 335.5537ms
+2024-07-04 16:32:56.708 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/css/reset.css - - - 200 32466 text/css 148.3650ms
+2024-07-04 16:32:56.708 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/js/popper.min.js - - - 200 25275 text/javascript 265.0425ms
+2024-07-04 16:32:56.708 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/css/responsive.css - - - 200 32137 text/css 91.1762ms
+2024-07-04 16:32:56.708 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/js/site.js?v=cZ1fxmBXamf3MuYQSYYqfouTonQdx3I3m8zvicY0w5M - - - 200 45033 text/javascript 213.5197ms
+2024-07-04 16:32:56.708 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/css/font-awesome.css - - - 200 53590 text/css 159.7462ms
+2024-07-04 16:32:56.708 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/js/bootstrap.min.js - - - 200 51004 text/javascript 84.9641ms
+2024-07-04 16:32:56.708 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/css/animate.css - - - 200 75599 text/css 207.4679ms
+2024-07-04 16:32:56.708 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/js/sweetalert2.all.min.js - - - 200 72859 text/javascript 217.5420ms
+2024-07-04 16:32:56.708 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/js/owl.carousel.js - - - 200 88643 text/javascript 273.8263ms
+2024-07-04 16:32:56.768 +01:00 [INF] Executed DbCommand (33ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Discriminator] = N'ApplicationUser' AND [a].[Deactivated] = CAST(0 AS bit)
+2024-07-04 16:32:56.769 +01:00 [INF] Sending file. Request path: '/lib/jquery/dist/jquery.min.js'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\lib\jquery\dist\jquery.min.js'
+2024-07-04 16:32:56.771 +01:00 [INF] Executed ViewResult - view AccessDenied executed in 132.3569ms.
+2024-07-04 16:32:56.772 +01:00 [INF] Executed action Tradeify.Controllers.HomeController.AccessDenied (Tradeify) in 132.9629ms
+2024-07-04 16:32:56.772 +01:00 [INF] Executed endpoint 'Tradeify.Controllers.HomeController.AccessDenied (Tradeify)'
+2024-07-04 16:32:56.772 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/Home/AccessDenied - - - 200 - text/html;+charset=utf-8 147.2364ms
+2024-07-04 16:32:56.772 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/js/jquery-3.3.1.min.js - - - 200 86929 text/javascript 152.2350ms
+2024-07-04 16:32:56.772 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/css/bootstrap.min.css - - - 200 140897 text/css 271.3746ms
+2024-07-04 16:32:56.773 +01:00 [INF] Sending file. Request path: '/css/style.css'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\css\style.css'
+2024-07-04 16:32:56.775 +01:00 [INF] Sending file. Request path: '/js/plugin.js'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\js\plugin.js'
+2024-07-04 16:32:56.791 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/lib/jquery/dist/jquery.min.js - - - 200 89478 text/javascript 230.3911ms
+2024-07-04 16:32:56.791 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/css/style.css - - - 200 196839 text/css 174.5566ms
+2024-07-04 16:32:56.806 +01:00 [INF] Sending file. Request path: '/fontawesome-free/js/all.js'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\fontawesome-free\js\all.js'
+2024-07-04 16:32:56.818 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/images/Web_Photo_Editor.png - -
+2024-07-04 16:32:57.140 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/images/abt_3.png - -
+2024-07-04 16:32:57.141 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/lib/bootstrap/dist/js/bootstrap.bundle.min.js.map - -
+2024-07-04 16:32:57.158 +01:00 [INF] Sending file. Request path: '/images/abt_3.png'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\images\abt_3.png'
+2024-07-04 16:32:57.169 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/js/plugin.js - - - 200 612194 text/javascript 832.3961ms
+2024-07-04 16:32:57.172 +01:00 [INF] Sending file. Request path: '/lib/bootstrap/dist/js/bootstrap.bundle.min.js.map'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.min.js.map'
+2024-07-04 16:32:57.178 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/images/abt_3.png - - - 200 158002 image/png 37.4335ms
+2024-07-04 16:32:57.191 +01:00 [INF] Sending file. Request path: '/images/Web_Photo_Editor.png'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\images\Web_Photo_Editor.png'
+2024-07-04 16:32:57.242 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/lib/bootstrap/dist/js/bootstrap.bundle.min.js.map - - - 200 327261 text/plain 100.5856ms
+2024-07-04 16:32:57.300 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/images/ac1.jpg - -
+2024-07-04 16:32:57.398 +01:00 [INF] Sending file. Request path: '/images/ac1.jpg'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\images\ac1.jpg'
+2024-07-04 16:32:57.399 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/images/ac1.jpg - - - 200 819 image/jpeg 99.3060ms
+2024-07-04 16:32:57.417 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/fontawesome-free/js/all.js - - - 200 1252841 text/javascript 924.6677ms
+2024-07-04 16:32:57.427 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/images/ac2.jpg - -
+2024-07-04 16:32:57.444 +01:00 [INF] Sending file. Request path: '/images/ac2.jpg'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\images\ac2.jpg'
+2024-07-04 16:32:57.444 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/images/ac2.jpg - - - 200 819 image/jpeg 17.0403ms
+2024-07-04 16:32:57.460 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/images/Web_Photo_Editor.png - - - 200 928695 image/png 642.2915ms
+2024-07-04 16:32:57.543 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/_framework/aspnetcore-browser-refresh.js - -
+2024-07-04 16:32:57.554 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/images/ac3.jpg - -
+2024-07-04 16:32:57.554 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/_framework/aspnetcore-browser-refresh.js - - - 200 13752 application/javascript;+charset=utf-8 11.2477ms
+2024-07-04 16:32:57.555 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/images/loader.gif - -
+2024-07-04 16:32:57.569 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/_vs/browserLink - -
+2024-07-04 16:32:57.577 +01:00 [INF] Sending file. Request path: '/images/ac3.jpg'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\images\ac3.jpg'
+2024-07-04 16:32:57.577 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/images/ac3.jpg - - - 200 819 image/jpeg 22.7628ms
+2024-07-04 16:32:57.618 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 48.5583ms
+2024-07-04 16:32:57.625 +01:00 [INF] Sending file. Request path: '/images/loader.gif'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\images\loader.gif'
+2024-07-04 16:32:57.639 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/images/loader.gif - - - 200 475965 image/gif 84.4228ms
+2024-07-04 16:32:57.645 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/images/faq.jpg - -
+2024-07-04 16:32:57.658 +01:00 [INF] Sending file. Request path: '/images/faq.jpg'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\images\faq.jpg'
+2024-07-04 16:32:57.659 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/fonts/Flaticon.woff2 - -
+2024-07-04 16:32:57.661 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/webfonts/fa-solid-900.woff2 - -
+2024-07-04 16:32:57.667 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/webfonts/fa-brands-400.woff2 - -
+2024-07-04 16:32:57.674 +01:00 [INF] Sending file. Request path: '/fonts/Flaticon.woff2'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\fonts\Flaticon.woff2'
+2024-07-04 16:32:57.692 +01:00 [INF] Sending file. Request path: '/webfonts/fa-brands-400.woff2'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\webfonts\fa-brands-400.woff2'
+2024-07-04 16:32:57.693 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/fonts/Flaticon.woff2 - - - 200 5044 font/woff2 33.9133ms
+2024-07-04 16:32:57.693 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/images/faq.jpg - - - 200 34801 image/jpeg 47.8915ms
+2024-07-04 16:32:57.723 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/webfonts/fa-brands-400.woff2 - - - 200 74288 font/woff2 56.5291ms
+2024-07-04 16:32:57.728 +01:00 [INF] Sending file. Request path: '/webfonts/fa-solid-900.woff2'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\webfonts\fa-solid-900.woff2'
+2024-07-04 16:32:57.735 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/webfonts/fa-solid-900.woff2 - - - 200 79100 font/woff2 74.6371ms
+2024-07-04 16:32:58.501 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/images/Web_Photo_Editor.png - -
+2024-07-04 16:32:58.516 +01:00 [INF] Sending file. Request path: '/images/Web_Photo_Editor.png'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\images\Web_Photo_Editor.png'
+2024-07-04 16:32:58.684 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/images/Web_Photo_Editor.png - - - 200 928695 image/png 183.4417ms
+2024-07-04 16:33:46.508 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/ - -
+2024-07-04 16:33:46.520 +01:00 [INF] Executing endpoint 'Tradeify.Controllers.HomeController.Index (Tradeify)'
+2024-07-04 16:33:46.520 +01:00 [INF] Route matched with {action = "Index", controller = "Home"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index() on controller Tradeify.Controllers.HomeController (Tradeify).
+2024-07-04 16:33:46.520 +01:00 [INF] Executing ViewResult, running view Index.
+2024-07-04 16:33:46.544 +01:00 [INF] Executed DbCommand (9ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Discriminator] = N'ApplicationUser' AND [a].[Deactivated] = CAST(0 AS bit)
+2024-07-04 16:33:46.551 +01:00 [INF] Executed ViewResult - view Index executed in 30.4143ms.
+2024-07-04 16:33:46.551 +01:00 [INF] Executed action Tradeify.Controllers.HomeController.Index (Tradeify) in 30.679ms
+2024-07-04 16:33:46.551 +01:00 [INF] Executed endpoint 'Tradeify.Controllers.HomeController.Index (Tradeify)'
+2024-07-04 16:33:46.554 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/ - - - 200 - text/html;+charset=utf-8 46.0910ms
+2024-07-04 16:33:46.680 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/lib/bootstrap/dist/js/bootstrap.bundle.min.js - -
+2024-07-04 16:33:46.773 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/js/bootstrap.min.js - -
+2024-07-04 16:33:46.773 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/js/plugin.js - -
+2024-07-04 16:33:46.787 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/js/jquery.countTo.js - -
+2024-07-04 16:33:46.791 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/js/dropify.min.js - -
+2024-07-04 16:33:46.791 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/js/datatables.js - -
+2024-07-04 16:33:46.801 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/js/jquery.nice-select.min.js - -
+2024-07-04 16:33:46.801 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/js/jquery.inview.min.js - -
+2024-07-04 16:33:46.805 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/js/jquery.magnific-popup.js - -
+2024-07-04 16:33:46.806 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/js/owl.carousel.js - -
+2024-07-04 16:33:46.816 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/js/calculator.js - -
+2024-07-04 16:33:46.816 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/js/custom.js - -
+2024-07-04 16:33:46.820 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/css/bootstrap.min.css - -
+2024-07-04 16:33:46.820 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/css/animate.css - -
+2024-07-04 16:33:46.821 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/lib/jquery/dist/jquery.min.js - -
+2024-07-04 16:33:46.867 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/css/flaticon.css - -
+2024-07-04 16:33:46.837 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/css/fonts.css - -
+2024-07-04 16:33:46.882 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/css/owl.carousel.css - -
+2024-07-04 16:33:46.882 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/css/owl.theme.default.css - -
+2024-07-04 16:33:46.882 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/css/font-awesome.css - -
+2024-07-04 16:33:46.891 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/css/datatables.css - -
+2024-07-04 16:33:46.895 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/css/nice-select.css - -
+2024-07-04 16:33:46.901 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/js/jquery.menu-aim.js - -
+2024-07-04 16:33:46.901 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/js/popper.min.js - -
+2024-07-04 16:33:46.923 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/js/clipboard.min.js - -
+2024-07-04 16:33:46.924 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/js/sweetalert2.all.min.js - -
+2024-07-04 16:33:46.925 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/fontawesome-free/js/all.js - -
+2024-07-04 16:33:46.927 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/js/grant.js - -
+2024-07-04 16:33:46.932 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/js/site.js?v=cZ1fxmBXamf3MuYQSYYqfouTonQdx3I3m8zvicY0w5M - -
+2024-07-04 16:33:46.933 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/js/grant.js - - - 302 - - 6.4557ms
+2024-07-04 16:33:46.935 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/css/magnific-popup.css - -
+2024-07-04 16:33:46.940 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/css/style.css - -
+2024-07-04 16:33:46.940 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/css/responsive.css - -
+2024-07-04 16:33:46.949 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/images/Web_Photo_Editor.png - -
+2024-07-04 16:33:46.950 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/css/reset.css - -
+2024-07-04 16:33:46.951 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/js/modernizr.js - -
+2024-07-04 16:33:46.952 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/js/jquery-3.3.1.min.js - -
+2024-07-04 16:33:46.957 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/images/abt_3.png - -
+2024-07-04 16:33:46.957 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/css/dropify.min.css - -
+2024-07-04 16:33:46.981 +01:00 [INF] Sending file. Request path: '/js/jquery.inview.min.js'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\js\jquery.inview.min.js'
+2024-07-04 16:33:46.981 +01:00 [INF] Sending file. Request path: '/js/jquery.nice-select.min.js'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\js\jquery.nice-select.min.js'
+2024-07-04 16:33:46.981 +01:00 [INF] Sending file. Request path: '/js/dropify.min.js'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\js\dropify.min.js'
+2024-07-04 16:33:46.981 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/js/jquery.inview.min.js - - - 200 1424 text/javascript 180.3813ms
+2024-07-04 16:33:46.981 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/js/jquery.nice-select.min.js - - - 200 2945 text/javascript 180.4969ms
+2024-07-04 16:33:46.981 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/js/dropify.min.js - - - 200 13328 text/javascript 190.3808ms
+2024-07-04 16:33:46.982 +01:00 [INF] Sending file. Request path: '/js/jquery.countTo.js'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\js\jquery.countTo.js'
+2024-07-04 16:33:46.982 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/js/jquery.countTo.js - - - 200 2581 text/javascript 195.1014ms
+2024-07-04 16:33:46.982 +01:00 [INF] Sending file. Request path: '/js/calculator.js'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\js\calculator.js'
+2024-07-04 16:33:46.982 +01:00 [INF] Sending file. Request path: '/js/custom.js'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\js\custom.js'
+2024-07-04 16:33:46.983 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/js/calculator.js - - - 200 5387 text/javascript 167.7606ms
+2024-07-04 16:33:46.983 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/js/custom.js - - - 200 15221 text/javascript 167.8502ms
+2024-07-04 16:33:46.984 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/Home/AccessDenied - -
+2024-07-04 16:33:47.001 +01:00 [INF] Executing endpoint 'Tradeify.Controllers.HomeController.AccessDenied (Tradeify)'
+2024-07-04 16:33:47.001 +01:00 [INF] Route matched with {action = "AccessDenied", controller = "Home"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult AccessDenied() on controller Tradeify.Controllers.HomeController (Tradeify).
+2024-07-04 16:33:47.001 +01:00 [INF] Sending file. Request path: '/css/flaticon.css'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\css\flaticon.css'
+2024-07-04 16:33:47.001 +01:00 [INF] Executing ViewResult, running view AccessDenied.
+2024-07-04 16:33:47.002 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/css/flaticon.css - - - 200 2065 text/css 134.5583ms
+2024-07-04 16:33:47.003 +01:00 [INF] Sending file. Request path: '/css/owl.theme.default.css'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\css\owl.theme.default.css'
+2024-07-04 16:33:47.003 +01:00 [INF] Sending file. Request path: '/css/owl.carousel.css'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\css\owl.carousel.css'
+2024-07-04 16:33:47.005 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/css/owl.theme.default.css - - - 200 1353 text/css 122.7648ms
+2024-07-04 16:33:47.005 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/css/owl.carousel.css - - - 200 4198 text/css 123.1505ms
+2024-07-04 16:33:47.006 +01:00 [INF] Sending file. Request path: '/css/datatables.css'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\css\datatables.css'
+2024-07-04 16:33:47.006 +01:00 [INF] Sending file. Request path: '/css/nice-select.css'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\css\nice-select.css'
+2024-07-04 16:33:47.006 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/css/datatables.css - - - 200 13843 text/css 116.3405ms
+2024-07-04 16:33:47.008 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/css/nice-select.css - - - 200 5335 text/css 111.4372ms
+2024-07-04 16:33:47.008 +01:00 [INF] Sending file. Request path: '/js/jquery.menu-aim.js'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\js\jquery.menu-aim.js'
+2024-07-04 16:33:47.008 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/js/jquery.menu-aim.js - - - 200 14937 text/javascript 107.3524ms
+2024-07-04 16:33:47.050 +01:00 [INF] Executed DbCommand (14ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Discriminator] = N'ApplicationUser' AND [a].[Deactivated] = CAST(0 AS bit)
+2024-07-04 16:33:47.051 +01:00 [INF] Sending file. Request path: '/js/clipboard.min.js'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\js\clipboard.min.js'
+2024-07-04 16:33:47.052 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/js/clipboard.min.js - - - 200 8839 text/javascript 128.2818ms
+2024-07-04 16:33:47.059 +01:00 [INF] Executed ViewResult - view AccessDenied executed in 57.5813ms.
+2024-07-04 16:33:47.059 +01:00 [INF] Executed action Tradeify.Controllers.HomeController.AccessDenied (Tradeify) in 57.8128ms
+2024-07-04 16:33:47.059 +01:00 [INF] Executed endpoint 'Tradeify.Controllers.HomeController.AccessDenied (Tradeify)'
+2024-07-04 16:33:47.063 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/Home/AccessDenied - - - 200 - text/html;+charset=utf-8 78.7619ms
+2024-07-04 16:33:47.107 +01:00 [INF] Sending file. Request path: '/css/magnific-popup.css'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\css\magnific-popup.css'
+2024-07-04 16:33:47.113 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/css/magnific-popup.css - - - 200 7302 text/css 178.0039ms
+2024-07-04 16:33:47.117 +01:00 [INF] Sending file. Request path: '/css/dropify.min.css'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\css\dropify.min.css'
+2024-07-04 16:33:47.117 +01:00 [INF] Sending file. Request path: '/css/fonts.css'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\css\fonts.css'
+2024-07-04 16:33:47.119 +01:00 [INF] Sending file. Request path: '/js/popper.min.js'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\js\popper.min.js'
+2024-07-04 16:33:47.119 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/css/fonts.css - - - 200 24411 text/css 281.8618ms
+2024-07-04 16:33:47.117 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/css/dropify.min.css - - - 200 9456 text/css 159.9480ms
+2024-07-04 16:33:47.119 +01:00 [INF] Sending file. Request path: '/css/responsive.css'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\css\responsive.css'
+2024-07-04 16:33:47.135 +01:00 [INF] Sending file. Request path: '/js/jquery.magnific-popup.js'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\js\jquery.magnific-popup.js'
+2024-07-04 16:33:47.169 +01:00 [INF] Sending file. Request path: '/js/bootstrap.min.js'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\js\bootstrap.min.js'
+2024-07-04 16:33:47.169 +01:00 [INF] Sending file. Request path: '/js/modernizr.js'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\js\modernizr.js'
+2024-07-04 16:33:47.169 +01:00 [INF] Sending file. Request path: '/lib/bootstrap/dist/js/bootstrap.bundle.min.js'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.min.js'
+2024-07-04 16:33:47.170 +01:00 [INF] Sending file. Request path: '/css/font-awesome.css'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\css\font-awesome.css'
+2024-07-04 16:33:47.170 +01:00 [INF] Sending file. Request path: '/css/reset.css'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\css\reset.css'
+2024-07-04 16:33:47.177 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/js/popper.min.js - - - 200 25275 text/javascript 269.1277ms
+2024-07-04 16:33:47.177 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/css/responsive.css - - - 200 32137 text/css 236.9586ms
+2024-07-04 16:33:47.177 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/js/jquery.magnific-popup.js - - - 200 43557 text/javascript 372.2359ms
+2024-07-04 16:33:47.182 +01:00 [INF] Sending file. Request path: '/css/animate.css'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\css\animate.css'
+2024-07-04 16:33:47.187 +01:00 [INF] Sending file. Request path: '/js/site.js'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\js\site.js'
+2024-07-04 16:33:47.189 +01:00 [INF] Sending file. Request path: '/js/owl.carousel.js'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\js\owl.carousel.js'
+2024-07-04 16:33:47.189 +01:00 [INF] Sending file. Request path: '/js/datatables.js'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\js\datatables.js'
+2024-07-04 16:33:47.191 +01:00 [INF] Sending file. Request path: '/js/sweetalert2.all.min.js'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\js\sweetalert2.all.min.js'
+2024-07-04 16:33:47.192 +01:00 [INF] Sending file. Request path: '/lib/jquery/dist/jquery.min.js'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\lib\jquery\dist\jquery.min.js'
+2024-07-04 16:33:47.194 +01:00 [INF] Sending file. Request path: '/js/jquery-3.3.1.min.js'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\js\jquery-3.3.1.min.js'
+2024-07-04 16:33:47.198 +01:00 [INF] Sending file. Request path: '/css/bootstrap.min.css'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\css\bootstrap.min.css'
+2024-07-04 16:33:47.207 +01:00 [INF] Sending file. Request path: '/images/abt_3.png'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\images\abt_3.png'
+2024-07-04 16:33:47.218 +01:00 [INF] Sending file. Request path: '/css/style.css'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\css\style.css'
+2024-07-04 16:33:47.218 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/js/modernizr.js - - - 200 30169 text/javascript 266.6742ms
+2024-07-04 16:33:47.218 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/js/bootstrap.min.js - - - 200 51004 text/javascript 445.3789ms
+2024-07-04 16:33:47.218 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/css/reset.css - - - 200 32466 text/css 268.1968ms
+2024-07-04 16:33:47.221 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/css/font-awesome.css - - - 200 53590 text/css 338.6425ms
+2024-07-04 16:33:47.221 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/lib/bootstrap/dist/js/bootstrap.bundle.min.js - - - 200 78474 text/javascript 542.9796ms
+2024-07-04 16:33:47.221 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/css/animate.css - - - 200 75599 text/css 400.3565ms
+2024-07-04 16:33:47.221 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/js/site.js?v=cZ1fxmBXamf3MuYQSYYqfouTonQdx3I3m8zvicY0w5M - - - 200 45033 text/javascript 289.1118ms
+2024-07-04 16:33:47.221 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/js/owl.carousel.js - - - 200 88643 text/javascript 415.3962ms
+2024-07-04 16:33:47.221 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/js/datatables.js - - - 200 82575 text/javascript 430.4314ms
+2024-07-04 16:33:47.222 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/js/sweetalert2.all.min.js - - - 200 72859 text/javascript 297.6893ms
+2024-07-04 16:33:47.222 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/lib/jquery/dist/jquery.min.js - - - 200 89478 text/javascript 401.1529ms
+2024-07-04 16:33:47.222 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/js/jquery-3.3.1.min.js - - - 200 86929 text/javascript 270.5063ms
+2024-07-04 16:33:47.236 +01:00 [INF] Sending file. Request path: '/js/plugin.js'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\js\plugin.js'
+2024-07-04 16:33:47.239 +01:00 [INF] Sending file. Request path: '/images/Web_Photo_Editor.png'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\images\Web_Photo_Editor.png'
+2024-07-04 16:33:47.306 +01:00 [INF] Sending file. Request path: '/fontawesome-free/js/all.js'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\fontawesome-free\js\all.js'
+2024-07-04 16:33:47.383 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/css/bootstrap.min.css - - - 200 140897 text/css 562.7553ms
+2024-07-04 16:33:47.383 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/css/style.css - - - 200 196839 text/css 444.6634ms
+2024-07-04 16:33:47.454 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/lib/bootstrap/dist/js/bootstrap.bundle.min.js.map - -
+2024-07-04 16:33:47.587 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/images/abt_3.png - - - 200 158002 image/png 630.2909ms
+2024-07-04 16:33:47.588 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/images/ac1.jpg - -
+2024-07-04 16:33:47.851 +01:00 [INF] Sending file. Request path: '/images/ac1.jpg'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\images\ac1.jpg'
+2024-07-04 16:33:47.852 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/images/ac1.jpg - - - 200 819 image/jpeg 263.9531ms
+2024-07-04 16:33:47.852 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/js/plugin.js - - - 200 612194 text/javascript 1078.6368ms
+2024-07-04 16:33:47.856 +01:00 [INF] Sending file. Request path: '/lib/bootstrap/dist/js/bootstrap.bundle.min.js.map'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.min.js.map'
+2024-07-04 16:33:47.871 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/lib/bootstrap/dist/js/bootstrap.bundle.min.js.map - - - 200 327261 text/plain 417.2067ms
+2024-07-04 16:33:47.887 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/images/ac2.jpg - -
+2024-07-04 16:33:47.950 +01:00 [INF] Sending file. Request path: '/images/ac2.jpg'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\images\ac2.jpg'
+2024-07-04 16:33:47.950 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/images/ac2.jpg - - - 200 819 image/jpeg 63.2748ms
+2024-07-04 16:33:47.951 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/fontawesome-free/js/all.js - - - 200 1252841 text/javascript 1025.4514ms
+2024-07-04 16:33:47.981 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/images/Web_Photo_Editor.png - - - 200 928695 image/png 1031.5171ms
+2024-07-04 16:33:47.998 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/_framework/aspnetcore-browser-refresh.js - -
+2024-07-04 16:33:48.014 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/_framework/aspnetcore-browser-refresh.js - - - 200 13752 application/javascript;+charset=utf-8 16.5744ms
+2024-07-04 16:33:48.061 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/images/ac3.jpg - -
+2024-07-04 16:33:48.068 +01:00 [INF] Sending file. Request path: '/images/ac3.jpg'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\images\ac3.jpg'
+2024-07-04 16:33:48.069 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/images/ac3.jpg - - - 200 819 image/jpeg 8.0811ms
+2024-07-04 16:33:48.070 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/images/loader.gif - -
+2024-07-04 16:33:48.070 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/_vs/browserLink - -
+2024-07-04 16:33:48.400 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/images/faq.jpg - -
+2024-07-04 16:33:48.409 +01:00 [INF] Sending file. Request path: '/images/faq.jpg'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\images\faq.jpg'
+2024-07-04 16:33:48.413 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/webfonts/fa-solid-900.woff2 - -
+2024-07-04 16:33:48.414 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/fonts/Flaticon.woff2 - -
+2024-07-04 16:33:48.414 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/webfonts/fa-brands-400.woff2 - -
+2024-07-04 16:33:48.434 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/images/faq.jpg - - - 200 34801 image/jpeg 34.1892ms
+2024-07-04 16:33:48.438 +01:00 [INF] Sending file. Request path: '/fonts/Flaticon.woff2'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\fonts\Flaticon.woff2'
+2024-07-04 16:33:48.439 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/fonts/Flaticon.woff2 - - - 200 5044 font/woff2 25.0900ms
+2024-07-04 16:33:48.450 +01:00 [INF] Sending file. Request path: '/webfonts/fa-solid-900.woff2'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\webfonts\fa-solid-900.woff2'
+2024-07-04 16:33:48.450 +01:00 [INF] Sending file. Request path: '/webfonts/fa-brands-400.woff2'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\webfonts\fa-brands-400.woff2'
+2024-07-04 16:33:48.457 +01:00 [INF] Sending file. Request path: '/images/loader.gif'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\images\loader.gif'
+2024-07-04 16:33:48.501 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/webfonts/fa-solid-900.woff2 - - - 200 79100 font/woff2 87.8555ms
+2024-07-04 16:33:48.524 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/webfonts/fa-brands-400.woff2 - - - 200 74288 font/woff2 110.3995ms
+2024-07-04 16:33:48.525 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 454.8867ms
+2024-07-04 16:33:48.750 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/images/loader.gif - - - 200 475965 image/gif 680.0065ms
+2024-07-04 16:33:49.053 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/images/Web_Photo_Editor.png - -
+2024-07-04 16:33:49.091 +01:00 [INF] Sending file. Request path: '/images/Web_Photo_Editor.png'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\images\Web_Photo_Editor.png'
+2024-07-04 16:33:49.249 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/images/Web_Photo_Editor.png - - - 200 928695 image/png 196.0644ms
+2024-07-04 16:47:27.687 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/ - -
+2024-07-04 16:47:27.710 +01:00 [INF] Executing endpoint 'Tradeify.Controllers.HomeController.Index (Tradeify)'
+2024-07-04 16:47:27.710 +01:00 [INF] Route matched with {action = "Index", controller = "Home"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index() on controller Tradeify.Controllers.HomeController (Tradeify).
+2024-07-04 16:47:27.710 +01:00 [INF] Executing ViewResult, running view Index.
+2024-07-04 16:47:28.799 +01:00 [INF] Executed DbCommand (138ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Discriminator] = N'ApplicationUser' AND [a].[Deactivated] = CAST(0 AS bit)
+2024-07-04 16:47:28.802 +01:00 [INF] Executed ViewResult - view Index executed in 1092.1835ms.
+2024-07-04 16:47:28.803 +01:00 [INF] Executed action Tradeify.Controllers.HomeController.Index (Tradeify) in 1092.6016ms
+2024-07-04 16:47:28.803 +01:00 [INF] Executed endpoint 'Tradeify.Controllers.HomeController.Index (Tradeify)'
+2024-07-04 16:47:28.808 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/ - - - 200 - text/html;+charset=utf-8 1120.2905ms
+2024-07-04 16:47:28.900 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/lib/bootstrap/dist/js/bootstrap.bundle.min.js - -
+2024-07-04 16:47:29.067 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/lib/jquery/dist/jquery.min.js - -
+2024-07-04 16:47:29.072 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/js/bootstrap.min.js - -
+2024-07-04 16:47:29.083 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/js/modernizr.js - -
+2024-07-04 16:47:29.083 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/js/jquery.menu-aim.js - -
+2024-07-04 16:47:29.090 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/js/plugin.js - -
+2024-07-04 16:47:29.093 +01:00 [INF] Sending file. Request path: '/js/jquery.menu-aim.js'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\js\jquery.menu-aim.js'
+2024-07-04 16:47:29.095 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/js/jquery.menu-aim.js - - - 200 14937 text/javascript 11.5042ms
+2024-07-04 16:47:29.095 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/js/dropify.min.js - -
+2024-07-04 16:47:29.095 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/js/jquery.countTo.js - -
+2024-07-04 16:47:29.095 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/js/jquery.nice-select.min.js - -
+2024-07-04 16:47:29.104 +01:00 [INF] Sending file. Request path: '/lib/bootstrap/dist/js/bootstrap.bundle.min.js'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.min.js'
+2024-07-04 16:47:29.104 +01:00 [INF] Sending file. Request path: '/js/modernizr.js'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\js\modernizr.js'
+2024-07-04 16:47:29.107 +01:00 [INF] Sending file. Request path: '/js/dropify.min.js'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\js\dropify.min.js'
+2024-07-04 16:47:29.107 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/js/dropify.min.js - - - 200 13328 text/javascript 11.8937ms
+2024-07-04 16:47:29.109 +01:00 [INF] Sending file. Request path: '/js/jquery.nice-select.min.js'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\js\jquery.nice-select.min.js'
+2024-07-04 16:47:29.109 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/js/jquery.nice-select.min.js - - - 200 2945 text/javascript 13.8250ms
+2024-07-04 16:47:29.110 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/js/jquery.inview.min.js - -
+2024-07-04 16:47:29.114 +01:00 [INF] Sending file. Request path: '/js/bootstrap.min.js'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\js\bootstrap.min.js'
+2024-07-04 16:47:29.115 +01:00 [INF] Sending file. Request path: '/lib/jquery/dist/jquery.min.js'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\lib\jquery\dist\jquery.min.js'
+2024-07-04 16:47:29.145 +01:00 [INF] Sending file. Request path: '/js/jquery.inview.min.js'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\js\jquery.inview.min.js'
+2024-07-04 16:47:29.146 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/js/jquery.inview.min.js - - - 200 1424 text/javascript 35.8483ms
+2024-07-04 16:47:29.146 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/js/jquery.magnific-popup.js - -
+2024-07-04 16:47:29.148 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/js/popper.min.js - -
+2024-07-04 16:47:29.146 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/js/datatables.js - -
+2024-07-04 16:47:29.153 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/js/custom.js - -
+2024-07-04 16:47:29.199 +01:00 [INF] Sending file. Request path: '/js/custom.js'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\js\custom.js'
+2024-07-04 16:47:29.199 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/js/custom.js - - - 200 15221 text/javascript 45.6682ms
+2024-07-04 16:47:29.199 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/js/clipboard.min.js - -
+2024-07-04 16:47:29.199 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/js/sweetalert2.all.min.js - -
+2024-07-04 16:47:29.345 +01:00 [INF] Sending file. Request path: '/js/clipboard.min.js'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\js\clipboard.min.js'
+2024-07-04 16:47:29.346 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/js/clipboard.min.js - - - 200 8839 text/javascript 146.5009ms
+2024-07-04 16:47:29.350 +01:00 [INF] Sending file. Request path: '/js/popper.min.js'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\js\popper.min.js'
+2024-07-04 16:47:29.364 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/fontawesome-free/js/all.js - -
+2024-07-04 16:47:29.367 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/js/owl.carousel.js - -
+2024-07-04 16:47:29.377 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/js/grant.js - -
+2024-07-04 16:47:29.379 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/js/site.js?v=cZ1fxmBXamf3MuYQSYYqfouTonQdx3I3m8zvicY0w5M - -
+2024-07-04 16:47:29.380 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/js/grant.js - - - 302 - - 3.3852ms
+2024-07-04 16:47:29.380 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/css/animate.css - -
+2024-07-04 16:47:29.411 +01:00 [INF] Sending file. Request path: '/js/jquery.magnific-popup.js'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\js\jquery.magnific-popup.js'
+2024-07-04 16:47:29.427 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/css/bootstrap.min.css - -
+2024-07-04 16:47:29.448 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/css/fonts.css - -
+2024-07-04 16:47:29.461 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/css/flaticon.css - -
+2024-07-04 16:47:29.461 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/css/font-awesome.css - -
+2024-07-04 16:47:29.481 +01:00 [INF] Sending file. Request path: '/js/site.js'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\js\site.js'
+2024-07-04 16:47:29.483 +01:00 [INF] Sending file. Request path: '/css/animate.css'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\css\animate.css'
+2024-07-04 16:47:29.483 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/css/nice-select.css - -
+2024-07-04 16:47:29.492 +01:00 [INF] Sending file. Request path: '/css/fonts.css'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\css\fonts.css'
+2024-07-04 16:47:29.498 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/css/fonts.css - - - 200 24411 text/css 49.2186ms
+2024-07-04 16:47:29.505 +01:00 [INF] Sending file. Request path: '/js/datatables.js'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\js\datatables.js'
+2024-07-04 16:47:29.505 +01:00 [INF] Sending file. Request path: '/css/nice-select.css'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\css\nice-select.css'
+2024-07-04 16:47:29.506 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/css/nice-select.css - - - 200 5335 text/css 22.7922ms
+2024-07-04 16:47:29.512 +01:00 [INF] Sending file. Request path: '/js/sweetalert2.all.min.js'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\js\sweetalert2.all.min.js'
+2024-07-04 16:47:29.514 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/css/owl.carousel.css - -
+2024-07-04 16:47:29.514 +01:00 [INF] Sending file. Request path: '/css/font-awesome.css'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\css\font-awesome.css'
+2024-07-04 16:47:29.610 +01:00 [INF] Sending file. Request path: '/js/owl.carousel.js'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\js\owl.carousel.js'
+2024-07-04 16:47:29.611 +01:00 [INF] Sending file. Request path: '/css/owl.carousel.css'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\css\owl.carousel.css'
+2024-07-04 16:47:29.611 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/css/owl.carousel.css - - - 200 4198 text/css 97.7789ms
+2024-07-04 16:47:29.612 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/css/owl.theme.default.css - -
+2024-07-04 16:47:29.630 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/css/datatables.css - -
+2024-07-04 16:47:29.643 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/css/reset.css - -
+2024-07-04 16:47:29.646 +01:00 [INF] Sending file. Request path: '/js/jquery.countTo.js'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\js\jquery.countTo.js'
+2024-07-04 16:47:29.647 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/js/jquery.countTo.js - - - 200 2581 text/javascript 551.5763ms
+2024-07-04 16:47:29.647 +01:00 [INF] Sending file. Request path: '/css/owl.theme.default.css'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\css\owl.theme.default.css'
+2024-07-04 16:47:29.647 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/css/owl.theme.default.css - - - 200 1353 text/css 35.6458ms
+2024-07-04 16:47:29.659 +01:00 [INF] Sending file. Request path: '/css/datatables.css'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\css\datatables.css'
+2024-07-04 16:47:29.659 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/css/magnific-popup.css - -
+2024-07-04 16:47:29.659 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/css/datatables.css - - - 200 13843 text/css 29.7576ms
+2024-07-04 16:47:29.660 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/css/responsive.css - -
+2024-07-04 16:47:29.707 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/css/style.css - -
+2024-07-04 16:47:29.712 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/images/Web_Photo_Editor.png - -
+2024-07-04 16:47:29.714 +01:00 [INF] Sending file. Request path: '/css/bootstrap.min.css'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\css\bootstrap.min.css'
+2024-07-04 16:47:29.716 +01:00 [INF] Sending file. Request path: '/css/reset.css'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\css\reset.css'
+2024-07-04 16:47:29.721 +01:00 [INF] Sending file. Request path: '/css/magnific-popup.css'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\css\magnific-popup.css'
+2024-07-04 16:47:29.722 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/css/magnific-popup.css - - - 200 7302 text/css 62.4496ms
+2024-07-04 16:47:29.730 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/images/abt_3.png - -
+2024-07-04 16:47:29.746 +01:00 [INF] Sending file. Request path: '/css/flaticon.css'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\css\flaticon.css'
+2024-07-04 16:47:29.747 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/css/flaticon.css - - - 200 2065 text/css 286.2748ms
+2024-07-04 16:47:29.760 +01:00 [INF] Sending file. Request path: '/css/responsive.css'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\css\responsive.css'
+2024-07-04 16:47:29.762 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/js/jquery-3.3.1.min.js - -
+2024-07-04 16:47:29.776 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/js/modernizr.js - - - 200 30169 text/javascript 692.5405ms
+2024-07-04 16:47:29.776 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/lib/bootstrap/dist/js/bootstrap.bundle.min.js - - - 200 78474 text/javascript 876.1154ms
+2024-07-04 16:47:29.777 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/lib/jquery/dist/jquery.min.js - - - 200 89478 text/javascript 709.7642ms
+2024-07-04 16:47:29.777 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/js/bootstrap.min.js - - - 200 51004 text/javascript 704.8152ms
+2024-07-04 16:47:29.782 +01:00 [INF] Sending file. Request path: '/images/abt_3.png'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\images\abt_3.png'
+2024-07-04 16:47:29.782 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/js/popper.min.js - - - 200 25275 text/javascript 634.1250ms
+2024-07-04 16:47:29.783 +01:00 [INF] Sending file. Request path: '/css/style.css'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\css\style.css'
+2024-07-04 16:47:29.793 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/lib/bootstrap/dist/js/bootstrap.bundle.min.js.map - -
+2024-07-04 16:47:29.793 +01:00 [INF] Sending file. Request path: '/js/jquery-3.3.1.min.js'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\js\jquery-3.3.1.min.js'
+2024-07-04 16:47:29.829 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/js/jquery.magnific-popup.js - - - 200 43557 text/javascript 682.9856ms
+2024-07-04 16:47:29.830 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/js/site.js?v=cZ1fxmBXamf3MuYQSYYqfouTonQdx3I3m8zvicY0w5M - - - 200 45033 text/javascript 450.3410ms
+2024-07-04 16:47:29.830 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/css/animate.css - - - 200 75599 text/css 449.7066ms
+2024-07-04 16:47:29.830 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/js/datatables.js - - - 200 82575 text/javascript 683.9020ms
+2024-07-04 16:47:29.830 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/js/sweetalert2.all.min.js - - - 200 72859 text/javascript 630.7519ms
+2024-07-04 16:47:29.830 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/css/font-awesome.css - - - 200 53590 text/css 369.0695ms
+2024-07-04 16:47:29.830 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/js/owl.carousel.js - - - 200 88643 text/javascript 463.0046ms
+2024-07-04 16:47:29.830 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/css/reset.css - - - 200 32466 text/css 187.1712ms
+2024-07-04 16:47:29.830 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/css/bootstrap.min.css - - - 200 140897 text/css 403.2722ms
+2024-07-04 16:47:29.831 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/Home/AccessDenied - -
+2024-07-04 16:47:29.831 +01:00 [INF] Executing endpoint 'Tradeify.Controllers.HomeController.AccessDenied (Tradeify)'
+2024-07-04 16:47:29.831 +01:00 [INF] Route matched with {action = "AccessDenied", controller = "Home"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult AccessDenied() on controller Tradeify.Controllers.HomeController (Tradeify).
+2024-07-04 16:47:29.831 +01:00 [INF] Executing ViewResult, running view AccessDenied.
+2024-07-04 16:47:29.834 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/js/calculator.js - -
+2024-07-04 16:47:29.944 +01:00 [INF] Sending file. Request path: '/js/calculator.js'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\js\calculator.js'
+2024-07-04 16:47:29.944 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/js/calculator.js - - - 200 5387 text/javascript 110.1799ms
+2024-07-04 16:47:29.982 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/css/responsive.css - - - 200 32137 text/css 322.3728ms
+2024-07-04 16:47:29.997 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/js/jquery-3.3.1.min.js - - - 200 86929 text/javascript 235.3639ms
+2024-07-04 16:47:30.007 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/css/style.css - - - 200 196839 text/css 299.6583ms
+2024-07-04 16:47:30.007 +01:00 [INF] Executed DbCommand (140ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Discriminator] = N'ApplicationUser' AND [a].[Deactivated] = CAST(0 AS bit)
+2024-07-04 16:47:30.007 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/css/dropify.min.css - -
+2024-07-04 16:47:30.008 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/images/abt_3.png - - - 200 158002 image/png 266.8421ms
+2024-07-04 16:47:30.007 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/images/ac1.jpg - -
+2024-07-04 16:47:30.028 +01:00 [INF] Executed ViewResult - view AccessDenied executed in 196.1704ms.
+2024-07-04 16:47:30.028 +01:00 [INF] Executed action Tradeify.Controllers.HomeController.AccessDenied (Tradeify) in 196.6206ms
+2024-07-04 16:47:30.028 +01:00 [INF] Executed endpoint 'Tradeify.Controllers.HomeController.AccessDenied (Tradeify)'
+2024-07-04 16:47:30.029 +01:00 [INF] Sending file. Request path: '/css/dropify.min.css'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\css\dropify.min.css'
+2024-07-04 16:47:30.029 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/Home/AccessDenied - - - 200 - text/html;+charset=utf-8 198.8441ms
+2024-07-04 16:47:30.030 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/css/dropify.min.css - - - 200 9456 text/css 22.7380ms
+2024-07-04 16:47:30.031 +01:00 [INF] Sending file. Request path: '/images/ac1.jpg'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\images\ac1.jpg'
+2024-07-04 16:47:30.032 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/images/ac1.jpg - - - 200 819 image/jpeg 24.8950ms
+2024-07-04 16:47:30.042 +01:00 [INF] Sending file. Request path: '/js/plugin.js'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\js\plugin.js'
+2024-07-04 16:47:30.064 +01:00 [INF] Sending file. Request path: '/lib/bootstrap/dist/js/bootstrap.bundle.min.js.map'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.min.js.map'
+2024-07-04 16:47:30.109 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/images/ac2.jpg - -
+2024-07-04 16:47:30.111 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/lib/bootstrap/dist/js/bootstrap.bundle.min.js.map - - - 200 327261 text/plain 317.9513ms
+2024-07-04 16:47:30.159 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/js/plugin.js - - - 200 612194 text/javascript 1068.6968ms
+2024-07-04 16:47:30.159 +01:00 [INF] Sending file. Request path: '/images/ac2.jpg'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\images\ac2.jpg'
+2024-07-04 16:47:30.159 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/images/ac2.jpg - - - 200 819 image/jpeg 49.8211ms
+2024-07-04 16:47:30.190 +01:00 [INF] Sending file. Request path: '/images/Web_Photo_Editor.png'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\images\Web_Photo_Editor.png'
+2024-07-04 16:47:30.205 +01:00 [INF] Sending file. Request path: '/fontawesome-free/js/all.js'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\fontawesome-free\js\all.js'
+2024-07-04 16:47:30.258 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/_framework/aspnetcore-browser-refresh.js - -
+2024-07-04 16:47:30.323 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/_framework/aspnetcore-browser-refresh.js - - - 200 13752 application/javascript;+charset=utf-8 59.9254ms
+2024-07-04 16:47:30.422 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/fontawesome-free/js/all.js - - - 200 1252841 text/javascript 1057.1543ms
+2024-07-04 16:47:30.440 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/images/Web_Photo_Editor.png - - - 200 928695 image/png 727.4596ms
+2024-07-04 16:47:30.511 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/images/ac3.jpg - -
+2024-07-04 16:47:30.541 +01:00 [INF] Sending file. Request path: '/images/ac3.jpg'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\images\ac3.jpg'
+2024-07-04 16:47:30.541 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/images/ac3.jpg - - - 200 819 image/jpeg 29.9429ms
+2024-07-04 16:47:30.542 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/images/loader.gif - -
+2024-07-04 16:47:30.558 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/_vs/browserLink - -
+2024-07-04 16:47:30.591 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 32.6279ms
+2024-07-04 16:47:30.672 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/images/faq.jpg - -
+2024-07-04 16:47:31.068 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/fonts/Flaticon.woff2 - -
+2024-07-04 16:47:31.078 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/webfonts/fa-solid-900.woff2 - -
+2024-07-04 16:47:31.082 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/webfonts/fa-brands-400.woff2 - -
+2024-07-04 16:47:31.294 +01:00 [INF] Sending file. Request path: '/images/faq.jpg'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\images\faq.jpg'
+2024-07-04 16:47:31.300 +01:00 [INF] Sending file. Request path: '/fonts/Flaticon.woff2'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\fonts\Flaticon.woff2'
+2024-07-04 16:47:31.300 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/fonts/Flaticon.woff2 - - - 200 5044 font/woff2 231.9336ms
+2024-07-04 16:47:31.327 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/images/faq.jpg - - - 200 34801 image/jpeg 655.8306ms
+2024-07-04 16:47:31.342 +01:00 [INF] Sending file. Request path: '/webfonts/fa-brands-400.woff2'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\webfonts\fa-brands-400.woff2'
+2024-07-04 16:47:31.343 +01:00 [INF] Sending file. Request path: '/webfonts/fa-solid-900.woff2'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\webfonts\fa-solid-900.woff2'
+2024-07-04 16:47:31.346 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/webfonts/fa-brands-400.woff2 - - - 200 74288 font/woff2 268.2954ms
+2024-07-04 16:47:31.347 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/webfonts/fa-solid-900.woff2 - - - 200 79100 font/woff2 268.9194ms
+2024-07-04 16:47:31.404 +01:00 [INF] Sending file. Request path: '/images/loader.gif'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\images\loader.gif'
+2024-07-04 16:47:31.463 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/images/loader.gif - - - 200 475965 image/gif 921.3858ms
+2024-07-04 16:47:31.695 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/images/Web_Photo_Editor.png - -
+2024-07-04 16:47:31.741 +01:00 [INF] Sending file. Request path: '/images/Web_Photo_Editor.png'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\images\Web_Photo_Editor.png'
+2024-07-04 16:47:31.879 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/images/Web_Photo_Editor.png - - - 200 928695 image/png 183.6862ms
+2024-07-04 16:53:43.022 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/ - -
+2024-07-04 16:53:43.255 +01:00 [INF] Executing endpoint 'Tradeify.Controllers.HomeController.Index (Tradeify)'
+2024-07-04 16:53:43.256 +01:00 [INF] Route matched with {action = "Index", controller = "Home"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index() on controller Tradeify.Controllers.HomeController (Tradeify).
+2024-07-04 16:53:43.256 +01:00 [INF] Executing ViewResult, running view Index.
+2024-07-04 16:53:46.315 +01:00 [INF] Executed DbCommand (32ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Discriminator] = N'ApplicationUser' AND [a].[Deactivated] = CAST(0 AS bit)
+2024-07-04 16:53:46.320 +01:00 [INF] Executed ViewResult - view Index executed in 3064.0435ms.
+2024-07-04 16:53:46.320 +01:00 [INF] Executed action Tradeify.Controllers.HomeController.Index (Tradeify) in 3064.3121ms
+2024-07-04 16:53:46.320 +01:00 [INF] Executed endpoint 'Tradeify.Controllers.HomeController.Index (Tradeify)'
+2024-07-04 16:53:46.334 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/ - - - 200 - text/html;+charset=utf-8 3311.6783ms
+2024-07-04 16:53:46.781 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/_framework/aspnetcore-browser-refresh.js - -
+2024-07-04 16:53:46.838 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/_framework/aspnetcore-browser-refresh.js - - - 200 13752 application/javascript;+charset=utf-8 61.4604ms
+2024-07-04 16:53:46.838 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/js/grant.js - -
+2024-07-04 16:53:46.886 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/js/grant.js - - - 302 - - 47.7838ms
+2024-07-04 16:53:47.017 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/css/style.css - -
+2024-07-04 16:53:47.497 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/Home/AccessDenied - -
+2024-07-04 16:53:47.546 +01:00 [INF] Executing endpoint 'Tradeify.Controllers.HomeController.AccessDenied (Tradeify)'
+2024-07-04 16:53:47.548 +01:00 [INF] Route matched with {action = "AccessDenied", controller = "Home"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult AccessDenied() on controller Tradeify.Controllers.HomeController (Tradeify).
+2024-07-04 16:53:47.548 +01:00 [INF] Sending file. Request path: '/css/style.css'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\css\style.css'
+2024-07-04 16:53:47.549 +01:00 [INF] Executing ViewResult, running view AccessDenied.
+2024-07-04 16:53:47.624 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/css/style.css - - - 200 196839 text/css 607.1034ms
+2024-07-04 16:53:47.904 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/_vs/browserLink - -
+2024-07-04 16:53:47.904 +01:00 [INF] Executed DbCommand (78ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Discriminator] = N'ApplicationUser' AND [a].[Deactivated] = CAST(0 AS bit)
+2024-07-04 16:53:47.935 +01:00 [INF] Executed ViewResult - view AccessDenied executed in 386.1865ms.
+2024-07-04 16:53:47.935 +01:00 [INF] Executed action Tradeify.Controllers.HomeController.AccessDenied (Tradeify) in 387.0808ms
+2024-07-04 16:53:47.935 +01:00 [INF] Executed endpoint 'Tradeify.Controllers.HomeController.AccessDenied (Tradeify)'
+2024-07-04 16:53:47.935 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/Home/AccessDenied - - - 200 - text/html;+charset=utf-8 438.1085ms
+2024-07-04 16:53:48.806 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 901.9421ms
+2024-07-04 16:53:57.536 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/_framework/clear-browser-cache - -
+2024-07-04 16:53:57.551 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/_framework/clear-browser-cache - - - 200 - - 14.3065ms
+2024-07-04 16:53:57.637 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/_framework/clear-browser-cache - -
+2024-07-04 16:53:57.647 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/_framework/clear-browser-cache - - - 200 - - 10.0439ms
+2024-07-04 16:53:57.662 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/_framework/clear-browser-cache - -
+2024-07-04 16:53:57.664 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/_framework/clear-browser-cache - - - 200 - - 0.9306ms
+2024-07-04 16:53:57.773 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/css/bootstrap.min.css?nonce=1720108437703 - -
+2024-07-04 16:53:57.785 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/css/animate.css?nonce=1720108437702 - -
+2024-07-04 16:53:57.901 +01:00 [INF] Sending file. Request path: '/css/animate.css'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\css\animate.css'
+2024-07-04 16:53:57.903 +01:00 [INF] Sending file. Request path: '/css/bootstrap.min.css'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\css\bootstrap.min.css'
+2024-07-04 16:53:57.904 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/css/fonts.css?nonce=1720108437704 - -
+2024-07-04 16:53:57.906 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/css/owl.carousel.css?nonce=1720108437705 - -
+2024-07-04 16:53:57.906 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/css/font-awesome.css?nonce=1720108437705 - -
+2024-07-04 16:53:58.743 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/css/nice-select.css?nonce=1720108437706 - -
+2024-07-04 16:53:59.032 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/css/dropify.min.css?nonce=1720108437708 - -
+2024-07-04 16:53:59.467 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/css/reset.css?nonce=1720108437708 - -
+2024-07-04 16:53:59.827 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/css/datatables.css?nonce=1720108437707 - -
+2024-07-04 16:54:00.005 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/css/magnific-popup.css?nonce=1720108437709 - -
+2024-07-04 16:54:00.164 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/css/responsive.css?nonce=1720108437711 - -
+2024-07-04 16:54:00.250 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/images/Web_Photo_Editor.png?nonce=1720108437711 - -
+2024-07-04 16:54:00.252 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/css/style.css?nonce=1720108437710 - -
+2024-07-04 16:54:00.253 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/css/bootstrap.min.css?nonce=1720108437703 - - - 200 140897 text/css 2480.7543ms
+2024-07-04 16:54:00.464 +01:00 [INF] Sending file. Request path: '/css/owl.carousel.css'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\css\owl.carousel.css'
+2024-07-04 16:54:00.465 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/css/owl.carousel.css?nonce=1720108437705 - - - 200 4198 text/css 2558.7662ms
+2024-07-04 16:54:01.105 +01:00 [INF] Sending file. Request path: '/css/fonts.css'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\css\fonts.css'
+2024-07-04 16:54:01.106 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/css/fonts.css?nonce=1720108437704 - - - 200 24411 text/css 3201.1742ms
+2024-07-04 16:54:01.127 +01:00 [INF] Sending file. Request path: '/css/dropify.min.css'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\css\dropify.min.css'
+2024-07-04 16:54:01.127 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/css/dropify.min.css?nonce=1720108437708 - - - 200 9456 text/css 2095.4838ms
+2024-07-04 16:54:01.204 +01:00 [INF] Sending file. Request path: '/css/datatables.css'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\css\datatables.css'
+2024-07-04 16:54:01.210 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/css/datatables.css?nonce=1720108437707 - - - 200 13843 text/css 1382.2373ms
+2024-07-04 16:54:01.305 +01:00 [INF] Sending file. Request path: '/css/magnific-popup.css'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\css\magnific-popup.css'
+2024-07-04 16:54:01.306 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/css/magnific-popup.css?nonce=1720108437709 - - - 200 7302 text/css 1300.9494ms
+2024-07-04 16:54:01.808 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/css/owl.theme.default.css?nonce=1720108437706 - -
+2024-07-04 16:54:02.962 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/css/flaticon.css?nonce=1720108437704 - -
+2024-07-04 16:54:03.305 +01:00 [INF] Sending file. Request path: '/css/nice-select.css'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\css\nice-select.css'
+2024-07-04 16:54:03.306 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/css/nice-select.css?nonce=1720108437706 - - - 200 5335 text/css 4562.3719ms
+2024-07-04 16:54:03.311 +01:00 [INF] Sending file. Request path: '/css/reset.css'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\css\reset.css'
+2024-07-04 16:54:03.314 +01:00 [INF] Sending file. Request path: '/css/responsive.css'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\css\responsive.css'
+2024-07-04 16:54:03.321 +01:00 [INF] Sending file. Request path: '/css/owl.theme.default.css'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\css\owl.theme.default.css'
+2024-07-04 16:54:03.321 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/css/owl.theme.default.css?nonce=1720108437706 - - - 200 1353 text/css 1513.5689ms
+2024-07-04 16:54:03.336 +01:00 [INF] Sending file. Request path: '/css/flaticon.css'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\css\flaticon.css'
+2024-07-04 16:54:03.337 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/css/flaticon.css?nonce=1720108437704 - - - 200 2065 text/css 374.5112ms
+2024-07-04 16:54:03.349 +01:00 [INF] Sending file. Request path: '/css/font-awesome.css'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\css\font-awesome.css'
+2024-07-04 16:54:03.352 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/css/animate.css?nonce=1720108437702 - - - 200 75599 text/css 5567.3970ms
+2024-07-04 16:54:03.436 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/css/reset.css?nonce=1720108437708 - - - 200 32466 text/css 3969.3825ms
+2024-07-04 16:54:03.437 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/css/responsive.css?nonce=1720108437711 - - - 200 32137 text/css 3272.4794ms
+2024-07-04 16:54:03.437 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/css/font-awesome.css?nonce=1720108437705 - - - 200 53590 text/css 5531.0561ms
+2024-07-04 16:54:03.903 +01:00 [INF] Sending file. Request path: '/css/style.css'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\css\style.css'
+2024-07-04 16:54:04.561 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/css/style.css?nonce=1720108437710 - - - 200 196839 text/css 4217.2782ms
+2024-07-04 16:54:05.128 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/fonts/Flaticon.woff2 - -
+2024-07-04 16:54:05.272 +01:00 [INF] Sending file. Request path: '/fonts/Flaticon.woff2'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\fonts\Flaticon.woff2'
+2024-07-04 16:54:05.272 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/fonts/Flaticon.woff2 - - - 200 5044 font/woff2 144.5437ms
+2024-07-04 16:54:05.273 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/webfonts/fa-solid-900.woff2 - -
+2024-07-04 16:54:05.685 +01:00 [INF] Sending file. Request path: '/webfonts/fa-solid-900.woff2'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\webfonts\fa-solid-900.woff2'
+2024-07-04 16:54:05.734 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/webfonts/fa-solid-900.woff2 - - - 200 79100 font/woff2 461.6810ms
+2024-07-04 16:54:05.998 +01:00 [INF] Sending file. Request path: '/images/Web_Photo_Editor.png'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\images\Web_Photo_Editor.png'
+2024-07-04 16:54:06.047 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/images/Web_Photo_Editor.png?nonce=1720108437711 - - - 200 928695 image/png 5795.6766ms
+2024-07-04 16:54:06.150 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/images/Web_Photo_Editor.png - -
+2024-07-04 16:54:06.317 +01:00 [INF] Sending file. Request path: '/images/Web_Photo_Editor.png'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\images\Web_Photo_Editor.png'
+2024-07-04 16:54:06.872 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/images/Web_Photo_Editor.png - - - 200 928695 image/png 721.4564ms
+2024-07-04 16:54:22.567 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/ - -
+2024-07-04 16:54:22.570 +01:00 [INF] Executing endpoint 'Tradeify.Controllers.HomeController.Index (Tradeify)'
+2024-07-04 16:54:22.579 +01:00 [INF] Route matched with {action = "Index", controller = "Home"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index() on controller Tradeify.Controllers.HomeController (Tradeify).
+2024-07-04 16:54:22.589 +01:00 [INF] Executing ViewResult, running view Index.
+2024-07-04 16:54:22.744 +01:00 [INF] Executed DbCommand (7ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Discriminator] = N'ApplicationUser' AND [a].[Deactivated] = CAST(0 AS bit)
+2024-07-04 16:54:23.360 +01:00 [INF] Executed ViewResult - view Index executed in 780.1831ms.
+2024-07-04 16:54:23.360 +01:00 [INF] Executed action Tradeify.Controllers.HomeController.Index (Tradeify) in 780.551ms
+2024-07-04 16:54:23.361 +01:00 [INF] Executed endpoint 'Tradeify.Controllers.HomeController.Index (Tradeify)'
+2024-07-04 16:54:23.535 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/ - - - 200 - text/html;+charset=utf-8 967.8174ms
+2024-07-04 16:54:23.587 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/css/animate.css - -
+2024-07-04 16:54:23.681 +01:00 [INF] Sending file. Request path: '/css/animate.css'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\css\animate.css'
+2024-07-04 16:54:23.696 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/css/bootstrap.min.css - -
+2024-07-04 16:54:23.715 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/css/fonts.css - -
+2024-07-04 16:54:23.715 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/css/owl.carousel.css - -
+2024-07-04 16:54:23.715 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/css/flaticon.css - -
+2024-07-04 16:54:23.732 +01:00 [INF] Sending file. Request path: '/css/owl.carousel.css'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\css\owl.carousel.css'
+2024-07-04 16:54:23.732 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/css/owl.carousel.css - - - 200 4198 text/css 17.2216ms
+2024-07-04 16:54:23.738 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/css/dropify.min.css - -
+2024-07-04 16:54:23.746 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/css/nice-select.css - -
+2024-07-04 16:54:23.746 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/css/datatables.css - -
+2024-07-04 16:54:23.747 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/css/magnific-popup.css - -
+2024-07-04 16:54:23.763 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/css/style.css - -
+2024-07-04 16:54:23.765 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/css/responsive.css - -
+2024-07-04 16:54:23.768 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/css/font-awesome.css - -
+2024-07-04 16:54:23.769 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/lib/jquery/dist/jquery.min.js - -
+2024-07-04 16:54:23.772 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/lib/bootstrap/dist/js/bootstrap.bundle.min.js - -
+2024-07-04 16:54:23.773 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/css/reset.css - -
+2024-07-04 16:54:23.774 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/js/modernizr.js - -
+2024-07-04 16:54:23.779 +01:00 [INF] Sending file. Request path: '/css/fonts.css'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\css\fonts.css'
+2024-07-04 16:54:23.822 +01:00 [INF] Sending file. Request path: '/css/flaticon.css'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\css\flaticon.css'
+2024-07-04 16:54:23.824 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/js/jquery.menu-aim.js - -
+2024-07-04 16:54:23.824 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/css/flaticon.css - - - 200 2065 text/css 109.6168ms
+2024-07-04 16:54:23.826 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/js/dropify.min.js - -
+2024-07-04 16:54:23.827 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/js/jquery-3.3.1.min.js - -
+2024-07-04 16:54:23.825 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/js/bootstrap.min.js - -
+2024-07-04 16:54:23.901 +01:00 [INF] Sending file. Request path: '/css/dropify.min.css'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\css\dropify.min.css'
+2024-07-04 16:54:23.902 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/css/dropify.min.css - - - 200 9456 text/css 163.8032ms
+2024-07-04 16:54:23.902 +01:00 [INF] Sending file. Request path: '/css/datatables.css'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\css\datatables.css'
+2024-07-04 16:54:23.902 +01:00 [INF] Sending file. Request path: '/css/magnific-popup.css'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\css\magnific-popup.css'
+2024-07-04 16:54:23.903 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/css/datatables.css - - - 200 13843 text/css 156.5384ms
+2024-07-04 16:54:23.903 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/css/magnific-popup.css - - - 200 7302 text/css 155.5754ms
+2024-07-04 16:54:23.903 +01:00 [INF] Sending file. Request path: '/css/nice-select.css'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\css\nice-select.css'
+2024-07-04 16:54:23.903 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/css/nice-select.css - - - 200 5335 text/css 156.9419ms
+2024-07-04 16:54:23.904 +01:00 [INF] Sending file. Request path: '/js/dropify.min.js'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\js\dropify.min.js'
+2024-07-04 16:54:23.904 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/js/datatables.js - -
+2024-07-04 16:54:23.905 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/js/jquery.inview.min.js - -
+2024-07-04 16:54:23.905 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/js/jquery.magnific-popup.js - -
+2024-07-04 16:54:23.905 +01:00 [INF] Sending file. Request path: '/js/jquery.menu-aim.js'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\js\jquery.menu-aim.js'
+2024-07-04 16:54:23.905 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/js/dropify.min.js - - - 200 13328 text/javascript 78.7247ms
+2024-07-04 16:54:23.907 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/js/jquery.menu-aim.js - - - 200 14937 text/javascript 82.8305ms
+2024-07-04 16:54:23.909 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/js/owl.carousel.js - -
+2024-07-04 16:54:23.909 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/js/custom.js - -
+2024-07-04 16:54:23.909 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/css/owl.theme.default.css - -
+2024-07-04 16:54:23.909 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/js/plugin.js - -
+2024-07-04 16:54:23.909 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/js/calculator.js - -
+2024-07-04 16:54:23.911 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/js/jquery.nice-select.min.js - -
+2024-07-04 16:54:23.911 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/js/clipboard.min.js - -
+2024-07-04 16:54:23.913 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/fontawesome-free/js/all.js - -
+2024-07-04 16:54:23.915 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/js/sweetalert2.all.min.js - -
+2024-07-04 16:54:23.915 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/css/animate.css - - - 200 75599 text/css 327.9029ms
+2024-07-04 16:54:23.915 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/js/grant.js - -
+2024-07-04 16:54:23.915 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/js/site.js?v=cZ1fxmBXamf3MuYQSYYqfouTonQdx3I3m8zvicY0w5M - -
+2024-07-04 16:54:23.916 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/css/fonts.css - - - 200 24411 text/css 201.2396ms
+2024-07-04 16:54:23.916 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/js/popper.min.js - -
+2024-07-04 16:54:23.990 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/Home/AccessDenied - -
+2024-07-04 16:54:24.008 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/js/jquery.countTo.js - -
+2024-07-04 16:54:24.054 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/js/grant.js - - - 302 - - 138.8685ms
+2024-07-04 16:54:24.054 +01:00 [INF] Executing endpoint 'Tradeify.Controllers.HomeController.AccessDenied (Tradeify)'
+2024-07-04 16:54:24.056 +01:00 [INF] Route matched with {action = "AccessDenied", controller = "Home"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult AccessDenied() on controller Tradeify.Controllers.HomeController (Tradeify).
+2024-07-04 16:54:24.059 +01:00 [INF] Executing ViewResult, running view AccessDenied.
+2024-07-04 16:54:24.149 +01:00 [INF] Sending file. Request path: '/js/modernizr.js'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\js\modernizr.js'
+2024-07-04 16:54:24.149 +01:00 [INF] Sending file. Request path: '/css/reset.css'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\css\reset.css'
+2024-07-04 16:54:24.149 +01:00 [INF] Sending file. Request path: '/css/responsive.css'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\css\responsive.css'
+2024-07-04 16:54:24.180 +01:00 [INF] Executed DbCommand (60ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Discriminator] = N'ApplicationUser' AND [a].[Deactivated] = CAST(0 AS bit)
+2024-07-04 16:54:24.180 +01:00 [INF] Sending file. Request path: '/css/owl.theme.default.css'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\css\owl.theme.default.css'
+2024-07-04 16:54:24.180 +01:00 [INF] Sending file. Request path: '/js/calculator.js'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\js\calculator.js'
+2024-07-04 16:54:24.180 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/css/owl.theme.default.css - - - 200 1353 text/css 271.0253ms
+2024-07-04 16:54:24.180 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/js/calculator.js - - - 200 5387 text/javascript 271.4254ms
+2024-07-04 16:54:24.181 +01:00 [INF] Sending file. Request path: '/js/jquery.inview.min.js'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\js\jquery.inview.min.js'
+2024-07-04 16:54:24.181 +01:00 [INF] Sending file. Request path: '/js/jquery.nice-select.min.js'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\js\jquery.nice-select.min.js'
+2024-07-04 16:54:24.181 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/js/jquery.inview.min.js - - - 200 1424 text/javascript 276.4468ms
+2024-07-04 16:54:24.181 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/js/jquery.nice-select.min.js - - - 200 2945 text/javascript 270.2343ms
+2024-07-04 16:54:24.181 +01:00 [INF] Sending file. Request path: '/js/clipboard.min.js'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\js\clipboard.min.js'
+2024-07-04 16:54:24.181 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/js/clipboard.min.js - - - 200 8839 text/javascript 270.6142ms
+2024-07-04 16:54:24.182 +01:00 [INF] Sending file. Request path: '/js/custom.js'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\js\custom.js'
+2024-07-04 16:54:24.182 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/js/custom.js - - - 200 15221 text/javascript 272.5212ms
+2024-07-04 16:54:24.182 +01:00 [INF] Sending file. Request path: '/css/bootstrap.min.css'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\css\bootstrap.min.css'
+2024-07-04 16:54:24.183 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/css/responsive.css - - - 200 32137 text/css 417.5627ms
+2024-07-04 16:54:24.183 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/css/reset.css - - - 200 32466 text/css 409.2565ms
+2024-07-04 16:54:24.183 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/js/modernizr.js - - - 200 30169 text/javascript 408.7989ms
+2024-07-04 16:54:24.253 +01:00 [INF] Sending file. Request path: '/js/jquery.countTo.js'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\js\jquery.countTo.js'
+2024-07-04 16:54:24.253 +01:00 [INF] Sending file. Request path: '/js/jquery.magnific-popup.js'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\js\jquery.magnific-popup.js'
+2024-07-04 16:54:24.253 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/js/jquery.countTo.js - - - 200 2581 text/javascript 245.3873ms
+2024-07-04 16:54:24.253 +01:00 [INF] Sending file. Request path: '/js/popper.min.js'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\js\popper.min.js'
+2024-07-04 16:54:24.254 +01:00 [INF] Sending file. Request path: '/lib/bootstrap/dist/js/bootstrap.bundle.min.js'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.min.js'
+2024-07-04 16:54:24.254 +01:00 [INF] Sending file. Request path: '/js/bootstrap.min.js'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\js\bootstrap.min.js'
+2024-07-04 16:54:24.255 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/css/bootstrap.min.css - - - 200 140897 text/css 558.8410ms
+2024-07-04 16:54:24.254 +01:00 [INF] Sending file. Request path: '/css/font-awesome.css'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\css\font-awesome.css'
+2024-07-04 16:54:24.255 +01:00 [INF] Executed ViewResult - view AccessDenied executed in 198.3466ms.
+2024-07-04 16:54:24.255 +01:00 [INF] Executed action Tradeify.Controllers.HomeController.AccessDenied (Tradeify) in 198.5391ms
+2024-07-04 16:54:24.255 +01:00 [INF] Executed endpoint 'Tradeify.Controllers.HomeController.AccessDenied (Tradeify)'
+2024-07-04 16:54:24.259 +01:00 [INF] Sending file. Request path: '/js/site.js'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\js\site.js'
+2024-07-04 16:54:24.260 +01:00 [INF] Sending file. Request path: '/lib/jquery/dist/jquery.min.js'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\lib\jquery\dist\jquery.min.js'
+2024-07-04 16:54:24.260 +01:00 [INF] Sending file. Request path: '/js/jquery-3.3.1.min.js'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\js\jquery-3.3.1.min.js'
+2024-07-04 16:54:24.285 +01:00 [INF] Sending file. Request path: '/js/owl.carousel.js'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\js\owl.carousel.js'
+2024-07-04 16:54:24.285 +01:00 [INF] Sending file. Request path: '/js/datatables.js'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\js\datatables.js'
+2024-07-04 16:54:24.355 +01:00 [INF] Sending file. Request path: '/js/sweetalert2.all.min.js'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\js\sweetalert2.all.min.js'
+2024-07-04 16:54:24.398 +01:00 [INF] Sending file. Request path: '/css/style.css'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\css\style.css'
+2024-07-04 16:54:24.399 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/js/jquery.magnific-popup.js - - - 200 43557 text/javascript 494.3412ms
+2024-07-04 16:54:24.399 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/js/popper.min.js - - - 200 25275 text/javascript 483.3163ms
+2024-07-04 16:54:24.400 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/css/font-awesome.css - - - 200 53590 text/css 631.0750ms
+2024-07-04 16:54:24.400 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/lib/jquery/dist/jquery.min.js - - - 200 89478 text/javascript 630.6735ms
+2024-07-04 16:54:24.400 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/lib/bootstrap/dist/js/bootstrap.bundle.min.js - - - 200 78474 text/javascript 628.4731ms
+2024-07-04 16:54:24.400 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/js/bootstrap.min.js - - - 200 51004 text/javascript 575.4696ms
+2024-07-04 16:54:24.400 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/js/site.js?v=cZ1fxmBXamf3MuYQSYYqfouTonQdx3I3m8zvicY0w5M - - - 200 45033 text/javascript 485.0011ms
+2024-07-04 16:54:24.401 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/Home/AccessDenied - - - 200 - text/html;+charset=utf-8 410.9688ms
+2024-07-04 16:54:24.552 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/js/jquery-3.3.1.min.js - - - 200 86929 text/javascript 725.5666ms
+2024-07-04 16:54:24.588 +01:00 [INF] Sending file. Request path: '/js/plugin.js'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\js\plugin.js'
+2024-07-04 16:54:24.615 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/js/owl.carousel.js - - - 200 88643 text/javascript 705.9086ms
+2024-07-04 16:54:24.618 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/js/datatables.js - - - 200 82575 text/javascript 713.2031ms
+2024-07-04 16:54:24.618 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/js/sweetalert2.all.min.js - - - 200 72859 text/javascript 703.7233ms
+2024-07-04 16:54:24.813 +01:00 [INF] Sending file. Request path: '/fontawesome-free/js/all.js'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\fontawesome-free\js\all.js'
+2024-07-04 16:54:24.862 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/lib/bootstrap/dist/js/bootstrap.bundle.min.js.map - -
+2024-07-04 16:54:25.415 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/css/style.css - - - 200 196839 text/css 1651.8991ms
+2024-07-04 16:54:25.601 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/images/abt_3.png - -
+2024-07-04 16:54:25.863 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/images/ac1.jpg - -
+2024-07-04 16:54:25.912 +01:00 [INF] Sending file. Request path: '/images/ac1.jpg'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\images\ac1.jpg'
+2024-07-04 16:54:25.912 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/images/ac1.jpg - - - 200 819 image/jpeg 48.8458ms
+2024-07-04 16:54:25.938 +01:00 [INF] Sending file. Request path: '/images/abt_3.png'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\images\abt_3.png'
+2024-07-04 16:54:25.943 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/images/ac2.jpg - -
+2024-07-04 16:54:25.958 +01:00 [INF] Sending file. Request path: '/images/ac2.jpg'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\images\ac2.jpg'
+2024-07-04 16:54:25.958 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/images/ac2.jpg - - - 200 819 image/jpeg 15.9434ms
+2024-07-04 16:54:25.963 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/images/abt_3.png - - - 200 158002 image/png 362.5835ms
+2024-07-04 16:54:25.964 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/_framework/aspnetcore-browser-refresh.js - -
+2024-07-04 16:54:25.965 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/_framework/aspnetcore-browser-refresh.js - - - 200 13752 application/javascript;+charset=utf-8 1.0263ms
+2024-07-04 16:54:25.969 +01:00 [INF] Sending file. Request path: '/lib/bootstrap/dist/js/bootstrap.bundle.min.js.map'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.min.js.map'
+2024-07-04 16:54:26.036 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/js/plugin.js - - - 200 612194 text/javascript 2126.1100ms
+2024-07-04 16:54:26.272 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/images/ac3.jpg - -
+2024-07-04 16:54:26.363 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/lib/bootstrap/dist/js/bootstrap.bundle.min.js.map - - - 200 327261 text/plain 1500.2616ms
+2024-07-04 16:54:26.382 +01:00 [INF] Sending file. Request path: '/images/ac3.jpg'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\images\ac3.jpg'
+2024-07-04 16:54:26.382 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/images/ac3.jpg - - - 200 819 image/jpeg 110.4931ms
+2024-07-04 16:54:26.402 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/images/loader.gif - -
+2024-07-04 16:54:26.465 +01:00 [INF] Sending file. Request path: '/images/loader.gif'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\images\loader.gif'
+2024-07-04 16:54:26.530 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/fontawesome-free/js/all.js - - - 200 1252841 text/javascript 2617.2749ms
+2024-07-04 16:54:26.593 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/_vs/browserLink - -
+2024-07-04 16:54:26.935 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/images/faq.jpg - -
+2024-07-04 16:54:27.580 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/webfonts/fa-brands-400.woff2 - -
+2024-07-04 16:54:27.802 +01:00 [INF] Sending file. Request path: '/images/faq.jpg'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\images\faq.jpg'
+2024-07-04 16:54:27.814 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/images/faq.jpg - - - 200 34801 image/jpeg 878.5281ms
+2024-07-04 16:54:27.819 +01:00 [INF] Sending file. Request path: '/webfonts/fa-brands-400.woff2'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\webfonts\fa-brands-400.woff2'
+2024-07-04 16:54:27.992 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/webfonts/fa-brands-400.woff2 - - - 200 74288 font/woff2 411.4480ms
+2024-07-04 16:54:28.108 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 1515.3736ms
+2024-07-04 16:54:28.229 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/images/loader.gif - - - 200 475965 image/gif 1827.3874ms
+2024-07-04 17:00:55.875 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/ - -
+2024-07-04 17:00:55.883 +01:00 [INF] Executing endpoint 'Tradeify.Controllers.HomeController.Index (Tradeify)'
+2024-07-04 17:00:55.885 +01:00 [INF] Route matched with {action = "Index", controller = "Home"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index() on controller Tradeify.Controllers.HomeController (Tradeify).
+2024-07-04 17:00:55.887 +01:00 [INF] Executing ViewResult, running view Index.
+2024-07-04 17:00:57.023 +01:00 [INF] Executed DbCommand (129ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Discriminator] = N'ApplicationUser' AND [a].[Deactivated] = CAST(0 AS bit)
+2024-07-04 17:00:57.590 +01:00 [INF] Executed ViewResult - view Index executed in 1704.423ms.
+2024-07-04 17:00:57.590 +01:00 [INF] Executed action Tradeify.Controllers.HomeController.Index (Tradeify) in 1704.7196ms
+2024-07-04 17:00:57.590 +01:00 [INF] Executed endpoint 'Tradeify.Controllers.HomeController.Index (Tradeify)'
+2024-07-04 17:00:57.601 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/ - - - 200 - text/html;+charset=utf-8 1726.0837ms
+2024-07-04 17:00:57.840 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/_framework/aspnetcore-browser-refresh.js - -
+2024-07-04 17:00:57.852 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/_framework/aspnetcore-browser-refresh.js - - - 200 13752 application/javascript;+charset=utf-8 11.6479ms
+2024-07-04 17:00:57.865 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/js/grant.js - -
+2024-07-04 17:00:57.867 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/css/nice-select.css - -
+2024-07-04 17:00:57.867 +01:00 [INF] The file /css/nice-select.css was not modified
+2024-07-04 17:00:57.868 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/css/nice-select.css - - - 304 - text/css 0.5896ms
+2024-07-04 17:00:57.868 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/css/style.css - -
+2024-07-04 17:00:57.868 +01:00 [INF] The file /css/style.css was not modified
+2024-07-04 17:00:57.868 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/css/style.css - - - 304 - text/css 0.3549ms
+2024-07-04 17:00:57.883 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/js/grant.js - - - 302 - - 18.4829ms
+2024-07-04 17:00:58.374 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/Home/AccessDenied - -
+2024-07-04 17:00:58.491 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/_vs/browserLink - -
+2024-07-04 17:00:58.601 +01:00 [INF] Executing endpoint 'Tradeify.Controllers.HomeController.AccessDenied (Tradeify)'
+2024-07-04 17:00:58.603 +01:00 [INF] Route matched with {action = "AccessDenied", controller = "Home"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult AccessDenied() on controller Tradeify.Controllers.HomeController (Tradeify).
+2024-07-04 17:00:58.606 +01:00 [INF] Executing ViewResult, running view AccessDenied.
+2024-07-04 17:00:58.640 +01:00 [INF] Executed DbCommand (11ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Discriminator] = N'ApplicationUser' AND [a].[Deactivated] = CAST(0 AS bit)
+2024-07-04 17:00:58.646 +01:00 [INF] Executed ViewResult - view AccessDenied executed in 42.6778ms.
+2024-07-04 17:00:58.646 +01:00 [INF] Executed action Tradeify.Controllers.HomeController.AccessDenied (Tradeify) in 42.9578ms
+2024-07-04 17:00:58.646 +01:00 [INF] Executed endpoint 'Tradeify.Controllers.HomeController.AccessDenied (Tradeify)'
+2024-07-04 17:00:58.646 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/Home/AccessDenied - - - 200 - text/html;+charset=utf-8 272.0730ms
+2024-07-04 17:00:58.725 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 233.5290ms

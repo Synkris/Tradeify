@@ -1,0 +1,165 @@
+﻿
+
+
+@{
+    ViewData["Title"] = "Contact us";
+    Layout = "~/Views/Shared/_LayoutTwo.cshtml";
+}
+
+
+<div class="map_wrapper fixed_portion float_left">
+    <div id='map'>
+    </div>
+</div>
+
+<div class="contact_section float_left">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+                <div class="sv_heading_wraper heading_wrapper_dark dark_heading">
+                    <h4> get in touch</h4>
+                    <h3>contact us for support</h3>
+
+                </div>
+
+            </div>
+            <div class="col-lg-10 offset-lg-1 col-md-12 col-sm-12 col-12">
+                <form>
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6">
+                            <div class="form-pos">
+                                <div class="form-group i-name">
+
+                                    <input type="text" class="form-control require" name="first_name" required="" placeholder="First Name*">
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6">
+                            <div class="form-pos">
+                                <div class="form-group i-name">
+
+                                    <input type="text" class="form-control require" name="last_name" required="" placeholder="last Name*">
+
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /.col-md-12 -->
+                        <div class="col-lg-6 col-md-6">
+                            <div class="form-e">
+                                <div class="form-group i-email">
+                                    <label class="sr-only">Email </label>
+                                    <input type="email" class="form-control require" name="email" required="" placeholder=" Email *" data-valid="email" data-error="Email should be valid.">
+
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /.col-md-12 -->
+                        <div class="col-lg-6 col-md-6">
+                            <div class="form-s">
+                                <div class="form-group i-subject">
+
+                                    <input type="text" class="form-control" name="Subject" required="" placeholder="subject">
+
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /.col-md-12 -->
+                        <div class="col-md-12">
+                            <div class="form-m">
+                                <div class="form-group i-message">
+
+                                    <textarea class="form-control require" name="message" required="" rows="5" id="messageTen" placeholder=" Message"></textarea>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /.col-md-12 -->
+                        <div class="col-md-12">
+                            <div class="tb_es_btn_div">
+                                <div class="response"></div>
+                                <div class="tb_es_btn_wrapper conatct_btn2 cont_bnt">
+                                    <button type="button" class="submitForm">send message !</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="payments_wrapper float_left">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12">
+                <div class="sv_heading_wraper half_section_headign">
+                    <h4>Payment Methods</h4>
+                    <h3>Accepted Payment Method</h3>
+                </div>
+            </div>
+            <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12">
+                <div class="payment_slider_wrapper">
+                    <div class="owl-carousel owl-theme">
+                        <div class="item">
+
+                            <div class="partner_img_wrapper float_left">
+                                <img src="~/images/partner1.png" class="img-responsive" alt="img">
+                            </div>
+
+                        </div>
+                        <div class="item">
+
+                            <div class="partner_img_wrapper float_left">
+                                <img src="~/images/partner2.png" class="img-responsive" alt="img">
+                            </div>
+
+                        </div>
+                        <div class="item">
+
+                            <div class="partner_img_wrapper float_left">
+                                <img src="~/images/partner3.png" class="img-responsive" alt="img">
+                            </div>
+
+                        </div>
+                        <div class="item">
+
+                            <div class="partner_img_wrapper float_left">
+                                <img src="~/images/partner4.png" class="img-responsive" alt="img">
+                            </div>
+
+                        </div>
+                        <div class="item">
+
+                            <div class="partner_img_wrapper float_left">
+                                <img src="~/images/partner2.png" class="img-responsive" alt="img">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script>
+    function initMap() {
+        var uluru = {
+            lat: -36.742775,
+            lng: 174.731559
+        };
+        var map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 15,
+            scrollwheel: false,
+            center: uluru
+        });
+        var marker = new google.maps.Marker({
+            position: uluru,
+            map: map
+        });
+    }
+</script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBctr8WYTfFDi_oGbPEolSDzn4VZaAKVK0&callback=initMap"></script>

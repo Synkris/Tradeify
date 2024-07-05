@@ -18,4 +18,5 @@ namespace Logic.Helpers
             public string PopPassword { get; set; }
             public bool SendEmail { get; set; }
         }
+ 
 }

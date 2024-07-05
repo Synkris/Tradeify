@@ -1,30 +1,37 @@
-﻿
+﻿@*@inject Logic.IHelpers.IPackageHelper _packageHelper
+@inject Core.Config.IGeneralConfiguration _generalconfiguration;
+@inject Logic.IHelpers.IPackageHelper _news;
+
+*@
 @{
 	ViewData["Title"] = "Home";
 	Layout = "~/Views/Shared/_Layout.cshtml";
 
-
+	//var package = _packageHelper.GetPackages();
+	//var news = _news.GetNews();
 }
 <style>
 	.index2_sliderbg {
-		width: 100%; 
+		margin-top: 7%;
+		margin-right: 6%;
+/* 		width: 100%;
 		height: 100%;
 		overflow: hidden;
-		border-radius: 50%; 
+		border-radius: 50%;
 		margin: 0 auto;
-		margin-top :3%;
+		margin-top: 5%; */
 	}
 
 	.img-responsive {
-		width: 100%; 
-		height: auto; 
-		display: block;
+/* 		width: 100%;
+		height: auto;
+		display: block; */
 	}
 </style>
 <!-- slider wrapper start -->
 <div class="slider-area slider_index2_wrapper float_left btn_col">
 	<div class="index2_sliderbg">
-		<img src="images/slider1.png" alt="img" class="img-responsive">
+		<img src="images/Web_Photo_Editor.png" alt="img" class="img-responsive">
 	</div>
 
 	<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
@@ -33,19 +40,19 @@
 				<div class="carousel-captions caption-1">
 					<div class="container">
 						<div class="row">
-							<div class="col-xl-6 col-lg-10 col-md-12 col-sm-12 col-12">
-								<div class="content pt-lg-5">
+							<div class="col-xl-6 col-lg-10 col-md-12 col-sm-12 col-12 pt-2">
+								<div class="content pt-lg-5 mt-5">
 
 
 									<h3 data-animation="animated bounceInUp">
-										<span class="text-success">Tradeify</span>   <br>
-										<span> Gold Coin </span> <br />
-										
+										<span class="text-white"></span>   <br>
+										<span> African </span> <br />
+										Project
 									</h3>
 									<br />
 
 									<div data-animation="animated bounceInUp" class="line_shape"></div>
-									<p data-animation="animated bounceInUp">
+									<p data-animation="animated bounceInUp" class="text-white">
 										Do you already have an account? Login to get your referral link.
 										If you do not have account yet ask your friend for his or her referral link so you can join.
 									</p>
@@ -73,17 +80,16 @@
 					<div class="container">
 						<div class="row">
 							<div class="col-xl-6 col-lg-10 col-md-12 col-sm-12 col-12">
-								<div class="content pt-lg-5">
+								<div class="content pt-lg-5 mt-6">
 
 									<h3 data-animation="animated bounceInUp">
-										The   <br>
-										<span>Tradeify</span>
+										<span><i>A</i></span>
 										Project
 									</h3>
 									<br />
 
 									<div data-animation="animated bounceInUp" class="line_shape"></div>
-									<p data-animation="animated bounceInUp">
+									<p data-animation="animated bounceInUp" class="text-white">
 										Do you already have an account? Login to get your referral link.
 										If you do not have account yet ask your friend for his or her referral link so you can join.
 									</p>
@@ -111,18 +117,18 @@
 					<div class="container">
 						<div class="row">
 							<div class="col-xl-6 col-lg-10 col-md-12 col-sm-12 col-12">
-								<div class="content pt-lg-5">
+								<div class="content pt-lg-5 mt-6">
 
 
 									<h3 data-animation="animated bounceInUp">
-										<span class="text-success">Tradeify</span>   <br>
-										<span> Gold Coin </span> <br />
-										
+										<span class="text-white"> </span> <br>
+										<span> African </span> <br />
+										Project
 									</h3>
 									<br />
 
 									<div data-animation="animated bounceInUp" class="line_shape"></div>
-									<p data-animation="animated bounceInUp">
+									<p data-animation="animated bounceInUp" class="text-white">
 										Do you already have an account? Login to get your referral link. If you do not
 										have account yet ask your friend for his or her referral link so you can join.
 									</p>
@@ -194,7 +200,7 @@
 						<div class="line_shape"></div>
 					</div>
 					<div class="welcone_savehiyp float_left">
-						<p class="text-warning">
+						<p class="text_color2">
 							We  are  aimed  at  connecting  the  ordinary  people  with  the  global  financial economic giants.
 							This  will  give  you  access  to  benefit  in  the  major  blocks  of  global  financial ecosystem
 							and  major community  development  projects  across  Africa.
@@ -202,14 +208,14 @@
 						<div class="welcome_save_inpvate_wrapper">
 							<ul>
 								<li class="_inovate"><a href="#"><i class="flaticon-check-box"></i> We Innovate & Develop </a></li>
-								<li class="_inovate"><a href="#"><i class="flaticon-check-box"></i> Licenced & Certified </a></li>
-								<li class="_inovate"><a href="#"><i class="flaticon-check-box"></i>Saving & Investments </a></li>
+								<li class="_inovate"><a href="#"><i class="flaticon-check-box"></i> Licensed & Certified </a></li>
+								<li class="_inovate"><a href="#"><i class="flaticon-check-box"></i>Health and Technology </a></li>
 							</ul>
 						</div>
 						<div class="about_btn float_left">
 							<ul>
 								<li>
-									<a href="#">get more</a>
+									<a href="#">Get More</a>
 								</li>
 							</ul>
 						</div>
@@ -298,26 +304,25 @@
 	<div class="container">
 		<div class="row">
 			<div class="global_comm_wraper index2_global_comm_wrapper">
-				<h1>We Are Always Thinking Globally</h1>
-				<p>
+				<h1 class="text_color2">We Are Always Thinking Globally</h1>
+@*				<p>
 					Just as positive words can make someone smile
 					or a well-timed humorous quote can make someone laugh,
 					or a well planned investimaent can eliminate poverty,
 					our thoughts react to the world in real-time.
 
-				</p>
-				<h1 style="color: #dbb322;">invest today at Tradeify</h1>
+				</p>*@
+				<h1 class="text_color2">Partner with AP today</h1>
 			</div>
 			<div class="zero_balance_wrapper">
 				<div class="zero_commisition">
 					<h1>
-						Zero
-						Commissions
+						HEALTH AND TECHNOLOGY
 					</h1>
-					<h4 style="text-transform:none;">No hidden charges*</h4>
+					<h4 style="text-transform:none;">Financial Ecosystem</h4>
 				</div>
 				<div class="start_invest_wrap">
-					<h1>start invest now</h1>
+					<h1>start to Partner now</h1>
 					<div class="about_btn zero_btn float_left">
 						@*@if (User.Identity.IsAuthenticated)
 						{
@@ -365,11 +370,11 @@
 					</div>
 					<div class="investment_border_wrapper"></div>
 					<div class="investment_content_wrapper">
-						<h1 class="text-warning"><a>Health  Care Services</a></h1>
+						<h1 class="text_color2"><a>Health  Care Services</a></h1>
 						<div class="line_shape investment_line_shape"></div>
 						<p>
 							Benefit  from  our  Global  Multilevel  Marketing  and  distribution  of Herbal/Organic  products.
-							Producing bitter blooded and strongly immuned products in Africa.
+							Producing bitter blooded and strongly immune products in Africa.
 						</p>
 						<span class="investment_index_icon"><a><i class="flaticon-arrow-pointing-to-right"></i></a></span>
 					</div>
@@ -383,7 +388,7 @@
 					</div>
 					<div class="investment_border_wrapper "></div>
 					<div class="investment_content_wrapper ">
-						<h1 class="text-warning"><a>  Telecommunications </a> </h1>
+						<h1 class="text_color2"><a>  Telecommunications </a> </h1>
 						<div class="line_shape investment_line_shape"></div>
 						<p>
 							Take a  part  in  the global  distribution  of data through  the VTU  services.
@@ -401,7 +406,7 @@
 					</div>
 					<div class="investment_border_wrapper "></div>
 					<div class="investment_content_wrapper ">
-						<h1 class="text-warning"><a>Grant/Loan Scheme</a></h1>
+						<h1 class="text_color2"><a>Grant/Loan Scheme</a></h1>
 						<div class="line_shape investment_line_shape"></div>
 						<p>
 							Benefit  from  our  Agricultural/Agrobusiness
@@ -420,7 +425,7 @@
 					</div>
 					<div class="investment_border_wrapper "></div>
 					<div class="investment_content_wrapper ">
-						<h1 class="text-warning"><a>Block Chain/Forex</a></h1>
+						<h1 class="text_color2"><a>Block Chain/Forex</a></h1>
 						<div class="line_shape investment_line_shape"></div>
 						<p>
 							Benefit  from the  massive  Global  Decentralized  Economy  through  the  Block Chain  Technology;
@@ -438,7 +443,7 @@
 					</div>
 					<div class="investment_border_wrapper "></div>
 					<div class="investment_content_wrapper ">
-						<h1 class="text-warning"><a>Entertainment/Social Media</a></h1>
+						<h1 class="text_color2"><a>Entertainment/Social Media</a></h1>
 						<div class="line_shape investment_line_shape"></div>
 						<p>
 							Benefit  from  the  huge  financial  distribution  through  Talent  Hunt, Development  and  Star  Management.
@@ -457,7 +462,7 @@
 					</div>
 					<div class="investment_border_wrapper "></div>
 					<div class="investment_content_wrapper ">
-						<h1 class="text-warning"><a>Natural Resources</a></h1>
+						<h1 class="text_color2"><a>Natural Resources</a></h1>
 						<div class="line_shape investment_line_shape"></div>
 						<p>
 							Benefits  from  the  global  distribution  of
@@ -475,7 +480,7 @@
 					</div>
 					<div class="investment_border_wrapper "></div>
 					<div class="investment_content_wrapper ">
-						<h1 class="text-warning"><a>Real Estate/Property</a></h1>
+						<h1 class="text_color2"><a>Real Estate/Property</a></h1>
 						<div class="line_shape investment_line_shape"></div>
 						<p>
 							Buy,  sell  and  save  Real  Estate  and  Properties  in  a  very  affordable way .
@@ -496,7 +501,7 @@
 					</div>
 					<div class="investment_border_wrapper "></div>
 					<div class="investment_content_wrapper ">
-						<h1 class="text-warning"><a>Education/Skill Development</a></h1>
+						<h1 class="text_color2"><a>Education/Skill Development</a></h1>
 						<div class="line_shape investment_line_shape"></div>
 						<p>
 							Donate  and  recommend  beneficiaries  in  our  free  Skill  Development  and Educational  Empowerment,
@@ -515,7 +520,7 @@
 					</div>
 					<div class="investment_border_wrapper"></div>
 					<div class="investment_content_wrapper">
-						<h1 class="text-warning"><a>Sports/Games/Sports Bets</a></h1>
+						<h1 class="text_color2"><a>Sports/Games/Sports Bets</a></h1>
 						<div class="line_shape investment_line_shape"></div>
 						<p>
 							Share  in  the  huge  financial  transfer  through  the  buying  and  selling  of players,
@@ -535,7 +540,7 @@
 					</div>
 					<div class="investment_border_wrapper "></div>
 					<div class="investment_content_wrapper ">
-						<h1 class="text-warning"><a>Health Workers Special Package</a></h1>
+						<h1 class="text_color2"><a>Health Workers Special Package</a></h1>
 						<div class="line_shape investment_line_shape"></div>
 						<p>
 							Receive an instant 50%+ profit in special health workers e-commerce empowerment package.
@@ -552,7 +557,7 @@
 					</div>
 					<div class="investment_border_wrapper"></div>
 					<div class="investment_content_wrapper ">
-						<h1 class="text-warning"><a>Community Development Project</a></h1>
+						<h1 class="text_color2"><a>Community Development Project</a></h1>
 						<div class="line_shape investment_line_shape"></div>
 						<p>
 							Your  performance  will  qualify  you  for  our  Community  Development Project
@@ -571,9 +576,9 @@
 					</div>
 					<div class="investment_border_wrapper "></div>
 					<div class="investment_content_wrapper ">
-						<h1 class="text-warning"><a>Profitable Referrals</a></h1>
+						<h1 class="text_color2"><a>Profitable Referrals</a></h1>
 						<div class="line_shape investment_line_shape"></div>
-						<p>Get a Welcome bonus of $5 USD,after registeration. </p>
+						<p>Get a Welcome bonus of $5 USD,after registration. </p>
 						<p>Also earn cash tokens  on every referrals. </p>
 						<span class="investment_index_icon"><a><i class="flaticon-arrow-pointing-to-right"></i></a></span>
 					</div>
@@ -597,17 +602,18 @@
 <!-- newsletter wrapper start -->
 <!-- newsletter  wrapper end -->
 <!--our blog wrapper start -->
-<div class="our_blog_wrapper float_left" id="news">
-	<div class="container">
-		<div class="row">
 
-			<div class="col-md-12 col-lg-12 col-sm-12 col-12">
+@*<div class="our_blog_wrapper float_left" id="news">
+	<div class="container">
+		<div class="row">*@
+
+			@*<div class="col-md-12 col-lg-12 col-sm-12 col-12">
 				<div class="sv_heading_wraper heading_wrapper_dark dark_heading index2_heading index2_heading_center">
 					<h4> our blog</h4>
 					<h3>Our Latest News</h3>
 					<div class="line_shape"></div>
 				</div>
-			</div>
+			</div>*@
 			@*@foreach (var obj in news)
 			{
 				<div class="col-lg-4 col-md-12 col-sm-12 col-12">
@@ -624,7 +630,7 @@
 						</div>
 						<div class="btc_blog_indx_cont_wrapper">
 
-							<h5> <a asp-controller="user" asp-action="SingleNews" asp-route-Id="@obj.Id" style="color:#dba622;">@obj.Name.</a></h5>
+							<h5> <a asp-controller="user" asp-action="SingleNews" asp-route-Id="@obj.Id" style="color:#006400;">@obj.Name.</a></h5>
 							<p class="card bg-transparent">@obj.ShortDetails</p>
 						</div>
 						<div class="btc_blog_indx_cont_bottom">
@@ -640,9 +646,10 @@
 			}*@
 
 
-		</div>
+@*		</div>
 	</div>
-</div>
+</div>*@
+
 <!--our blog wrapper end -->
 <!-- FAQ wrapper start -->
 <div class="faq_wrapper float_left" id="faqs">
@@ -667,7 +674,7 @@
 						<div class="card_pagee" role="tab" id="headingOne">
 							<h5 class="h5-md">
 								<a data-toggle="collapse" href="#collapseOne" role="button" aria-expanded="true" aria-controls="collapseOne">
-									How can i register on Tradeify website?
+									How can i register on A P website?
 								</a>
 							</h5>
 						</div>
@@ -715,7 +722,7 @@
 						<div class="card_pagee" role="tab" id="headingThree">
 							<h5 class="h5-md">
 								<a class="collapsed" data-toggle="collapse" href="#collapseThree" role="button" aria-expanded="false" aria-controls="collapseThree">
-									How can i invest on Tradeify?
+									How can i invest on A P?
 								</a>
 							</h5>
 						</div>
@@ -726,7 +733,7 @@
 									<img src="images/ac3.jpg" alt="img">
 								</div>
 								<div class="card_cntnt">
-									<p>To invest on Tradeify and have profit you must buy a package, which in return generate profit for you.</p>
+									<p>To invest on AP and have profit you must buy a package, which in return generate profit for you.</p>
 								</div>
 							</div>
 						</div>
@@ -749,7 +756,7 @@
 									<img src="images/ac1.jpg" alt="img">
 								</div>
 								<div class="card_cntnt">
-									<p>You can buy as many packages as you can afford because the more the packages the more the profits earn. </p>
+									<p>You can buy a package during registration, then have the opportunity to upgrade at any time depending on the generations you wish to be getting their bonus. </p>
 								</div>
 							</div>
 						</div>
@@ -799,7 +806,7 @@
 									<img src="images/ac1.jpg" alt="img">
 								</div>
 								<div class="card_cntnt">
-									<p>You can withdraw your earnings after the package is due for withdrawal by filling the withdrawal form our admin will comfirm and credit you. </p>
+									<p>You can withdraw your earnings by filling the withdrawal form, our admin will comfirm and credit you. </p>
 								</div>
 							</div>
 						</div>
@@ -811,7 +818,7 @@
 						<div class="card_pagee" role="tab" id="headingfive">
 							<h5 class="h5-md">
 								<a class="collapsed" data-toggle="collapse" href="#collapse2" role="button" aria-expanded="false" aria-controls="collapse2">
-									How do i know that my package is due for withdrawal?
+									How can i keep earning?
 								</a>
 							</h5>
 						</div>
@@ -822,7 +829,7 @@
 									<img src="images/ac2.jpg" alt="img">
 								</div>
 								<div class="card_cntnt">
-									<p>Each package has a duration attached to it and your duration begins immediately after payment. </p>
+									<p> To keep earning, refer people often, mine and also buy tokens </p>
 								</div>
 							</div>
 						</div>
@@ -845,9 +852,8 @@
 									<img src="images/ac3.jpg" alt="img">
 								</div>
 								<div class="card_cntnt">
-									<p>Cashback Bonus on every purchased Packages,</p>
+									<p>Cashback Bonus on each referral,</p>
 									<p>Interactive sessions with great Investors via social media handles,</p>
-									<p>Welcome Bonus & 5 Million Naira Grants after Registeration & </p>
 									<p>Birthday Bonus and lots more...</p>
 								</div>
 							</div>

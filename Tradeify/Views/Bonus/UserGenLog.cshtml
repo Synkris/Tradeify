@@ -1,0 +1,313 @@
+﻿@using Core.ViewModels
+@model Core.ViewModels.UserGenerationLogSearchResultViewModel
+@{
+    ViewData["Title"] = "UserGenerationLog";
+    Layout = "~/Views/Shared/_AdminDashboardLayout.cshtml";
+}
+<style>
+
+    body {
+        counter-reset: Serial;
+    }
+
+    tr td:first-child:before {
+        counter-increment: Serial;
+        content: counter(Serial);
+    }
+
+    .arrow-container {
+        position: relative;
+    }
+
+    .arrow-up {
+        position: absolute;
+        top: 0.5em;
+    }
+
+    .arrow-down {
+        position: absolute;
+        top: 1em;
+    }
+</style>
+
+<div class="deposit_list_wrapper float_left header_text">
+    <!-- profile wrapper start -->
+    <div class="last_transaction_wrapper float_left">
+        <div class="row">
+            <div class="col-md-12 col-lg-12 col-sm-12 col-12 header_text">
+
+
+                @if (TempData["Message"] != null)
+                {
+                    var tempDatamessage = (Tradeify.Models.Message)TempData["Message"];
+                    <partial name="_Message" model="tempDatamessage" />
+                }
+                <div class="crm_customer_table_main_wrapper float_left">
+
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-12 mb-1">
+                        <form asp-controller="Bonus" asp-action="UserGenLog" method="get">
+
+                            <div class="float_left d-lg-none" id="faqs">
+                                <div class="investment_overlay faq_overlay"></div>
+                                <div class="container " id="FAQ">
+                                    <div id="accordion" role="tablist">
+                                        <div class="row">
+                                            <div class="col-lg-6 col-md-12 col-sm-12 col-12">
+
+                                                <div class="card">
+                                                    <div class="card_pagee" role="tab" id="headingTwo">
+                                                        <h5 class="h5-md">
+                                                            <a class="collapsed" data-toggle="collapse" href="#collapseTwo" role="button" aria-expanded="false" aria-controls="collapseTwo">
+                                                                Filter
+                                                            </a>
+                                                        </h5>
+                                                    </div>
+
+                                                    <div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingTwo" data-parent="#accordion" style="">
+                                                        <div class="card-body2">
+
+                                                            <div class="card_cntnt">
+
+                                                                <div class="row col-12">
+                                                                    <div class="p-lg-2 col-12 col-lg-2 p-2">
+                                                                        <div class="form-pos">
+                                                                            <label>Date From :</label>
+                                                                            <div class="form-group i-name">
+                                                                                <input asp-for="SortTypeFrom" name="SortTypeFrom" value="" type="date" class="form-control">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="p-lg-2 col-12 col-lg-2 p-2">
+                                                                        <div class="form-pos">
+                                                                            <label>Date To :</label>
+                                                                            <div class="form-group i-name">
+                                                                                <input asp-for="SortTypeTo" name="SortTypeTo" value="" type="date" class="form-control">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="p-lg-2 col-12 col-lg-2 p-2">
+                                                                        <div class="form-pos">
+                                                                            <label>UserName:</label>
+                                                                            <div class="form-group i-name">
+                                                                                <input asp-for="UserName" name="UserName" type="text" class="form-control" placeholder="User Name">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="col-lg-2 col-md-12">
+                                                                        <div class="tb_es_btn_div mt-4 pt-2">
+                                                                            <div class="form-group mt-2" style="display:grid">
+                                                                                <button type="submit" class="btn button_color">Filter</button>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <div class="row col-12 d-lg-flex d-none">
+                                <div class="p-lg-2 col-12 col-lg-2 p-2">
+                                    <div class="form-pos">
+                                        <label>Date From :</label>
+                                        <div class="form-group i-name">
+                                            <input asp-for="SortTypeFrom" name="SortTypeFrom" value="" type="date" class="form-control">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="p-lg-2 col-12 col-lg-2 p-2">
+                                    <div class="form-pos">
+                                        <label>Date To :</label>
+                                        <div class="form-group i-name">
+                                            <input asp-for="SortTypeTo" name="SortTypeTo" value="" type="date" class="form-control">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="p-lg-2 col-12 col-lg-2 p-2">
+                                    <div class="form-pos">
+                                        <label>UserName:</label>
+                                        <div class="form-group i-name">
+                                            <input asp-for="UserName" name="UserName" type="text" class="form-control" placeholder="User Name">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-2 col-md-12">
+                                    <div class="tb_es_btn_div mt-4 pt-2">
+                                        <div class="form-group mt-2" style="display:grid">
+                                            <button type="submit" class="btn button_color">Filter</button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="row">
+                                <div class="col-lg-2 col-md-12">
+                                    <div class="form-pos mt-2 ml-1">
+                                        <label>Page Size:</label>
+                                        <div class="form-group i-name">
+                                            <select asp-for="PageSize" name="PageSize">
+                                                <option value="10">10</option>
+                                                <option value="20">20</option>
+                                                <option value="50">50</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-10 d-none d-lg-flex">
+                                    <div class="col-lg-2 col-md-12 px-2">
+                                        <nav class="navbar navbar-expand justify-content-center">
+                                            <button type="button" class="approve-selected btn button_color mr-4 p-2"> Approve Bonuses </button>
+                                        </nav>
+                                    </div>
+                                    <div class="col-lg-2 col-md-12">
+                                        <nav class="navbar navbar-expand justify-content-center">
+                                            <button type="button" class="btn button_color reject-selected ml-4 p-2"> Decline Bonuses </button>
+                                        </nav>
+                                    </div>
+                                </div>
+
+
+                            </div>
+
+                            <div class="col-12 d-lg-none d-flex">
+                                <div class="col-lg-6 col-md-6 px-2">
+                                    <nav class="navbar navbar-expand justify-content-center">
+                                        <button type="button" class="approve-selected btn button_color mr-2 p-2"> Approve </button>
+                                    </nav>
+                                </div>
+                                <div class="col-lg-6 col-md-6">
+                                    <nav class="navbar navbar-expand justify-content-center">
+                                        <button type="button" class="btn button_color reject-selected mr-2 p-2"> Decline </button>
+                                    </nav>
+                                </div>
+                            </div>
+
+                        </form>
+                    </div>
+ 
+
+                    @if (Model != null && Model.UserGenerationLogRecords.Count() > 0)
+					{
+                    <div class="table-responsive">
+                        <table class="table cs-table crm_customer_table_inner_Wrapper">
+                            <thead>
+                                <tr>
+                                    <th class="width_table1">S/N</th>
+                                    <th class="width_table1">UserName</th>
+                                    <th class="width_table1">Generation</th>
+                                    <th class="width_table1">Bonus From</th>
+                                    <th class="width_table1">Bonus Amount</th>
+                                    <th class="width_table1">Date Paid</th>
+                                    <th class="width_table1">Bonus Status</th>
+                                </tr>
+                            </thead>
+@*                            @if (Model != null && Model.UserGenerationLogRecords.Count() > 0)
+                            {*@
+                                <tbody>
+                                    @foreach (var userGenLog in Model.UserGenerationLogRecords)
+                                    {
+                                        <tr class="background_white" style="color: #006400;">
+                                            <td></td>
+                                            <td class="d-flex p-4">
+                                                <input type="checkbox" class="user-checkbox form-check " style="width:13% ;" data-user-id="@userGenLog.Id" />
+                                                <div class="pretty p-svg p-curve px-3" style="margin-top: -9px;">@userGenLog.UserName</div>
+                                            </td>
+                                            <td>
+                                                <div class="pretty p-svg p-curve">@userGenLog.Generation</div>
+                                            </td>
+                                            <td>
+                                                <div class="pretty p-svg p-curve">@userGenLog.BonusFrom</div>
+                                            </td>
+                                            <td>
+                                                <div class="pretty p-svg p-curve">@userGenLog.BonusAmount</div>
+                                            </td>
+                                            <td class="flag">
+                                                <div class="pretty p-svg p-curve">@userGenLog.DateCreated.ToString("D")</div>
+                                            </td>
+                                           <td class="flag">
+                                                @if (userGenLog.Status == BonusStusEnum.Pending)
+                                                {
+                                                    <nav class="navbar navbar-expand justify-content-center">
+                                                        <button type="button" class="approve-button btn button_color mr-2 p-2" data-user-id="@userGenLog.Id">Approve</button>
+                                                        <button type="button" class="reject-button btn button_color mr-2 p-2" data-user-id="@userGenLog.Id">Reject</button>
+                                                    </nav>
+                                                }
+                                                else
+                                                {
+                                                    <nav class="navbar navbar-expand justify-content-center">
+                                                        <button type="button" class="btn button_color mr-2 p-2"> @userGenLog.Status </button>
+                                                    </nav>
+                                                }
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+
+@*                            }*@
+                        </table>
+
+                    </div>
+                        <br />
+                        <div class="col-lg-2 col-md-12">
+                            Page @(Model.UserGenerationLogRecords.PageNumber) of @Math.Ceiling((double)Model.UserGenerationLogRecords.TotalItemCount / Model.UserGenerationLogRecords.PageSize)
+                        </div>
+                        <br />
+                        <div class="col-md-6 col-lg-6 col-sm-6 col-5 float-right">
+                            @Html.Partial("_MatchingBonusPager",Model)
+                        </div>
+                    }
+                    else
+                    {
+                        <h2 class="text-info text-center py-5">No Matching Bonus In This Date Range Found. </h2>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts
+    {
+    @*<script>
+        $(document).ready(function () {
+            $('.approve-button, .reject-button').on('click', function () {
+                debugger
+                var userId = $(this).data('user-id');
+                var action = $(this).hasClass('approve-button') ? 'approve' : 'reject';
+
+                $.ajax({
+                    url: '/Bonus/UpdateUserStatus',
+                    type: 'POST',
+                    data: { genLogIds: userId, action: action },
+                    success: function (result) {
+                        if (!result.isError) {
+                            var url = '/Bonus/UserGenLog';
+                            successAlertWithRedirect(result.msg, url);
+                        } else {
+                            errorAlert(result.msg);
+                        }
+                    },
+                    error: function (ex) {
+                        errorAlert("Error occurred. Please try again.");
+                    }
+                });
+            });
+        });
+    </script>*@
+}

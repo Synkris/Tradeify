@@ -7,6 +7,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Include="Views\Account\ChangePassword.cshtml" />
+    <None Include="Views\Account\ForgotPassword.cshtml" />
+    <None Include="Views\Account\Login.cshtml" />
+    <None Include="Views\Account\Register.cshtml" />
+    <None Include="Views\Account\ResetPassword.cshtml" />
     <None Include="Views\Admin\AllAGCHistories.cshtml" />
     <None Include="Views\Admin\AllGrantHistories.cshtml" />
     <None Include="Views\Admin\AllPvHistories.cshtml" />
@@ -18,6 +23,7 @@
     <None Include="Views\Admin\EditNews.cshtml" />
     <None Include="Views\Admin\GetNews.cshtml" />
     <None Include="Views\Admin\Index.cshtml" />
+    <None Include="Views\Admin\MemberWalletBalance.cshtml" />
     <None Include="Views\Admin\News.cshtml" />
     <None Include="Views\Admin\PaymentApproval.cshtml" />
     <None Include="Views\Admin\PendingWithdrawals.cshtml" />
@@ -26,6 +32,50 @@
     <None Include="Views\Admin\SortAllGrantsTransactions.cshtml" />
     <None Include="Views\Admin\SortAllPvTransactions.cshtml" />
     <None Include="Views\Admin\SortAllWalletTransactions.cshtml" />
+    <None Include="Views\Admin\UserFullDetail.cshtml" />
+    <None Include="Views\Admin\Users.cshtml" />
+    <None Include="Views\Admin\WithdrawalFullDetails.cshtml" />
+    <None Include="Views\Binary\Index.cshtml" />
+    <None Include="Views\Home\Index.cshtml" />
+    <None Include="Views\Home\Privacy.cshtml" />
+    <None Include="Views\Shared\Error.cshtml" />
+    <None Include="Views\Shared\_AdminDashboardLayout.cshtml" />
+    <None Include="Views\Shared\_DashboardLayout.cshtml" />
+    <None Include="Views\Shared\_Layout.cshtml" />
+    <None Include="Views\Shared\_LayoutTwo.cshtml" />
+    <None Include="Views\Shared\_Message.cshtml" />
+    <None Include="Views\Shared\_PendingWithdrawalPager.cshtml" />
+    <None Include="Views\Shared\_UserAGCPager.cshtml" />
+    <None Include="Views\Shared\_UserContactsPager.cshtml" />
+    <None Include="Views\Shared\_UserGrantPager.cshtml" />
+    <None Include="Views\Shared\_UserPackagePager.cshtml" />
+    <None Include="Views\Shared\_UserPager.cshtml" />
+    <None Include="Views\Shared\_ValidationScriptsPartial.cshtml" />
+    <None Include="Views\User\AGCTransactionHistory.cshtml" />
+    <None Include="Views\User\Coin.cshtml" />
+    <None Include="Views\User\CryptoPaymentDetails.cshtml" />
+    <None Include="Views\User\EditProfileDetails.cshtml" />
+    <None Include="Views\User\EditUserDetails.cshtml" />
+    <None Include="Views\User\GrantTransactionHistory.cshtml" />
+    <None Include="Views\User\Index.cshtml" />
+    <None Include="Views\User\MyContacts.cshtml" />
+    <None Include="Views\User\Packages.cshtml" />
+    <None Include="Views\User\Payment.cshtml" />
+    <None Include="Views\User\PaymentDetails.cshtml" />
+    <None Include="Views\User\PaymentMethods.cshtml" />
+    <None Include="Views\User\Profile.cshtml" />
+    <None Include="Views\User\RegCryptoPayment.cshtml" />
+    <None Include="Views\User\RegistrationCryptoPayment.cshtml" />
+    <None Include="Views\User\RegistrationPayment.cshtml" />
+    <None Include="Views\User\RegistrationSuccessPage.cshtml" />
+    <None Include="Views\User\RegPayment.cshtml" />
+    <None Include="Views\User\SortAGCTransactions.cshtml" />
+    <None Include="Views\User\SortUserGrantsTransactions.cshtml" />
+    <None Include="Views\User\SortWalletTransactions.cshtml" />
+    <None Include="Views\User\ViewUserPackages.cshtml" />
+    <None Include="Views\User\WalletTransactionHistory.cshtml" />
+    <None Include="Views\User\WithdrawByCrypto.cshtml" />
+    <None Include="Views\User\WithdrawFunds.cshtml" />
   </ItemGroup>
 
   <ItemGroup>

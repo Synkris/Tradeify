@@ -29,7 +29,7 @@
 		top:161px;
 	}
 	.account_top_information{
-		margin-top:158px;
+		margin-top:0px;
 	}
 	.fixed_portion{
 		margin-top:158px;
@@ -204,7 +204,7 @@
 		width:35%;
 	}
 	.user_transcation{
-		width:25%;
+		width:26%;
 	}
 }
 @media (max-width: 1300px){
@@ -944,7 +944,7 @@
 	}
 	.account_top_information{
 		margin-top:0;
-		padding-left: 100px;
+		padding-left: 0px;
 	}
 	.inner_header_wrapper{
 		position:relative;

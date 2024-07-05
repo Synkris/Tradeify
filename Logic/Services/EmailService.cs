@@ -38,7 +38,7 @@ namespace Logic.Services
         {
             EmailAddress fromAddress = new EmailAddress()
             {
-                Name = "Tradeify Support ",
+                Name = "GAP Support ",
                 Address = _emailConfiguration.SmtpUsername,
             };
 
@@ -48,7 +48,7 @@ namespace Logic.Services
             };
             EmailAddress toAddress = new EmailAddress()
             {
-                Name = "Tradeify Support ",
+                Name = "GAP Support ",
                 Address = toEmail
             };
             List<EmailAddress> toAddressList = new List<EmailAddress>
@@ -73,7 +73,7 @@ namespace Logic.Services
         {
             EmailAddress fromAddress = new EmailAddress()
             {
-                Name = "Tradeify Support ",
+                Name = "GAP Support ",
                 Address = _emailConfiguration.SmtpUsername,
             };
 
@@ -83,7 +83,7 @@ namespace Logic.Services
             };
             EmailAddress toAddress = new EmailAddress()
             {
-                Name = "Tradeify Support ",
+                Name = "GAP Support ",
                 Address = toEmail
             };
             List<EmailAddress> toAddressList = new List<EmailAddress>
@@ -142,7 +142,7 @@ namespace Logic.Services
 
 
 
-               emailClient.Authenticate(_emailConfiguration.SmtpUsername, _emailConfiguration.SmtpPassword);
+                emailClient.Authenticate(_emailConfiguration.SmtpUsername, _emailConfiguration.SmtpPassword);
 
                 emailClient.Send(message);
 

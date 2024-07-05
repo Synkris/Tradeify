@@ -1,0 +1,1234 @@
+2024-06-06 10:41:15.490 +01:00 [WRN] Navigations 'ApplicationUser.RegFeePayment' and 'PaymentForm.User' were separated into two relationships since the [ForeignKey] attribute was specified on navigations on both sides.
+2024-06-06 10:41:18.106 +01:00 [WRN] No store type was specified for the decimal property 'ActivationAmount' on entity type 'CompanySettings'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-06-06 10:41:18.182 +01:00 [WRN] No store type was specified for the decimal property 'MiningQuantity' on entity type 'CompanySettings'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-06-06 10:41:18.211 +01:00 [WRN] No store type was specified for the decimal property 'Tokenamount' on entity type 'CompanySettings'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-06-06 10:41:18.225 +01:00 [WRN] No store type was specified for the decimal property 'MiningQuantity' on entity type 'MiningLog'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-06-06 10:41:18.244 +01:00 [WRN] No store type was specified for the decimal property 'Amount' on entity type 'PaymentForm'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-06-06 10:41:18.346 +01:00 [WRN] No store type was specified for the decimal property 'NoOfTokensBought' on entity type 'PaymentForm'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-06-06 10:41:18.360 +01:00 [WRN] No store type was specified for the decimal property 'Amount' on entity type 'PendingBonuses'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-06-06 10:41:18.442 +01:00 [WRN] No store type was specified for the decimal property 'AmountStaked' on entity type 'UserBettings'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-06-06 10:41:18.460 +01:00 [WRN] No store type was specified for the decimal property 'BonusAmount' on entity type 'UserGenerationLog'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-06-06 10:41:18.467 +01:00 [WRN] No store type was specified for the decimal property 'Amount' on entity type 'UserPackages'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-06-06 10:41:24.330 +01:00 [INF] Executed DbCommand (60ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-06-06 10:41:24.439 +01:00 [INF] Executed DbCommand (71ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-06-06 10:41:24.449 +01:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-06-06 10:41:24.456 +01:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-06-06 10:41:24.529 +01:00 [INF] Executed DbCommand (31ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2024-06-06 10:41:24.583 +01:00 [INF] No migrations were applied. The database is already up to date.
+2024-06-06 10:41:24.633 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-06-06 10:41:24.640 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-06-06 10:41:24.654 +01:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-06-06 10:41:24.662 +01:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-06-06 10:41:24.677 +01:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2024-06-06 10:41:24.686 +01:00 [INF] No migrations were applied. The database is already up to date.
+2024-06-06 10:41:25.151 +01:00 [INF] Start installing Hangfire SQL objects...
+2024-06-06 10:41:30.983 +01:00 [INF] Hangfire SQL objects installed.
+2024-06-06 10:41:31.044 +01:00 [INF] Starting Hangfire Server using job storage: 'SQL Server: DESKTOP-PJC031G\SQLEXPRESS@TRADEIFYHangfire'
+2024-06-06 10:41:31.054 +01:00 [INF] Using the following options for SQL Server job storage: Queue poll interval: 00:00:00.
+2024-06-06 10:41:31.060 +01:00 [INF] Using the following options for Hangfire Server:
+    Worker count: 20
+    Listening queues: 'default'
+    Shutdown timeout: 00:00:15
+    Schedule polling interval: 00:00:15
+2024-06-06 10:41:31.170 +01:00 [INF] Start installing Hangfire SQL objects...
+2024-06-06 10:41:31.629 +01:00 [INF] Hangfire SQL objects installed.
+2024-06-06 10:41:31.879 +01:00 [INF] Server desktop-pjc031g.47b03a21-5141-4d50-991f-1f0f41726e83:17416:5941cc5c successfully announced in 709.0762 ms
+2024-06-06 10:41:31.896 +01:00 [INF] Server desktop-pjc031g.47b03a21-5141-4d50-991f-1f0f41726e83:17416:5941cc5c is starting the registered dispatchers: ServerWatchdog, ServerJobCancellationWatcher, ExpirationManager, CountersAggregator, SqlServerHeartbeatProcess, Worker, DelayedJobScheduler, RecurringJobScheduler...
+2024-06-06 10:41:31.977 +01:00 [INF] 1 servers were removed due to timeout
+2024-06-06 10:41:32.423 +01:00 [INF] Server desktop-pjc031g.47b03a21-5141-4d50-991f-1f0f41726e83:17416:5941cc5c all the dispatchers started
+2024-06-06 10:41:32.628 +01:00 [INF] User profile is available. Using 'C:\Users\User\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-06-06 10:41:33.478 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-06-06 10:41:33.495 +01:00 [INF] Hosting environment: Development
+2024-06-06 10:41:33.513 +01:00 [INF] Content root path: C:\Users\User\Source\Repos\Tradeify\Tradeify
+2024-06-06 10:41:33.681 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/ - -
+2024-06-06 10:48:23.276 +01:00 [INF] 1 servers were removed due to timeout
+2024-06-06 10:48:23.288 +01:00 [WRN] Background job identifier '7' was fetched by another worker, will not execute keep alive.
+2024-06-06 10:48:23.294 +01:00 [WRN] Server desktop-pjc031g.47b03a21-5141-4d50-991f-1f0f41726e83:17416:5941cc5c was considered dead by other servers, restarting...
+2024-06-06 10:48:23.308 +01:00 [INF] Server desktop-pjc031g.47b03a21-5141-4d50-991f-1f0f41726e83:17416:5941cc5c caught restart signal...
+2024-06-06 10:48:23.408 +01:00 [WRN] Server desktop-pjc031g.47b03a21-5141-4d50-991f-1f0f41726e83:17416:5941cc5c stopped non-gracefully due to ServerWatchdog, ServerJobCancellationWatcher, ExpirationManager, CountersAggregator, SqlServerHeartbeatProcess, Worker, DelayedJobScheduler, RecurringJobScheduler. Outstanding work on those dispatchers could be aborted, and there can be delays in background processing. This server instance will be incorrectly shown as active for a while. To avoid non-graceful shutdowns, investigate what prevents from stopping gracefully and add CancellationToken support for those methods.
+2024-06-06 10:48:23.531 +01:00 [INF] Server desktop-pjc031g.47b03a21-5141-4d50-991f-1f0f41726e83:17416:5941cc5c successfully reported itself as stopped in 55.0873 ms
+2024-06-06 10:48:23.547 +01:00 [INF] Server desktop-pjc031g.47b03a21-5141-4d50-991f-1f0f41726e83:17416:5941cc5c has been stopped in total 219.7318 ms
+2024-06-06 10:48:23.575 +01:00 [INF] Server desktop-pjc031g.47b03a21-5141-4d50-991f-1f0f41726e83:17416:313f289b successfully announced in 19.8952 ms
+2024-06-06 10:48:23.591 +01:00 [INF] Server desktop-pjc031g.47b03a21-5141-4d50-991f-1f0f41726e83:17416:313f289b is starting the registered dispatchers: ServerWatchdog, ServerJobCancellationWatcher, ExpirationManager, CountersAggregator, SqlServerHeartbeatProcess, Worker, DelayedJobScheduler, RecurringJobScheduler...
+2024-06-06 10:48:23.669 +01:00 [WRN] Unable to contact VS to retrieve Browser Link script tag.
+2024-06-06 10:48:24.698 +01:00 [WRN] Worker stop requested while processing background job '7'. It will be re-queued.
+2024-06-06 10:48:24.924 +01:00 [INF] Server desktop-pjc031g.47b03a21-5141-4d50-991f-1f0f41726e83:17416:313f289b all the dispatchers started
+2024-06-06 10:48:25.015 +01:00 [INF] Executing endpoint 'Tradeify.Controllers.HomeController.Index (Tradeify)'
+2024-06-06 10:48:25.035 +01:00 [INF] Route matched with {action = "Index", controller = "Home"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index() on controller Tradeify.Controllers.HomeController (Tradeify).
+2024-06-06 10:48:25.066 +01:00 [INF] Executing ViewResult, running view Index.
+2024-06-06 10:48:27.200 +01:00 [INF] Executed DbCommand (130ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Discriminator] = N'ApplicationUser' AND [a].[Deactivated] = CAST(0 AS bit)
+2024-06-06 10:48:27.680 +01:00 [INF] Executed ViewResult - view Index executed in 2612.1633ms.
+2024-06-06 10:48:27.686 +01:00 [INF] Executed action Tradeify.Controllers.HomeController.Index (Tradeify) in 2649.361ms
+2024-06-06 10:48:27.686 +01:00 [INF] Executed endpoint 'Tradeify.Controllers.HomeController.Index (Tradeify)'
+2024-06-06 10:48:27.741 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/css/fonts.css - -
+2024-06-06 10:48:27.748 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/css/reset.css - -
+2024-06-06 10:48:27.763 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/css/dropify.min.css - -
+2024-06-06 10:48:27.790 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/ - - - 200 - text/html;+charset=utf-8 414110.6701ms
+2024-06-06 10:48:27.797 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/css/datatables.css - -
+2024-06-06 10:48:27.849 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/css/nice-select.css - -
+2024-06-06 10:48:27.866 +01:00 [INF] Sending file. Request path: '/css/reset.css'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\css\reset.css'
+2024-06-06 10:48:27.866 +01:00 [INF] Sending file. Request path: '/css/datatables.css'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\css\datatables.css'
+2024-06-06 10:48:27.866 +01:00 [INF] Sending file. Request path: '/css/fonts.css'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\css\fonts.css'
+2024-06-06 10:48:27.869 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/css/fonts.css - - - 200 24411 text/css 128.4205ms
+2024-06-06 10:48:27.876 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/css/owl.theme.default.css - -
+2024-06-06 10:48:27.876 +01:00 [INF] Sending file. Request path: '/css/dropify.min.css'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\css\dropify.min.css'
+2024-06-06 10:48:27.877 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/css/dropify.min.css - - - 200 9456 text/css 113.7246ms
+2024-06-06 10:48:27.877 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/css/owl.carousel.css - -
+2024-06-06 10:48:27.877 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/css/datatables.css - - - 200 13843 text/css 72.1598ms
+2024-06-06 10:48:27.886 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/css/font-awesome.css - -
+2024-06-06 10:48:27.887 +01:00 [INF] Sending file. Request path: '/css/nice-select.css'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\css\nice-select.css'
+2024-06-06 10:48:27.887 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/css/nice-select.css - - - 200 5335 text/css 38.3605ms
+2024-06-06 10:48:27.895 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/css/flaticon.css - -
+2024-06-06 10:48:27.920 +01:00 [INF] Sending file. Request path: '/css/owl.theme.default.css'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\css\owl.theme.default.css'
+2024-06-06 10:48:27.920 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/css/owl.theme.default.css - - - 200 1353 text/css 44.7923ms
+2024-06-06 10:48:27.923 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/css/animate.css - -
+2024-06-06 10:48:27.926 +01:00 [INF] Sending file. Request path: '/css/owl.carousel.css'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\css\owl.carousel.css'
+2024-06-06 10:48:27.927 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/css/owl.carousel.css - - - 200 4198 text/css 49.1534ms
+2024-06-06 10:48:27.927 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/css/responsive.css - -
+2024-06-06 10:48:27.943 +01:00 [INF] Sending file. Request path: '/css/flaticon.css'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\css\flaticon.css'
+2024-06-06 10:48:27.944 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/css/flaticon.css - - - 200 2065 text/css 49.0356ms
+2024-06-06 10:48:27.944 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/css/style.css - -
+2024-06-06 10:48:27.954 +01:00 [INF] Sending file. Request path: '/css/responsive.css'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\css\responsive.css'
+2024-06-06 10:48:27.963 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/css/magnific-popup.css - -
+2024-06-06 10:48:27.971 +01:00 [INF] Sending file. Request path: '/css/animate.css'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\css\animate.css'
+2024-06-06 10:48:27.973 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/js/jquery.menu-aim.js - -
+2024-06-06 10:48:27.975 +01:00 [INF] Sending file. Request path: '/css/font-awesome.css'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\css\font-awesome.css'
+2024-06-06 10:48:27.980 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/js/modernizr.js - -
+2024-06-06 10:48:27.991 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/js/bootstrap.min.js - -
+2024-06-06 10:48:27.991 +01:00 [INF] Sending file. Request path: '/css/magnific-popup.css'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\css\magnific-popup.css'
+2024-06-06 10:48:27.991 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/css/magnific-popup.css - - - 200 7302 text/css 28.3490ms
+2024-06-06 10:48:27.992 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/js/jquery-3.3.1.min.js - -
+2024-06-06 10:48:28.033 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/lib/jquery/dist/jquery.min.js - -
+2024-06-06 10:48:28.124 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/lib/bootstrap/dist/js/bootstrap.bundle.min.js - -
+2024-06-06 10:48:28.127 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/js/jquery.inview.min.js - -
+2024-06-06 10:48:28.129 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/js/jquery.nice-select.min.js - -
+2024-06-06 10:48:28.152 +01:00 [INF] Sending file. Request path: '/js/jquery.menu-aim.js'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\js\jquery.menu-aim.js'
+2024-06-06 10:48:28.162 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/js/jquery.menu-aim.js - - - 200 14937 text/javascript 189.4395ms
+2024-06-06 10:48:28.197 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/js/jquery.magnific-popup.js - -
+2024-06-06 10:48:28.197 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/js/dropify.min.js - -
+2024-06-06 10:48:28.197 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/js/datatables.js - -
+2024-06-06 10:48:28.197 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/js/jquery.countTo.js - -
+2024-06-06 10:48:28.243 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/js/plugin.js - -
+2024-06-06 10:48:28.334 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/js/popper.min.js - -
+2024-06-06 10:48:28.359 +01:00 [INF] Sending file. Request path: '/js/modernizr.js'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\js\modernizr.js'
+2024-06-06 10:48:28.360 +01:00 [INF] Sending file. Request path: '/js/jquery.inview.min.js'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\js\jquery.inview.min.js'
+2024-06-06 10:48:28.360 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/js/jquery.inview.min.js - - - 200 1424 text/javascript 233.0957ms
+2024-06-06 10:48:28.372 +01:00 [INF] Sending file. Request path: '/js/jquery.nice-select.min.js'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\js\jquery.nice-select.min.js'
+2024-06-06 10:48:28.372 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/js/jquery.nice-select.min.js - - - 200 2945 text/javascript 243.1312ms
+2024-06-06 10:48:28.376 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/js/custom.js - -
+2024-06-06 10:48:28.376 +01:00 [INF] Sending file. Request path: '/js/dropify.min.js'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\js\dropify.min.js'
+2024-06-06 10:48:28.376 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/js/calculator.js - -
+2024-06-06 10:48:28.377 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/js/dropify.min.js - - - 200 13328 text/javascript 178.8900ms
+2024-06-06 10:48:28.387 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/js/grant.js - -
+2024-06-06 10:48:28.389 +01:00 [INF] Sending file. Request path: '/js/jquery.countTo.js'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\js\jquery.countTo.js'
+2024-06-06 10:48:28.390 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/js/jquery.countTo.js - - - 200 2581 text/javascript 192.4259ms
+2024-06-06 10:48:28.390 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/js/site.js?v=cZ1fxmBXamf3MuYQSYYqfouTonQdx3I3m8zvicY0w5M - -
+2024-06-06 10:48:28.390 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/fontawesome-free/js/all.js - -
+2024-06-06 10:48:28.465 +01:00 [INF] Sending file. Request path: '/js/custom.js'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\js\custom.js'
+2024-06-06 10:48:28.468 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/js/custom.js - - - 200 15221 text/javascript 92.1684ms
+2024-06-06 10:48:28.468 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/js/sweetalert2.all.min.js - -
+2024-06-06 10:48:28.468 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/js/clipboard.min.js - -
+2024-06-06 10:48:28.552 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/css/bootstrap.min.css - -
+2024-06-06 10:48:28.562 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/js/owl.carousel.js - -
+2024-06-06 10:48:28.566 +01:00 [INF] Sending file. Request path: '/js/calculator.js'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\js\calculator.js'
+2024-06-06 10:48:28.566 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/js/calculator.js - - - 200 5387 text/javascript 189.9913ms
+2024-06-06 10:48:28.567 +01:00 [INF] Sending file. Request path: '/js/bootstrap.min.js'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\js\bootstrap.min.js'
+2024-06-06 10:48:28.568 +01:00 [INF] Sending file. Request path: '/js/jquery.magnific-popup.js'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\js\jquery.magnific-popup.js'
+2024-06-06 10:48:28.570 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/js/grant.js - - - 302 - - 183.0106ms
+2024-06-06 10:48:28.574 +01:00 [INF] Sending file. Request path: '/js/popper.min.js'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\js\popper.min.js'
+2024-06-06 10:48:28.576 +01:00 [INF] Sending file. Request path: '/js/clipboard.min.js'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\js\clipboard.min.js'
+2024-06-06 10:48:28.576 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/js/clipboard.min.js - - - 200 8839 text/javascript 108.0282ms
+2024-06-06 10:48:28.596 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/css/reset.css - - - 200 32466 text/css 848.0088ms
+2024-06-06 10:48:28.596 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/css/responsive.css - - - 200 32137 text/css 669.5283ms
+2024-06-06 10:48:28.597 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/css/animate.css - - - 200 75599 text/css 674.0454ms
+2024-06-06 10:48:28.597 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/css/font-awesome.css - - - 200 53590 text/css 710.5137ms
+2024-06-06 10:48:28.597 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/js/modernizr.js - - - 200 30169 text/javascript 617.1001ms
+2024-06-06 10:48:28.661 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/js/jquery.magnific-popup.js - - - 200 43557 text/javascript 464.6717ms
+2024-06-06 10:48:28.662 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/js/bootstrap.min.js - - - 200 51004 text/javascript 671.1033ms
+2024-06-06 10:48:28.662 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/js/popper.min.js - - - 200 25275 text/javascript 328.1548ms
+2024-06-06 10:48:28.662 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/Home/AccessDenied - -
+2024-06-06 10:48:28.697 +01:00 [INF] Executing endpoint 'Tradeify.Controllers.HomeController.AccessDenied (Tradeify)'
+2024-06-06 10:48:28.698 +01:00 [INF] Sending file. Request path: '/css/style.css'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\css\style.css'
+2024-06-06 10:48:28.700 +01:00 [INF] Route matched with {action = "AccessDenied", controller = "Home"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult AccessDenied() on controller Tradeify.Controllers.HomeController (Tradeify).
+2024-06-06 10:48:28.700 +01:00 [INF] Sending file. Request path: '/lib/bootstrap/dist/js/bootstrap.bundle.min.js'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.min.js'
+2024-06-06 10:48:28.703 +01:00 [INF] Executing ViewResult, running view AccessDenied.
+2024-06-06 10:48:28.728 +01:00 [INF] Sending file. Request path: '/js/jquery-3.3.1.min.js'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\js\jquery-3.3.1.min.js'
+2024-06-06 10:48:28.728 +01:00 [INF] Sending file. Request path: '/lib/jquery/dist/jquery.min.js'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\lib\jquery\dist\jquery.min.js'
+2024-06-06 10:48:28.729 +01:00 [INF] Sending file. Request path: '/js/datatables.js'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\js\datatables.js'
+2024-06-06 10:48:28.732 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/css/style.css - - - 200 196839 text/css 787.8746ms
+2024-06-06 10:48:28.732 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/lib/bootstrap/dist/js/bootstrap.bundle.min.js - - - 200 78474 text/javascript 608.3029ms
+2024-06-06 10:48:28.750 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/js/datatables.js - - - 200 82575 text/javascript 554.7436ms
+2024-06-06 10:48:28.750 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/lib/jquery/dist/jquery.min.js - - - 200 89478 text/javascript 717.1706ms
+2024-06-06 10:48:28.763 +01:00 [INF] Sending file. Request path: '/js/sweetalert2.all.min.js'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\js\sweetalert2.all.min.js'
+2024-06-06 10:48:28.764 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/js/jquery-3.3.1.min.js - - - 200 86929 text/javascript 770.0347ms
+2024-06-06 10:48:28.766 +01:00 [INF] Sending file. Request path: '/js/site.js'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\js\site.js'
+2024-06-06 10:48:28.797 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/js/site.js?v=cZ1fxmBXamf3MuYQSYYqfouTonQdx3I3m8zvicY0w5M - - - 200 45033 text/javascript 407.0788ms
+2024-06-06 10:48:28.798 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/js/sweetalert2.all.min.js - - - 200 72859 text/javascript 329.5104ms
+2024-06-06 10:48:28.836 +01:00 [INF] Sending file. Request path: '/js/owl.carousel.js'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\js\owl.carousel.js'
+2024-06-06 10:48:28.847 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/js/owl.carousel.js - - - 200 88643 text/javascript 285.2241ms
+2024-06-06 10:48:28.880 +01:00 [INF] Executed DbCommand (46ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Discriminator] = N'ApplicationUser' AND [a].[Deactivated] = CAST(0 AS bit)
+2024-06-06 10:48:28.880 +01:00 [INF] Sending file. Request path: '/css/bootstrap.min.css'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\css\bootstrap.min.css'
+2024-06-06 10:48:28.920 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/css/bootstrap.min.css - - - 200 140897 text/css 366.8406ms
+2024-06-06 10:48:29.018 +01:00 [INF] Executed ViewResult - view AccessDenied executed in 317.4448ms.
+2024-06-06 10:48:29.019 +01:00 [INF] Executed action Tradeify.Controllers.HomeController.AccessDenied (Tradeify) in 319.041ms
+2024-06-06 10:48:29.019 +01:00 [INF] Executed endpoint 'Tradeify.Controllers.HomeController.AccessDenied (Tradeify)'
+2024-06-06 10:48:29.020 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/Home/AccessDenied - - - 200 - text/html;+charset=utf-8 357.7108ms
+2024-06-06 10:48:29.041 +01:00 [INF] Sending file. Request path: '/js/plugin.js'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\js\plugin.js'
+2024-06-06 10:48:29.049 +01:00 [INF] Sending file. Request path: '/fontawesome-free/js/all.js'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\fontawesome-free\js\all.js'
+2024-06-06 10:48:29.094 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/images/logoNew.png - -
+2024-06-06 10:48:29.103 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/images/logoNew.png - - - 302 - - 9.1008ms
+2024-06-06 10:48:29.120 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/js/plugin.js - - - 200 612194 text/javascript 876.6832ms
+2024-06-06 10:48:29.122 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/images/Обсудить.jpg - -
+2024-06-06 10:48:29.167 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/Home/AccessDenied - -
+2024-06-06 10:48:29.169 +01:00 [INF] Executing endpoint 'Tradeify.Controllers.HomeController.AccessDenied (Tradeify)'
+2024-06-06 10:48:29.172 +01:00 [INF] Route matched with {action = "AccessDenied", controller = "Home"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult AccessDenied() on controller Tradeify.Controllers.HomeController (Tradeify).
+2024-06-06 10:48:29.172 +01:00 [INF] Executing ViewResult, running view AccessDenied.
+2024-06-06 10:48:29.311 +01:00 [INF] Request starting HTTP/1.1 GET https://localhost:44308/lib/bootstrap/dist/js/bootstrap.bundle.min.js.map - -
+2024-06-06 10:48:29.315 +01:00 [INF] Sending file. Request path: '/images/Обсудить.jpg'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\images\Обсудить.jpg'
+2024-06-06 10:48:29.347 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/images/Обсудить.jpg - - - 200 24162 image/jpeg 224.9635ms
+2024-06-06 10:48:29.407 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/fontawesome-free/js/all.js - - - 200 1252841 text/javascript 1017.0851ms
+2024-06-06 10:48:29.408 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/images/abt_3.png - -
+2024-06-06 10:48:29.510 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/images/loader.gif - -
+2024-06-06 10:48:29.510 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/_framework/aspnetcore-browser-refresh.js - -
+2024-06-06 10:48:29.511 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/images/ac2.jpg - -
+2024-06-06 10:48:29.511 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/images/ac1.jpg - -
+2024-06-06 10:48:29.515 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/images/ac3.jpg - -
+2024-06-06 10:48:29.533 +01:00 [INF] Executed DbCommand (75ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Discriminator] = N'ApplicationUser' AND [a].[Deactivated] = CAST(0 AS bit)
+2024-06-06 10:48:29.539 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/_framework/aspnetcore-browser-refresh.js - - - 200 13752 application/javascript;+charset=utf-8 27.6055ms
+2024-06-06 10:48:29.544 +01:00 [INF] Sending file. Request path: '/images/ac2.jpg'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\images\ac2.jpg'
+2024-06-06 10:48:29.544 +01:00 [INF] Sending file. Request path: '/images/ac3.jpg'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\images\ac3.jpg'
+2024-06-06 10:48:29.544 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/images/ac2.jpg - - - 200 819 image/jpeg 33.3313ms
+2024-06-06 10:48:29.544 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/images/ac3.jpg - - - 200 819 image/jpeg 29.8589ms
+2024-06-06 10:48:29.546 +01:00 [INF] Executed ViewResult - view AccessDenied executed in 373.3758ms.
+2024-06-06 10:48:29.546 +01:00 [INF] Sending file. Request path: '/images/ac1.jpg'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\images\ac1.jpg'
+2024-06-06 10:48:29.546 +01:00 [INF] Executed action Tradeify.Controllers.HomeController.AccessDenied (Tradeify) in 374.0158ms
+2024-06-06 10:48:29.546 +01:00 [INF] Executed endpoint 'Tradeify.Controllers.HomeController.AccessDenied (Tradeify)'
+2024-06-06 10:48:29.546 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/images/ac1.jpg - - - 200 819 image/jpeg 35.0472ms
+2024-06-06 10:48:29.547 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/Home/AccessDenied - - - 200 - text/html;+charset=utf-8 379.9584ms
+2024-06-06 10:48:29.547 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/images/logo4.png - -
+2024-06-06 10:48:29.569 +01:00 [INF] Sending file. Request path: '/images/logo4.png'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\images\logo4.png'
+2024-06-06 10:48:29.569 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/images/logo4.png - - - 200 10304 image/png 22.2364ms
+2024-06-06 10:48:29.570 +01:00 [INF] Sending file. Request path: '/images/abt_3.png'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\images\abt_3.png'
+2024-06-06 10:48:29.577 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/images/faq.jpg - -
+2024-06-06 10:48:29.580 +01:00 [INF] Sending file. Request path: '/lib/bootstrap/dist/js/bootstrap.bundle.min.js.map'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.min.js.map'
+2024-06-06 10:48:29.589 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/images/abt_3.png - - - 200 158002 image/png 181.5312ms
+2024-06-06 10:48:29.592 +01:00 [INF] Sending file. Request path: '/images/faq.jpg'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\images\faq.jpg'
+2024-06-06 10:48:29.595 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/images/faq.jpg - - - 200 34801 image/jpeg 18.2037ms
+2024-06-06 10:48:29.610 +01:00 [INF] Request finished HTTP/1.1 GET https://localhost:44308/lib/bootstrap/dist/js/bootstrap.bundle.min.js.map - - - 200 327261 text/plain 298.3240ms
+2024-06-06 10:48:29.613 +01:00 [INF] Sending file. Request path: '/images/loader.gif'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\images\loader.gif'
+2024-06-06 10:48:29.637 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/images/loader.gif - - - 200 475965 image/gif 126.1825ms
+2024-06-06 10:48:29.880 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/fonts/Flaticon.woff2 - -
+2024-06-06 10:48:29.903 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/webfonts/fa-solid-900.woff2 - -
+2024-06-06 10:48:29.925 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/webfonts/fa-brands-400.woff2 - -
+2024-06-06 10:48:29.983 +01:00 [INF] Sending file. Request path: '/fonts/Flaticon.woff2'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\fonts\Flaticon.woff2'
+2024-06-06 10:48:29.987 +01:00 [INF] Sending file. Request path: '/webfonts/fa-brands-400.woff2'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\webfonts\fa-brands-400.woff2'
+2024-06-06 10:48:29.987 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/fonts/Flaticon.woff2 - - - 200 5044 font/woff2 105.3090ms
+2024-06-06 10:48:30.015 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/webfonts/fa-brands-400.woff2 - - - 200 74288 font/woff2 90.7780ms
+2024-06-06 10:48:30.028 +01:00 [INF] Sending file. Request path: '/webfonts/fa-solid-900.woff2'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\webfonts\fa-solid-900.woff2'
+2024-06-06 10:48:30.032 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/webfonts/fa-solid-900.woff2 - - - 200 79100 font/woff2 128.3799ms
+2024-06-06 10:48:30.612 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/images/favicon.png - -
+2024-06-06 10:48:30.631 +01:00 [INF] Sending file. Request path: '/images/favicon.png'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\images\favicon.png'
+2024-06-06 10:48:30.644 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/images/favicon.png - - - 200 90711 image/png 29.3805ms
+2024-06-06 10:55:49.370 +01:00 [WRN] Server desktop-pjc031g.47b03a21-5141-4d50-991f-1f0f41726e83:17416:313f289b encountered an exception while sending heartbeat
+Microsoft.Data.SqlClient.SqlException (0x80131904): Execution Timeout Expired.  The timeout period elapsed prior to completion of the operation or the server is not responding.
+Operation cancelled by user.
+ ---> System.ComponentModel.Win32Exception (258): The wait operation timed out.
+   at Microsoft.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at Microsoft.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   at Microsoft.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean isAsync, Int32 timeout, Task& task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   at Microsoft.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry, String method)
+   at Microsoft.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, Boolean sendToPipe, Int32 timeout, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry, String methodName)
+   at Microsoft.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at Dapper.SqlMapper.ExecuteCommand(IDbConnection cnn, CommandDefinition& command, Action`2 paramReader)
+   at Dapper.SqlMapper.ExecuteImpl(IDbConnection cnn, CommandDefinition& command)
+   at Dapper.SqlMapper.Execute(IDbConnection cnn, String sql, Object param, IDbTransaction transaction, Nullable`1 commandTimeout, Nullable`1 commandType)
+   at Hangfire.SqlServer.SqlServerConnection.<>c__DisplayClass23_0.<Heartbeat>b__0(DbConnection connection)
+   at Hangfire.SqlServer.SqlServerStorage.<>c__DisplayClass37_0.<UseConnection>b__0(DbConnection connection)
+   at Hangfire.SqlServer.SqlServerStorage.UseConnection[T](DbConnection dedicatedConnection, Func`2 func)
+   at Hangfire.SqlServer.SqlServerStorage.UseConnection(DbConnection dedicatedConnection, Action`1 action)
+   at Hangfire.SqlServer.SqlServerConnection.Heartbeat(String serverId)
+   at Hangfire.Server.ServerHeartbeatProcess.Execute(BackgroundProcessContext context)
+ClientConnectionId:0472c651-4cda-4d9c-b656-1a0e3cccfd5b
+Error Number:-2,State:0,Class:11
+2024-06-06 10:56:04.423 +01:00 [INF] Execution RecurringJobScheduler recovered from the Faulted state after 00:00:16.1120790 and is in the Running state now
+2024-06-06 10:56:19.402 +01:00 [INF] Server desktop-pjc031g.47b03a21-5141-4d50-991f-1f0f41726e83:17416:313f289b is now able to continue sending heartbeats
+2024-06-06 10:58:25.293 +01:00 [WRN] Navigations 'ApplicationUser.RegFeePayment' and 'PaymentForm.User' were separated into two relationships since the [ForeignKey] attribute was specified on navigations on both sides.
+2024-06-06 10:58:27.487 +01:00 [WRN] No store type was specified for the decimal property 'ActivationAmount' on entity type 'CompanySettings'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-06-06 10:58:27.503 +01:00 [WRN] No store type was specified for the decimal property 'MiningQuantity' on entity type 'CompanySettings'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-06-06 10:58:27.510 +01:00 [WRN] No store type was specified for the decimal property 'Tokenamount' on entity type 'CompanySettings'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-06-06 10:58:27.516 +01:00 [WRN] No store type was specified for the decimal property 'MiningQuantity' on entity type 'MiningLog'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-06-06 10:58:27.526 +01:00 [WRN] No store type was specified for the decimal property 'Amount' on entity type 'PaymentForm'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-06-06 10:58:27.531 +01:00 [WRN] No store type was specified for the decimal property 'NoOfTokensBought' on entity type 'PaymentForm'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-06-06 10:58:27.540 +01:00 [WRN] No store type was specified for the decimal property 'Amount' on entity type 'PendingBonuses'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-06-06 10:58:27.547 +01:00 [WRN] No store type was specified for the decimal property 'AmountStaked' on entity type 'UserBettings'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-06-06 10:58:27.555 +01:00 [WRN] No store type was specified for the decimal property 'BonusAmount' on entity type 'UserGenerationLog'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-06-06 10:58:27.564 +01:00 [WRN] No store type was specified for the decimal property 'Amount' on entity type 'UserPackages'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-06-06 10:58:31.934 +01:00 [INF] Executed DbCommand (81ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-06-06 10:58:32.099 +01:00 [INF] Executed DbCommand (96ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-06-06 10:58:32.115 +01:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-06-06 10:58:32.128 +01:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-06-06 10:58:32.198 +01:00 [INF] Executed DbCommand (26ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2024-06-06 10:58:32.299 +01:00 [INF] No migrations were applied. The database is already up to date.
+2024-06-06 10:58:32.393 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-06-06 10:58:32.400 +01:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-06-06 10:58:32.411 +01:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-06-06 10:58:32.416 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-06-06 10:58:32.447 +01:00 [INF] Executed DbCommand (13ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2024-06-06 10:58:32.482 +01:00 [INF] No migrations were applied. The database is already up to date.
+2024-06-06 10:58:32.666 +01:00 [INF] Start installing Hangfire SQL objects...
+2024-06-06 10:58:34.955 +01:00 [INF] Hangfire SQL objects installed.
+2024-06-06 10:58:34.998 +01:00 [INF] Starting Hangfire Server using job storage: 'SQL Server: DESKTOP-PJC031G\SQLEXPRESS@TRADEIFYHangfire'
+2024-06-06 10:58:35.004 +01:00 [INF] Using the following options for SQL Server job storage: Queue poll interval: 00:00:00.
+2024-06-06 10:58:35.010 +01:00 [INF] Using the following options for Hangfire Server:
+    Worker count: 20
+    Listening queues: 'default'
+    Shutdown timeout: 00:00:15
+    Schedule polling interval: 00:00:15
+2024-06-06 10:58:35.063 +01:00 [INF] Start installing Hangfire SQL objects...
+2024-06-06 10:58:35.610 +01:00 [INF] Server desktop-pjc031g.c9bde263-d784-40e8-9c93-8ea2c620a5d7:23016:5d2a3822 successfully announced in 536.7501 ms
+2024-06-06 10:58:35.631 +01:00 [INF] Server desktop-pjc031g.c9bde263-d784-40e8-9c93-8ea2c620a5d7:23016:5d2a3822 is starting the registered dispatchers: ServerWatchdog, ServerJobCancellationWatcher, ExpirationManager, CountersAggregator, SqlServerHeartbeatProcess, Worker, DelayedJobScheduler, RecurringJobScheduler...
+2024-06-06 10:58:35.663 +01:00 [INF] Hangfire SQL objects installed.
+2024-06-06 10:58:36.163 +01:00 [INF] Server desktop-pjc031g.c9bde263-d784-40e8-9c93-8ea2c620a5d7:23016:5d2a3822 all the dispatchers started
+2024-06-06 10:58:37.025 +01:00 [INF] User profile is available. Using 'C:\Users\User\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-06-06 10:58:37.465 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-06-06 10:58:37.473 +01:00 [INF] Hosting environment: Development
+2024-06-06 10:58:37.478 +01:00 [INF] Content root path: C:\Users\User\Source\Repos\Tradeify\Tradeify
+2024-06-06 10:58:37.563 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/ - -
+2024-06-06 10:58:38.377 +01:00 [INF] Executing endpoint 'Tradeify.Controllers.HomeController.Index (Tradeify)'
+2024-06-06 10:58:38.411 +01:00 [INF] Route matched with {action = "Index", controller = "Home"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index() on controller Tradeify.Controllers.HomeController (Tradeify).
+2024-06-06 10:58:38.447 +01:00 [INF] Executing ViewResult, running view Index.
+2024-06-06 10:58:40.781 +01:00 [INF] Executed DbCommand (639ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Discriminator] = N'ApplicationUser' AND [a].[Deactivated] = CAST(0 AS bit)
+2024-06-06 10:58:41.194 +01:00 [INF] Executed ViewResult - view Index executed in 2742.6043ms.
+2024-06-06 10:58:41.197 +01:00 [INF] Executed action Tradeify.Controllers.HomeController.Index (Tradeify) in 2784.6248ms
+2024-06-06 10:58:41.198 +01:00 [INF] Executed endpoint 'Tradeify.Controllers.HomeController.Index (Tradeify)'
+2024-06-06 10:58:41.454 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/ - - - 200 - text/html;+charset=utf-8 3888.8871ms
+2024-06-06 10:58:41.840 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/js/grant.js - -
+2024-06-06 10:58:42.138 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/images/logoNew.png - -
+2024-06-06 10:58:42.216 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/js/grant.js - - - 302 - - 376.0377ms
+2024-06-06 10:58:42.229 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/images/banner.png - -
+2024-06-06 10:58:42.231 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/images/logoNew.png - - - 302 - - 93.0972ms
+2024-06-06 10:58:42.416 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/Home/AccessDenied - -
+2024-06-06 10:58:42.446 +01:00 [INF] Sending file. Request path: '/images/banner.png'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\images\banner.png'
+2024-06-06 10:58:42.454 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/images/banner.png - - - 200 18070 image/png 224.9824ms
+2024-06-06 10:58:42.471 +01:00 [INF] Executing endpoint 'Tradeify.Controllers.HomeController.AccessDenied (Tradeify)'
+2024-06-06 10:58:42.482 +01:00 [INF] Route matched with {action = "AccessDenied", controller = "Home"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult AccessDenied() on controller Tradeify.Controllers.HomeController (Tradeify).
+2024-06-06 10:58:42.514 +01:00 [INF] Executing ViewResult, running view AccessDenied.
+2024-06-06 10:58:42.545 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/_framework/aspnetcore-browser-refresh.js - -
+2024-06-06 10:58:42.564 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/_framework/aspnetcore-browser-refresh.js - - - 200 13752 application/javascript;+charset=utf-8 18.5263ms
+2024-06-06 10:58:42.609 +01:00 [INF] Request starting HTTP/1.1 GET https://localhost:44308/lib/bootstrap/dist/js/bootstrap.bundle.min.js.map - -
+2024-06-06 10:58:42.697 +01:00 [INF] Executed DbCommand (48ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Discriminator] = N'ApplicationUser' AND [a].[Deactivated] = CAST(0 AS bit)
+2024-06-06 10:58:42.753 +01:00 [INF] Executed ViewResult - view AccessDenied executed in 256.9986ms.
+2024-06-06 10:58:42.754 +01:00 [INF] Executed action Tradeify.Controllers.HomeController.AccessDenied (Tradeify) in 271.8342ms
+2024-06-06 10:58:42.754 +01:00 [INF] Executed endpoint 'Tradeify.Controllers.HomeController.AccessDenied (Tradeify)'
+2024-06-06 10:58:42.756 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/Home/AccessDenied - - - 200 - text/html;+charset=utf-8 340.4109ms
+2024-06-06 10:58:42.782 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/Home/AccessDenied - -
+2024-06-06 10:58:42.794 +01:00 [INF] Executing endpoint 'Tradeify.Controllers.HomeController.AccessDenied (Tradeify)'
+2024-06-06 10:58:42.794 +01:00 [INF] Route matched with {action = "AccessDenied", controller = "Home"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult AccessDenied() on controller Tradeify.Controllers.HomeController (Tradeify).
+2024-06-06 10:58:42.794 +01:00 [INF] Executing ViewResult, running view AccessDenied.
+2024-06-06 10:58:42.858 +01:00 [INF] Sending file. Request path: '/lib/bootstrap/dist/js/bootstrap.bundle.min.js.map'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.min.js.map'
+2024-06-06 10:58:42.915 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/_vs/browserLink - -
+2024-06-06 10:58:42.932 +01:00 [INF] Request finished HTTP/1.1 GET https://localhost:44308/lib/bootstrap/dist/js/bootstrap.bundle.min.js.map - - - 200 327261 text/plain 323.2459ms
+2024-06-06 10:58:43.032 +01:00 [INF] Executed DbCommand (70ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Discriminator] = N'ApplicationUser' AND [a].[Deactivated] = CAST(0 AS bit)
+2024-06-06 10:58:43.084 +01:00 [INF] Executed ViewResult - view AccessDenied executed in 289.662ms.
+2024-06-06 10:58:43.084 +01:00 [INF] Executed action Tradeify.Controllers.HomeController.AccessDenied (Tradeify) in 290.0027ms
+2024-06-06 10:58:43.084 +01:00 [INF] Executed endpoint 'Tradeify.Controllers.HomeController.AccessDenied (Tradeify)'
+2024-06-06 10:58:43.085 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/Home/AccessDenied - - - 200 - text/html;+charset=utf-8 303.3350ms
+2024-06-06 10:58:44.198 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 1283.6662ms
+2024-06-06 11:01:53.792 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/ - -
+2024-06-06 11:01:53.803 +01:00 [INF] Executing endpoint 'Tradeify.Controllers.HomeController.Index (Tradeify)'
+2024-06-06 11:01:53.806 +01:00 [INF] Route matched with {action = "Index", controller = "Home"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index() on controller Tradeify.Controllers.HomeController (Tradeify).
+2024-06-06 11:01:53.810 +01:00 [INF] Executing ViewResult, running view Index.
+2024-06-06 11:01:53.866 +01:00 [INF] Executed DbCommand (14ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Discriminator] = N'ApplicationUser' AND [a].[Deactivated] = CAST(0 AS bit)
+2024-06-06 11:01:53.872 +01:00 [INF] Executed ViewResult - view Index executed in 65.8042ms.
+2024-06-06 11:01:53.872 +01:00 [INF] Executed action Tradeify.Controllers.HomeController.Index (Tradeify) in 66.2313ms
+2024-06-06 11:01:53.872 +01:00 [INF] Executed endpoint 'Tradeify.Controllers.HomeController.Index (Tradeify)'
+2024-06-06 11:01:53.877 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/ - - - 200 - text/html;+charset=utf-8 84.3162ms
+2024-06-06 11:01:53.948 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/js/grant.js - -
+2024-06-06 11:01:53.952 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/images/logoNew.png - -
+2024-06-06 11:01:53.952 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/_framework/aspnetcore-browser-refresh.js - -
+2024-06-06 11:01:53.954 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/_framework/aspnetcore-browser-refresh.js - - - 200 13752 application/javascript;+charset=utf-8 1.8777ms
+2024-06-06 11:01:53.955 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/images/logoNew.png - - - 302 - - 2.7740ms
+2024-06-06 11:01:53.973 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/js/grant.js - - - 302 - - 24.6792ms
+2024-06-06 11:01:54.151 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/Home/AccessDenied - -
+2024-06-06 11:01:54.173 +01:00 [INF] Executing endpoint 'Tradeify.Controllers.HomeController.AccessDenied (Tradeify)'
+2024-06-06 11:01:54.175 +01:00 [INF] Route matched with {action = "AccessDenied", controller = "Home"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult AccessDenied() on controller Tradeify.Controllers.HomeController (Tradeify).
+2024-06-06 11:01:54.177 +01:00 [INF] Executing ViewResult, running view AccessDenied.
+2024-06-06 11:01:54.234 +01:00 [INF] Executed DbCommand (17ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Discriminator] = N'ApplicationUser' AND [a].[Deactivated] = CAST(0 AS bit)
+2024-06-06 11:01:54.238 +01:00 [INF] Executed ViewResult - view AccessDenied executed in 62.7222ms.
+2024-06-06 11:01:54.238 +01:00 [INF] Executed action Tradeify.Controllers.HomeController.AccessDenied (Tradeify) in 63.0526ms
+2024-06-06 11:01:54.239 +01:00 [INF] Executed endpoint 'Tradeify.Controllers.HomeController.AccessDenied (Tradeify)'
+2024-06-06 11:01:54.239 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/Home/AccessDenied - - - 200 - text/html;+charset=utf-8 87.8161ms
+2024-06-06 11:01:54.288 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/Home/AccessDenied - -
+2024-06-06 11:01:54.292 +01:00 [INF] Executing endpoint 'Tradeify.Controllers.HomeController.AccessDenied (Tradeify)'
+2024-06-06 11:01:54.292 +01:00 [INF] Route matched with {action = "AccessDenied", controller = "Home"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult AccessDenied() on controller Tradeify.Controllers.HomeController (Tradeify).
+2024-06-06 11:01:54.292 +01:00 [INF] Executing ViewResult, running view AccessDenied.
+2024-06-06 11:01:54.307 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/_vs/browserLink - -
+2024-06-06 11:01:54.329 +01:00 [INF] Executed DbCommand (15ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Discriminator] = N'ApplicationUser' AND [a].[Deactivated] = CAST(0 AS bit)
+2024-06-06 11:01:54.342 +01:00 [INF] Executed ViewResult - view AccessDenied executed in 49.3738ms.
+2024-06-06 11:01:54.342 +01:00 [INF] Executed action Tradeify.Controllers.HomeController.AccessDenied (Tradeify) in 49.7245ms
+2024-06-06 11:01:54.342 +01:00 [INF] Executed endpoint 'Tradeify.Controllers.HomeController.AccessDenied (Tradeify)'
+2024-06-06 11:01:54.343 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/Home/AccessDenied - - - 200 - text/html;+charset=utf-8 54.3026ms
+2024-06-06 11:01:54.368 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 60.7659ms
+2024-06-06 11:03:35.715 +01:00 [INF] 1 servers were removed due to timeout
+2024-06-06 11:03:42.149 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/ - -
+2024-06-06 11:03:42.154 +01:00 [INF] Executing endpoint 'Tradeify.Controllers.HomeController.Index (Tradeify)'
+2024-06-06 11:03:42.156 +01:00 [INF] Route matched with {action = "Index", controller = "Home"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index() on controller Tradeify.Controllers.HomeController (Tradeify).
+2024-06-06 11:03:42.158 +01:00 [INF] Executing ViewResult, running view Index.
+2024-06-06 11:03:42.190 +01:00 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Discriminator] = N'ApplicationUser' AND [a].[Deactivated] = CAST(0 AS bit)
+2024-06-06 11:03:42.194 +01:00 [INF] Executed ViewResult - view Index executed in 38.1983ms.
+2024-06-06 11:03:42.194 +01:00 [INF] Executed action Tradeify.Controllers.HomeController.Index (Tradeify) in 38.471ms
+2024-06-06 11:03:42.194 +01:00 [INF] Executed endpoint 'Tradeify.Controllers.HomeController.Index (Tradeify)'
+2024-06-06 11:03:42.200 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/ - - - 200 - text/html;+charset=utf-8 50.6582ms
+2024-06-06 11:03:42.357 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/js/grant.js - -
+2024-06-06 11:03:42.399 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/js/grant.js - - - 302 - - 42.0626ms
+2024-06-06 11:03:42.448 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/Home/AccessDenied - -
+2024-06-06 11:03:42.459 +01:00 [INF] Executing endpoint 'Tradeify.Controllers.HomeController.AccessDenied (Tradeify)'
+2024-06-06 11:03:42.461 +01:00 [INF] Route matched with {action = "AccessDenied", controller = "Home"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult AccessDenied() on controller Tradeify.Controllers.HomeController (Tradeify).
+2024-06-06 11:03:42.463 +01:00 [INF] Executing ViewResult, running view AccessDenied.
+2024-06-06 11:03:42.543 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/images/logoNew.png - -
+2024-06-06 11:03:42.545 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/images/logoNew.png - - - 302 - - 1.0903ms
+2024-06-06 11:03:42.545 +01:00 [INF] Executed DbCommand (17ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Discriminator] = N'ApplicationUser' AND [a].[Deactivated] = CAST(0 AS bit)
+2024-06-06 11:03:42.547 +01:00 [INF] Executed ViewResult - view AccessDenied executed in 85.8685ms.
+2024-06-06 11:03:42.547 +01:00 [INF] Executed action Tradeify.Controllers.HomeController.AccessDenied (Tradeify) in 86.1313ms
+2024-06-06 11:03:42.547 +01:00 [INF] Executed endpoint 'Tradeify.Controllers.HomeController.AccessDenied (Tradeify)'
+2024-06-06 11:03:42.548 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/Home/AccessDenied - - - 200 - text/html;+charset=utf-8 99.5962ms
+2024-06-06 11:03:42.548 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/_framework/aspnetcore-browser-refresh.js - -
+2024-06-06 11:03:42.549 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/_framework/aspnetcore-browser-refresh.js - - - 200 13752 application/javascript;+charset=utf-8 4.4386ms
+2024-06-06 11:03:42.641 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/_vs/browserLink - -
+2024-06-06 11:03:42.674 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/Home/AccessDenied - -
+2024-06-06 11:03:42.678 +01:00 [INF] Executing endpoint 'Tradeify.Controllers.HomeController.AccessDenied (Tradeify)'
+2024-06-06 11:03:42.681 +01:00 [INF] Route matched with {action = "AccessDenied", controller = "Home"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult AccessDenied() on controller Tradeify.Controllers.HomeController (Tradeify).
+2024-06-06 11:03:42.683 +01:00 [INF] Executing ViewResult, running view AccessDenied.
+2024-06-06 11:03:42.701 +01:00 [INF] Executed DbCommand (10ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Discriminator] = N'ApplicationUser' AND [a].[Deactivated] = CAST(0 AS bit)
+2024-06-06 11:03:42.704 +01:00 [INF] Executed ViewResult - view AccessDenied executed in 20.8232ms.
+2024-06-06 11:03:42.704 +01:00 [INF] Executed action Tradeify.Controllers.HomeController.AccessDenied (Tradeify) in 23.48ms
+2024-06-06 11:03:42.704 +01:00 [INF] Executed endpoint 'Tradeify.Controllers.HomeController.AccessDenied (Tradeify)'
+2024-06-06 11:03:42.705 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/Home/AccessDenied - - - 200 - text/html;+charset=utf-8 30.7710ms
+2024-06-06 11:03:42.712 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 70.5309ms
+2024-06-06 11:08:07.532 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/ - -
+2024-06-06 11:08:07.557 +01:00 [INF] Executing endpoint 'Tradeify.Controllers.HomeController.Index (Tradeify)'
+2024-06-06 11:08:07.559 +01:00 [INF] Route matched with {action = "Index", controller = "Home"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index() on controller Tradeify.Controllers.HomeController (Tradeify).
+2024-06-06 11:08:07.566 +01:00 [INF] Executing ViewResult, running view Index.
+2024-06-06 11:08:08.884 +01:00 [INF] Executed DbCommand (142ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Discriminator] = N'ApplicationUser' AND [a].[Deactivated] = CAST(0 AS bit)
+2024-06-06 11:08:08.887 +01:00 [INF] Executed ViewResult - view Index executed in 1327.6241ms.
+2024-06-06 11:08:08.887 +01:00 [INF] Executed action Tradeify.Controllers.HomeController.Index (Tradeify) in 1328.0534ms
+2024-06-06 11:08:08.887 +01:00 [INF] Executed endpoint 'Tradeify.Controllers.HomeController.Index (Tradeify)'
+2024-06-06 11:08:08.924 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/ - - - 200 - text/html;+charset=utf-8 1391.7541ms
+2024-06-06 11:08:08.948 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/js/grant.js - -
+2024-06-06 11:08:08.956 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/_framework/aspnetcore-browser-refresh.js - -
+2024-06-06 11:08:08.961 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/js/grant.js - - - 302 - - 13.4717ms
+2024-06-06 11:08:08.962 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/images/logoNew.png - -
+2024-06-06 11:08:08.971 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/images/logoNew.png - - - 302 - - 9.4644ms
+2024-06-06 11:08:08.981 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/_framework/aspnetcore-browser-refresh.js - - - 200 13752 application/javascript;+charset=utf-8 24.6110ms
+2024-06-06 11:08:09.124 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/Home/AccessDenied - -
+2024-06-06 11:08:09.148 +01:00 [INF] Executing endpoint 'Tradeify.Controllers.HomeController.AccessDenied (Tradeify)'
+2024-06-06 11:08:09.150 +01:00 [INF] Route matched with {action = "AccessDenied", controller = "Home"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult AccessDenied() on controller Tradeify.Controllers.HomeController (Tradeify).
+2024-06-06 11:08:09.166 +01:00 [INF] Executing ViewResult, running view AccessDenied.
+2024-06-06 11:08:09.187 +01:00 [INF] Executed DbCommand (7ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Discriminator] = N'ApplicationUser' AND [a].[Deactivated] = CAST(0 AS bit)
+2024-06-06 11:08:09.189 +01:00 [INF] Executed ViewResult - view AccessDenied executed in 39.0118ms.
+2024-06-06 11:08:09.190 +01:00 [INF] Executed action Tradeify.Controllers.HomeController.AccessDenied (Tradeify) in 39.322ms
+2024-06-06 11:08:09.190 +01:00 [INF] Executed endpoint 'Tradeify.Controllers.HomeController.AccessDenied (Tradeify)'
+2024-06-06 11:08:09.190 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/Home/AccessDenied - - - 200 - text/html;+charset=utf-8 66.5663ms
+2024-06-06 11:08:09.234 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/_vs/browserLink - -
+2024-06-06 11:08:09.248 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/Home/AccessDenied - -
+2024-06-06 11:08:09.267 +01:00 [INF] Executing endpoint 'Tradeify.Controllers.HomeController.AccessDenied (Tradeify)'
+2024-06-06 11:08:09.267 +01:00 [INF] Route matched with {action = "AccessDenied", controller = "Home"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult AccessDenied() on controller Tradeify.Controllers.HomeController (Tradeify).
+2024-06-06 11:08:09.267 +01:00 [INF] Executing ViewResult, running view AccessDenied.
+2024-06-06 11:08:09.320 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 86.5949ms
+2024-06-06 11:08:09.320 +01:00 [INF] Executed DbCommand (18ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Discriminator] = N'ApplicationUser' AND [a].[Deactivated] = CAST(0 AS bit)
+2024-06-06 11:08:09.325 +01:00 [INF] Executed ViewResult - view AccessDenied executed in 57.8147ms.
+2024-06-06 11:08:09.325 +01:00 [INF] Executed action Tradeify.Controllers.HomeController.AccessDenied (Tradeify) in 58.0338ms
+2024-06-06 11:08:09.325 +01:00 [INF] Executed endpoint 'Tradeify.Controllers.HomeController.AccessDenied (Tradeify)'
+2024-06-06 11:08:09.325 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/Home/AccessDenied - - - 200 - text/html;+charset=utf-8 77.5866ms
+2024-06-06 11:08:33.882 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/ - -
+2024-06-06 11:08:33.899 +01:00 [INF] Executing endpoint 'Tradeify.Controllers.HomeController.Index (Tradeify)'
+2024-06-06 11:08:33.902 +01:00 [INF] Route matched with {action = "Index", controller = "Home"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index() on controller Tradeify.Controllers.HomeController (Tradeify).
+2024-06-06 11:08:33.912 +01:00 [INF] Executing ViewResult, running view Index.
+2024-06-06 11:08:34.014 +01:00 [INF] Executed DbCommand (9ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Discriminator] = N'ApplicationUser' AND [a].[Deactivated] = CAST(0 AS bit)
+2024-06-06 11:08:34.018 +01:00 [INF] Executed ViewResult - view Index executed in 115.8137ms.
+2024-06-06 11:08:34.019 +01:00 [INF] Executed action Tradeify.Controllers.HomeController.Index (Tradeify) in 116.2853ms
+2024-06-06 11:08:34.019 +01:00 [INF] Executed endpoint 'Tradeify.Controllers.HomeController.Index (Tradeify)'
+2024-06-06 11:08:34.021 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/ - - - 200 - text/html;+charset=utf-8 139.4669ms
+2024-06-06 11:08:34.089 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/images/logoNew.png - -
+2024-06-06 11:08:34.148 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/images/logoNew.png - - - 302 - - 58.3630ms
+2024-06-06 11:08:34.148 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/_framework/aspnetcore-browser-refresh.js - -
+2024-06-06 11:08:34.219 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/_framework/aspnetcore-browser-refresh.js - - - 200 13752 application/javascript;+charset=utf-8 70.6631ms
+2024-06-06 11:08:34.224 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/js/grant.js - -
+2024-06-06 11:08:34.268 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/js/grant.js - - - 302 - - 44.5492ms
+2024-06-06 11:08:34.302 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/Home/AccessDenied - -
+2024-06-06 11:08:34.307 +01:00 [INF] Executing endpoint 'Tradeify.Controllers.HomeController.AccessDenied (Tradeify)'
+2024-06-06 11:08:34.311 +01:00 [INF] Route matched with {action = "AccessDenied", controller = "Home"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult AccessDenied() on controller Tradeify.Controllers.HomeController (Tradeify).
+2024-06-06 11:08:34.314 +01:00 [INF] Executing ViewResult, running view AccessDenied.
+2024-06-06 11:08:34.407 +01:00 [INF] Executed DbCommand (29ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Discriminator] = N'ApplicationUser' AND [a].[Deactivated] = CAST(0 AS bit)
+2024-06-06 11:08:34.410 +01:00 [INF] Executed ViewResult - view AccessDenied executed in 97.4043ms.
+2024-06-06 11:08:34.410 +01:00 [INF] Executed action Tradeify.Controllers.HomeController.AccessDenied (Tradeify) in 99.1746ms
+2024-06-06 11:08:34.410 +01:00 [INF] Executed endpoint 'Tradeify.Controllers.HomeController.AccessDenied (Tradeify)'
+2024-06-06 11:08:34.410 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/Home/AccessDenied - - - 200 - text/html;+charset=utf-8 108.7900ms
+2024-06-06 11:08:34.438 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/_vs/browserLink - -
+2024-06-06 11:08:34.445 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/Home/AccessDenied - -
+2024-06-06 11:08:34.471 +01:00 [INF] Executing endpoint 'Tradeify.Controllers.HomeController.AccessDenied (Tradeify)'
+2024-06-06 11:08:34.471 +01:00 [INF] Route matched with {action = "AccessDenied", controller = "Home"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult AccessDenied() on controller Tradeify.Controllers.HomeController (Tradeify).
+2024-06-06 11:08:34.472 +01:00 [INF] Executing ViewResult, running view AccessDenied.
+2024-06-06 11:08:34.483 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 44.8325ms
+2024-06-06 11:08:34.502 +01:00 [INF] Executed DbCommand (14ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Discriminator] = N'ApplicationUser' AND [a].[Deactivated] = CAST(0 AS bit)
+2024-06-06 11:08:34.506 +01:00 [INF] Executed ViewResult - view AccessDenied executed in 33.941ms.
+2024-06-06 11:08:34.506 +01:00 [INF] Executed action Tradeify.Controllers.HomeController.AccessDenied (Tradeify) in 34.4433ms
+2024-06-06 11:08:34.506 +01:00 [INF] Executed endpoint 'Tradeify.Controllers.HomeController.AccessDenied (Tradeify)'
+2024-06-06 11:08:34.507 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/Home/AccessDenied - - - 200 - text/html;+charset=utf-8 61.8239ms
+2024-06-06 11:09:27.594 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/ - -
+2024-06-06 11:09:27.603 +01:00 [INF] Executing endpoint 'Tradeify.Controllers.HomeController.Index (Tradeify)'
+2024-06-06 11:09:27.608 +01:00 [INF] Route matched with {action = "Index", controller = "Home"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index() on controller Tradeify.Controllers.HomeController (Tradeify).
+2024-06-06 11:09:27.613 +01:00 [INF] Executing ViewResult, running view Index.
+2024-06-06 11:09:27.654 +01:00 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Discriminator] = N'ApplicationUser' AND [a].[Deactivated] = CAST(0 AS bit)
+2024-06-06 11:09:27.667 +01:00 [INF] Executed ViewResult - view Index executed in 58.8017ms.
+2024-06-06 11:09:27.668 +01:00 [INF] Executed action Tradeify.Controllers.HomeController.Index (Tradeify) in 59.1317ms
+2024-06-06 11:09:27.668 +01:00 [INF] Executed endpoint 'Tradeify.Controllers.HomeController.Index (Tradeify)'
+2024-06-06 11:09:27.675 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/ - - - 200 - text/html;+charset=utf-8 80.4663ms
+2024-06-06 11:09:27.734 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/images/logoNew.png - -
+2024-06-06 11:09:27.756 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/images/logoNew.png - - - 302 - - 21.7241ms
+2024-06-06 11:09:27.756 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/js/grant.js - -
+2024-06-06 11:09:27.779 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/js/grant.js - - - 302 - - 23.0698ms
+2024-06-06 11:09:27.913 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/_framework/aspnetcore-browser-refresh.js - -
+2024-06-06 11:09:27.915 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/_framework/aspnetcore-browser-refresh.js - - - 200 13752 application/javascript;+charset=utf-8 2.0044ms
+2024-06-06 11:09:27.933 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/Home/AccessDenied - -
+2024-06-06 11:09:27.960 +01:00 [INF] Executing endpoint 'Tradeify.Controllers.HomeController.AccessDenied (Tradeify)'
+2024-06-06 11:09:27.963 +01:00 [INF] Route matched with {action = "AccessDenied", controller = "Home"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult AccessDenied() on controller Tradeify.Controllers.HomeController (Tradeify).
+2024-06-06 11:09:27.964 +01:00 [INF] Executing ViewResult, running view AccessDenied.
+2024-06-06 11:09:28.131 +01:00 [INF] Executed DbCommand (63ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Discriminator] = N'ApplicationUser' AND [a].[Deactivated] = CAST(0 AS bit)
+2024-06-06 11:09:28.133 +01:00 [INF] Executed ViewResult - view AccessDenied executed in 169.5182ms.
+2024-06-06 11:09:28.133 +01:00 [INF] Executed action Tradeify.Controllers.HomeController.AccessDenied (Tradeify) in 169.7893ms
+2024-06-06 11:09:28.133 +01:00 [INF] Executed endpoint 'Tradeify.Controllers.HomeController.AccessDenied (Tradeify)'
+2024-06-06 11:09:28.133 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/Home/AccessDenied - - - 200 - text/html;+charset=utf-8 200.8911ms
+2024-06-06 11:09:28.179 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/Home/AccessDenied - -
+2024-06-06 11:09:28.182 +01:00 [INF] Executing endpoint 'Tradeify.Controllers.HomeController.AccessDenied (Tradeify)'
+2024-06-06 11:09:28.183 +01:00 [INF] Route matched with {action = "AccessDenied", controller = "Home"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult AccessDenied() on controller Tradeify.Controllers.HomeController (Tradeify).
+2024-06-06 11:09:28.183 +01:00 [INF] Executing ViewResult, running view AccessDenied.
+2024-06-06 11:09:28.197 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/_vs/browserLink - -
+2024-06-06 11:09:28.220 +01:00 [INF] Executed DbCommand (26ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Discriminator] = N'ApplicationUser' AND [a].[Deactivated] = CAST(0 AS bit)
+2024-06-06 11:09:28.230 +01:00 [INF] Executed ViewResult - view AccessDenied executed in 47.0675ms.
+2024-06-06 11:09:28.230 +01:00 [INF] Executed action Tradeify.Controllers.HomeController.AccessDenied (Tradeify) in 47.3517ms
+2024-06-06 11:09:28.230 +01:00 [INF] Executed endpoint 'Tradeify.Controllers.HomeController.AccessDenied (Tradeify)'
+2024-06-06 11:09:28.231 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/Home/AccessDenied - - - 200 - text/html;+charset=utf-8 51.3961ms
+2024-06-06 11:09:28.273 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 75.7651ms
+2024-06-06 11:11:18.959 +01:00 [WRN] Navigations 'ApplicationUser.RegFeePayment' and 'PaymentForm.User' were separated into two relationships since the [ForeignKey] attribute was specified on navigations on both sides.
+2024-06-06 11:11:20.943 +01:00 [WRN] No store type was specified for the decimal property 'ActivationAmount' on entity type 'CompanySettings'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-06-06 11:11:20.949 +01:00 [WRN] No store type was specified for the decimal property 'MiningQuantity' on entity type 'CompanySettings'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-06-06 11:11:20.953 +01:00 [WRN] No store type was specified for the decimal property 'Tokenamount' on entity type 'CompanySettings'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-06-06 11:11:20.957 +01:00 [WRN] No store type was specified for the decimal property 'MiningQuantity' on entity type 'MiningLog'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-06-06 11:11:20.961 +01:00 [WRN] No store type was specified for the decimal property 'Amount' on entity type 'PaymentForm'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-06-06 11:11:20.966 +01:00 [WRN] No store type was specified for the decimal property 'NoOfTokensBought' on entity type 'PaymentForm'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-06-06 11:11:20.970 +01:00 [WRN] No store type was specified for the decimal property 'Amount' on entity type 'PendingBonuses'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-06-06 11:11:20.975 +01:00 [WRN] No store type was specified for the decimal property 'AmountStaked' on entity type 'UserBettings'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-06-06 11:11:20.980 +01:00 [WRN] No store type was specified for the decimal property 'BonusAmount' on entity type 'UserGenerationLog'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-06-06 11:11:20.984 +01:00 [WRN] No store type was specified for the decimal property 'Amount' on entity type 'UserPackages'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-06-06 11:11:24.274 +01:00 [INF] Executed DbCommand (101ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-06-06 11:11:24.579 +01:00 [INF] Executed DbCommand (104ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-06-06 11:11:24.610 +01:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-06-06 11:11:24.637 +01:00 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-06-06 11:11:24.734 +01:00 [INF] Executed DbCommand (28ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2024-06-06 11:11:25.318 +01:00 [INF] No migrations were applied. The database is already up to date.
+2024-06-06 11:11:25.375 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-06-06 11:11:25.394 +01:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-06-06 11:11:25.410 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2024-06-06 11:11:25.427 +01:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2024-06-06 11:11:25.444 +01:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2024-06-06 11:11:25.451 +01:00 [INF] No migrations were applied. The database is already up to date.
+2024-06-06 11:11:25.675 +01:00 [INF] Start installing Hangfire SQL objects...
+2024-06-06 11:11:29.261 +01:00 [INF] Hangfire SQL objects installed.
+2024-06-06 11:11:29.305 +01:00 [INF] Starting Hangfire Server using job storage: 'SQL Server: DESKTOP-PJC031G\SQLEXPRESS@TRADEIFYHangfire'
+2024-06-06 11:11:29.309 +01:00 [INF] Using the following options for SQL Server job storage: Queue poll interval: 00:00:00.
+2024-06-06 11:11:29.314 +01:00 [INF] Using the following options for Hangfire Server:
+    Worker count: 20
+    Listening queues: 'default'
+    Shutdown timeout: 00:00:15
+    Schedule polling interval: 00:00:15
+2024-06-06 11:11:29.417 +01:00 [INF] Start installing Hangfire SQL objects...
+2024-06-06 11:11:29.813 +01:00 [INF] Server desktop-pjc031g.c7b02a1e-24c0-4cef-8bf1-233aa6ef9c64:23564:1eb1e33d successfully announced in 395.132 ms
+2024-06-06 11:11:29.830 +01:00 [INF] Server desktop-pjc031g.c7b02a1e-24c0-4cef-8bf1-233aa6ef9c64:23564:1eb1e33d is starting the registered dispatchers: ServerWatchdog, ServerJobCancellationWatcher, ExpirationManager, CountersAggregator, SqlServerHeartbeatProcess, Worker, DelayedJobScheduler, RecurringJobScheduler...
+2024-06-06 11:11:29.854 +01:00 [INF] Hangfire SQL objects installed.
+2024-06-06 11:11:30.158 +01:00 [INF] Server desktop-pjc031g.c7b02a1e-24c0-4cef-8bf1-233aa6ef9c64:23564:1eb1e33d all the dispatchers started
+2024-06-06 11:11:30.551 +01:00 [INF] User profile is available. Using 'C:\Users\User\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-06-06 11:11:30.821 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-06-06 11:11:30.844 +01:00 [INF] Hosting environment: Development
+2024-06-06 11:11:30.850 +01:00 [INF] Content root path: C:\Users\User\Source\Repos\Tradeify\Tradeify
+2024-06-06 11:11:30.910 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/ - -
+2024-06-06 11:11:31.726 +01:00 [INF] Executing endpoint 'Tradeify.Controllers.HomeController.Index (Tradeify)'
+2024-06-06 11:11:31.740 +01:00 [INF] Route matched with {action = "Index", controller = "Home"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index() on controller Tradeify.Controllers.HomeController (Tradeify).
+2024-06-06 11:11:31.767 +01:00 [INF] Executing ViewResult, running view Index.
+2024-06-06 11:11:34.581 +01:00 [INF] Executed DbCommand (722ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Discriminator] = N'ApplicationUser' AND [a].[Deactivated] = CAST(0 AS bit)
+2024-06-06 11:11:34.882 +01:00 [INF] Executed ViewResult - view Index executed in 3118.3062ms.
+2024-06-06 11:11:34.886 +01:00 [INF] Executed action Tradeify.Controllers.HomeController.Index (Tradeify) in 3144.053ms
+2024-06-06 11:11:34.886 +01:00 [INF] Executed endpoint 'Tradeify.Controllers.HomeController.Index (Tradeify)'
+2024-06-06 11:11:35.056 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/ - - - 200 - text/html;+charset=utf-8 4146.8666ms
+2024-06-06 11:11:35.088 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/js/grant.js - -
+2024-06-06 11:11:35.158 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/images/logoNew.png - -
+2024-06-06 11:11:35.175 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/images/logoNew.png - - - 302 - - 16.6610ms
+2024-06-06 11:11:35.175 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/js/grant.js - - - 302 - - 87.1836ms
+2024-06-06 11:11:35.269 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/_framework/aspnetcore-browser-refresh.js - -
+2024-06-06 11:11:35.288 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/_framework/aspnetcore-browser-refresh.js - - - 200 13752 application/javascript;+charset=utf-8 14.5118ms
+2024-06-06 11:11:35.404 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/Home/AccessDenied - -
+2024-06-06 11:11:35.419 +01:00 [INF] Executing endpoint 'Tradeify.Controllers.HomeController.AccessDenied (Tradeify)'
+2024-06-06 11:11:35.423 +01:00 [INF] Route matched with {action = "AccessDenied", controller = "Home"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult AccessDenied() on controller Tradeify.Controllers.HomeController (Tradeify).
+2024-06-06 11:11:35.431 +01:00 [INF] Executing ViewResult, running view AccessDenied.
+2024-06-06 11:11:35.580 +01:00 [INF] Executed DbCommand (80ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Discriminator] = N'ApplicationUser' AND [a].[Deactivated] = CAST(0 AS bit)
+2024-06-06 11:11:35.609 +01:00 [INF] Executed ViewResult - view AccessDenied executed in 181.6407ms.
+2024-06-06 11:11:35.609 +01:00 [INF] Executed action Tradeify.Controllers.HomeController.AccessDenied (Tradeify) in 186.1681ms
+2024-06-06 11:11:35.610 +01:00 [INF] Executed endpoint 'Tradeify.Controllers.HomeController.AccessDenied (Tradeify)'
+2024-06-06 11:11:35.614 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/Home/AccessDenied - - - 200 - text/html;+charset=utf-8 207.5160ms
+2024-06-06 11:11:35.645 +01:00 [INF] Request starting HTTP/1.1 GET https://localhost:44308/lib/bootstrap/dist/js/bootstrap.bundle.min.js.map - -
+2024-06-06 11:11:35.659 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/Home/AccessDenied - -
+2024-06-06 11:11:35.664 +01:00 [INF] Executing endpoint 'Tradeify.Controllers.HomeController.AccessDenied (Tradeify)'
+2024-06-06 11:11:35.664 +01:00 [INF] Route matched with {action = "AccessDenied", controller = "Home"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult AccessDenied() on controller Tradeify.Controllers.HomeController (Tradeify).
+2024-06-06 11:11:35.665 +01:00 [INF] Executing ViewResult, running view AccessDenied.
+2024-06-06 11:11:35.751 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/_vs/browserLink - -
+2024-06-06 11:11:35.784 +01:00 [INF] Executed DbCommand (16ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Discriminator] = N'ApplicationUser' AND [a].[Deactivated] = CAST(0 AS bit)
+2024-06-06 11:11:35.793 +01:00 [INF] Executed ViewResult - view AccessDenied executed in 128.542ms.
+2024-06-06 11:11:35.793 +01:00 [INF] Executed action Tradeify.Controllers.HomeController.AccessDenied (Tradeify) in 129.0616ms
+2024-06-06 11:11:35.793 +01:00 [INF] Executed endpoint 'Tradeify.Controllers.HomeController.AccessDenied (Tradeify)'
+2024-06-06 11:11:35.794 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/Home/AccessDenied - - - 200 - text/html;+charset=utf-8 135.2681ms
+2024-06-06 11:11:36.189 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 438.5783ms
+2024-06-06 11:11:36.410 +01:00 [INF] Sending file. Request path: '/lib/bootstrap/dist/js/bootstrap.bundle.min.js.map'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.min.js.map'
+2024-06-06 11:11:36.489 +01:00 [INF] Request finished HTTP/1.1 GET https://localhost:44308/lib/bootstrap/dist/js/bootstrap.bundle.min.js.map - - - 200 327261 text/plain 844.2010ms
+2024-06-06 11:12:49.102 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/ - -
+2024-06-06 11:12:49.127 +01:00 [INF] Executing endpoint 'Tradeify.Controllers.HomeController.Index (Tradeify)'
+2024-06-06 11:12:49.127 +01:00 [INF] Route matched with {action = "Index", controller = "Home"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index() on controller Tradeify.Controllers.HomeController (Tradeify).
+2024-06-06 11:12:49.128 +01:00 [INF] Executing ViewResult, running view Index.
+2024-06-06 11:12:49.148 +01:00 [INF] Executed DbCommand (11ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Discriminator] = N'ApplicationUser' AND [a].[Deactivated] = CAST(0 AS bit)
+2024-06-06 11:12:49.153 +01:00 [INF] Executed ViewResult - view Index executed in 25.4693ms.
+2024-06-06 11:12:49.153 +01:00 [INF] Executed action Tradeify.Controllers.HomeController.Index (Tradeify) in 26.0125ms
+2024-06-06 11:12:49.154 +01:00 [INF] Executed endpoint 'Tradeify.Controllers.HomeController.Index (Tradeify)'
+2024-06-06 11:12:49.161 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/ - - - 200 - text/html;+charset=utf-8 59.7136ms
+2024-06-06 11:12:49.204 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/js/grant.js - -
+2024-06-06 11:12:49.209 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/images/logoNew.png - -
+2024-06-06 11:12:49.213 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/js/grant.js - - - 302 - - 9.9359ms
+2024-06-06 11:12:49.223 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/_framework/aspnetcore-browser-refresh.js - -
+2024-06-06 11:12:49.233 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/_framework/aspnetcore-browser-refresh.js - - - 200 13752 application/javascript;+charset=utf-8 10.4192ms
+2024-06-06 11:12:49.222 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/images/logoNew.png - - - 302 - - 13.3465ms
+2024-06-06 11:12:49.410 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/Home/AccessDenied - -
+2024-06-06 11:12:49.412 +01:00 [INF] Executing endpoint 'Tradeify.Controllers.HomeController.AccessDenied (Tradeify)'
+2024-06-06 11:12:49.412 +01:00 [INF] Route matched with {action = "AccessDenied", controller = "Home"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult AccessDenied() on controller Tradeify.Controllers.HomeController (Tradeify).
+2024-06-06 11:12:49.412 +01:00 [INF] Executing ViewResult, running view AccessDenied.
+2024-06-06 11:12:49.548 +01:00 [INF] Executed DbCommand (37ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Discriminator] = N'ApplicationUser' AND [a].[Deactivated] = CAST(0 AS bit)
+2024-06-06 11:12:49.562 +01:00 [INF] Executed ViewResult - view AccessDenied executed in 149.6288ms.
+2024-06-06 11:12:49.562 +01:00 [INF] Executed action Tradeify.Controllers.HomeController.AccessDenied (Tradeify) in 150.0274ms
+2024-06-06 11:12:49.562 +01:00 [INF] Executed endpoint 'Tradeify.Controllers.HomeController.AccessDenied (Tradeify)'
+2024-06-06 11:12:49.563 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/Home/AccessDenied - - - 200 - text/html;+charset=utf-8 153.4746ms
+2024-06-06 11:12:49.622 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/Home/AccessDenied - -
+2024-06-06 11:12:49.627 +01:00 [INF] Executing endpoint 'Tradeify.Controllers.HomeController.AccessDenied (Tradeify)'
+2024-06-06 11:12:49.628 +01:00 [INF] Route matched with {action = "AccessDenied", controller = "Home"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult AccessDenied() on controller Tradeify.Controllers.HomeController (Tradeify).
+2024-06-06 11:12:49.629 +01:00 [INF] Executing ViewResult, running view AccessDenied.
+2024-06-06 11:12:49.645 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/_vs/browserLink - -
+2024-06-06 11:12:49.680 +01:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Discriminator] = N'ApplicationUser' AND [a].[Deactivated] = CAST(0 AS bit)
+2024-06-06 11:12:49.706 +01:00 [INF] Executed ViewResult - view AccessDenied executed in 77.2632ms.
+2024-06-06 11:12:49.706 +01:00 [INF] Executed action Tradeify.Controllers.HomeController.AccessDenied (Tradeify) in 77.5583ms
+2024-06-06 11:12:49.706 +01:00 [INF] Executed endpoint 'Tradeify.Controllers.HomeController.AccessDenied (Tradeify)'
+2024-06-06 11:12:49.707 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/Home/AccessDenied - - - 200 - text/html;+charset=utf-8 84.2055ms
+2024-06-06 11:12:49.760 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 114.4921ms
+2024-06-06 11:13:21.251 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/ - -
+2024-06-06 11:13:21.332 +01:00 [INF] Executing endpoint 'Tradeify.Controllers.HomeController.Index (Tradeify)'
+2024-06-06 11:13:21.335 +01:00 [INF] Route matched with {action = "Index", controller = "Home"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index() on controller Tradeify.Controllers.HomeController (Tradeify).
+2024-06-06 11:13:21.342 +01:00 [INF] Executing ViewResult, running view Index.
+2024-06-06 11:13:21.448 +01:00 [INF] Executed DbCommand (13ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Discriminator] = N'ApplicationUser' AND [a].[Deactivated] = CAST(0 AS bit)
+2024-06-06 11:13:21.455 +01:00 [INF] Executed ViewResult - view Index executed in 120.1781ms.
+2024-06-06 11:13:21.456 +01:00 [INF] Executed action Tradeify.Controllers.HomeController.Index (Tradeify) in 120.4907ms
+2024-06-06 11:13:21.456 +01:00 [INF] Executed endpoint 'Tradeify.Controllers.HomeController.Index (Tradeify)'
+2024-06-06 11:13:21.460 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/ - - - 200 - text/html;+charset=utf-8 208.6769ms
+2024-06-06 11:13:21.479 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/js/grant.js - -
+2024-06-06 11:13:21.512 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/js/grant.js - - - 302 - - 32.5308ms
+2024-06-06 11:13:21.513 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/_framework/aspnetcore-browser-refresh.js - -
+2024-06-06 11:13:21.516 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/_framework/aspnetcore-browser-refresh.js - - - 200 13752 application/javascript;+charset=utf-8 3.2662ms
+2024-06-06 11:13:21.522 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/images/logoNew.png - -
+2024-06-06 11:13:21.556 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/images/logoNew.png - - - 302 - - 34.0009ms
+2024-06-06 11:13:21.748 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/Home/AccessDenied - -
+2024-06-06 11:13:21.754 +01:00 [INF] Executing endpoint 'Tradeify.Controllers.HomeController.AccessDenied (Tradeify)'
+2024-06-06 11:13:21.758 +01:00 [INF] Route matched with {action = "AccessDenied", controller = "Home"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult AccessDenied() on controller Tradeify.Controllers.HomeController (Tradeify).
+2024-06-06 11:13:21.759 +01:00 [INF] Executing ViewResult, running view AccessDenied.
+2024-06-06 11:13:21.884 +01:00 [INF] Executed DbCommand (63ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Discriminator] = N'ApplicationUser' AND [a].[Deactivated] = CAST(0 AS bit)
+2024-06-06 11:13:21.896 +01:00 [INF] Executed ViewResult - view AccessDenied executed in 137.6442ms.
+2024-06-06 11:13:21.896 +01:00 [INF] Executed action Tradeify.Controllers.HomeController.AccessDenied (Tradeify) in 138.0186ms
+2024-06-06 11:13:21.896 +01:00 [INF] Executed endpoint 'Tradeify.Controllers.HomeController.AccessDenied (Tradeify)'
+2024-06-06 11:13:21.896 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/Home/AccessDenied - - - 200 - text/html;+charset=utf-8 148.2628ms
+2024-06-06 11:13:21.972 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/Home/AccessDenied - -
+2024-06-06 11:13:21.980 +01:00 [INF] Executing endpoint 'Tradeify.Controllers.HomeController.AccessDenied (Tradeify)'
+2024-06-06 11:13:21.980 +01:00 [INF] Route matched with {action = "AccessDenied", controller = "Home"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult AccessDenied() on controller Tradeify.Controllers.HomeController (Tradeify).
+2024-06-06 11:13:21.980 +01:00 [INF] Executing ViewResult, running view AccessDenied.
+2024-06-06 11:13:21.983 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/_vs/browserLink - -
+2024-06-06 11:13:22.010 +01:00 [INF] Executed DbCommand (16ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Discriminator] = N'ApplicationUser' AND [a].[Deactivated] = CAST(0 AS bit)
+2024-06-06 11:13:22.014 +01:00 [INF] Executed ViewResult - view AccessDenied executed in 33.4358ms.
+2024-06-06 11:13:22.014 +01:00 [INF] Executed action Tradeify.Controllers.HomeController.AccessDenied (Tradeify) in 33.6826ms
+2024-06-06 11:13:22.014 +01:00 [INF] Executed endpoint 'Tradeify.Controllers.HomeController.AccessDenied (Tradeify)'
+2024-06-06 11:13:22.014 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/Home/AccessDenied - - - 200 - text/html;+charset=utf-8 41.9837ms
+2024-06-06 11:13:22.151 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 167.6685ms
+2024-06-06 11:16:29.927 +01:00 [INF] 1 servers were removed due to timeout
+2024-06-06 11:18:53.765 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/lib/bootstrap/dist/js/bootstrap.bundle.min.js.map - -
+2024-06-06 11:18:53.808 +01:00 [INF] Sending file. Request path: '/lib/bootstrap/dist/js/bootstrap.bundle.min.js.map'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.min.js.map'
+2024-06-06 11:18:53.869 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/lib/bootstrap/dist/js/bootstrap.bundle.min.js.map - - - 200 327261 text/plain 92.9845ms
+2024-06-06 11:19:57.721 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/ - -
+2024-06-06 11:19:57.776 +01:00 [INF] Executing endpoint 'Tradeify.Controllers.HomeController.Index (Tradeify)'
+2024-06-06 11:19:57.777 +01:00 [INF] Route matched with {action = "Index", controller = "Home"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index() on controller Tradeify.Controllers.HomeController (Tradeify).
+2024-06-06 11:19:57.777 +01:00 [INF] Executing ViewResult, running view Index.
+2024-06-06 11:19:58.832 +01:00 [INF] Executed DbCommand (147ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Discriminator] = N'ApplicationUser' AND [a].[Deactivated] = CAST(0 AS bit)
+2024-06-06 11:19:58.837 +01:00 [INF] Executed ViewResult - view Index executed in 1060.0844ms.
+2024-06-06 11:19:58.837 +01:00 [INF] Executed action Tradeify.Controllers.HomeController.Index (Tradeify) in 1060.4792ms
+2024-06-06 11:19:58.838 +01:00 [INF] Executed endpoint 'Tradeify.Controllers.HomeController.Index (Tradeify)'
+2024-06-06 11:19:58.858 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/ - - - 200 - text/html;+charset=utf-8 1136.7116ms
+2024-06-06 11:19:58.997 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/js/grant.js - -
+2024-06-06 11:19:59.027 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/js/grant.js - - - 302 - - 24.6569ms
+2024-06-06 11:19:59.102 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/_framework/aspnetcore-browser-refresh.js - -
+2024-06-06 11:19:59.249 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/_framework/aspnetcore-browser-refresh.js - - - 200 13752 application/javascript;+charset=utf-8 147.6233ms
+2024-06-06 11:19:59.250 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/images/logoNew.png - -
+2024-06-06 11:19:59.328 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/images/logoNew.png - - - 302 - - 77.7088ms
+2024-06-06 11:19:59.405 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/Home/AccessDenied - -
+2024-06-06 11:19:59.407 +01:00 [INF] Executing endpoint 'Tradeify.Controllers.HomeController.AccessDenied (Tradeify)'
+2024-06-06 11:19:59.407 +01:00 [INF] Route matched with {action = "AccessDenied", controller = "Home"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult AccessDenied() on controller Tradeify.Controllers.HomeController (Tradeify).
+2024-06-06 11:19:59.408 +01:00 [INF] Executing ViewResult, running view AccessDenied.
+2024-06-06 11:19:59.572 +01:00 [INF] Executed DbCommand (104ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Discriminator] = N'ApplicationUser' AND [a].[Deactivated] = CAST(0 AS bit)
+2024-06-06 11:19:59.574 +01:00 [INF] Executed ViewResult - view AccessDenied executed in 166.1035ms.
+2024-06-06 11:19:59.575 +01:00 [INF] Executed action Tradeify.Controllers.HomeController.AccessDenied (Tradeify) in 167.0871ms
+2024-06-06 11:19:59.575 +01:00 [INF] Executed endpoint 'Tradeify.Controllers.HomeController.AccessDenied (Tradeify)'
+2024-06-06 11:19:59.575 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/Home/AccessDenied - - - 200 - text/html;+charset=utf-8 170.7309ms
+2024-06-06 11:19:59.771 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/Home/AccessDenied - -
+2024-06-06 11:19:59.772 +01:00 [INF] Executing endpoint 'Tradeify.Controllers.HomeController.AccessDenied (Tradeify)'
+2024-06-06 11:19:59.773 +01:00 [INF] Route matched with {action = "AccessDenied", controller = "Home"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult AccessDenied() on controller Tradeify.Controllers.HomeController (Tradeify).
+2024-06-06 11:19:59.773 +01:00 [INF] Executing ViewResult, running view AccessDenied.
+2024-06-06 11:20:00.070 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/_vs/browserLink - -
+2024-06-06 11:20:00.616 +01:00 [INF] Executed DbCommand (723ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Discriminator] = N'ApplicationUser' AND [a].[Deactivated] = CAST(0 AS bit)
+2024-06-06 11:20:00.634 +01:00 [INF] Executed ViewResult - view AccessDenied executed in 861.3163ms.
+2024-06-06 11:20:00.634 +01:00 [INF] Executed action Tradeify.Controllers.HomeController.AccessDenied (Tradeify) in 861.6961ms
+2024-06-06 11:20:00.635 +01:00 [INF] Executed endpoint 'Tradeify.Controllers.HomeController.AccessDenied (Tradeify)'
+2024-06-06 11:20:00.635 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/Home/AccessDenied - - - 200 - text/html;+charset=utf-8 864.2614ms
+2024-06-06 11:20:00.668 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 597.4520ms
+2024-06-06 11:26:25.375 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/ - -
+2024-06-06 11:26:25.396 +01:00 [INF] Executing endpoint 'Tradeify.Controllers.HomeController.Index (Tradeify)'
+2024-06-06 11:26:25.402 +01:00 [INF] Route matched with {action = "Index", controller = "Home"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index() on controller Tradeify.Controllers.HomeController (Tradeify).
+2024-06-06 11:26:25.408 +01:00 [INF] Executing ViewResult, running view Index.
+2024-06-06 11:26:26.625 +01:00 [INF] Executed DbCommand (150ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Discriminator] = N'ApplicationUser' AND [a].[Deactivated] = CAST(0 AS bit)
+2024-06-06 11:26:26.630 +01:00 [INF] Executed ViewResult - view Index executed in 1227.7492ms.
+2024-06-06 11:26:26.631 +01:00 [INF] Executed action Tradeify.Controllers.HomeController.Index (Tradeify) in 1228.5103ms
+2024-06-06 11:26:26.631 +01:00 [INF] Executed endpoint 'Tradeify.Controllers.HomeController.Index (Tradeify)'
+2024-06-06 11:26:26.637 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/ - - - 200 - text/html;+charset=utf-8 1262.0411ms
+2024-06-06 11:26:26.735 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/js/grant.js - -
+2024-06-06 11:26:26.744 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/js/grant.js - - - 302 - - 8.3422ms
+2024-06-06 11:26:26.746 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/images/logoNew.png - -
+2024-06-06 11:26:26.755 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/_framework/aspnetcore-browser-refresh.js - -
+2024-06-06 11:26:26.763 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/_framework/aspnetcore-browser-refresh.js - - - 200 13752 application/javascript;+charset=utf-8 8.6238ms
+2024-06-06 11:26:26.773 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/images/logoNew.png - - - 302 - - 26.7389ms
+2024-06-06 11:26:26.985 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/Home/AccessDenied - -
+2024-06-06 11:26:26.990 +01:00 [INF] Executing endpoint 'Tradeify.Controllers.HomeController.AccessDenied (Tradeify)'
+2024-06-06 11:26:26.993 +01:00 [INF] Route matched with {action = "AccessDenied", controller = "Home"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult AccessDenied() on controller Tradeify.Controllers.HomeController (Tradeify).
+2024-06-06 11:26:26.994 +01:00 [INF] Executing ViewResult, running view AccessDenied.
+2024-06-06 11:26:27.193 +01:00 [INF] Executed DbCommand (47ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Discriminator] = N'ApplicationUser' AND [a].[Deactivated] = CAST(0 AS bit)
+2024-06-06 11:26:27.195 +01:00 [INF] Executed ViewResult - view AccessDenied executed in 202.7149ms.
+2024-06-06 11:26:27.196 +01:00 [INF] Executed action Tradeify.Controllers.HomeController.AccessDenied (Tradeify) in 202.9604ms
+2024-06-06 11:26:27.196 +01:00 [INF] Executed endpoint 'Tradeify.Controllers.HomeController.AccessDenied (Tradeify)'
+2024-06-06 11:26:27.196 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/Home/AccessDenied - - - 200 - text/html;+charset=utf-8 210.6542ms
+2024-06-06 11:26:27.294 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/Home/AccessDenied - -
+2024-06-06 11:26:27.299 +01:00 [INF] Executing endpoint 'Tradeify.Controllers.HomeController.AccessDenied (Tradeify)'
+2024-06-06 11:26:27.300 +01:00 [INF] Route matched with {action = "AccessDenied", controller = "Home"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult AccessDenied() on controller Tradeify.Controllers.HomeController (Tradeify).
+2024-06-06 11:26:27.300 +01:00 [INF] Executing ViewResult, running view AccessDenied.
+2024-06-06 11:26:27.313 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/_vs/browserLink - -
+2024-06-06 11:26:27.354 +01:00 [INF] Executed DbCommand (22ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Discriminator] = N'ApplicationUser' AND [a].[Deactivated] = CAST(0 AS bit)
+2024-06-06 11:26:27.370 +01:00 [INF] Executed ViewResult - view AccessDenied executed in 69.9649ms.
+2024-06-06 11:26:27.371 +01:00 [INF] Executed action Tradeify.Controllers.HomeController.AccessDenied (Tradeify) in 71.3875ms
+2024-06-06 11:26:27.371 +01:00 [INF] Executed endpoint 'Tradeify.Controllers.HomeController.AccessDenied (Tradeify)'
+2024-06-06 11:26:27.372 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/Home/AccessDenied - - - 200 - text/html;+charset=utf-8 77.5316ms
+2024-06-06 11:26:27.391 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 78.7570ms
+2024-06-06 11:28:28.485 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/ - -
+2024-06-06 11:28:28.505 +01:00 [INF] Executing endpoint 'Tradeify.Controllers.HomeController.Index (Tradeify)'
+2024-06-06 11:28:28.511 +01:00 [INF] Route matched with {action = "Index", controller = "Home"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index() on controller Tradeify.Controllers.HomeController (Tradeify).
+2024-06-06 11:28:28.517 +01:00 [INF] Executing ViewResult, running view Index.
+2024-06-06 11:28:28.620 +01:00 [INF] Executed DbCommand (13ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Discriminator] = N'ApplicationUser' AND [a].[Deactivated] = CAST(0 AS bit)
+2024-06-06 11:28:28.625 +01:00 [INF] Executed ViewResult - view Index executed in 112.848ms.
+2024-06-06 11:28:28.625 +01:00 [INF] Executed action Tradeify.Controllers.HomeController.Index (Tradeify) in 113.6716ms
+2024-06-06 11:28:28.625 +01:00 [INF] Executed endpoint 'Tradeify.Controllers.HomeController.Index (Tradeify)'
+2024-06-06 11:28:28.634 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/ - - - 200 - text/html;+charset=utf-8 149.2965ms
+2024-06-06 11:28:28.731 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/js/grant.js - -
+2024-06-06 11:28:28.763 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/js/grant.js - - - 302 - - 32.0443ms
+2024-06-06 11:28:28.765 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/images/logoNew.png - -
+2024-06-06 11:28:28.772 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/_framework/aspnetcore-browser-refresh.js - -
+2024-06-06 11:28:28.802 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/_framework/aspnetcore-browser-refresh.js - - - 200 13752 application/javascript;+charset=utf-8 30.7817ms
+2024-06-06 11:28:28.898 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/images/logoNew.png - - - 302 - - 132.5488ms
+2024-06-06 11:28:29.023 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/Home/AccessDenied - -
+2024-06-06 11:28:29.036 +01:00 [INF] Executing endpoint 'Tradeify.Controllers.HomeController.AccessDenied (Tradeify)'
+2024-06-06 11:28:29.071 +01:00 [INF] Route matched with {action = "AccessDenied", controller = "Home"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult AccessDenied() on controller Tradeify.Controllers.HomeController (Tradeify).
+2024-06-06 11:28:29.100 +01:00 [INF] Executing ViewResult, running view AccessDenied.
+2024-06-06 11:28:29.254 +01:00 [INF] Executed DbCommand (78ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Discriminator] = N'ApplicationUser' AND [a].[Deactivated] = CAST(0 AS bit)
+2024-06-06 11:28:29.261 +01:00 [INF] Executed ViewResult - view AccessDenied executed in 189.1195ms.
+2024-06-06 11:28:29.262 +01:00 [INF] Executed action Tradeify.Controllers.HomeController.AccessDenied (Tradeify) in 190.3123ms
+2024-06-06 11:28:29.262 +01:00 [INF] Executed endpoint 'Tradeify.Controllers.HomeController.AccessDenied (Tradeify)'
+2024-06-06 11:28:29.263 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/Home/AccessDenied - - - 200 - text/html;+charset=utf-8 240.1091ms
+2024-06-06 11:28:29.321 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/_vs/browserLink - -
+2024-06-06 11:28:29.500 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/Home/AccessDenied - -
+2024-06-06 11:28:29.506 +01:00 [INF] Executing endpoint 'Tradeify.Controllers.HomeController.AccessDenied (Tradeify)'
+2024-06-06 11:28:29.506 +01:00 [INF] Route matched with {action = "AccessDenied", controller = "Home"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult AccessDenied() on controller Tradeify.Controllers.HomeController (Tradeify).
+2024-06-06 11:28:29.506 +01:00 [INF] Executing ViewResult, running view AccessDenied.
+2024-06-06 11:28:29.597 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 275.5786ms
+2024-06-06 11:28:29.597 +01:00 [INF] Executed DbCommand (16ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Discriminator] = N'ApplicationUser' AND [a].[Deactivated] = CAST(0 AS bit)
+2024-06-06 11:28:29.603 +01:00 [INF] Executed ViewResult - view AccessDenied executed in 96.622ms.
+2024-06-06 11:28:29.603 +01:00 [INF] Executed action Tradeify.Controllers.HomeController.AccessDenied (Tradeify) in 96.8557ms
+2024-06-06 11:28:29.603 +01:00 [INF] Executed endpoint 'Tradeify.Controllers.HomeController.AccessDenied (Tradeify)'
+2024-06-06 11:28:29.604 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/Home/AccessDenied - - - 200 - text/html;+charset=utf-8 104.3733ms
+2024-06-06 11:29:11.385 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/ - -
+2024-06-06 11:29:11.401 +01:00 [INF] Executing endpoint 'Tradeify.Controllers.HomeController.Index (Tradeify)'
+2024-06-06 11:29:11.403 +01:00 [INF] Route matched with {action = "Index", controller = "Home"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index() on controller Tradeify.Controllers.HomeController (Tradeify).
+2024-06-06 11:29:11.412 +01:00 [INF] Executing ViewResult, running view Index.
+2024-06-06 11:29:11.462 +01:00 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Discriminator] = N'ApplicationUser' AND [a].[Deactivated] = CAST(0 AS bit)
+2024-06-06 11:29:11.466 +01:00 [INF] Executed ViewResult - view Index executed in 62.8263ms.
+2024-06-06 11:29:11.466 +01:00 [INF] Executed action Tradeify.Controllers.HomeController.Index (Tradeify) in 63.1599ms
+2024-06-06 11:29:11.466 +01:00 [INF] Executed endpoint 'Tradeify.Controllers.HomeController.Index (Tradeify)'
+2024-06-06 11:29:11.506 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/ - - - 200 - text/html;+charset=utf-8 117.1122ms
+2024-06-06 11:29:11.534 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/_framework/aspnetcore-browser-refresh.js - -
+2024-06-06 11:29:11.542 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/_framework/aspnetcore-browser-refresh.js - - - 200 13752 application/javascript;+charset=utf-8 7.3491ms
+2024-06-06 11:29:11.542 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/js/grant.js - -
+2024-06-06 11:29:11.579 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/js/grant.js - - - 302 - - 36.8342ms
+2024-06-06 11:29:11.579 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/images/logoNew.png - -
+2024-06-06 11:29:11.587 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/images/logoNew.png - - - 302 - - 7.4283ms
+2024-06-06 11:29:11.879 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/Home/AccessDenied - -
+2024-06-06 11:29:11.897 +01:00 [INF] Executing endpoint 'Tradeify.Controllers.HomeController.AccessDenied (Tradeify)'
+2024-06-06 11:29:11.899 +01:00 [INF] Route matched with {action = "AccessDenied", controller = "Home"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult AccessDenied() on controller Tradeify.Controllers.HomeController (Tradeify).
+2024-06-06 11:29:11.901 +01:00 [INF] Executing ViewResult, running view AccessDenied.
+2024-06-06 11:29:12.084 +01:00 [INF] Executed DbCommand (52ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Discriminator] = N'ApplicationUser' AND [a].[Deactivated] = CAST(0 AS bit)
+2024-06-06 11:29:12.086 +01:00 [INF] Executed ViewResult - view AccessDenied executed in 186.2233ms.
+2024-06-06 11:29:12.086 +01:00 [INF] Executed action Tradeify.Controllers.HomeController.AccessDenied (Tradeify) in 186.4841ms
+2024-06-06 11:29:12.086 +01:00 [INF] Executed endpoint 'Tradeify.Controllers.HomeController.AccessDenied (Tradeify)'
+2024-06-06 11:29:12.087 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/Home/AccessDenied - - - 200 - text/html;+charset=utf-8 207.8952ms
+2024-06-06 11:29:12.166 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/Home/AccessDenied - -
+2024-06-06 11:29:12.168 +01:00 [INF] Executing endpoint 'Tradeify.Controllers.HomeController.AccessDenied (Tradeify)'
+2024-06-06 11:29:12.169 +01:00 [INF] Route matched with {action = "AccessDenied", controller = "Home"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult AccessDenied() on controller Tradeify.Controllers.HomeController (Tradeify).
+2024-06-06 11:29:12.169 +01:00 [INF] Executing ViewResult, running view AccessDenied.
+2024-06-06 11:29:12.180 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/_vs/browserLink - -
+2024-06-06 11:29:12.195 +01:00 [INF] Executed DbCommand (17ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Discriminator] = N'ApplicationUser' AND [a].[Deactivated] = CAST(0 AS bit)
+2024-06-06 11:29:12.199 +01:00 [INF] Executed ViewResult - view AccessDenied executed in 30.3167ms.
+2024-06-06 11:29:12.199 +01:00 [INF] Executed action Tradeify.Controllers.HomeController.AccessDenied (Tradeify) in 30.5445ms
+2024-06-06 11:29:12.199 +01:00 [INF] Executed endpoint 'Tradeify.Controllers.HomeController.AccessDenied (Tradeify)'
+2024-06-06 11:29:12.200 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/Home/AccessDenied - - - 200 - text/html;+charset=utf-8 34.0051ms
+2024-06-06 11:29:12.214 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 34.4244ms
+2024-06-06 11:30:14.940 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/ - -
+2024-06-06 11:30:14.956 +01:00 [INF] Executing endpoint 'Tradeify.Controllers.HomeController.Index (Tradeify)'
+2024-06-06 11:30:14.957 +01:00 [INF] Route matched with {action = "Index", controller = "Home"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index() on controller Tradeify.Controllers.HomeController (Tradeify).
+2024-06-06 11:30:14.960 +01:00 [INF] Executing ViewResult, running view Index.
+2024-06-06 11:30:15.025 +01:00 [INF] Executed DbCommand (7ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Discriminator] = N'ApplicationUser' AND [a].[Deactivated] = CAST(0 AS bit)
+2024-06-06 11:30:15.039 +01:00 [INF] Executed ViewResult - view Index executed in 81.6238ms.
+2024-06-06 11:30:15.039 +01:00 [INF] Executed action Tradeify.Controllers.HomeController.Index (Tradeify) in 81.8936ms
+2024-06-06 11:30:15.039 +01:00 [INF] Executed endpoint 'Tradeify.Controllers.HomeController.Index (Tradeify)'
+2024-06-06 11:30:15.043 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/ - - - 200 - text/html;+charset=utf-8 102.6225ms
+2024-06-06 11:30:15.154 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/_framework/aspnetcore-browser-refresh.js - -
+2024-06-06 11:30:15.181 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/_framework/aspnetcore-browser-refresh.js - - - 200 13752 application/javascript;+charset=utf-8 26.9309ms
+2024-06-06 11:30:15.183 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/js/grant.js - -
+2024-06-06 11:30:15.221 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/js/grant.js - - - 302 - - 32.4648ms
+2024-06-06 11:30:15.289 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/images/logoNew.png - -
+2024-06-06 11:30:15.341 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/images/logoNew.png - - - 302 - - 51.7530ms
+2024-06-06 11:30:15.389 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/Home/AccessDenied - -
+2024-06-06 11:30:15.397 +01:00 [INF] Executing endpoint 'Tradeify.Controllers.HomeController.AccessDenied (Tradeify)'
+2024-06-06 11:30:15.402 +01:00 [INF] Route matched with {action = "AccessDenied", controller = "Home"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult AccessDenied() on controller Tradeify.Controllers.HomeController (Tradeify).
+2024-06-06 11:30:15.404 +01:00 [INF] Executing ViewResult, running view AccessDenied.
+2024-06-06 11:30:15.510 +01:00 [INF] Executed DbCommand (81ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Discriminator] = N'ApplicationUser' AND [a].[Deactivated] = CAST(0 AS bit)
+2024-06-06 11:30:15.513 +01:00 [INF] Executed ViewResult - view AccessDenied executed in 110.3052ms.
+2024-06-06 11:30:15.513 +01:00 [INF] Executed action Tradeify.Controllers.HomeController.AccessDenied (Tradeify) in 110.5507ms
+2024-06-06 11:30:15.513 +01:00 [INF] Executed endpoint 'Tradeify.Controllers.HomeController.AccessDenied (Tradeify)'
+2024-06-06 11:30:15.513 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/Home/AccessDenied - - - 200 - text/html;+charset=utf-8 124.8157ms
+2024-06-06 11:30:15.543 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/Home/AccessDenied - -
+2024-06-06 11:30:15.546 +01:00 [INF] Executing endpoint 'Tradeify.Controllers.HomeController.AccessDenied (Tradeify)'
+2024-06-06 11:30:15.546 +01:00 [INF] Route matched with {action = "AccessDenied", controller = "Home"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult AccessDenied() on controller Tradeify.Controllers.HomeController (Tradeify).
+2024-06-06 11:30:15.547 +01:00 [INF] Executing ViewResult, running view AccessDenied.
+2024-06-06 11:30:15.577 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/_vs/browserLink - -
+2024-06-06 11:30:15.789 +01:00 [INF] Executed DbCommand (40ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Discriminator] = N'ApplicationUser' AND [a].[Deactivated] = CAST(0 AS bit)
+2024-06-06 11:30:15.794 +01:00 [INF] Executed ViewResult - view AccessDenied executed in 247.287ms.
+2024-06-06 11:30:15.794 +01:00 [INF] Executed action Tradeify.Controllers.HomeController.AccessDenied (Tradeify) in 247.5244ms
+2024-06-06 11:30:15.794 +01:00 [INF] Executed endpoint 'Tradeify.Controllers.HomeController.AccessDenied (Tradeify)'
+2024-06-06 11:30:15.795 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/Home/AccessDenied - - - 200 - text/html;+charset=utf-8 251.9303ms
+2024-06-06 11:30:15.825 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 248.8784ms
+2024-06-06 11:31:23.688 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/ - -
+2024-06-06 11:31:23.703 +01:00 [INF] Executing endpoint 'Tradeify.Controllers.HomeController.Index (Tradeify)'
+2024-06-06 11:31:23.705 +01:00 [INF] Route matched with {action = "Index", controller = "Home"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index() on controller Tradeify.Controllers.HomeController (Tradeify).
+2024-06-06 11:31:23.709 +01:00 [INF] Executing ViewResult, running view Index.
+2024-06-06 11:31:23.808 +01:00 [INF] Executed DbCommand (10ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Discriminator] = N'ApplicationUser' AND [a].[Deactivated] = CAST(0 AS bit)
+2024-06-06 11:31:23.817 +01:00 [INF] Executed ViewResult - view Index executed in 111.1187ms.
+2024-06-06 11:31:23.817 +01:00 [INF] Executed action Tradeify.Controllers.HomeController.Index (Tradeify) in 111.5235ms
+2024-06-06 11:31:23.817 +01:00 [INF] Executed endpoint 'Tradeify.Controllers.HomeController.Index (Tradeify)'
+2024-06-06 11:31:23.819 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/ - - - 200 - text/html;+charset=utf-8 131.4870ms
+2024-06-06 11:31:23.910 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/_framework/aspnetcore-browser-refresh.js - -
+2024-06-06 11:31:23.927 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/_framework/aspnetcore-browser-refresh.js - - - 200 13752 application/javascript;+charset=utf-8 17.1872ms
+2024-06-06 11:31:23.935 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/js/grant.js - -
+2024-06-06 11:31:23.960 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/js/grant.js - - - 302 - - 25.7113ms
+2024-06-06 11:31:23.973 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/images/logoNew.png - -
+2024-06-06 11:31:24.050 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/images/logoNew.png - - - 302 - - 76.3949ms
+2024-06-06 11:31:24.133 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/Home/AccessDenied - -
+2024-06-06 11:31:24.143 +01:00 [INF] Executing endpoint 'Tradeify.Controllers.HomeController.AccessDenied (Tradeify)'
+2024-06-06 11:31:24.150 +01:00 [INF] Route matched with {action = "AccessDenied", controller = "Home"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult AccessDenied() on controller Tradeify.Controllers.HomeController (Tradeify).
+2024-06-06 11:31:24.152 +01:00 [INF] Executing ViewResult, running view AccessDenied.
+2024-06-06 11:31:24.231 +01:00 [INF] Executed DbCommand (24ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Discriminator] = N'ApplicationUser' AND [a].[Deactivated] = CAST(0 AS bit)
+2024-06-06 11:31:24.237 +01:00 [INF] Executed ViewResult - view AccessDenied executed in 85.863ms.
+2024-06-06 11:31:24.237 +01:00 [INF] Executed action Tradeify.Controllers.HomeController.AccessDenied (Tradeify) in 86.2445ms
+2024-06-06 11:31:24.237 +01:00 [INF] Executed endpoint 'Tradeify.Controllers.HomeController.AccessDenied (Tradeify)'
+2024-06-06 11:31:24.237 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/Home/AccessDenied - - - 200 - text/html;+charset=utf-8 104.0882ms
+2024-06-06 11:31:24.431 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/Home/AccessDenied - -
+2024-06-06 11:31:24.438 +01:00 [INF] Executing endpoint 'Tradeify.Controllers.HomeController.AccessDenied (Tradeify)'
+2024-06-06 11:31:24.438 +01:00 [INF] Route matched with {action = "AccessDenied", controller = "Home"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult AccessDenied() on controller Tradeify.Controllers.HomeController (Tradeify).
+2024-06-06 11:31:24.438 +01:00 [INF] Executing ViewResult, running view AccessDenied.
+2024-06-06 11:31:24.451 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/_vs/browserLink - -
+2024-06-06 11:31:24.669 +01:00 [INF] Executed DbCommand (152ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Discriminator] = N'ApplicationUser' AND [a].[Deactivated] = CAST(0 AS bit)
+2024-06-06 11:31:24.689 +01:00 [INF] Executed ViewResult - view AccessDenied executed in 250.6791ms.
+2024-06-06 11:31:24.693 +01:00 [INF] Executed action Tradeify.Controllers.HomeController.AccessDenied (Tradeify) in 255.297ms
+2024-06-06 11:31:24.694 +01:00 [INF] Executed endpoint 'Tradeify.Controllers.HomeController.AccessDenied (Tradeify)'
+2024-06-06 11:31:24.694 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/Home/AccessDenied - - - 200 - text/html;+charset=utf-8 262.6106ms
+2024-06-06 11:31:24.709 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 257.7834ms
+2024-06-06 11:49:09.109 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/ - -
+2024-06-06 11:49:09.203 +01:00 [INF] Executing endpoint 'Tradeify.Controllers.HomeController.Index (Tradeify)'
+2024-06-06 11:49:09.228 +01:00 [INF] Route matched with {action = "Index", controller = "Home"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index() on controller Tradeify.Controllers.HomeController (Tradeify).
+2024-06-06 11:49:09.251 +01:00 [INF] Executing ViewResult, running view Index.
+2024-06-06 11:49:10.863 +01:00 [INF] Executed DbCommand (221ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Discriminator] = N'ApplicationUser' AND [a].[Deactivated] = CAST(0 AS bit)
+2024-06-06 11:49:10.882 +01:00 [INF] Executed ViewResult - view Index executed in 1650.8424ms.
+2024-06-06 11:49:10.883 +01:00 [INF] Executed action Tradeify.Controllers.HomeController.Index (Tradeify) in 1654.2985ms
+2024-06-06 11:49:10.883 +01:00 [INF] Executed endpoint 'Tradeify.Controllers.HomeController.Index (Tradeify)'
+2024-06-06 11:49:10.892 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/ - - - 200 - text/html;+charset=utf-8 1790.5784ms
+2024-06-06 11:49:10.990 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/js/grant.js - -
+2024-06-06 11:49:10.990 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/images/logoNew.png - -
+2024-06-06 11:49:11.034 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/js/grant.js - - - 302 - - 44.3098ms
+2024-06-06 11:49:11.052 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/images/Earth Environmental Protection PNG - Free Download.jpg - -
+2024-06-06 11:49:11.075 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/images/logoNew.png - - - 302 - - 84.8044ms
+2024-06-06 11:49:11.700 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/Home/AccessDenied - -
+2024-06-06 11:49:11.703 +01:00 [INF] Executing endpoint 'Tradeify.Controllers.HomeController.AccessDenied (Tradeify)'
+2024-06-06 11:49:11.706 +01:00 [INF] Route matched with {action = "AccessDenied", controller = "Home"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult AccessDenied() on controller Tradeify.Controllers.HomeController (Tradeify).
+2024-06-06 11:49:11.707 +01:00 [INF] Executing ViewResult, running view AccessDenied.
+2024-06-06 11:49:11.722 +01:00 [INF] Sending file. Request path: '/images/Earth Environmental Protection PNG - Free Download.jpg'. Physical path: 'C:\Users\User\source\repos\Tradeify\Tradeify\wwwroot\images\Earth Environmental Protection PNG - Free Download.jpg'
+2024-06-06 11:49:11.989 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/_framework/aspnetcore-browser-refresh.js - -
+2024-06-06 11:49:11.989 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/images/Earth Environmental Protection PNG - Free Download.jpg - - - 200 141111 image/jpeg 936.7781ms
+2024-06-06 11:49:12.011 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/_framework/aspnetcore-browser-refresh.js - - - 200 13752 application/javascript;+charset=utf-8 20.6734ms
+2024-06-06 11:49:12.061 +01:00 [INF] Executed DbCommand (266ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Discriminator] = N'ApplicationUser' AND [a].[Deactivated] = CAST(0 AS bit)
+2024-06-06 11:49:12.064 +01:00 [INF] Executed ViewResult - view AccessDenied executed in 357.4953ms.
+2024-06-06 11:49:12.064 +01:00 [INF] Executed action Tradeify.Controllers.HomeController.AccessDenied (Tradeify) in 357.7521ms
+2024-06-06 11:49:12.064 +01:00 [INF] Executed endpoint 'Tradeify.Controllers.HomeController.AccessDenied (Tradeify)'
+2024-06-06 11:49:12.064 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/Home/AccessDenied - - - 200 - text/html;+charset=utf-8 364.5565ms
+2024-06-06 11:49:12.105 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/Home/AccessDenied - -
+2024-06-06 11:49:12.110 +01:00 [INF] Executing endpoint 'Tradeify.Controllers.HomeController.AccessDenied (Tradeify)'
+2024-06-06 11:49:12.111 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/_vs/browserLink - -
+2024-06-06 11:49:12.111 +01:00 [INF] Route matched with {action = "AccessDenied", controller = "Home"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult AccessDenied() on controller Tradeify.Controllers.HomeController (Tradeify).
+2024-06-06 11:49:12.112 +01:00 [INF] Executing ViewResult, running view AccessDenied.
+2024-06-06 11:49:12.153 +01:00 [INF] Executed DbCommand (17ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Discriminator] = N'ApplicationUser' AND [a].[Deactivated] = CAST(0 AS bit)
+2024-06-06 11:49:12.156 +01:00 [INF] Executed ViewResult - view AccessDenied executed in 44.8126ms.
+2024-06-06 11:49:12.157 +01:00 [INF] Executed action Tradeify.Controllers.HomeController.AccessDenied (Tradeify) in 45.1561ms
+2024-06-06 11:49:12.157 +01:00 [INF] Executed endpoint 'Tradeify.Controllers.HomeController.AccessDenied (Tradeify)'
+2024-06-06 11:49:12.157 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/Home/AccessDenied - - - 200 - text/html;+charset=utf-8 51.7611ms
+2024-06-06 11:49:12.163 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 51.7452ms
+2024-06-06 11:50:22.919 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/ - -
+2024-06-06 11:50:22.927 +01:00 [INF] Executing endpoint 'Tradeify.Controllers.HomeController.Index (Tradeify)'
+2024-06-06 11:50:22.931 +01:00 [INF] Route matched with {action = "Index", controller = "Home"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index() on controller Tradeify.Controllers.HomeController (Tradeify).
+2024-06-06 11:50:22.939 +01:00 [INF] Executing ViewResult, running view Index.
+2024-06-06 11:50:23.410 +01:00 [INF] Executed DbCommand (385ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Discriminator] = N'ApplicationUser' AND [a].[Deactivated] = CAST(0 AS bit)
+2024-06-06 11:50:23.416 +01:00 [INF] Executed ViewResult - view Index executed in 481.8706ms.
+2024-06-06 11:50:23.416 +01:00 [INF] Executed action Tradeify.Controllers.HomeController.Index (Tradeify) in 484.6111ms
+2024-06-06 11:50:23.416 +01:00 [INF] Executed endpoint 'Tradeify.Controllers.HomeController.Index (Tradeify)'
+2024-06-06 11:50:23.419 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/ - - - 200 - text/html;+charset=utf-8 499.7544ms
+2024-06-06 11:50:23.640 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/js/grant.js - -
+2024-06-06 11:50:23.861 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/js/grant.js - - - 302 - - 220.4716ms
+2024-06-06 11:50:23.862 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/images/logoNew.png - -
+2024-06-06 11:50:23.885 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/_framework/aspnetcore-browser-refresh.js - -
+2024-06-06 11:50:23.903 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/images/logoNew.png - - - 302 - - 40.4492ms
+2024-06-06 11:50:23.918 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/_framework/aspnetcore-browser-refresh.js - - - 200 13752 application/javascript;+charset=utf-8 33.7504ms
+2024-06-06 11:50:24.048 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/Home/AccessDenied - -
+2024-06-06 11:50:24.051 +01:00 [INF] Executing endpoint 'Tradeify.Controllers.HomeController.AccessDenied (Tradeify)'
+2024-06-06 11:50:24.054 +01:00 [INF] Route matched with {action = "AccessDenied", controller = "Home"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult AccessDenied() on controller Tradeify.Controllers.HomeController (Tradeify).
+2024-06-06 11:50:24.057 +01:00 [INF] Executing ViewResult, running view AccessDenied.
+2024-06-06 11:50:24.188 +01:00 [INF] Executed DbCommand (31ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Discriminator] = N'ApplicationUser' AND [a].[Deactivated] = CAST(0 AS bit)
+2024-06-06 11:50:24.191 +01:00 [INF] Executed ViewResult - view AccessDenied executed in 136.0889ms.
+2024-06-06 11:50:24.191 +01:00 [INF] Executed action Tradeify.Controllers.HomeController.AccessDenied (Tradeify) in 136.8849ms
+2024-06-06 11:50:24.191 +01:00 [INF] Executed endpoint 'Tradeify.Controllers.HomeController.AccessDenied (Tradeify)'
+2024-06-06 11:50:24.192 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/Home/AccessDenied - - - 200 - text/html;+charset=utf-8 144.7445ms
+2024-06-06 11:50:24.270 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/Home/AccessDenied - -
+2024-06-06 11:50:24.273 +01:00 [INF] Executing endpoint 'Tradeify.Controllers.HomeController.AccessDenied (Tradeify)'
+2024-06-06 11:50:24.273 +01:00 [INF] Route matched with {action = "AccessDenied", controller = "Home"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult AccessDenied() on controller Tradeify.Controllers.HomeController (Tradeify).
+2024-06-06 11:50:24.273 +01:00 [INF] Executing ViewResult, running view AccessDenied.
+2024-06-06 11:50:24.273 +01:00 [INF] Request starting HTTP/2 GET https://localhost:44308/_vs/browserLink - -
+2024-06-06 11:50:24.537 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 263.8088ms
+2024-06-06 11:50:24.537 +01:00 [INF] Executed DbCommand (29ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [AspNetUsers] AS [a]
+WHERE [a].[Discriminator] = N'ApplicationUser' AND [a].[Deactivated] = CAST(0 AS bit)
+2024-06-06 11:50:24.544 +01:00 [INF] Executed ViewResult - view AccessDenied executed in 271.2573ms.
+2024-06-06 11:50:24.545 +01:00 [INF] Executed action Tradeify.Controllers.HomeController.AccessDenied (Tradeify) in 272.0844ms
+2024-06-06 11:50:24.545 +01:00 [INF] Executed endpoint 'Tradeify.Controllers.HomeController.AccessDenied (Tradeify)'
+2024-06-06 11:50:24.546 +01:00 [INF] Request finished HTTP/2 GET https://localhost:44308/Home/AccessDenied - - - 200 - text/html;+charset=utf-8 275.9018ms
+2024-06-06 13:00:36.545 +01:00 [WRN] Server desktop-pjc031g.c7b02a1e-24c0-4cef-8bf1-233aa6ef9c64:23564:1eb1e33d encountered an exception while sending heartbeat
+System.InvalidOperationException: Timeout expired.  The timeout period elapsed prior to obtaining a connection from the pool.  This may have occurred because all pooled connections were in use and max pool size was reached.
+   at Microsoft.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at Microsoft.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at Microsoft.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry, SqlConnectionOverrides overrides)
+   at Microsoft.Data.SqlClient.SqlConnection.Open(SqlConnectionOverrides overrides)
+   at Hangfire.SqlServer.SqlServerStorage.CreateAndOpenConnection()
+   at Hangfire.SqlServer.SqlServerStorage.UseConnection[T](DbConnection dedicatedConnection, Func`2 func)
+   at Hangfire.SqlServer.SqlServerStorage.UseConnection(DbConnection dedicatedConnection, Action`1 action)
+   at Hangfire.Server.ServerHeartbeatProcess.Execute(BackgroundProcessContext context)
+2024-06-06 13:01:29.115 +01:00 [ERR] Execution Worker is in the Failed state now due to an exception, execution will be retried no more than in 00:00:04
+Microsoft.Data.SqlClient.SqlException (0x80131904): A connection was successfully established with the server, but then an error occurred during the pre-login handshake. (provider: SSL Provider, error: 0 - The wait operation timed out.)
+ ---> System.ComponentModel.Win32Exception (258): The wait operation timed out.
+   at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.WaitForSSLHandShakeToComplete(UInt32& error, Int32& protocolVersion)
+   at Microsoft.Data.SqlClient.TdsParser.EnableSsl(UInt32 info, SqlConnectionEncryptOption encrypt, Boolean integratedSecurity)
+   at Microsoft.Data.SqlClient.TdsParser.ConsumePreLoginHandshake(SqlConnectionEncryptOption encrypt, Boolean trustServerCert, Boolean integratedSecurity, Boolean& marsCapable, Boolean& fedAuthRequired, Boolean tlsFirst)
+   at Microsoft.Data.SqlClient.TdsParser.Connect(ServerInfo serverInfo, SqlInternalConnectionTds connHandler, Boolean ignoreSniOpenTimeout, Int64 timerExpire, SqlConnectionString connectionOptions, Boolean withFailover)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds.AttemptOneLogin(ServerInfo serverInfo, String newPassword, SecureString newSecurePassword, Boolean ignoreSniOpenTimeout, TimeoutTimer timeout, Boolean withFailover)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds.LoginNoFailover(ServerInfo serverInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString connectionOptions, SqlCredential credential, TimeoutTimer timeout)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds.OpenLoginEnlist(TimeoutTimer timeout, SqlConnectionString connectionOptions, SqlCredential credential, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds..ctor(DbConnectionPoolIdentity identity, SqlConnectionString connectionOptions, SqlCredential credential, Object providerInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString userConnectionOptions, SessionData reconnectSessionData, Boolean applyTransientFaultHandling, String accessToken, DbConnectionPool pool)
+   at Microsoft.Data.SqlClient.SqlConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   at Microsoft.Data.ProviderBase.DbConnectionFactory.CreatePooledConnection(DbConnectionPool pool, DbConnection owningObject, DbConnectionOptions options, DbConnectionPoolKey poolKey, DbConnectionOptions userOptions)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.CreateObject(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.UserCreateRequest(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at Microsoft.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at Microsoft.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at Microsoft.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry, SqlConnectionOverrides overrides)
+   at Microsoft.Data.SqlClient.SqlConnection.Open(SqlConnectionOverrides overrides)
+   at Hangfire.SqlServer.SqlServerStorage.CreateAndOpenConnection()
+   at Hangfire.SqlServer.SqlServerStorage.UseConnection[T](DbConnection dedicatedConnection, Func`2 func)
+   at Hangfire.SqlServer.SqlServerJobQueue.DequeueUsingSlidingInvisibilityTimeout(String[] queues, CancellationToken cancellationToken)
+   at Hangfire.SqlServer.SqlServerJobQueue.Dequeue(String[] queues, CancellationToken cancellationToken)
+   at Hangfire.SqlServer.SqlServerConnection.FetchNextJob(String[] queues, CancellationToken cancellationToken)
+   at Hangfire.Server.Worker.Execute(BackgroundProcessContext context)
+   at Hangfire.Server.BackgroundProcessDispatcherBuilder.ExecuteProcess(Guid executionId, Object state)
+   at Hangfire.Processing.BackgroundExecution.Run(Action`2 callback, Object state)
+ClientConnectionId:48cae6a3-f66c-432e-9d93-e61f6719b55c
+Error Number:258,State:0,Class:20
+2024-06-06 13:01:29.148 +01:00 [WRN] Server desktop-pjc031g.c7b02a1e-24c0-4cef-8bf1-233aa6ef9c64:23564:1eb1e33d encountered an exception while sending heartbeat
+Microsoft.Data.SqlClient.SqlException (0x80131904): Connection Timeout Expired.  The timeout period elapsed during the post-login phase.  The connection could have timed out while waiting for server to complete the login process and respond; Or it could have timed out while attempting to create multiple active connections.  The duration spent while attempting to connect to this server was - [Pre-Login] initialization=8993; handshake=4413; [Login] initialization=0; authentication=610; [Post-Login] complete=1452; 
+ ---> System.ComponentModel.Win32Exception (258): The wait operation timed out.
+   at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParserStateObject.ThrowExceptionAndWarning(Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParserStateObject.ReadSniError(TdsParserStateObject stateObj, UInt32 error)
+   at Microsoft.Data.SqlClient.TdsParserStateObject.ReadSniSyncOverAsync()
+   at Microsoft.Data.SqlClient.TdsParserStateObject.TryReadNetworkPacket()
+   at Microsoft.Data.SqlClient.TdsParserStateObject.TryPrepareBuffer()
+   at Microsoft.Data.SqlClient.TdsParserStateObject.TryReadByte(Byte& value)
+   at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at Microsoft.Data.SqlClient.TdsParser.Run(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds.CompleteLogin(Boolean enlistOK)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds.AttemptOneLogin(ServerInfo serverInfo, String newPassword, SecureString newSecurePassword, Boolean ignoreSniOpenTimeout, TimeoutTimer timeout, Boolean withFailover)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds.LoginNoFailover(ServerInfo serverInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString connectionOptions, SqlCredential credential, TimeoutTimer timeout)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds.OpenLoginEnlist(TimeoutTimer timeout, SqlConnectionString connectionOptions, SqlCredential credential, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds..ctor(DbConnectionPoolIdentity identity, SqlConnectionString connectionOptions, SqlCredential credential, Object providerInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString userConnectionOptions, SessionData reconnectSessionData, Boolean applyTransientFaultHandling, String accessToken, DbConnectionPool pool)
+   at Microsoft.Data.SqlClient.SqlConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   at Microsoft.Data.ProviderBase.DbConnectionFactory.CreatePooledConnection(DbConnectionPool pool, DbConnection owningObject, DbConnectionOptions options, DbConnectionPoolKey poolKey, DbConnectionOptions userOptions)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.CreateObject(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.UserCreateRequest(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at Microsoft.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at Microsoft.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at Microsoft.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry, SqlConnectionOverrides overrides)
+   at Microsoft.Data.SqlClient.SqlConnection.Open(SqlConnectionOverrides overrides)
+   at Hangfire.SqlServer.SqlServerStorage.CreateAndOpenConnection()
+   at Hangfire.SqlServer.SqlServerStorage.UseConnection[T](DbConnection dedicatedConnection, Func`2 func)
+   at Hangfire.SqlServer.SqlServerStorage.UseConnection(DbConnection dedicatedConnection, Action`1 action)
+   at Hangfire.Server.ServerHeartbeatProcess.Execute(BackgroundProcessContext context)
+ClientConnectionId:408f71d2-8145-40f7-a2d4-141958a702f4
+Error Number:-2,State:0,Class:11
+2024-06-06 13:01:44.754 +01:00 [INF] Execution DelayedJobScheduler recovered from the Faulted state after 00:00:38.4213814 and is in the Running state now
+2024-06-06 13:01:44.927 +01:00 [INF] Execution RecurringJobScheduler recovered from the Faulted state after 00:00:39.4743558 and is in the Running state now

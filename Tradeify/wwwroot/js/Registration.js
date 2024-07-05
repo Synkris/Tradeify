@@ -194,7 +194,7 @@ function displaySelectedPackageUpgradeDetails(selectedUpgradePackageId) {
         var selectedPackageUpgrade = upgradePackageDetailsToShow.find(p => p.Id == selectedUpgradePackageId);
         var upgradePrice = selectedPackageUpgrade.Price - oldPackageAmount;
 
-        var apps = "<div style=\"border-bottom: 2px solid #22c8db; color: white; text-align: left; padding: 5px\">" +
+        var apps = "<div style=\"border-bottom: 2px solid #006400; color: white; text-align: left; padding: 5px\">" +
             "<h5 style=\"margin-bottom: 2px; color: white;\">" + "Package Name: " + selectedPackageUpgrade.Name + "</h5>" +
             "<p>" + "Package Price: $" + selectedPackageUpgrade.Price + "</p>" +
             //"<p>" + "Package Bonus Amount: $" + selectedPackageUpgrade.BonusAmount + "</p>" +
